@@ -28,7 +28,7 @@ p{
 
 
 .position-relative.overflow-hidden {
-    background-image: url('images/child-with\ sunflower.jpg'); /* Platzhalterbild */
+    background-image: url('images/Sunnflower.jpg'); /* Platzhalterbild */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -41,17 +41,17 @@ p{
 }
 
 .hero-subtitle {
-    color: #5D4037 !important; /* Warmgrau für Untertitel */
+    color: #3E2723 !important; /* Warmgrau für Untertitel */
 }
 
 .hero-link {
-    color: #144d16 !important; /* Warmes Orange für Links */
+    color: #3c803f !important; /* Warmes Orange für Links */
     font-weight: bold;
     text-decoration: none;
 }
 
 .hero-link:hover {
-    color: #2E7D32 !important; /* Dunkelgrün beim Hover */
+    color: #337a37 !important; /* Dunkelgrün beim Hover */
 }
 
 
