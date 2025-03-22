@@ -37,21 +37,21 @@ p{
 }
 
 .hero-title {
-    color: #3E2723 !important; /* Dunkelbraun für Überschrift */
+    color: white !important; /* Dunkelbraun für Überschrift */
 }
 
 .hero-subtitle {
-    color: #3E2723 !important; /* Warmgrau für Untertitel */
+    color: white !important; /* Warmgrau für Untertitel */
 }
 
 .hero-link {
-    color: #3c803f !important; /* Warmes Orange für Links */
+    color: #87a689 !important; /* Warmes Orange für Links */
     font-weight: bold;
     text-decoration: none;
 }
 
 .hero-link:hover {
-    color: #337a37 !important; /* Dunkelgrün beim Hover */
+    color:white !important; /* Dunkelgrün beim Hover */
 }
 
 
@@ -137,6 +137,10 @@ p{
         width: 100%;
         height: 400px; /* Hier kannst du die gewünschte Höhe einstellen */
         object-fit: cover;
+      }
+
+      .card-body{
+        height: 120px;
       }
 
 
