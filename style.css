@@ -47,7 +47,7 @@ p{
 .hero-link {
     color: #87a689 !important; /* Warmes Orange für Links */
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .hero-link:hover {
