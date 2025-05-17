@@ -62,6 +62,8 @@ p{
     font-weight: bold;
 }
 
+
+
 .btn-custom:hover {
     background-color: #E6A800 !important; /* Etwas dunkleres Gelb beim Hover */
     color: #3E2723 !important; /* Textfarbe bleibt */
@@ -140,7 +142,7 @@ p{
       }
 
       .card-body{
-        height: 150px;
+        min-height: 150px;
       }
 
 
