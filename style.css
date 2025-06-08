@@ -107,7 +107,7 @@ p{
 
 
     .rounded-circle {
-        border-radius: 0% !important;    /* runde Form */
+        border-radius: 50% !important;    /* runde Form */
       }
 
 
