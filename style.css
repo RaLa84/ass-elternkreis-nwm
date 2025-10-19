@@ -44,6 +44,31 @@ p{
     color: white !important; /* Warmgrau für Untertitel */
 }
 
+.hero-badge {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #1b4332;
+    border-radius: 24px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    backdrop-filter: blur(2px);
+}
+
+@media (max-width: 576px) {
+    .hero-badge {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        text-align: center;
+        font-size: 0.95rem;
+    }
+}
+
 .hero-link {
     color: #87a689 !important; /* Warmes Orange für Links */
     font-weight: bold;
