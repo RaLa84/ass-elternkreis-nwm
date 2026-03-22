@@ -493,6 +493,24 @@ p {
   font-weight: 700;
 }
 
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  margin: 16px 0;
+}
+
+.article-content figure {
+  margin: 24px 0;
+  text-align: center;
+}
+
+.article-content figcaption {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
 /* Info Boxes - Natürliche Farben */
 .info-box {
   padding: 24px;
