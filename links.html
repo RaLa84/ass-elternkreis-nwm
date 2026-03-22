@@ -14,6 +14,13 @@
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+      .thumb-col { width: 80px; min-width: 80px; vertical-align: middle; text-align: center; }
+      .thumb-col img { max-width: 60px; max-height: 85px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+      .thumb-col-video { width: 130px; min-width: 130px; vertical-align: middle; text-align: center; }
+      .thumb-col-video img { width: 110px; height: auto; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+      .thumb-placeholder { width: 60px; height: 85px; background: #e9ecef; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; color: #6c757d; font-size: 1.5rem; }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="visually-hidden-focusable">Zum Inhalt springen</a>
@@ -254,29 +261,112 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th class="thumb-col">Cover</th>
             <th>Titel</th>
             <th>Beschreibung</th>
           </tr>
         </thead>
         <tbody>
+          <tr class="table-secondary"><td colspan="3"><strong>Für Eltern & Angehörige</strong></td></tr>
           <tr>
-            <td>Schattenspringer – Daniela Schreiter</td>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3958902294-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Junge-viel-f%C3%BChlte-weltbekannter-Hirnforscher/dp/3958902294">Der Junge, der zu viel fühlte – Lorenz Wagner</a></td>
+            <td>Die berührende Geschichte des Hirnforschers Henry Markram und seines autistischen Sohnes Kai – und die Erkenntnis, dass Autisten nicht zu wenig, sondern zu viel fühlen. Ein Buch, das unser Bild von Autismus grundlegend verändert. (deutsch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3499628732-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Warum-euch-nicht-Augen-schauen/dp/3499628732">Warum ich euch nicht in die Augen schauen kann – Naoki Higashida</a></td>
+            <td>Mit nur 13 Jahren geschrieben, beantwortet Naoki Fragen über sein Verhalten und seine Wahrnehmung als nonverbal-autistischer Junge – poetisch, direkt und tief berührend. (deutsch, Original japanisch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3830433921-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Ein-ganzes-Leben-Asperger-Syndrom-Erwachsensein/dp/3830433921">Ein ganzes Leben mit dem Asperger-Syndrom – Tony Attwood</a></td>
+            <td>Der Klassiker des weltweit bekanntesten Asperger-Experten – von Kindheit bis ins Erwachsenenalter, mit erprobten Strategien und ermutigenden Geschichten von Betroffenen. (deutsch, Original englisch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3969674824-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Autismus-verstehen-Wissenschaft-Hilfsmittel-Beziehungen/dp/3969674824">Autismus verstehen – Tom Harrendorf &amp; Melanie Matzies-Köhler</a></td>
+            <td>Brücken bauen zwischen autistischer und nicht-autistischer Welt – wissenschaftlich fundiert und mit praktischen Hilfsmitteln für den Alltag. (deutsch)</td>
+          </tr>
+
+          <tr class="table-secondary"><td colspan="3"><strong>PDA (Pathological Demand Avoidance)</strong></td></tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3952548464-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/PDA-autistisch-Antworten-Pathological-Fachpersonen/dp/3952548464">PDA – anders autistisch? – Nicole Agathe Chou-Knecht &amp; Elisabeth Carl</a></td>
+            <td>Das erste deutschsprachige Fachbuch zu PDA – fundiert, praxisnah und mit Einblicken von Betroffenen, Angehörigen und Fachpersonen. Unverzichtbar für alle, die PDA verstehen möchten. (deutsch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/381871701X-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/How-handle-PANDA-S-Meiners/dp/381871701X">How to Handle a PANDA – S. Meiners</a></td>
+            <td>Ein humorvoller und praxisnaher Wegweiser für Familien mit PDA-Kindern – mit vielen Strategien, die den Alltag erleichtern, ohne die Autonomie des Kindes zu beschneiden. (deutsch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3910230016-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Zirkus-Kopf-Diagnose-Autismus-t%C3%A4gliche/dp/3910230016">Zirkus im Kopf – Liv Cadler &amp; Saskia Susanne Neu</a></td>
+            <td>Drei Mütter berichten ehrlich und emotional vom Alltag mit ihren PDA-diagnostizierten Söhnen – vom Kampf um die richtige Diagnose bis zu den Hürden bei Behörden und Schulen. (deutsch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3407869509-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Mein-einzigartiges-Pandakind-PDA-Autismus-Profil-Familienalltag/dp/3407869509">Mein einzigartiges Pandakind – Mark Leonard</a></td>
+            <td>Ein Vater eines PANDA-Kindes gibt betroffenen Eltern warmherzige, alltagstaugliche Tipps – von Zähneputzen über Einschulung bis zum Umgang mit Gefühlsausbrüchen. (deutsch)</td>
+          </tr>
+
+          <tr class="table-secondary"><td colspan="3"><strong>Weiblicher Autismus</strong></td></tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/1849857911-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Aspergirls-Empowering-Females-Asperger-Syndrome/dp/1849857911">Aspergirls – Rudy Simone</a></td>
+            <td>Rudy Simone, selbst Aspergirl, gibt einen einfühlsamen Einblick in das Leben autistischer Frauen und Mädchen – von Schule und Beruf bis Freundschaft und Familie. Ein Klassiker. (deutsch, Original englisch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3407861834-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Die-Welt-autistischer-Frauen-M%C3%A4dchen/dp/3407861834">Die Welt autistischer Frauen und Mädchen – Manon Mannherz, Ismene Ditrich &amp; Christa Koentges</a></td>
+            <td>Warum autistische Frauen so oft spät diagnostiziert werden – und wie sie lernen, sich selbst besser zu verstehen. Von Kindergarten bis Menopause. (deutsch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3432112009-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/%C3%9Cberraschend-anders-M%C3%A4dchen-Frauen-Asperger/dp/3432112009">Überraschend anders – Christine Preißmann</a></td>
+            <td>Fünf Frauen, zwei Mütter und zwei Therapeutinnen erzählen, wie autistische Frauen lernen, lieben und leben. Christine Preißmann ist selbst Ärztin und Autistin. (deutsch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3451053004-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Ich-Autistin-aber-zeige-nicht/dp/3451053004">Ich bin Autistin – aber ich zeige es nicht – Liane Holliday Willey</a></td>
+            <td>Eine der ersten autobiografischen Erzählungen einer autistischen Frau – von der Kindheit bis zur Mutterschaft. Ehrlich über die Strategien, die halfen, und den emotionalen Preis des Maskierens. (deutsch, Original englisch)</td>
+          </tr>
+
+          <tr class="table-secondary"><td colspan="3"><strong>Own Voices &amp; Autobiografisches</strong></td></tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3862019500-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Schattenspringer-Wie-ist-anders-sein/dp/3862019500">Schattenspringer – Daniela Schreiter</a></td>
             <td>Graphic-Novel-Reihe (3 Bände) über das Aufwachsen als autistisches Mädchen. Authentisch, humorvoll und lehrreich – ohne belehrend zu sein. (deutsch)</td>
           </tr>
           <tr>
-            <td>Verstörungstheorien – Marlies Hübner</td>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/3862655377-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Verst%C3%B6rungstheorien-Memoiren-Autistin-gefunden-Badewanne/dp/3862655377">Verstörungstheorien – Marlies Hübner</a></td>
             <td>Memoiren einer Autistin – ehrlich, klug und selbstbestimmt erzählt. Ein Buch, das zeigt: nicht anders, nicht weniger. (deutsch)</td>
           </tr>
           <tr>
-            <td>Unmasking Autism – Devon Price</td>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/340786762X-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Autistisch-Kann-ich-flie%C3%9Fend-%C3%9Cbersetzungshilfe/dp/340786762X">Autistisch? Kann ich fließend! – Stephanie Meer-Walter</a></td>
+            <td>Stephanie Meer-Walter ist selbst Autistin und verbindet die wissenschaftliche Perspektive mit ihrem eigenen Erleben – klug, warmherzig und ein Plädoyer für mehr Verständnis. (deutsch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/389693483X-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Ein-guter-Tag-ist-Wirsing/dp/389693483X">Ein guter Tag ist ein Tag mit Wirsing – Nicole Schuster</a></td>
+            <td>Nicole Schuster erzählt humorvoll und alltagsnah aus ihrem Leben mit Asperger-Syndrom – ein guter Tag ist einer, an dem alles nach Plan läuft. (deutsch)</td>
+          </tr>
+          <tr>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/0593235231-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/-/en/Devon-Price-PhD/dp/0593235231">Unmasking Autism – Devon Price</a></td>
             <td>Warum Autist*innen sich maskieren und welchen Preis das hat. Mit Übungen zum Entdecken des eigenen authentischen Selbst. (englisch)</td>
           </tr>
           <tr>
-            <td>Different, Not Less – Chloe Hayden</td>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/1922616184-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/Different-Not-Less-Neurodivergents-Embracing/dp/1922616184">Different, Not Less – Chloe Hayden</a></td>
             <td>Memoir über Schule, Freundschaft, sensorische Herausforderungen und den Weg zur Selbstakzeptanz. Ehrlich und mit Humor erzählt. (englisch)</td>
           </tr>
           <tr>
-            <td>But Everyone Feels This Way – Paige Layle</td>
+            <td class="thumb-col"><img src="https://covers.openlibrary.org/b/isbn/1035414694-M.jpg" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
+            <td><a href="https://www.amazon.de/But-Everyone-Feels-This-Way/dp/1035414694">But Everyone Feels This Way – Paige Layle</a></td>
             <td>Wie eine späte Autismus-Diagnose ihr Leben verändert hat. Ein Buch gegen Stigma und Stereotype. (englisch)</td>
           </tr>
         </tbody>
@@ -291,76 +381,94 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th class="thumb-col-video">Trailer</th>
             <th>Titel</th>
             <th>Beschreibung</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=dXpa5PrtuP0"><img src="https://img.youtube.com/vi/dXpa5PrtuP0/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=dXpa5PrtuP0">Heartbreak High (Netflix)</a></td>
             <td>Australische Serie mit Chloe Hayden als Quinni – eine der ersten offen autistischen Schauspielerinnen in einer autistischen Hauptrolle. Zeigt Masking, sensorische Herausforderungen und Selbstfindung.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=MxeXECe2t-c"><img src="https://img.youtube.com/vi/MxeXECe2t-c/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=MxeXECe2t-c">Extraordinary Attorney Woo (Netflix)</a></td>
             <td>Koreanische Serie über die autistische Anwältin Woo Young-woo. Autismus wird als Stärke gezeigt – Detailgenauigkeit, Gedächtnis und kreatives Denken. Weltweit gefeiert.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=rbC_CyzQ6qM"><img src="https://img.youtube.com/vi/rbC_CyzQ6qM/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=rbC_CyzQ6qM">The Reason I Jump (Netflix)</a></td>
             <td>Dokumentarfilm nach dem Buch von Naoki Higashida. Begleitet fünf nicht-sprechende autistische junge Menschen weltweit. Kernbotschaft: „Nicht sprechen können heißt nicht, dass es nichts zu sagen gibt."</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=Y4Sf_cA41tA"><img src="https://img.youtube.com/vi/Y4Sf_cA41tA/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=Y4Sf_cA41tA">Loop (Disney+)</a></td>
             <td>Pixar-Kurzfilm über Renee, ein nicht-sprechendes autistisches Mädchen – gesprochen von der autistischen Schauspielerin Madison Bandy. Zeigt einfühlsam das „Double Empathy Problem".</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=kb4vxmq4UwI"><img src="https://img.youtube.com/vi/kb4vxmq4UwI/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=kb4vxmq4UwI">Atypical (Netflix)</a></td>
             <td>Serie über Sam, einen autistischen Teenager, der versucht selbstständiger zu werden und seine erste Freundin zu finden. Humorvoll und warmherzig erzählt – über vier Staffeln hinweg.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=yaj1zttGqIc"><img src="https://img.youtube.com/vi/yaj1zttGqIc/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=yaj1zttGqIc">Systemsprenger (2019)</a></td>
             <td>Deutscher Spielfilm über die 9-jährige Benni, die durch alle Raster des Hilfesystems fällt. Nicht direkt über Autismus, aber zeigt eindrücklich, wie dramatisch es werden kann, wenn Kinder nicht ins System passen. Mehrfach preisgekrönt.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=t7nRD5ECl68"><img src="https://img.youtube.com/vi/t7nRD5ECl68/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=t7nRD5ECl68">Matki pingwinów – Die Mütter der Pinguine (Netflix)</a></td>
             <td>Polnische Serie über Kama, eine MMA-Kämpferin, deren Sohn mit Autismus diagnostiziert wird. Zeigt authentisch den Alltag von Müttern autistischer Kinder zwischen Beruf, Schulsystem und Fürsorge.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=cpkN0JdXRpM"><img src="https://img.youtube.com/vi/cpkN0JdXRpM/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=cpkN0JdXRpM">Temple Grandin (2010, HBO)</a></td>
             <td>Emmy-prämiertes Biopic über die berühmte autistische Tierwissenschaftlerin Temple Grandin, brillant dargestellt von Claire Danes. Zeigt eindrucksvoll, wie sie trotz aller Hindernisse ihren Weg in der Wissenschaft findet.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=1Hbyvd4Y5hE"><img src="https://img.youtube.com/vi/1Hbyvd4Y5hE/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=1Hbyvd4Y5hE">Wochenendrebellen (2023)</a></td>
             <td>Deutscher Film nach der wahren Geschichte von Jason und Mirco von Juterczenka: Ein Vater reist mit seinem autistischen Sohn durch alle Fußballstadien Deutschlands, um dessen Lieblingsverein zu finden. Warmherzig und humorvoll.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=_r-lNl1YClg"><img src="https://img.youtube.com/vi/_r-lNl1YClg/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=_r-lNl1YClg">Alles außer gewöhnlich (2019)</a></td>
             <td>Französische Tragikomödie mit Vincent Cassel und Reda Kateb als engagierte Betreuer von Jugendlichen mit schwerem Autismus. Basiert auf einer wahren Geschichte und zeigt den Alltag jenseits von Klischees.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=B6dXBb9KqL8"><img src="https://img.youtube.com/vi/B6dXBb9KqL8/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=B6dXBb9KqL8">Ezra (2024)</a></td>
             <td>Road-Trip-Film über einen Comedian und seinen autistischen Sohn – gespielt von William A. Fitzgerald, der selbst autistisch ist. Einfühlsam erzählt, mit Robert De Niro in einer Nebenrolle.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=k3B1Az2x4AI"><img src="https://img.youtube.com/vi/k3B1Az2x4AI/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=k3B1Az2x4AI">Life, Animated (2016)</a></td>
             <td>Oscar-nominierte Dokumentation über Owen Suskind, der als Kind nach seiner Autismus-Diagnose aufhörte zu sprechen – und über Disney-Zeichentrickfilme zurück zur Kommunikation fand. Zutiefst bewegend.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=TzQe4sqjZT8"><img src="https://img.youtube.com/vi/TzQe4sqjZT8/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=TzQe4sqjZT8">Please Stand By (2017)</a></td>
             <td>Dakota Fanning als junge autistische Frau, die sich auf eine abenteuerliche Reise begibt, um ihr Star-Trek-Drehbuch bei einem Wettbewerb einzureichen. Ein warmherziger Film über Selbstständigkeit und Träume.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=kX-QbcXyZug"><img src="https://img.youtube.com/vi/kX-QbcXyZug/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=kX-QbcXyZug">Love on the Spectrum (Netflix)</a></td>
             <td>Australische Doku-Serie, die autistische Menschen auf der Suche nach Liebe und Partnerschaft begleitet. Sehr respektvoll, humorvoll und berührend – mittlerweile auch als US-Version verfügbar.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=H_JA2JXM25Y"><img src="https://img.youtube.com/vi/H_JA2JXM25Y/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=H_JA2JXM25Y">As We See It (Amazon Prime)</a></td>
             <td>Drei junge autistische Erwachsene leben zusammen in einer WG und meistern den Alltag. Alle drei Hauptdarsteller sind selbst im Autismus-Spektrum. Authentisch und nahbar.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=dqXmmZjsbCQ"><img src="https://img.youtube.com/vi/dqXmmZjsbCQ/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=dqXmmZjsbCQ">Everything's Gonna Be Okay (Streaming)</a></td>
             <td>Coming-of-Age-Serie, in der die autistische Teenagerin Matilda von Kayla Cromer gespielt wird – einer Schauspielerin, die selbst autistisch ist. Behandelt Themen wie Verlust, Beziehungen und Erwachsenwerden.</td>
           </tr>
           <tr>
+            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=nNjEWNmb-G8"><img src="https://img.youtube.com/vi/nNjEWNmb-G8/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
             <td><a href="https://www.youtube.com/watch?v=nNjEWNmb-G8">The Pitt (Max/HBO)</a></td>
             <td>Medizindrama in Echtzeit aus einer Notaufnahme in Pittsburgh. Die Assistenzärztin Dr. Mel King hat eine autistische Zwillingsschwester Becca – gespielt von der autistischen Schauspielerin Tal Anderson. Die Serie wird für ihre authentische und respektvolle Darstellung von Neurodiversität im Krankenhausalltag gelobt.</td>
           </tr>
@@ -378,6 +486,8 @@
                <li class="nav-item"><a href="links.html" class="nav-link px-2 text-body-secondary">Links</a></li>
                <li class="nav-item"><a href="blog.html" class="nav-link px-2 text-body-secondary">Blog</a></li>
                 <li class="nav-item"><a href="faq.html" class="nav-link px-2 text-body-secondary">FAQ</a></li>
+            <li class="nav-item"><a href="impressum.html" class="nav-link px-2 text-body-secondary">Impressum</a></li>
+            <li class="nav-item"><a href="datenschutz.html" class="nav-link px-2 text-body-secondary">Datenschutz</a></li>
            </ul>
            <p class="text-center text-body-secondary">© 2024–2026 Antje und Raik Lasner</p>
        </footer>
