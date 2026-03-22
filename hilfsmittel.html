@@ -48,6 +48,10 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .tab-panel-enter { opacity: 0; transform: translateY(8px); }
+        .tab-panel-active { opacity: 1; transform: translateY(0); transition: opacity 0.2s ease, transform 0.2s ease; }
     </style>
 </head>
 <body class="bg-softwhite text-brown font-sans antialiased">
@@ -107,748 +111,36 @@
     </section>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- KATEGORIE 1: Struktur & Orientierung       -->
-        <!-- ═══════════════════════════════════════════ -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 animate-on-scroll">Struktur &amp; Orientierung</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- Visuelle Pläne -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Visuelle Pläne (Bildpläne / Visual Schedules)</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Starke Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Bilderfolgen oder Symbolkarten, die den Tagesablauf, einzelne Aktivitäten oder Handlungsschritte visuell darstellen. Sie können als Papierplan, Magnettafel oder App gestaltet sein.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder verarbeiten visuelle Informationen besser als gesprochene Sprache. Ein visueller Plan macht die abstrakte Abfolge „Was kommt als Nächstes?" greifbar und vorhersehbar. Das reduziert Unsicherheit und Angst, unterstützt eigenständiges Handeln und erleichtert Übergänge zwischen Aktivitäten.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Visuelle Pläne gelten als <strong>anerkannte evidenzbasierte Praxis</strong>. Das National Standards Project (Phase 2, 2015) stuft den Einsatz von Plänen als etablierte Intervention ein. Hume et al. (2021) bestätigten visuelle Unterstützungsmittel als evidenzbasiert für Personen mit Autismus vom Vorschul- bis zum jungen Erwachsenenalter.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Hume, K. et al. (2021). Evidence-Based Practices for Children, Youth, and Young Adults with Autism. <em>Journal of Autism and Developmental Disorders, 51</em>, 4013–4032. <a href="https://pubmed.ncbi.nlm.nih.gov/33449225/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
-                            <li>Knight, V. et al. (2015). Evaluating Visual Activity Schedules as Evidence-Based Practice for Individuals with ASD. <em>Journal of Autism and Developmental Disorders, 45</em>, 157–178. <a href="https://pubmed.ncbi.nlm.nih.gov/25081593/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
-                            <li>National Autism Center (2015). <em>National Standards Project, Phase 2.</em></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sozialgeschichten -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Sozialgeschichten (Social Stories)</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kurze, individuell geschriebene Geschichten, die eine soziale Situation aus der Perspektive des Kindes beschreiben. Entwickelt 1993 von Carol Gray, folgen sie einem festen Format mit beschreibenden und anleitenden Sätzen, oft ergänzt durch Bilder.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder haben Schwierigkeiten, implizite soziale Regeln zu erkennen – Dinge, die neurotypische Kinder „einfach so" verstehen. Sozialgeschichten machen diese unsichtbaren Regeln explizit und vorhersehbar: „Wenn wir in der Bibliothek sind, sprechen wir leise, weil andere Menschen lesen." Das reduziert Angst vor unbekannten Situationen und gibt dem Kind ein Skript für angemessenes Verhalten.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Ein Scoping Review (2024, 22 Studien) ergab, dass 32 % der Studien starke oder moderate kausale Effekte zeigten. Das National Clearinghouse on Autism Evidence and Practice stuft „Social Narratives" als evidenzbasierte Praxis ein. Qi et al. (2018) fanden in einer systematischen Übersicht, dass Social Stories besonders wirksam bei der Reduktion von herausforderndem Verhalten und der Förderung sozialer Fähigkeiten sind.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Scoping Review (2024). Social stories supporting behavior change for individuals with Autism. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11263915/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                            <li>Qi, C. H. et al. (2018). A Systematic Review of Effects of Social Stories Interventions for Individuals With ASD. <em>Focus on Autism and Other Developmental Disabilities.</em> <a href="https://journals.sagepub.com/doi/10.1177/1088357615613516" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">SAGE</a></li>
-                            <li>Gray, C. &amp; Garand, J. (1993). Social Stories: Improving responses of students with autism with accurate social information. <em>Focus on Autistic Behavior, 8</em>(1), 1–10.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Visuelle Timer -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Visuelle Timer (z.&thinsp;B. Time Timer)</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Starke Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Timer, die die verbleibende Zeit als farbige Fläche anzeigen, die sichtbar kleiner wird. Anders als Digitaluhren vermitteln sie auch ohne Zahlenverständnis ein intuitives Gefühl für „Wie lange noch?".</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder haben Schwierigkeiten mit dem abstrakten Konzept „Zeit" und mit Übergängen von einer Aktivität zur nächsten. Ein visueller Timer macht die verstreichende Zeit konkret sichtbar. Das Kind kann sich mental vorbereiten, was Stress und Widerstand bei Wechseln reduziert.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Dettmer et al. (2000) zeigten, dass ein visueller Timer einem Schüler mit Autismus half, erfolgreich von bevorzugten zu nicht-bevorzugten Aktivitäten zu wechseln. In einer weiteren Studie konnte das angemessene Warteverhalten von 150 auf 600 Sekunden gesteigert werden, allein durch den Einsatz eines Time Timers.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Dettmer, S. et al. (2000). The Use of Visual Supports to Facilitate Transitions of Students with Autism. <em>Focus on Autism and Other Developmental Disabilities, 15</em>(3), 163–169.</li>
-                            <li>Liang, Z. (2025). Visual Schedules to Support Individuals on the Autism Spectrum. <em>Intervention in School and Clinic.</em> <a href="https://journals.sagepub.com/doi/10.1177/10534512241300157" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">SAGE</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Tab Bar -->
+        <div id="category-tabs" role="tablist" aria-label="Hilfsmittel-Kategorien" class="flex gap-2 overflow-x-auto scrollbar-hide pb-2 mb-6 -mx-4 px-4 snap-x">
+            <!-- Rendered by JS -->
         </div>
 
-        <!-- Produktbeispiele: Struktur & Orientierung -->
-        <div class="mt-8 bg-forest/[0.02] border border-forest/10 rounded-2xl p-6 sm:p-8 animate-on-scroll">
-            <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-lg font-bold text-forest">Konkrete Produktbeispiele</h3>
+        <!-- Filter Bar -->
+        <div id="filter-bar" class="mb-8 space-y-3">
+            <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                <input id="hilfsmittel-search" type="search" placeholder="Hilfsmittel durchsuchen..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest bg-white" aria-label="Hilfsmittel durchsuchen">
             </div>
-            <p class="text-sm text-gray-500 mb-6">Diese Produkte dienen als Orientierung und Einstiegshilfe — keine Werbung. Bitte sprechen Sie vor dem Kauf mit Therapeut*innen, ob das Hilfsmittel für Ihr Kind geeignet ist.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                <!-- Time Timer MOD -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Time Timer MOD (Home Edition)</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Der Klassiker unter den visuellen Timern. Die rote Scheibe schrumpft sichtbar — Zeitverständnis ganz ohne Zahlen. Tragbar, mit Schutzgehäuse. Wird weltweit in Schulen, Therapien und zu Hause eingesetzt.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 35–40 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Time+Timer+MOD" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon ansehen &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Magnetischer Tagesplaner -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Magnetischer Tagesplaner f&uuml;r Kinder</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Magnettafel mit Bildkarten f&uuml;r Morgenroutine, Nachmittag und Abend. Kinder verschieben Karten selbst und haken erledigte Schritte ab — das f&ouml;rdert Eigenst&auml;ndigkeit und macht den Tagesablauf greifbar.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 20–30 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=magnetischer+Tagesplaner+Kinder+Bildkarten" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon ansehen &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- The New Social Story Book -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">&bdquo;The New Social Story Book&ldquo; (Carol Gray)</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Das Standardwerk von der Erfinderin der Sozialgeschichten. &Uuml;ber 180 fertige Geschichten als Vorlage f&uuml;r eigene Social Stories. Englischsprachig, aber als Vorlage und Inspiration unverzichtbar.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 20–25 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Carol+Gray+New+Social+Story+Book" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon ansehen &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Time Timer Original -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Time Timer Original 8&Prime;</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Gro&szlig;er Tisch-Timer (20 cm) f&uuml;r Klassenzimmer oder Kinderzimmer. Optionaler akustischer Alarm. Die gr&ouml;&szlig;ere Anzeige ist aus der Entfernung gut sichtbar — ideal f&uuml;r gemeinsame Nutzung.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 30–35 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Time+Timer+Original+8+Zoll" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon ansehen &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
+            <div id="filter-chips" class="flex flex-wrap gap-2" role="group" aria-label="Filter">
+                <!-- Rendered by JS -->
+            </div>
+            <div id="filter-status" class="hidden flex items-center gap-2 text-sm text-gray-500">
+                <span id="filter-count"></span>
+                <button id="clear-filters" class="text-forest underline text-xs hover:text-forest-light">Alle Filter zurücksetzen</button>
             </div>
         </div>
 
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- KATEGORIE: Kommunikation                   -->
-        <!-- ═══════════════════════════════════════════ -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 mt-16 animate-on-scroll">Kommunikation</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- AAC / PECS -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll md:col-span-2 lg:col-span-2">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Unterstützte Kommunikation (AAC / PECS)</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Starke Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Hilfsmittel, die Kindern ohne oder mit eingeschränkter Lautsprache ermöglichen zu kommunizieren. Dazu gehören: <strong>PECS</strong> (Picture Exchange Communication System) – ein Bildkartensystem, bei dem das Kind Bilder überreicht, um Wünsche auszudrücken; <strong>Kommunikations-Apps</strong> auf Tablets (z.&thinsp;B. GoTalk NOW, MetaTalkDE); sowie <strong>sprachgenerierende Geräte</strong> (SGDs), die auf Knopfdruck Sätze aussprechen.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder haben Stärken in der visuellen Verarbeitung. AAC-Systeme nutzen diese Stärke: Statt abstrakte Lautsprache zu produzieren, wählt das Kind ein konkretes Bild oder Symbol. Das senkt die Kommunikationsbarriere drastisch. PECS baut systematisch auf – vom einfachen Austausch eines Bildes bis hin zu ganzen Sätzen. Entgegen einer verbreiteten Befürchtung zeigt die Forschung, dass AAC die Lautsprachentwicklung <em>nicht</em> hemmt, sondern sogar fördern kann.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Ein systematisches Review (Moorcroft et al., 2018) bestätigt die Wirksamkeit von PECS und sprachgenerierenden Geräten als am besten belegte AAC-Formen für Kinder mit Autismus. Meta-Analysen zeigen große Effekte auf expressive Kommunikationsfähigkeiten. Logan et al. (2017) fanden, dass AAC-Nutzung im Vorschulalter mit Zuwächsen in der Sprachentwicklung einhergeht.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Moorcroft, A. et al. (2018). Instruments for augmentative and alternative communication for children with ASD: a systematic review. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6238819/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                            <li>Logan, K. et al. (2017). The role of augmentative and alternative communication for children with autism: current status and future trends. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5036660/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Content Area -->
+        <div id="hilfsmittel-content">
+            <!-- Panels rendered by JS -->
         </div>
-
-        <!-- Produktbeispiele: Kommunikation -->
-        <div class="mt-8 bg-forest/[0.02] border border-forest/10 rounded-2xl p-6 sm:p-8 animate-on-scroll">
-            <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-lg font-bold text-forest">Konkrete Produktbeispiele</h3>
-            </div>
-            <p class="text-sm text-gray-500 mb-6">Kommunikationshilfen sind sehr individuell. Lassen Sie sich vor dem Kauf unbedingt von Logop&auml;d*innen oder UK-Fachberatungen beraten.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                <!-- MetaTalkDE -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25V4.5a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 4.5v15a2.25 2.25 0 002.25 2.25z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">MetaTalkDE (iPad-App)</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Die umfassendste deutsche Kommunikations-App. Symbolbasiert, grammatikf&auml;hig, w&auml;chst mit dem Kind mit. Verschiedene Vokabularumf&auml;nge (von 2&times;3 bis 10&times;6 Felder). Wird h&auml;ufig von Krankenkassen bewilligt.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 300 &euro;</span>
-                            <a href="https://apps.apple.com/de/app/metatalkde/id562337858" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Im App Store &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GoTalk 20+ -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">GoTalk 20+</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Robustes, tablet-unabh&auml;ngiges Kommunikationsger&auml;t mit 20 Feldern + 5 Kernbotschaften. Sofort einsatzbereit, keine Technik-Kenntnisse n&ouml;tig. Besonders geeignet f&uuml;r j&uuml;ngere Kinder und den Einstieg in UK.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 250–350 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=GoTalk+20+Kommunikation" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon ansehen &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PECS Starter-Set -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">PECS Kommunikationsmappe (Starter-Set)</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Ringordner mit Klettstreifen und Bildkarten f&uuml;r den Einstieg ins PECS-System. Das Kind &uuml;berreicht Bilder, um W&uuml;nsche auszudr&uuml;cken — der erste Schritt zur eigenst&auml;ndigen Kommunikation.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 30–60 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=PECS+Kommunikation+Bildkarten+Mappe" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon ansehen &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- KATEGORIE 2: Reizfilterung                 -->
-        <!-- ═══════════════════════════════════════════ -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 mt-16 animate-on-scroll">Reizfilterung</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- Gehörschutz -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Gehörschutz / Noise-Cancelling-Kopfhörer</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Starke Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kapselgehörschützer (Ear Defenders), passive Ohrschützer oder aktive Noise-Cancelling-Kopfhörer, die Umgebungsgeräusche dämpfen oder herausfiltern.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder haben eine Hyperakusis (Überempfindlichkeit gegenüber Geräuschen), die zu erhöhter Aktivierung des sympathischen Nervensystems, Stress, Angst und Verhaltensauffälligkeiten führt. Gehörschutz reduziert die sensorische Überflutung direkt und senkt damit die physiologische Stressreaktion.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Farfán-García et al. (2019) zeigten, dass geräuschdämpfende Kopfhörer die sympathische Aktivierung bei Kindern mit ASS und Hyperakusis reduzieren. Rance et al. (2018) fanden in einer Pilotstudie mit 21 Kindern, dass sowohl Ohrschützer als auch Noise-Cancelling-Kopfhörer die Teilnahme an lauten Aktivitäten ermöglichten. Eltern und Lehrkräfte berichteten von besserer Aufmerksamkeit, Fokussierung und Fähigkeit, ruhig zu bleiben.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Farfán-García, C. et al. (2019). Effectiveness of Noise-Attenuating Headphones on Physiological Responses for Children With ASD. <em>Frontiers in Integrative Neuroscience, 13</em>, 65. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6863142/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                            <li>Rance, G. et al. (2018). Effectiveness of Earmuffs and Noise-cancelling Headphones for Coping with Hyper-reactivity to Auditory Stimuli in Children with ASD. <em>OT International.</em> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6091992/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                            <li>Bouzit, M. et al. (2024). Effectiveness of Noise Cancelling Earbuds in Reducing Hearing and Auditory Attention Deficits in Children with Autism. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11355770/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Snoezelen -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Snoezelen / Multisensorische Räume</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Speziell gestaltete Räume mit Lichteffekten (Blasensäulen, Farbwechsellampen, Projektionen), sanfter Musik, taktilen Materialien und manchmal Düften. Auch einzelne Elemente wie Snoezelen-Lampen oder Projektoren können zu Hause eingesetzt werden.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Die kontrollierte, reizarme Umgebung bietet sensorische Stimulation ohne die Überflutung des Alltags. Das Nervensystem kann sich regulieren. Besonders wirksam ist es, wenn das Kind selbst die Kontrolle über die sensorischen Reize hat – also z.&thinsp;B. selbst entscheidet, welche Lampe leuchtet oder welche Musik läuft.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Ein systematisches Review von Leonardi et al. (2025, 10 Studien) ergab, dass multisensorische Umgebungen aggressives und stereotypes Verhalten bei autistischen Menschen modulieren können. Mehling et al. (2022) zeigten, dass autistische Kinder, die die sensorische Ausstattung selbst steuern konnten, mehr Aufmerksamkeit zeigten und weniger repetitives Verhalten und stereotype Sprache produzierten.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Leonardi, S. et al. (2025). The use of multisensory environments in children and adults with ASD: A systematic review. <em>Autism.</em> <a href="https://pubmed.ncbi.nlm.nih.gov/40087858/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
-                            <li>Mehling, M. et al. (2022). The use of Multi-Sensory Environments with autistic children: Exploring the effect of having control of sensory changes. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9340127/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Schreibtischtrennwand -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Schreibtischtrennwand / Sichtschutz</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Faltbare oder aufstellbare Trennwände, die am Schreibtisch einen abgeschirmten Arbeitsbereich schaffen. Sie begrenzen das Sichtfeld und reduzieren visuelle Ablenkungen – im Klassenzimmer, beim Homeschooling oder bei den Hausaufgaben.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Autistische Kinder reagieren oft stärker auf visuelle Reize in der Umgebung – bewegende Mitschüler, Wanddekorationen oder Gegenstände im Blickfeld können die Aufmerksamkeit ablenken und das Nervensystem überlasten. Eine Trennwand schafft eine klar begrenzte, reizreduzierte Zone. Das entspricht dem Prinzip der <strong>physischen Strukturierung</strong> aus dem TEACCH-Ansatz (Treatment and Education of Autistic and related Communication-handicapped Children), der klar definierte Bereiche als Kernelement nutzt.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Hanley et al. (2017) untersuchten in <em>Developmental Psychology</em> den Einfluss von Klassenraumdekoration auf Aufmerksamkeit und Lernen bei Kindern mit und ohne Autismus. Ergebnis: Stark dekorierte Umgebungen führten zu mehr Off-Task-Verhalten und geringeren Lernzuwächsen. Die Reduktion visueller Ablenkungen – genau das, was eine Schreibtischtrennwand leistet – verbesserte die Aufmerksamkeit messbar. Der TEACCH-Ansatz, der physische Strukturierung als evidenzbasierte Praxis einsetzt, ist seit Jahrzehnten etabliert und international anerkannt.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Hanley, M. et al. (2017). Classroom Displays—Attraction or Distraction? Evidence of Impact on Attention and Learning From Children With and Without Autism. <em>Developmental Psychology, 53</em>(7), 1265–1275. <a href="https://pubmed.ncbi.nlm.nih.gov/28471220/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
-                            <li>Mesibov, G. B. &amp; Shea, V. (2010). The TEACCH Program in the Era of Evidence-Based Practice. <em>Journal of Autism and Developmental Disorders, 40</em>, 570–579.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Produktbeispiele: Reizfilterung -->
-        <div class="mt-8 bg-forest/[0.02] border border-forest/10 rounded-2xl p-6 sm:p-8 animate-on-scroll">
-            <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-lg font-bold text-forest">Konkrete Produktbeispiele</h3>
-            </div>
-            <p class="text-sm text-gray-500 mb-6">Reizfilterung ist sehr individuell — manche Kinder m&ouml;gen Kapselgeh&ouml;rschutz, andere bevorzugen In-Ear-L&ouml;sungen. Ausprobieren lohnt sich.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-                <!-- 3M Peltor Kid -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">3M Peltor Kid Geh&ouml;rschutz</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Leichter Kapselgeh&ouml;rschutz speziell f&uuml;r Kinder (ab ca. 2 Jahre). D&auml;mpfung SNR 27 dB, weiche Polster, in vielen Farben. Der meistempfohlene Kindergeh&ouml;rschutz in Elternforen.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 12–20 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=3M+Peltor+Kid+Geh%C3%B6rschutz" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Loop Quiet -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.531V19.94a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.506-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.395C2.806 8.757 3.63 8.25 4.51 8.25H6.75z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Loop Quiet Ohrst&ouml;psel</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Diskrete In-Ear-Ohrst&ouml;psel aus Silikon, die wie Schmuck aussehen. D&auml;mpfen bis 26 dB. Ideal f&uuml;r &auml;ltere Kinder und Jugendliche, die keinen auff&auml;lligen Kapselschutz tragen m&ouml;chten.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 20–25 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Loop+Quiet+Ohrst%C3%B6psel" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LED Blasensäule -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">LED Blasens&auml;ule (Snoezelen)</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Farbwechselnde Wassers&auml;ule mit aufsteigenden Blasen. Beruhigender visueller Reiz f&uuml;r eine Ruhezone zu Hause. Erschwingliche Alternative zu professionellen Snoezelen-R&auml;umen.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 40–80 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=LED+Blasens%C3%A4ule+Snoezelen+Kinder" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Schreibtischtrennwand -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Faltbare Schreibtischtrennwand</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Dreiseitige Trennwand f&uuml;r den Schreibtisch. Schr&auml;nkt das Sichtfeld ein und reduziert visuelle Ablenkung bei Hausaufgaben und im Unterricht. Leicht, faltbar, transportabel.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 15–25 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Schreibtischtrennwand+faltbar+Kinder+Sichtschutz" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- KATEGORIE 3: Sensorische Regulation        -->
-        <!-- ═══════════════════════════════════════════ -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 mt-16 animate-on-scroll">Sensorische Regulation (Tiefendruck)</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- Gewichtsdecken -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Gewichtsdecken</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Decken, die durch eingenähte Glasperlen oder Kunststoffgranulat deutlich schwerer sind als normale Bettdecken (typisch: 5–12 % des Körpergewichts). Sie werden zum Schlafen, Ausruhen oder in Stresssituationen verwendet.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Gewichtsdecken liefern <strong>Deep Pressure Stimulation (Tiefendruck)</strong> – gleichmäßigen, festen Druck auf den Körper. Dies aktiviert das parasympathische Nervensystem (den „Ruhemodus"), senkt den Cortisolspiegel und fördert die Ausschüttung von Serotonin und Melatonin. Das Ergebnis: ein Gefühl von Geborgenheit und Beruhigung.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Die Ergebnisse sind gemischt. Gringras et al. (2014) fanden in einer großen RCT keine signifikante Verbesserung der objektiven Schlafparameter. Allerdings bevorzugten Eltern und Kinder die Gewichtsdecke deutlich. Gee et al. (2021) berichteten von verbessertem Einschlafen und Durchschlafen. Ekström et al. (2021) zeigten, dass Gewichtsdecken bei ADHS/ASS die Entspannung am Tag verbesserten.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Gringras, P. et al. (2014). Weighted blankets and sleep in autistic children – a randomized controlled trial. <em>Pediatrics, 134</em>(2), 298–306. <a href="https://pubmed.ncbi.nlm.nih.gov/25022743/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
-                            <li>Gee, B. M. et al. (2021). Weighted Blankets and Sleep Quality in Children with ASD: A Single-Subject Design. <em>Children, 8</em>(1), 10. <a href="https://www.mdpi.com/2227-9067/8/1/10" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">MDPI</a></li>
-                            <li>Ekström, A. et al. (2021). The effectiveness of weighted blankets on sleep and everyday activities. <em>Scandinavian Journal of Occupational Therapy.</em> <a href="https://www.tandfonline.com/doi/full/10.1080/11038128.2021.1939414" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">Taylor &amp; Francis</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gewichtswesten -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Gewichtswesten</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Westen mit eingenähten oder einschiebbaren Gewichten, die typischerweise 5–10 % des Körpergewichts ausmachen. Sie werden im Unterricht, bei Hausaufgaben oder in unruhigen Situationen getragen.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Wie Gewichtsdecken nutzen sie das Prinzip des Tiefendrucks. Der gleichmäßige Druck auf den Oberkörper liefert propriozeptiven Input – das Gehirn bekommt verstärkte Informationen darüber, wo der Körper im Raum ist. Das kann beruhigend wirken und die Aufmerksamkeit verbessern.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Hodgetts et al. (2011) untersuchten Gewichtswesten im Klassenzimmer bei Kindern mit Autismus und kognitiven Beeinträchtigungen. Bei einigen Teilnehmern stieg das On-Task-Verhalten um 18–25 %. Allerdings waren die Effekte nicht bei allen Kindern konsistent. Die Wirksamkeit hängt stark von den individuellen sensorischen Bedürfnissen ab.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Hodgetts, S. et al. (2011). Effects of weighted vests on classroom behavior for children with autism and cognitive impairments. <em>Research in Autism Spectrum Disorders, 5</em>(1), 495–505. <a href="https://www.sciencedirect.com/science/article/pii/S1750946710001029" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">ScienceDirect</a></li>
-                            <li>Stephenson, J. &amp; Carter, M. (2009). The use of weighted vests with children with ASD and other disabilities. <em>Journal of Autism and Developmental Disorders, 39</em>, 105–114. <a href="https://pubmed.ncbi.nlm.nih.gov/18592366/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Therapieschaukeln -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Therapieschaukeln</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Spezielle Schaukeln (Hängematte, Kokon-Schaukel, Plattformschaukel), die in der Ergotherapie oder zu Hause eingesetzt werden. Sie bieten kontrollierte vestibuläre Stimulation – also Bewegungsreize, die das Gleichgewichtssystem im Innenohr ansprechen.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Das vestibuläre System ist eines der grundlegendsten sensorischen Systeme. Schaukelbewegungen stimulieren es gleichmäßig und vorhersehbar. Bei vielen autistischen Kindern, die unter- oder übersensibel auf Bewegungsreize reagieren, kann rhythmisches Schaukeln regulierend wirken: Es kann beruhigen (langsames, lineares Schaukeln) oder aktivieren (schnelleres Schaukeln). Zudem verbessert vestibuläre Stimulation die Körperwahrnehmung, Koordination und posturale Kontrolle.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Eine randomisierte kontrollierte Studie (2025) zeigte, dass vestibuläre und propriozeptive Übungen Hyperaktivität und Impulsivität bei Kindern mit ASS signifikant reduzieren. Die Interventionsgruppe zeigte deutliche Verbesserungen in sensorischer Verarbeitung, Modulation sowie Verhaltens- und emotionalen Reaktionen. Sensorische Integrationstherapie, zu der Schaukelübungen gehören, verbessert nachweislich Balance und exekutive Funktionen.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Elsayed, H. et al. (2025). Effectiveness of vestibular and proprioceptive exercises in reducing hyperactivity in children with ASD: A randomized controlled trial. <a href="https://www.sciencedirect.com/science/article/abs/pii/S305065652500015X" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">ScienceDirect</a></li>
-                            <li>Liu, Y. et al. (2023). Effects of sensory integration training on balance function and executive function in children with ASD. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10631781/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bewegungssitze -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Bewegungssitze (Sitzkissen, Therapiebälle)</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Aufblasbare Wackelkissen, Therapiebälle oder Keilkissen, die als Alternative zu starren Stühlen eingesetzt werden. Sie ermöglichen kontrollierte Mikrobewegungen beim Sitzen – im Unterricht, bei Hausaufgaben oder am Esstisch.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische und ADHS-betroffene Kinder brauchen Bewegung, um aufmerksam bleiben zu können. Bewegungssitze liefern kontinuierlichen vestibulären und propriozeptiven Input durch kleine Ausgleichsbewegungen. Das hilft dem Nervensystem, ein optimales Erregungsniveau aufrechtzuerhalten – das Kind kann sich besser konzentrieren, ohne aufstehen zu müssen. Anders als Zappeln oder Kippeln ist es eine kontrollierte, sozial akzeptierte Form der Bewegung.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Schilling et al. (2003) zeigten im <em>American Journal of Occupational Therapy</em>, dass Schüler mit ADHS auf Therapiebällen deutlich verbessertes On-Task-Verhalten zeigten. Fedewa &amp; Erwin (2011) fanden in einer Studie mit Kindern mit ASD und ADHS signifikante Verbesserungen beim Sitzverhalten (In-Seat-Behavior) und eine Reduktion von störendem Verhalten im Klassenzimmer.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Schilling, D. L. et al. (2003). Classroom seating for children with ADHD: Therapy balls versus chairs. <em>American Journal of Occupational Therapy, 57</em>(5), 534–541.</li>
-                            <li>Fedewa, A. L. &amp; Erwin, H. E. (2011). The Impact of Dynamic Seating on Classroom Behavior of Students with Autism Spectrum Disorder. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5329757/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Produktbeispiele: Sensorische Regulation -->
-        <div class="mt-8 bg-forest/[0.02] border border-forest/10 rounded-2xl p-6 sm:p-8 animate-on-scroll">
-            <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-lg font-bold text-forest">Konkrete Produktbeispiele</h3>
-            </div>
-            <p class="text-sm text-gray-500 mb-6">Tiefendruck-Hilfsmittel wirken sehr individuell. Faustregel f&uuml;r Gewicht: ca. 10 % des K&ouml;rpergewichts des Kindes. Beginnen Sie mit kurzen Einsatzzeiten.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-                <!-- Gewichtsdecke -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Gewichtsdecke f&uuml;r Kinder</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Mit Glasperlen gef&uuml;llte Decke (3–5 kg je nach K&ouml;rpergewicht). Der gleichm&auml;&szlig;ige Tiefendruck f&ouml;rdert Entspannung und Einschlafen. Achten Sie auf Oeko-Tex-Zertifizierung und waschbaren Bezug.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 40–70 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Gewichtsdecke+Kinder+3kg+5kg" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gewichtsweste -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Gewichtsweste f&uuml;r Kinder</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Weste mit herausnehmbaren Gewichten (ca. 5–10 % des K&ouml;rpergewichts). Kann in der Schule, bei Therapie oder zu Hause getragen werden. Gewichte lassen sich individuell anpassen.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 50–90 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Gewichtsweste+Kinder+Therapie+sensorisch" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hängehöhle -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">H&auml;ngeh&ouml;hle / Kuschelh&ouml;hle</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Kokonf&ouml;rmige H&auml;ngeschaukel aus Baumwollstoff. Vereint vestibul&auml;ren Input (Schaukeln) mit Geborgenheit (Kokon-Gef&uuml;hl). Belastbar bis ca. 80 kg, f&uuml;r drinnen und drau&szlig;en.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 35–60 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=H%C3%A4ngeh%C3%B6hle+Kinder+Therapieschaukel" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dynair Sitzkissen -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Togu Dynair Sitzkissen</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Aufblasbares Wackelkissen f&uuml;r Stuhlsitzfl&auml;chen. Erm&ouml;glicht kontrollierte Mikrobewegungen beim Sitzen — eine sozial akzeptierte Form der Bewegung, die Konzentration f&ouml;rdert. In Schulen bew&auml;hrt.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 20–30 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Togu+Dynair+Sitzkissen" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- KATEGORIE 4: Selbstregulation               -->
-        <!-- ═══════════════════════════════════════════ -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 mt-16 animate-on-scroll">Selbstregulation</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- Fidgets -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Fidgets (Knetmasse, Stressbälle, Tangle)</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kleine, handliche Gegenstände, die taktile und propriozeptive Stimulation bieten: Knetmasse, Stressbälle, Tangle-Ringe, texturierte Putty oder weiche Quetschbälle. Wichtig: Einfache, nicht-ablenkende Fidgets sind wirksamer als aufwendige Spielzeuge wie Fidget Spinner.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Rhythmische Handbewegungen liefern sensorischen Input, der das Erregungsniveau des Nervensystems reguliert. Bei Unter-Stimulation kann Fidgeting das Arousal auf ein Niveau heben, das Aufmerksamkeit ermöglicht. Bei Über-Stimulation kann die fokussierte, repetitive Bewegung beruhigend wirken. Die Forschung bestätigt: Fidgeting an sich (nicht spezifische Fidget-Spielzeuge) hilft bei der Aufmerksamkeitsregulation.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Graziano et al. (2024, UC Davis) bestätigten, dass Kinder mit ADHS durch Bewegung (Fidgeting) besser fokussieren können – die Bewegung hilft dem Gehirn, das nötige Erregungsniveau aufrechtzuerhalten. Stalvey &amp; Brasell (2006) zeigten erhöhtes On-Task-Verhalten mit Stressbällen. Zimmerman &amp; Ledford (2024) fanden bei autistischen Kindern allerdings, dass Fidget Toys die visuelle Aufmerksamkeit teilweise verringerten – ein Hinweis, dass einfache, taktile Fidgets besser geeignet sind als visuell ansprechende.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Zimmerman, K. N. &amp; Ledford, J. R. (2024). The Impact of Fidget Toys on Story Detail Acquisition and Visual Attention for Elementary Students With Autism. <em>Journal of Positive Behavior Interventions.</em> <a href="https://journals.sagepub.com/doi/abs/10.1177/10983007231200529" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">SAGE</a></li>
-                            <li>Graziano, P. et al. (2024). Does fidgeting help people with ADHD focus? UC Davis Health. <a href="https://health.ucdavis.edu/news/headlines/does-fidgeting-help-people-with-adhd-focus-/2024/10" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">UC Davis</a></li>
-                            <li>Kriescher, S. L. et al. (2023). Evaluating the Evidence for Fidget Toys in the Classroom. <em>Intervention in School and Clinic.</em> <a href="https://journals.sagepub.com/doi/10.1177/10534512221130070" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">SAGE</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kau-Hilfsmittel -->
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
-                <div class="bg-forest p-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-bold text-white">Kau-Hilfsmittel (Chewelry / Beißringe)</h3>
-                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-800">Begrenzte Evidenz</span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kaubare Anhänger, Armbänder oder Sticks aus lebensmittelechtem Silikon, die sicheres Kauen ermöglichen. Sie werden als Halskette oder Armband getragen und sind diskret einsetzbar.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kauen liefert starken propriozeptiven Input über die Kiefermuskulatur und wirkt auf das orale sensorische System. Die rhythmische Kaubewegung hat eine ähnlich regulierende Wirkung wie Fidgeting mit den Händen: Sie kann beruhigend wirken, die Konzentration fördern und das Bedürfnis nach oraler Stimulation auf sichere Weise befriedigen – statt auf Kleidung, Stifte oder Fingernägel zu kauen.</p>
-
-                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kau-Hilfsmittel werden in der ergotherapeutischen Praxis breit eingesetzt und von Fachleuten empfohlen. <strong>Es gibt jedoch bisher keine peer-reviewed Studien, die ihre Wirksamkeit spezifisch bei autistischen Kindern untersucht haben.</strong> Die theoretische Grundlage basiert auf dem allgemeinen Verständnis sensorischer Verarbeitungsprozesse und klinischer Erfahrung.</p>
-
-                    <div class="mt-4 pt-4 border-t border-gray-100">
-                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
-                        <ul class="text-xs text-gray-500 space-y-1">
-                            <li>Klinische Praxis; derzeit keine spezifischen peer-reviewed Studien verfügbar.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Produktbeispiele: Selbstregulation -->
-        <div class="mt-8 bg-forest/[0.02] border border-forest/10 rounded-2xl p-6 sm:p-8 animate-on-scroll">
-            <div class="flex items-center gap-3 mb-2">
-                <h3 class="text-lg font-bold text-forest">Konkrete Produktbeispiele</h3>
-            </div>
-            <p class="text-sm text-gray-500 mb-6">Einfache, nicht-ablenkende Fidgets sind wirksamer als aufwendige Spielzeuge. Bei Kau-Hilfsmitteln auf lebensmittelechtes Silikon und den passenden H&auml;rtegrad achten.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                <!-- Tangle Therapy -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.491 48.491 0 01-4.163-.3c-1.108-.128-2.03-1.05-2.03-2.164v0c0-1.114.921-2.036 2.03-2.164a48.44 48.44 0 018.326 0c1.108.128 2.03 1.05 2.03 2.164v0c0 1.114-.921 2.036-2.03 2.164a48.491 48.491 0 01-4.163.3.64.64 0 01-.657-.643v0zM14.25 17.913c0 .355.186.676.401.959.221.29.349.634.349 1.003 0 1.036-1.007 1.875-2.25 1.875s-2.25-.84-2.25-1.875c0-.369.128-.713.349-1.003.215-.283.401-.604.401-.959v0a.64.64 0 00-.657-.643 48.491 48.491 0 00-4.163.3c-1.108.128-2.03 1.05-2.03 2.164v0c0 1.114.921 2.036 2.03 2.164a48.44 48.44 0 008.326 0c1.108-.128 2.03-1.05 2.03-2.164v0c0-1.114-.921-2.036-2.03-2.164a48.491 48.491 0 00-4.163-.3.64.64 0 00-.657.643v0z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Tangle Therapy (Fidget)</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Verdrehbarer Fidget aus verbundenen, gummierten Segmenten. Leise und diskret — ideal f&uuml;r Schule und Wartezimmer. Die strukturierte Oberfl&auml;che bietet zus&auml;tzlichen taktilen Input. Einer der meistempfohlenen Fidgets von Ergotherapeut*innen.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 8–12 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Tangle+Therapy+Fidget" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Therapieknete -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3.026a2.999 2.999 0 01-.879 2.121l-1.467 1.468a3.375 3.375 0 000 4.773L6.02 17.43a3.375 3.375 0 004.773 0l1.467-1.468a2.999 2.999 0 012.121-.879h3.026a1.575 1.575 0 100-3.15h-3.026a2.999 2.999 0 01-2.121-.879l-1.468-1.467a2.999 2.999 0 01-.879-2.121V4.575z"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">Therapieknete (versch. Widerst&auml;nde)</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Silikonknete in verschiedenen H&auml;rtegraden (weich bis extra-fest). St&auml;rkt die Handmotorik und bietet taktile Regulation. Trocknet nicht aus und f&auml;rbt nicht ab — anders als normale Knete auch im Unterricht einsetzbar.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 8–15 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=Therapieknete+Silikon+verschiedene+St%C3%A4rken" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ARK Kaukette -->
-                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                                        <div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28">
-                        <svg class="w-10 h-10 text-forest/30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <h4 class="font-bold text-brown text-sm mb-1">ARK&rsquo;s Kaukette (Chewelry)</h4>
-                        <p class="text-xs text-gray-500 mb-3 flex-1">Kauanh&auml;nger aus lebensmittelechtem Silikon in verschiedenen H&auml;rtegraden und Formen (Dino, Stern, Brick). Sicherer Ersatz f&uuml;r das Kauen auf Stiften, Kleidung oder Fingern. Als Halskette diskret tragbar.</p>
-                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
-                            <span class="text-sm font-bold text-forest">ca. 10–15 &euro;</span>
-                            <a href="https://www.amazon.de/s?k=ARK+Kaukette+Chewelry+Silikon+Kinder" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">Bei Amazon &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Disclaimer -->
-        <div class="bg-sunflower/10 border-l-4 border-sunflower rounded-xl p-6 mt-16">
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="bg-sunflower/10 border-l-4 border-sunflower rounded-xl p-6">
             <h3 class="font-bold text-brown mb-2">Wichtiger Hinweis</h3>
             <p class="text-sm text-gray-700 leading-relaxed">Diese Übersicht dient der Information und ersetzt keine individuelle therapeutische Beratung. Jedes autistische Kind ist anders – was für das eine Kind hilfreich ist, kann für ein anderes unpassend sein. Sprechen Sie mit Ergotherapeut*innen, Kinderärzt*innen oder anderen Fachleuten, um die passenden Hilfsmittel für Ihr Kind zu finden. Die Evidenzlage entwickelt sich ständig weiter; die hier genannten Studien spiegeln den Stand von März 2026 wider.</p>
         </div>
@@ -862,7 +154,22 @@
             </div>
             <p id="survey-response" class="mt-3 text-sm"></p>
         </div>
+    </div>
 
+    <!-- Modal Shell -->
+    <div id="detail-modal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" id="modal-backdrop"></div>
+        <div class="relative z-10 flex items-start justify-center min-h-screen p-4 pt-16 sm:pt-20">
+            <div id="modal-inner" class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto" role="document">
+                <div class="sticky top-0 bg-white/95 backdrop-blur-sm z-10 flex items-center justify-between p-4 border-b border-gray-100">
+                    <h2 id="modal-title" class="text-lg font-bold text-forest pr-8"></h2>
+                    <button id="modal-close" class="absolute right-4 top-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100" aria-label="Schließen">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <div id="modal-body" class="p-6"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -889,6 +196,838 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
         </svg>
     </button>
+
+    <!-- ============================== -->
+    <!-- HILFSMITTEL DATA & APP LOGIC   -->
+    <!-- ============================== -->
+    <script>
+    const HILFSMITTEL_DATA = {
+      categories: [
+        {
+          id: 'struktur',
+          label: 'Struktur & Orientierung',
+          accent: 'teal',
+          accentClasses: { tab: 'bg-teal-600 text-white', strip: 'bg-teal-500', badge: 'border-l-teal-600' },
+          productDisclaimer: 'Diese Produkte dienen als Orientierung und Einstiegshilfe \u2014 keine Werbung. Bitte sprechen Sie vor dem Kauf mit Therapeut*innen, ob das Hilfsmittel f\u00fcr Ihr Kind geeignet ist.',
+          items: [
+            {
+              id: 'visuelle-plaene',
+              title: 'Visuelle Pl\u00e4ne (Bildpl\u00e4ne / Visual Schedules)',
+              evidenceLevel: 'stark',
+              teaser: 'Bilderfolgen machen den Tagesablauf sichtbar und vorhersehbar. Sie gelten als eine der am besten belegten Interventionen f\u00fcr autistische Kinder aller Altersgruppen und reduzieren Unsicherheit bei \u00dcberg\u00e4ngen.',
+              tags: ['schule', 'zuhause', 'low-budget', 'starke-evidenz', 'vorschulalter'],
+              sections: {
+                wasIstDas: 'Bilderfolgen oder Symbolkarten, die den Tagesablauf, einzelne Aktivit\u00e4ten oder Handlungsschritte visuell darstellen. Sie k\u00f6nnen als Papierplan, Magnettafel oder App gestaltet sein.',
+                wieWirktEs: 'Viele autistische Kinder verarbeiten visuelle Informationen besser als gesprochene Sprache. Ein visueller Plan macht die abstrakte Abfolge \u201eWas kommt als N\u00e4chstes?\u201c greifbar und vorhersehbar. Das reduziert Unsicherheit und Angst, unterst\u00fctzt eigenst\u00e4ndiges Handeln und erleichtert \u00dcberg\u00e4nge zwischen Aktivit\u00e4ten.',
+                wasSagtDieForschung: 'Visuelle Pl\u00e4ne gelten als <strong>anerkannte evidenzbasierte Praxis</strong>. Das National Standards Project (Phase 2, 2015) stuft den Einsatz von Pl\u00e4nen als etablierte Intervention ein. Hume et al. (2021) best\u00e4tigten visuelle Unterst\u00fctzungsmittel als evidenzbasiert f\u00fcr Personen mit Autismus vom Vorschul- bis zum jungen Erwachsenenalter.'
+              },
+              sources: [
+                { text: 'Hume, K. et al. (2021). Evidence-Based Practices for Children, Youth, and Young Adults with Autism. <em>Journal of Autism and Developmental Disorders, 51</em>, 4013\u20134032.', url: 'https://pubmed.ncbi.nlm.nih.gov/33449225/' },
+                { text: 'Knight, V. et al. (2015). Evaluating Visual Activity Schedules as Evidence-Based Practice for Individuals with ASD. <em>Journal of Autism and Developmental Disorders, 45</em>, 157\u2013178.', url: 'https://pubmed.ncbi.nlm.nih.gov/25081593/' },
+                { text: 'National Autism Center (2015). <em>National Standards Project, Phase 2.</em>', url: '' }
+              ],
+              products: [
+                {
+                  title: 'Time Timer MOD (Home Edition)',
+                  description: 'Der Klassiker unter den visuellen Timern. Die rote Scheibe schrumpft sichtbar \u2014 Zeitverst\u00e4ndnis ganz ohne Zahlen. Tragbar, mit Schutzgeh\u00e4use. Wird weltweit in Schulen, Therapien und zu Hause eingesetzt.',
+                  price: 'ca. 35\u201340 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Time+Timer+MOD',
+                  urlLabel: 'Bei Amazon ansehen',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
+                },
+                {
+                  title: 'Magnetischer Tagesplaner f\u00fcr Kinder',
+                  description: 'Magnettafel mit Bildkarten f\u00fcr Morgenroutine, Nachmittag und Abend. Kinder verschieben Karten selbst und haken erledigte Schritte ab \u2014 das f\u00f6rdert Eigenst\u00e4ndigkeit und macht den Tagesablauf greifbar.',
+                  price: 'ca. 20\u201330 \u20ac',
+                  url: 'https://www.amazon.de/s?k=magnetischer+Tagesplaner+Kinder+Bildkarten',
+                  urlLabel: 'Bei Amazon ansehen',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>'
+                },
+                {
+                  title: '\u201eThe New Social Story Book\u201c (Carol Gray)',
+                  description: 'Das Standardwerk von der Erfinderin der Sozialgeschichten. \u00dcber 180 fertige Geschichten als Vorlage f\u00fcr eigene Social Stories. Englischsprachig, aber als Vorlage und Inspiration unverzichtbar.',
+                  price: 'ca. 20\u201325 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Carol+Gray+New+Social+Story+Book',
+                  urlLabel: 'Bei Amazon ansehen',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>'
+                },
+                {
+                  title: 'Time Timer Original 8\u2033',
+                  description: 'Gro\u00dfer Tisch-Timer (20 cm) f\u00fcr Klassenzimmer oder Kinderzimmer. Optionaler akustischer Alarm. Die gr\u00f6\u00dfere Anzeige ist aus der Entfernung gut sichtbar \u2014 ideal f\u00fcr gemeinsame Nutzung.',
+                  price: 'ca. 30\u201335 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Time+Timer+Original+8+Zoll',
+                  urlLabel: 'Bei Amazon ansehen',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
+                }
+              ]
+            },
+            {
+              id: 'sozialgeschichten',
+              title: 'Sozialgeschichten (Social Stories)',
+              evidenceLevel: 'moderat',
+              teaser: 'Individuell geschriebene Geschichten erkl\u00e4ren soziale Situationen aus der Perspektive des Kindes. Sie machen unsichtbare Regeln sichtbar und geben Sicherheit in unbekannten Situationen.',
+              tags: ['schule', 'zuhause', 'low-budget', 'vorschulalter'],
+              sections: {
+                wasIstDas: 'Kurze, individuell geschriebene Geschichten, die eine soziale Situation aus der Perspektive des Kindes beschreiben. Entwickelt 1993 von Carol Gray, folgen sie einem festen Format mit beschreibenden und anleitenden S\u00e4tzen, oft erg\u00e4nzt durch Bilder.',
+                wieWirktEs: 'Viele autistische Kinder haben Schwierigkeiten, implizite soziale Regeln zu erkennen \u2013 Dinge, die neurotypische Kinder \u201eeinfach so\u201c verstehen. Sozialgeschichten machen diese unsichtbaren Regeln explizit und vorhersehbar: \u201eWenn wir in der Bibliothek sind, sprechen wir leise, weil andere Menschen lesen.\u201c Das reduziert Angst vor unbekannten Situationen und gibt dem Kind ein Skript f\u00fcr angemessenes Verhalten.',
+                wasSagtDieForschung: 'Ein Scoping Review (2024, 22 Studien) ergab, dass 32 % der Studien starke oder moderate kausale Effekte zeigten. Das National Clearinghouse on Autism Evidence and Practice stuft \u201eSocial Narratives\u201c als evidenzbasierte Praxis ein. Qi et al. (2018) fanden in einer systematischen \u00dcbersicht, dass Social Stories besonders wirksam bei der Reduktion von herausforderndem Verhalten und der F\u00f6rderung sozialer F\u00e4higkeiten sind.'
+              },
+              sources: [
+                { text: 'Scoping Review (2024). Social stories supporting behavior change for individuals with Autism.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11263915/' },
+                { text: 'Qi, C. H. et al. (2018). A Systematic Review of Effects of Social Stories Interventions for Individuals With ASD. <em>Focus on Autism and Other Developmental Disabilities.</em>', url: 'https://journals.sagepub.com/doi/10.1177/1088357615613516' },
+                { text: 'Gray, C. &amp; Garand, J. (1993). Social Stories: Improving responses of students with autism with accurate social information. <em>Focus on Autistic Behavior, 8</em>(1), 1\u201310.', url: '' }
+              ],
+              products: []
+            },
+            {
+              id: 'visuelle-timer',
+              title: 'Visuelle Timer (z.\u2009B. Time Timer)',
+              evidenceLevel: 'stark',
+              teaser: 'Visuelle Timer machen die verstreichende Zeit konkret sichtbar \u2013 auch ohne Zahlenverst\u00e4ndnis. Sie helfen Kindern, sich mental auf \u00dcberg\u00e4nge vorzubereiten, und reduzieren so Stress bei Aktivit\u00e4tswechseln.',
+              tags: ['schule', 'zuhause', 'unterwegs', 'starke-evidenz', 'vorschulalter'],
+              sections: {
+                wasIstDas: 'Timer, die die verbleibende Zeit als farbige Fl\u00e4che anzeigen, die sichtbar kleiner wird. Anders als Digitaluhren vermitteln sie auch ohne Zahlenverst\u00e4ndnis ein intuitives Gef\u00fchl f\u00fcr \u201eWie lange noch?\u201c.',
+                wieWirktEs: 'Viele autistische Kinder haben Schwierigkeiten mit dem abstrakten Konzept \u201eZeit\u201c und mit \u00dcberg\u00e4ngen von einer Aktivit\u00e4t zur n\u00e4chsten. Ein visueller Timer macht die verstreichende Zeit konkret sichtbar. Das Kind kann sich mental vorbereiten, was Stress und Widerstand bei Wechseln reduziert.',
+                wasSagtDieForschung: 'Dettmer et al. (2000) zeigten, dass ein visueller Timer einem Sch\u00fcler mit Autismus half, erfolgreich von bevorzugten zu nicht-bevorzugten Aktivit\u00e4ten zu wechseln. In einer weiteren Studie konnte das angemessene Warteverhalten von 150 auf 600 Sekunden gesteigert werden, allein durch den Einsatz eines Time Timers.'
+              },
+              sources: [
+                { text: 'Dettmer, S. et al. (2000). The Use of Visual Supports to Facilitate Transitions of Students with Autism. <em>Focus on Autism and Other Developmental Disabilities, 15</em>(3), 163\u2013169.', url: '' },
+                { text: 'Liang, Z. (2025). Visual Schedules to Support Individuals on the Autism Spectrum. <em>Intervention in School and Clinic.</em>', url: 'https://journals.sagepub.com/doi/10.1177/10534512241300157' }
+              ],
+              products: []
+            }
+          ]
+        },
+        {
+          id: 'kommunikation',
+          label: 'Kommunikation',
+          accent: 'blue',
+          accentClasses: { tab: 'bg-blue-600 text-white', strip: 'bg-blue-500', badge: 'border-l-blue-600' },
+          productDisclaimer: 'Kommunikationshilfen sind sehr individuell. Lassen Sie sich vor dem Kauf unbedingt von Logop\u00e4d*innen oder UK-Fachberatungen beraten.',
+          items: [
+            {
+              id: 'aac-pecs',
+              title: 'Unterst\u00fctzte Kommunikation (AAC / PECS)',
+              evidenceLevel: 'stark',
+              teaser: 'Bildkartensysteme und Kommunikations-Apps erm\u00f6glichen Kindern ohne Lautsprache, sich auszudr\u00fccken. Die Forschung zeigt: AAC hemmt die Sprachentwicklung nicht, sondern kann sie sogar f\u00f6rdern.',
+              tags: ['schule', 'zuhause', 'unterwegs', 'starke-evidenz', 'vorschulalter'],
+              sections: {
+                wasIstDas: 'Hilfsmittel, die Kindern ohne oder mit eingeschr\u00e4nkter Lautsprache erm\u00f6glichen zu kommunizieren. Dazu geh\u00f6ren: <strong>PECS</strong> (Picture Exchange Communication System) \u2013 ein Bildkartensystem, bei dem das Kind Bilder \u00fcberreicht, um W\u00fcnsche auszudr\u00fccken; <strong>Kommunikations-Apps</strong> auf Tablets (z.\u2009B. GoTalk NOW, MetaTalkDE); sowie <strong>sprachgenerierende Ger\u00e4te</strong> (SGDs), die auf Knopfdruck S\u00e4tze aussprechen.',
+                wieWirktEs: 'Viele autistische Kinder haben St\u00e4rken in der visuellen Verarbeitung. AAC-Systeme nutzen diese St\u00e4rke: Statt abstrakte Lautsprache zu produzieren, w\u00e4hlt das Kind ein konkretes Bild oder Symbol. Das senkt die Kommunikationsbarriere drastisch. PECS baut systematisch auf \u2013 vom einfachen Austausch eines Bildes bis hin zu ganzen S\u00e4tzen. Entgegen einer verbreiteten Bef\u00fcrchtung zeigt die Forschung, dass AAC die Lautsprachentwicklung <em>nicht</em> hemmt, sondern sogar f\u00f6rdern kann.',
+                wasSagtDieForschung: 'Ein systematisches Review (Moorcroft et al., 2018) best\u00e4tigt die Wirksamkeit von PECS und sprachgenerierenden Ger\u00e4ten als am besten belegte AAC-Formen f\u00fcr Kinder mit Autismus. Meta-Analysen zeigen gro\u00dfe Effekte auf expressive Kommunikationsf\u00e4higkeiten. Logan et al. (2017) fanden, dass AAC-Nutzung im Vorschulalter mit Zuw\u00e4chsen in der Sprachentwicklung einhergeht.'
+              },
+              sources: [
+                { text: 'Moorcroft, A. et al. (2018). Instruments for augmentative and alternative communication for children with ASD: a systematic review.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6238819/' },
+                { text: 'Logan, K. et al. (2017). The role of augmentative and alternative communication for children with autism: current status and future trends.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5036660/' }
+              ],
+              products: [
+                {
+                  title: 'MetaTalkDE (iPad-App)',
+                  description: 'Die umfassendste deutsche Kommunikations-App. Symbolbasiert, grammatikf\u00e4hig, w\u00e4chst mit dem Kind mit. Verschiedene Vokabularumf\u00e4nge (von 2\u00d73 bis 10\u00d76 Felder). Wird h\u00e4ufig von Krankenkassen bewilligt.',
+                  price: 'ca. 300 \u20ac',
+                  url: 'https://apps.apple.com/de/app/metatalkde/id562337858',
+                  urlLabel: 'Im App Store',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25V4.5a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 4.5v15a2.25 2.25 0 002.25 2.25z"/></svg>'
+                },
+                {
+                  title: 'GoTalk 20+',
+                  description: 'Robustes, tablet-unabh\u00e4ngiges Kommunikationsger\u00e4t mit 20 Feldern + 5 Kernbotschaften. Sofort einsatzbereit, keine Technik-Kenntnisse n\u00f6tig. Besonders geeignet f\u00fcr j\u00fcngere Kinder und den Einstieg in UK.',
+                  price: 'ca. 250\u2013350 \u20ac',
+                  url: 'https://www.amazon.de/s?k=GoTalk+20+Kommunikation',
+                  urlLabel: 'Bei Amazon ansehen',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>'
+                },
+                {
+                  title: 'PECS Kommunikationsmappe (Starter-Set)',
+                  description: 'Ringordner mit Klettstreifen und Bildkarten f\u00fcr den Einstieg ins PECS-System. Das Kind \u00fcberreicht Bilder, um W\u00fcnsche auszudr\u00fccken \u2014 der erste Schritt zur eigenst\u00e4ndigen Kommunikation.',
+                  price: 'ca. 30\u201360 \u20ac',
+                  url: 'https://www.amazon.de/s?k=PECS+Kommunikation+Bildkarten+Mappe',
+                  urlLabel: 'Bei Amazon ansehen',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'reizfilterung',
+          label: 'Reizfilterung',
+          accent: 'amber',
+          accentClasses: { tab: 'bg-amber-600 text-white', strip: 'bg-amber-500', badge: 'border-l-amber-600' },
+          productDisclaimer: 'Reizfilterung ist sehr individuell \u2014 manche Kinder m\u00f6gen Kapselgeh\u00f6rschutz, andere bevorzugen In-Ear-L\u00f6sungen. Ausprobieren lohnt sich.',
+          items: [
+            {
+              id: 'gehoerschutz',
+              title: 'Geh\u00f6rschutz / Noise-Cancelling-Kopfh\u00f6rer',
+              evidenceLevel: 'stark',
+              teaser: 'Kapselgeh\u00f6rschutz und Noise-Cancelling-Kopfh\u00f6rer d\u00e4mpfen Umgebungsger\u00e4usche und reduzieren die sensorische \u00dcberflutung direkt. Studien zeigen messbar weniger physiologischen Stress bei Kindern mit Hyperakusis.',
+              tags: ['schule', 'zuhause', 'unterwegs', 'low-budget', 'starke-evidenz'],
+              sections: {
+                wasIstDas: 'Kapselgeh\u00f6rsch\u00fctzer (Ear Defenders), passive Ohrsch\u00fctzer oder aktive Noise-Cancelling-Kopfh\u00f6rer, die Umgebungsger\u00e4usche d\u00e4mpfen oder herausfiltern.',
+                wieWirktEs: 'Viele autistische Kinder haben eine Hyperakusis (\u00dcberempfindlichkeit gegen\u00fcber Ger\u00e4uschen), die zu erh\u00f6hter Aktivierung des sympathischen Nervensystems, Stress, Angst und Verhaltensauff\u00e4lligkeiten f\u00fchrt. Geh\u00f6rschutz reduziert die sensorische \u00dcberflutung direkt und senkt damit die physiologische Stressreaktion.',
+                wasSagtDieForschung: 'Farf\u00e1n-Garc\u00eda et al. (2019) zeigten, dass ger\u00e4uschd\u00e4mpfende Kopfh\u00f6rer die sympathische Aktivierung bei Kindern mit ASS und Hyperakusis reduzieren. Rance et al. (2018) fanden in einer Pilotstudie mit 21 Kindern, dass sowohl Ohrsch\u00fctzer als auch Noise-Cancelling-Kopfh\u00f6rer die Teilnahme an lauten Aktivit\u00e4ten erm\u00f6glichten. Eltern und Lehrkr\u00e4fte berichteten von besserer Aufmerksamkeit, Fokussierung und F\u00e4higkeit, ruhig zu bleiben.'
+              },
+              sources: [
+                { text: 'Farf\u00e1n-Garc\u00eda, C. et al. (2019). Effectiveness of Noise-Attenuating Headphones on Physiological Responses for Children With ASD. <em>Frontiers in Integrative Neuroscience, 13</em>, 65.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6863142/' },
+                { text: 'Rance, G. et al. (2018). Effectiveness of Earmuffs and Noise-cancelling Headphones for Coping with Hyper-reactivity to Auditory Stimuli in Children with ASD. <em>OT International.</em>', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6091992/' },
+                { text: 'Bouzit, M. et al. (2024). Effectiveness of Noise Cancelling Earbuds in Reducing Hearing and Auditory Attention Deficits in Children with Autism.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11355770/' }
+              ],
+              products: [
+                {
+                  title: '3M Peltor Kid Geh\u00f6rschutz',
+                  description: 'Leichter Kapselgeh\u00f6rschutz speziell f\u00fcr Kinder (ab ca. 2 Jahre). D\u00e4mpfung SNR 27 dB, weiche Polster, in vielen Farben. Der meistempfohlene Kindergeh\u00f6rschutz in Elternforen.',
+                  price: 'ca. 12\u201320 \u20ac',
+                  url: 'https://www.amazon.de/s?k=3M+Peltor+Kid+Geh%C3%B6rschutz',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/></svg>'
+                },
+                {
+                  title: 'Loop Quiet Ohrst\u00f6psel',
+                  description: 'Diskrete In-Ear-Ohrst\u00f6psel aus Silikon, die wie Schmuck aussehen. D\u00e4mpfen bis 26 dB. Ideal f\u00fcr \u00e4ltere Kinder und Jugendliche, die keinen auff\u00e4lligen Kapselschutz tragen m\u00f6chten.',
+                  price: 'ca. 20\u201325 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Loop+Quiet+Ohrst%C3%B6psel',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.531V19.94a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.506-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.395C2.806 8.757 3.63 8.25 4.51 8.25H6.75z"/></svg>'
+                }
+              ]
+            },
+            {
+              id: 'snoezelen',
+              title: 'Snoezelen / Multisensorische R\u00e4ume',
+              evidenceLevel: 'moderat',
+              teaser: 'Speziell gestaltete R\u00e4ume mit Lichteffekten und sanfter Musik bieten kontrollierte sensorische Stimulation. Besonders wirksam, wenn das Kind selbst bestimmen kann, welche Reize es erh\u00e4lt.',
+              tags: ['zuhause'],
+              sections: {
+                wasIstDas: 'Speziell gestaltete R\u00e4ume mit Lichteffekten (Blasens\u00e4ulen, Farbwechsellampen, Projektionen), sanfter Musik, taktilen Materialien und manchmal D\u00fcften. Auch einzelne Elemente wie Snoezelen-Lampen oder Projektoren k\u00f6nnen zu Hause eingesetzt werden.',
+                wieWirktEs: 'Die kontrollierte, reizarme Umgebung bietet sensorische Stimulation ohne die \u00dcberflutung des Alltags. Das Nervensystem kann sich regulieren. Besonders wirksam ist es, wenn das Kind selbst die Kontrolle \u00fcber die sensorischen Reize hat \u2013 also z.\u2009B. selbst entscheidet, welche Lampe leuchtet oder welche Musik l\u00e4uft.',
+                wasSagtDieForschung: 'Ein systematisches Review von Leonardi et al. (2025, 10 Studien) ergab, dass multisensorische Umgebungen aggressives und stereotypes Verhalten bei autistischen Menschen modulieren k\u00f6nnen. Mehling et al. (2022) zeigten, dass autistische Kinder, die die sensorische Ausstattung selbst steuern konnten, mehr Aufmerksamkeit zeigten und weniger repetitives Verhalten und stereotype Sprache produzierten.'
+              },
+              sources: [
+                { text: 'Leonardi, S. et al. (2025). The use of multisensory environments in children and adults with ASD: A systematic review. <em>Autism.</em>', url: 'https://pubmed.ncbi.nlm.nih.gov/40087858/' },
+                { text: 'Mehling, M. et al. (2022). The use of Multi-Sensory Environments with autistic children: Exploring the effect of having control of sensory changes.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9340127/' }
+              ],
+              products: [
+                {
+                  title: 'LED Blasens\u00e4ule (Snoezelen)',
+                  description: 'Farbwechselnde Wassers\u00e4ule mit aufsteigenden Blasen. Beruhigender visueller Reiz f\u00fcr eine Ruhezone zu Hause. Erschwingliche Alternative zu professionellen Snoezelen-R\u00e4umen.',
+                  price: 'ca. 40\u201380 \u20ac',
+                  url: 'https://www.amazon.de/s?k=LED+Blasens%C3%A4ule+Snoezelen+Kinder',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/></svg>'
+                }
+              ]
+            },
+            {
+              id: 'schreibtischtrennwand',
+              title: 'Schreibtischtrennwand / Sichtschutz',
+              evidenceLevel: 'moderat',
+              teaser: 'Faltbare Trennw\u00e4nde schaffen am Schreibtisch einen abgeschirmten Arbeitsbereich. Sie reduzieren visuelle Ablenkungen und folgen dem bew\u00e4hrten TEACCH-Prinzip der physischen Strukturierung.',
+              tags: ['schule', 'zuhause', 'low-budget'],
+              sections: {
+                wasIstDas: 'Faltbare oder aufstellbare Trennw\u00e4nde, die am Schreibtisch einen abgeschirmten Arbeitsbereich schaffen. Sie begrenzen das Sichtfeld und reduzieren visuelle Ablenkungen \u2013 im Klassenzimmer, beim Homeschooling oder bei den Hausaufgaben.',
+                wieWirktEs: 'Autistische Kinder reagieren oft st\u00e4rker auf visuelle Reize in der Umgebung \u2013 bewegende Mitsch\u00fcler, Wanddekorationen oder Gegenst\u00e4nde im Blickfeld k\u00f6nnen die Aufmerksamkeit ablenken und das Nervensystem \u00fcberlasten. Eine Trennwand schafft eine klar begrenzte, reizreduzierte Zone. Das entspricht dem Prinzip der <strong>physischen Strukturierung</strong> aus dem TEACCH-Ansatz (Treatment and Education of Autistic and related Communication-handicapped Children), der klar definierte Bereiche als Kernelement nutzt.',
+                wasSagtDieForschung: 'Hanley et al. (2017) untersuchten in <em>Developmental Psychology</em> den Einfluss von Klassenraumdekoration auf Aufmerksamkeit und Lernen bei Kindern mit und ohne Autismus. Ergebnis: Stark dekorierte Umgebungen f\u00fchrten zu mehr Off-Task-Verhalten und geringeren Lernzuw\u00e4chsen. Die Reduktion visueller Ablenkungen \u2013 genau das, was eine Schreibtischtrennwand leistet \u2013 verbesserte die Aufmerksamkeit messbar. Der TEACCH-Ansatz, der physische Strukturierung als evidenzbasierte Praxis einsetzt, ist seit Jahrzehnten etabliert und international anerkannt.'
+              },
+              sources: [
+                { text: 'Hanley, M. et al. (2017). Classroom Displays\u2014Attraction or Distraction? Evidence of Impact on Attention and Learning From Children With and Without Autism. <em>Developmental Psychology, 53</em>(7), 1265\u20131275.', url: 'https://pubmed.ncbi.nlm.nih.gov/28471220/' },
+                { text: 'Mesibov, G. B. &amp; Shea, V. (2010). The TEACCH Program in the Era of Evidence-Based Practice. <em>Journal of Autism and Developmental Disorders, 40</em>, 570\u2013579.', url: '' }
+              ],
+              products: [
+                {
+                  title: 'Faltbare Schreibtischtrennwand',
+                  description: 'Dreiseitige Trennwand f\u00fcr den Schreibtisch. Schr\u00e4nkt das Sichtfeld ein und reduziert visuelle Ablenkung bei Hausaufgaben und im Unterricht. Leicht, faltbar, transportabel.',
+                  price: 'ca. 15\u201325 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Schreibtischtrennwand+faltbar+Kinder+Sichtschutz',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/></svg>'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'sensorische-regulation',
+          label: 'Sensorische Regulation',
+          accent: 'purple',
+          accentClasses: { tab: 'bg-purple-600 text-white', strip: 'bg-purple-500', badge: 'border-l-purple-600' },
+          productDisclaimer: 'Tiefendruck-Hilfsmittel wirken sehr individuell. Faustregel f\u00fcr Gewicht: ca. 10 % des K\u00f6rpergewichts des Kindes. Beginnen Sie mit kurzen Einsatzzeiten.',
+          items: [
+            {
+              id: 'gewichtsdecken',
+              title: 'Gewichtsdecken',
+              evidenceLevel: 'moderat',
+              teaser: 'Schwere Decken liefern gleichm\u00e4\u00dfigen Tiefendruck und aktivieren den \u201eRuhemodus\u201c des Nervensystems. Eltern und Kinder bevorzugen sie deutlich \u2013 auch wenn die objektiven Schlafstudien gemischte Ergebnisse zeigen.',
+              tags: ['zuhause'],
+              sections: {
+                wasIstDas: 'Decken, die durch eingenn\u00e4hte Glasperlen oder Kunststoffgranulat deutlich schwerer sind als normale Bettdecken (typisch: 5\u201312 % des K\u00f6rpergewichts). Sie werden zum Schlafen, Ausruhen oder in Stresssituationen verwendet.',
+                wieWirktEs: 'Gewichtsdecken liefern <strong>Deep Pressure Stimulation (Tiefendruck)</strong> \u2013 gleichm\u00e4\u00dfigen, festen Druck auf den K\u00f6rper. Dies aktiviert das parasympathische Nervensystem (den \u201eRuhemodus\u201c), senkt den Cortisolspiegel und f\u00f6rdert die Aussch\u00fcttung von Serotonin und Melatonin. Das Ergebnis: ein Gef\u00fchl von Geborgenheit und Beruhigung.',
+                wasSagtDieForschung: 'Die Ergebnisse sind gemischt. Gringras et al. (2014) fanden in einer gro\u00dfen RCT keine signifikante Verbesserung der objektiven Schlafparameter. Allerdings bevorzugten Eltern und Kinder die Gewichtsdecke deutlich. Gee et al. (2021) berichteten von verbessertem Einschlafen und Durchschlafen. Ekstr\u00f6m et al. (2021) zeigten, dass Gewichtsdecken bei ADHS/ASS die Entspannung am Tag verbesserten.'
+              },
+              sources: [
+                { text: 'Gringras, P. et al. (2014). Weighted blankets and sleep in autistic children \u2013 a randomized controlled trial. <em>Pediatrics, 134</em>(2), 298\u2013306.', url: 'https://pubmed.ncbi.nlm.nih.gov/25022743/' },
+                { text: 'Gee, B. M. et al. (2021). Weighted Blankets and Sleep Quality in Children with ASD: A Single-Subject Design. <em>Children, 8</em>(1), 10.', url: 'https://www.mdpi.com/2227-9067/8/1/10' },
+                { text: 'Ekstr\u00f6m, A. et al. (2021). The effectiveness of weighted blankets on sleep and everyday activities. <em>Scandinavian Journal of Occupational Therapy.</em>', url: 'https://www.tandfonline.com/doi/full/10.1080/11038128.2021.1939414' }
+              ],
+              products: [
+                {
+                  title: 'Gewichtsdecke f\u00fcr Kinder',
+                  description: 'Mit Glasperlen gef\u00fcllte Decke (3\u20135 kg je nach K\u00f6rpergewicht). Der gleichm\u00e4\u00dfige Tiefendruck f\u00f6rdert Entspannung und Einschlafen. Achten Sie auf Oeko-Tex-Zertifizierung und waschbaren Bezug.',
+                  price: 'ca. 40\u201370 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Gewichtsdecke+Kinder+3kg+5kg',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>'
+                }
+              ]
+            },
+            {
+              id: 'gewichtswesten',
+              title: 'Gewichtswesten',
+              evidenceLevel: 'moderat',
+              teaser: 'Westen mit Gewichten liefern propriozeptiven Input am Oberk\u00f6rper. Bei einigen Kindern stieg das aufgabenbezogene Verhalten um bis zu 25 % \u2013 die Wirkung h\u00e4ngt aber stark von den individuellen sensorischen Bed\u00fcrfnissen ab.',
+              tags: ['schule', 'zuhause'],
+              sections: {
+                wasIstDas: 'Westen mit eingenn\u00e4hten oder einschiebbaren Gewichten, die typischerweise 5\u201310 % des K\u00f6rpergewichts ausmachen. Sie werden im Unterricht, bei Hausaufgaben oder in unruhigen Situationen getragen.',
+                wieWirktEs: 'Wie Gewichtsdecken nutzen sie das Prinzip des Tiefendrucks. Der gleichm\u00e4\u00dfige Druck auf den Oberk\u00f6rper liefert propriozeptiven Input \u2013 das Gehirn bekommt verst\u00e4rkte Informationen dar\u00fcber, wo der K\u00f6rper im Raum ist. Das kann beruhigend wirken und die Aufmerksamkeit verbessern.',
+                wasSagtDieForschung: 'Hodgetts et al. (2011) untersuchten Gewichtswesten im Klassenzimmer bei Kindern mit Autismus und kognitiven Beeintr\u00e4chtigungen. Bei einigen Teilnehmern stieg das On-Task-Verhalten um 18\u201325 %. Allerdings waren die Effekte nicht bei allen Kindern konsistent. Die Wirksamkeit h\u00e4ngt stark von den individuellen sensorischen Bed\u00fcrfnissen ab.'
+              },
+              sources: [
+                { text: 'Hodgetts, S. et al. (2011). Effects of weighted vests on classroom behavior for children with autism and cognitive impairments. <em>Research in Autism Spectrum Disorders, 5</em>(1), 495\u2013505.', url: 'https://www.sciencedirect.com/science/article/pii/S1750946710001029' },
+                { text: 'Stephenson, J. &amp; Carter, M. (2009). The use of weighted vests with children with ASD and other disabilities. <em>Journal of Autism and Developmental Disorders, 39</em>, 105\u2013114.', url: 'https://pubmed.ncbi.nlm.nih.gov/18592366/' }
+              ],
+              products: [
+                {
+                  title: 'Gewichtsweste f\u00fcr Kinder',
+                  description: 'Weste mit herausnehmbaren Gewichten (ca. 5\u201310 % des K\u00f6rpergewichts). Kann in der Schule, bei Therapie oder zu Hause getragen werden. Gewichte lassen sich individuell anpassen.',
+                  price: 'ca. 50\u201390 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Gewichtsweste+Kinder+Therapie+sensorisch',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>'
+                }
+              ]
+            },
+            {
+              id: 'therapieschaukeln',
+              title: 'Therapieschaukeln',
+              evidenceLevel: 'moderat',
+              teaser: 'Spezialschaukeln bieten kontrollierte vestibul\u00e4re Stimulation, die das Gleichgewichtssystem anspricht. Rhythmisches Schaukeln kann je nach Tempo beruhigend oder aktivierend wirken und verbessert K\u00f6rperwahrnehmung und Koordination.',
+              tags: ['zuhause'],
+              sections: {
+                wasIstDas: 'Spezielle Schaukeln (H\u00e4ngematte, Kokon-Schaukel, Plattformschaukel), die in der Ergotherapie oder zu Hause eingesetzt werden. Sie bieten kontrollierte vestibul\u00e4re Stimulation \u2013 also Bewegungsreize, die das Gleichgewichtssystem im Innenohr ansprechen.',
+                wieWirktEs: 'Das vestibul\u00e4re System ist eines der grundlegendsten sensorischen Systeme. Schaukelbewegungen stimulieren es gleichm\u00e4\u00dfig und vorhersehbar. Bei vielen autistischen Kindern, die unter- oder \u00fcbersensibel auf Bewegungsreize reagieren, kann rhythmisches Schaukeln regulierend wirken: Es kann beruhigen (langsames, lineares Schaukeln) oder aktivieren (schnelleres Schaukeln). Zudem verbessert vestibul\u00e4re Stimulation die K\u00f6rperwahrnehmung, Koordination und posturale Kontrolle.',
+                wasSagtDieForschung: 'Eine randomisierte kontrollierte Studie (2025) zeigte, dass vestibul\u00e4re und propriozeptive \u00dcbungen Hyperaktivit\u00e4t und Impulsivit\u00e4t bei Kindern mit ASS signifikant reduzieren. Die Interventionsgruppe zeigte deutliche Verbesserungen in sensorischer Verarbeitung, Modulation sowie Verhaltens- und emotionalen Reaktionen. Sensorische Integrationstherapie, zu der Schaukel\u00fcbungen geh\u00f6ren, verbessert nachweislich Balance und exekutive Funktionen.'
+              },
+              sources: [
+                { text: 'Elsayed, H. et al. (2025). Effectiveness of vestibular and proprioceptive exercises in reducing hyperactivity in children with ASD: A randomized controlled trial.', url: 'https://www.sciencedirect.com/science/article/abs/pii/S305065652500015X' },
+                { text: 'Liu, Y. et al. (2023). Effects of sensory integration training on balance function and executive function in children with ASD.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10631781/' }
+              ],
+              products: [
+                {
+                  title: 'H\u00e4ngeh\u00f6hle / Kuschel\u00f6hle',
+                  description: 'Kokonf\u00f6rmige H\u00e4ngeschaukel aus Baumwollstoff. Vereint vestibul\u00e4ren Input (Schaukeln) mit Geborgenheit (Kokon-Gef\u00fchl). Belastbar bis ca. 80 kg, f\u00fcr drinnen und drau\u00dfen.',
+                  price: 'ca. 35\u201360 \u20ac',
+                  url: 'https://www.amazon.de/s?k=H%C3%A4ngeh%C3%B6hle+Kinder+Therapieschaukel',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>'
+                }
+              ]
+            },
+            {
+              id: 'bewegungssitze',
+              title: 'Bewegungssitze (Sitzkissen, Therapieb\u00e4lle)',
+              evidenceLevel: 'moderat',
+              teaser: 'Wackelkissen und Therapieb\u00e4lle erm\u00f6glichen kontrollierte Mikrobewegungen beim Sitzen. Das hilft dem Nervensystem, ein optimales Erregungsniveau zu halten \u2013 eine sozial akzeptierte Alternative zum Zappeln.',
+              tags: ['schule', 'zuhause', 'low-budget'],
+              sections: {
+                wasIstDas: 'Aufblasbare Wackelkissen, Therapieb\u00e4lle oder Keilkissen, die als Alternative zu starren St\u00fchlen eingesetzt werden. Sie erm\u00f6glichen kontrollierte Mikrobewegungen beim Sitzen \u2013 im Unterricht, bei Hausaufgaben oder am Esstisch.',
+                wieWirktEs: 'Viele autistische und ADHS-betroffene Kinder brauchen Bewegung, um aufmerksam bleiben zu k\u00f6nnen. Bewegungssitze liefern kontinuierlichen vestibul\u00e4ren und propriozeptiven Input durch kleine Ausgleichsbewegungen. Das hilft dem Nervensystem, ein optimales Erregungsniveau aufrechtzuerhalten \u2013 das Kind kann sich besser konzentrieren, ohne aufstehen zu m\u00fcssen. Anders als Zappeln oder Kippeln ist es eine kontrollierte, sozial akzeptierte Form der Bewegung.',
+                wasSagtDieForschung: 'Schilling et al. (2003) zeigten im <em>American Journal of Occupational Therapy</em>, dass Sch\u00fcler mit ADHS auf Therapieb\u00e4llen deutlich verbessertes On-Task-Verhalten zeigten. Fedewa &amp; Erwin (2011) fanden in einer Studie mit Kindern mit ASD und ADHS signifikante Verbesserungen beim Sitzverhalten (In-Seat-Behavior) und eine Reduktion von st\u00f6rendem Verhalten im Klassenzimmer.'
+              },
+              sources: [
+                { text: 'Schilling, D. L. et al. (2003). Classroom seating for children with ADHD: Therapy balls versus chairs. <em>American Journal of Occupational Therapy, 57</em>(5), 534\u2013541.', url: '' },
+                { text: 'Fedewa, A. L. &amp; Erwin, H. E. (2011). The Impact of Dynamic Seating on Classroom Behavior of Students with Autism Spectrum Disorder.', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5329757/' }
+              ],
+              products: [
+                {
+                  title: 'Togu Dynair Sitzkissen',
+                  description: 'Aufblasbares Wackelkissen f\u00fcr Stuhlsitzfl\u00e4chen. Erm\u00f6glicht kontrollierte Mikrobewegungen beim Sitzen \u2014 eine sozial akzeptierte Form der Bewegung, die Konzentration f\u00f6rdert. In Schulen bew\u00e4hrt.',
+                  price: 'ca. 20\u201330 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Togu+Dynair+Sitzkissen',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3"/></svg>'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'selbstregulation',
+          label: 'Selbstregulation',
+          accent: 'rose',
+          accentClasses: { tab: 'bg-rose-600 text-white', strip: 'bg-rose-500', badge: 'border-l-rose-600' },
+          productDisclaimer: 'Einfache, nicht-ablenkende Fidgets sind wirksamer als aufwendige Spielzeuge. Bei Kau-Hilfsmitteln auf lebensmittelechtes Silikon und den passenden H\u00e4rtegrad achten.',
+          items: [
+            {
+              id: 'fidgets',
+              title: 'Fidgets (Knetmasse, Stressb\u00e4lle, Tangle)',
+              evidenceLevel: 'moderat',
+              teaser: 'Kleine, handliche Gegenst\u00e4nde regulieren das Erregungsniveau des Nervensystems durch taktilen und propriozeptiven Input. Einfache, nicht-ablenkende Fidgets sind dabei wirksamer als aufwendige Spielzeuge.',
+              tags: ['schule', 'zuhause', 'unterwegs', 'low-budget'],
+              sections: {
+                wasIstDas: 'Kleine, handliche Gegenst\u00e4nde, die taktile und propriozeptive Stimulation bieten: Knetmasse, Stressb\u00e4lle, Tangle-Ringe, texturierte Putty oder weiche Quetschb\u00e4lle. Wichtig: Einfache, nicht-ablenkende Fidgets sind wirksamer als aufwendige Spielzeuge wie Fidget Spinner.',
+                wieWirktEs: 'Rhythmische Handbewegungen liefern sensorischen Input, der das Erregungsniveau des Nervensystems reguliert. Bei Unter-Stimulation kann Fidgeting das Arousal auf ein Niveau heben, das Aufmerksamkeit erm\u00f6glicht. Bei \u00dcber-Stimulation kann die fokussierte, repetitive Bewegung beruhigend wirken. Die Forschung best\u00e4tigt: Fidgeting an sich (nicht spezifische Fidget-Spielzeuge) hilft bei der Aufmerksamkeitsregulation.',
+                wasSagtDieForschung: 'Graziano et al. (2024, UC Davis) best\u00e4tigten, dass Kinder mit ADHS durch Bewegung (Fidgeting) besser fokussieren k\u00f6nnen \u2013 die Bewegung hilft dem Gehirn, das n\u00f6tige Erregungsniveau aufrechtzuerhalten. Stalvey &amp; Brasell (2006) zeigten erh\u00f6htes On-Task-Verhalten mit Stressb\u00e4llen. Zimmerman &amp; Ledford (2024) fanden bei autistischen Kindern allerdings, dass Fidget Toys die visuelle Aufmerksamkeit teilweise verringerten \u2013 ein Hinweis, dass einfache, taktile Fidgets besser geeignet sind als visuell ansprechende.'
+              },
+              sources: [
+                { text: 'Zimmerman, K. N. &amp; Ledford, J. R. (2024). The Impact of Fidget Toys on Story Detail Acquisition and Visual Attention for Elementary Students With Autism. <em>Journal of Positive Behavior Interventions.</em>', url: 'https://journals.sagepub.com/doi/abs/10.1177/10983007231200529' },
+                { text: 'Graziano, P. et al. (2024). Does fidgeting help people with ADHD focus? UC Davis Health.', url: 'https://health.ucdavis.edu/news/headlines/does-fidgeting-help-people-with-adhd-focus-/2024/10' },
+                { text: 'Kriescher, S. L. et al. (2023). Evaluating the Evidence for Fidget Toys in the Classroom. <em>Intervention in School and Clinic.</em>', url: 'https://journals.sagepub.com/doi/10.1177/10534512221130070' }
+              ],
+              products: [
+                {
+                  title: 'Tangle Therapy (Fidget)',
+                  description: 'Verdrehbarer Fidget aus verbundenen, gummierten Segmenten. Leise und diskret \u2014 ideal f\u00fcr Schule und Wartezimmer. Die strukturierte Oberfl\u00e4che bietet zus\u00e4tzlichen taktilen Input. Einer der meistempfohlenen Fidgets von Ergotherapeut*innen.',
+                  price: 'ca. 8\u201312 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Tangle+Therapy+Fidget',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.491 48.491 0 01-4.163-.3c-1.108-.128-2.03-1.05-2.03-2.164v0c0-1.114.921-2.036 2.03-2.164a48.44 48.44 0 018.326 0c1.108.128 2.03 1.05 2.03 2.164v0c0 1.114-.921 2.036-2.03 2.164a48.491 48.491 0 01-4.163.3.64.64 0 01-.657-.643v0zM14.25 17.913c0 .355.186.676.401.959.221.29.349.634.349 1.003 0 1.036-1.007 1.875-2.25 1.875s-2.25-.84-2.25-1.875c0-.369.128-.713.349-1.003.215-.283.401-.604.401-.959v0a.64.64 0 00-.657-.643 48.491 48.491 0 00-4.163.3c-1.108.128-2.03 1.05-2.03 2.164v0c0 1.114.921 2.036 2.03 2.164a48.44 48.44 0 008.326 0c1.108-.128 2.03-1.05 2.03-2.164v0c0-1.114-.921-2.036-2.03-2.164a48.491 48.491 0 00-4.163-.3.64.64 0 00-.657.643v0z"/></svg>'
+                },
+                {
+                  title: 'Therapieknete (versch. Widerst\u00e4nde)',
+                  description: 'Silikonknete in verschiedenen H\u00e4rtegraden (weich bis extra-fest). St\u00e4rkt die Handmotorik und bietet taktile Regulation. Trocknet nicht aus und f\u00e4rbt nicht ab \u2014 anders als normale Knete auch im Unterricht einsetzbar.',
+                  price: 'ca. 8\u201315 \u20ac',
+                  url: 'https://www.amazon.de/s?k=Therapieknete+Silikon+verschiedene+St%C3%A4rken',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3.026a2.999 2.999 0 01-.879 2.121l-1.467 1.468a3.375 3.375 0 000 4.773L6.02 17.43a3.375 3.375 0 004.773 0l1.467-1.468a2.999 2.999 0 012.121-.879h3.026a1.575 1.575 0 100-3.15h-3.026a2.999 2.999 0 01-2.121-.879l-1.468-1.467a2.999 2.999 0 01-.879-2.121V4.575z"/></svg>'
+                }
+              ]
+            },
+            {
+              id: 'kau-hilfsmittel',
+              title: 'Kau-Hilfsmittel (Chewelry / Bei\u00dfringe)',
+              evidenceLevel: 'begrenzt',
+              teaser: 'Kaubare Anh\u00e4nger aus lebensmittelechtem Silikon befriedigen das Bed\u00fcrfnis nach oraler Stimulation auf sichere Weise. Die Empfehlung basiert auf klinischer Erfahrung \u2013 spezifische Studien fehlen bisher.',
+              tags: ['schule', 'unterwegs', 'low-budget'],
+              sections: {
+                wasIstDas: 'Kaubare Anh\u00e4nger, Armb\u00e4nder oder Sticks aus lebensmittelechtem Silikon, die sicheres Kauen erm\u00f6glichen. Sie werden als Halskette oder Armband getragen und sind diskret einsetzbar.',
+                wieWirktEs: 'Kauen liefert starken propriozeptiven Input \u00fcber die Kiefermuskulatur und wirkt auf das orale sensorische System. Die rhythmische Kaubewegung hat eine \u00e4hnlich regulierende Wirkung wie Fidgeting mit den H\u00e4nden: Sie kann beruhigend wirken, die Konzentration f\u00f6rdern und das Bed\u00fcrfnis nach oraler Stimulation auf sichere Weise befriedigen \u2013 statt auf Kleidung, Stifte oder Fingern\u00e4gel zu kauen.',
+                wasSagtDieForschung: 'Kau-Hilfsmittel werden in der ergotherapeutischen Praxis breit eingesetzt und von Fachleuten empfohlen. <strong>Es gibt jedoch bisher keine peer-reviewed Studien, die ihre Wirksamkeit spezifisch bei autistischen Kindern untersucht haben.</strong> Die theoretische Grundlage basiert auf dem allgemeinen Verst\u00e4ndnis sensorischer Verarbeitungsprozesse und klinischer Erfahrung.'
+              },
+              sources: [
+                { text: 'Klinische Praxis; derzeit keine spezifischen peer-reviewed Studien verf\u00fcgbar.', url: '' }
+              ],
+              products: [
+                {
+                  title: 'ARK\u2019s Kaukette (Chewelry)',
+                  description: 'Kauanh\u00e4nger aus lebensmittelechtem Silikon in verschiedenen H\u00e4rtegraden und Formen (Dino, Stern, Brick). Sicherer Ersatz f\u00fcr das Kauen auf Stiften, Kleidung oder Fingern. Als Halskette diskret tragbar.',
+                  price: 'ca. 10\u201315 \u20ac',
+                  url: 'https://www.amazon.de/s?k=ARK+Kaukette+Chewelry+Silikon+Kinder',
+                  urlLabel: 'Bei Amazon',
+                  svgIcon: '<svg class="w-10 h-10 text-current" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    // ============================
+    // TAG DEFINITIONS
+    // ============================
+    const TAG_LABELS = {
+      'schule': 'Schule',
+      'zuhause': 'Zuhause',
+      'low-budget': 'Low-Budget',
+      'starke-evidenz': 'Starke Evidenz',
+      'vorschulalter': 'Vorschulalter',
+      'unterwegs': 'Unterwegs'
+    };
+
+    // ============================
+    // STATE
+    // ============================
+    let activeCategory = HILFSMITTEL_DATA.categories[0].id;
+    let activeFilters = new Set();
+    let searchQuery = '';
+    let lastFocusedElement = null;
+
+    // ============================
+    // INIT
+    // ============================
+    function initApp() {
+      renderTabs();
+      renderFilterChips();
+      activateTab(activeCategory);
+
+      document.getElementById('hilfsmittel-search').addEventListener('input', function(e) {
+        searchQuery = e.target.value.toLowerCase().trim();
+        applyFilters();
+      });
+
+      document.getElementById('clear-filters').addEventListener('click', function() {
+        activeFilters.clear();
+        searchQuery = '';
+        document.getElementById('hilfsmittel-search').value = '';
+        renderFilterChips();
+        applyFilters();
+      });
+
+      // Modal close handlers
+      document.getElementById('modal-close').addEventListener('click', closeModal);
+      document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !document.getElementById('detail-modal').classList.contains('hidden')) {
+          closeModal();
+        }
+        if (!document.getElementById('detail-modal').classList.contains('hidden')) {
+          trapFocus(e);
+        }
+      });
+    }
+
+    // ============================
+    // TABS
+    // ============================
+    function renderTabs() {
+      var container = document.getElementById('category-tabs');
+      var html = '';
+      HILFSMITTEL_DATA.categories.forEach(function(cat) {
+        var isActive = cat.id === activeCategory;
+        var cls = isActive ? cat.accentClasses.tab : 'bg-gray-100 text-gray-600 hover:bg-gray-200';
+        html += '<button type="button" role="tab" aria-selected="' + isActive + '" aria-controls="panel-' + cat.id + '" id="tab-' + cat.id + '" ' +
+          'class="whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-colors snap-start ' + cls + '" ' +
+          'onclick="activateTab(\'' + cat.id + '\')">' + cat.label + '</button>';
+      });
+      container.innerHTML = html;
+    }
+
+    function activateTab(categoryId) {
+      activeCategory = categoryId;
+      renderTabs();
+
+      var category = HILFSMITTEL_DATA.categories.find(function(c) { return c.id === categoryId; });
+      if (!category) return;
+
+      applyFilters();
+    }
+
+    // ============================
+    // FILTER CHIPS
+    // ============================
+    function renderFilterChips() {
+      var container = document.getElementById('filter-chips');
+      var html = '';
+      Object.keys(TAG_LABELS).forEach(function(tag) {
+        var isActive = activeFilters.has(tag);
+        var cls = isActive
+          ? 'bg-forest text-white'
+          : 'bg-gray-100 text-gray-600 hover:bg-gray-200';
+        html += '<button type="button" class="px-3 py-1 rounded-full text-xs font-medium transition-colors ' + cls + '" ' +
+          'aria-pressed="' + isActive + '" onclick="toggleFilter(\'' + tag + '\')">' +
+          TAG_LABELS[tag] + '</button>';
+      });
+      container.innerHTML = html;
+    }
+
+    function toggleFilter(tag) {
+      if (activeFilters.has(tag)) {
+        activeFilters.delete(tag);
+      } else {
+        activeFilters.add(tag);
+      }
+      renderFilterChips();
+      applyFilters();
+    }
+
+    // ============================
+    // APPLY FILTERS
+    // ============================
+    function applyFilters() {
+      var category = HILFSMITTEL_DATA.categories.find(function(c) { return c.id === activeCategory; });
+      if (!category) return;
+
+      var filtered = category.items.filter(function(item) {
+        // AND logic for chips: all active filters must match
+        var chipMatch = true;
+        activeFilters.forEach(function(f) {
+          if (item.tags.indexOf(f) === -1) chipMatch = false;
+        });
+
+        // search query (OR with title, teaser, sections)
+        var searchMatch = true;
+        if (searchQuery) {
+          var searchable = (item.title + ' ' + item.teaser + ' ' + item.sections.wasIstDas + ' ' + item.sections.wieWirktEs + ' ' + item.sections.wasSagtDieForschung).toLowerCase();
+          searchMatch = searchable.indexOf(searchQuery) !== -1;
+        }
+
+        return chipMatch && searchMatch;
+      });
+
+      renderCards(filtered, category);
+
+      // Update filter status
+      var statusEl = document.getElementById('filter-status');
+      var countEl = document.getElementById('filter-count');
+      if (activeFilters.size > 0 || searchQuery) {
+        statusEl.classList.remove('hidden');
+        statusEl.classList.add('flex');
+        countEl.textContent = filtered.length + ' von ' + category.items.length + ' Hilfsmitteln';
+      } else {
+        statusEl.classList.add('hidden');
+        statusEl.classList.remove('flex');
+      }
+    }
+
+    // ============================
+    // RENDER CARDS
+    // ============================
+    function renderCards(items, category) {
+      var container = document.getElementById('hilfsmittel-content');
+
+      if (items.length === 0) {
+        container.innerHTML = '<div class="text-center py-16"><p class="text-gray-400 text-lg">Keine Hilfsmittel gefunden.</p><p class="text-gray-400 text-sm mt-1">Versuchen Sie andere Filter oder Suchbegriffe.</p></div>';
+        return;
+      }
+
+      var html = '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 tab-panel-enter" id="panel-' + category.id + '" role="tabpanel" aria-labelledby="tab-' + category.id + '">';
+
+      items.forEach(function(item) {
+        html += buildCardHTML(item, category);
+      });
+
+      html += '</div>';
+
+      // Product disclaimer + product cards (if any items have products)
+      var allProducts = [];
+      items.forEach(function(item) {
+        if (item.products && item.products.length > 0) {
+          item.products.forEach(function(p) { allProducts.push(p); });
+        }
+      });
+
+      if (allProducts.length > 0) {
+        html += '<div class="mt-8 bg-forest/[0.02] border border-forest/10 rounded-2xl p-6 sm:p-8 tab-panel-enter">';
+        html += '<div class="flex items-center gap-3 mb-2"><h3 class="text-lg font-bold text-forest">Konkrete Produktbeispiele</h3></div>';
+        html += '<p class="text-sm text-gray-500 mb-6">' + category.productDisclaimer + '</p>';
+        html += '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">';
+        allProducts.forEach(function(p) {
+          html += renderProductCardHTML(p, category);
+        });
+        html += '</div></div>';
+      }
+
+      container.innerHTML = html;
+
+      // Animate in
+      requestAnimationFrame(function() {
+        var panels = container.querySelectorAll('.tab-panel-enter');
+        panels.forEach(function(p) {
+          requestAnimationFrame(function() {
+            p.classList.remove('tab-panel-enter');
+            p.classList.add('tab-panel-active');
+          });
+        });
+      });
+    }
+
+    // ============================
+    // BUILD CARD HTML
+    // ============================
+    function buildCardHTML(item, category) {
+      var badge = getEvidenceBadgeHTML(item.evidenceLevel);
+      var tagHTML = '';
+      item.tags.forEach(function(t) {
+        if (TAG_LABELS[t]) {
+          tagHTML += '<span class="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">' + TAG_LABELS[t] + '</span>';
+        }
+      });
+
+      return '<div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group" onclick="openModal(\'' + item.id + '\')" role="button" tabindex="0" aria-label="Details zu ' + item.title + ' anzeigen" onkeydown="if(event.key===\'Enter\')openModal(\'' + item.id + '\')">' +
+        '<div class="h-1.5 ' + category.accentClasses.strip + '"></div>' +
+        '<div class="p-5">' +
+          '<div class="flex items-start justify-between gap-2 mb-3">' +
+            '<h3 class="text-base font-bold text-forest leading-tight group-hover:text-forest-light transition-colors">' + item.title + '</h3>' +
+            badge +
+          '</div>' +
+          '<p class="text-gray-600 text-sm leading-relaxed mb-4">' + item.teaser + '</p>' +
+          '<div class="flex flex-wrap gap-1.5 mb-4">' + tagHTML + '</div>' +
+          '<div class="flex items-center text-xs font-medium text-forest-light group-hover:text-forest transition-colors">' +
+            '<span>Details ansehen</span>' +
+            '<svg class="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    // ============================
+    // EVIDENCE BADGE
+    // ============================
+    function getEvidenceBadgeHTML(level) {
+      if (level === 'stark') {
+        return '<span class="inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full bg-green-100 text-green-800 whitespace-nowrap">Starke Evidenz</span>';
+      } else if (level === 'moderat') {
+        return '<span class="inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full bg-yellow-100 text-yellow-800 whitespace-nowrap">Moderate Evidenz</span>';
+      } else {
+        return '<span class="inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full bg-red-100 text-red-800 whitespace-nowrap">Begrenzte Evidenz</span>';
+      }
+    }
+
+    // ============================
+    // PRODUCT CARD
+    // ============================
+    function renderProductCardHTML(product, category) {
+      return '<div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">' +
+        '<div class="bg-gradient-to-br from-forest/5 to-forest/15 flex items-center justify-center h-28 text-forest/30">' +
+          product.svgIcon +
+        '</div>' +
+        '<div class="p-5 flex flex-col flex-1">' +
+          '<h4 class="font-bold text-brown text-sm mb-1">' + product.title + '</h4>' +
+          '<p class="text-xs text-gray-500 mb-3 flex-1">' + product.description + '</p>' +
+          '<div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">' +
+            '<span class="text-sm font-bold text-forest">' + product.price + '</span>' +
+            '<a href="' + product.url + '" target="_blank" rel="noopener" class="text-xs bg-sunflower hover:bg-sunflower-hover text-brown font-semibold px-3 py-1.5 rounded-lg no-underline transition-colors">' + product.urlLabel + ' &rarr;</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    // ============================
+    // MODAL
+    // ============================
+    function findItemById(itemId) {
+      for (var i = 0; i < HILFSMITTEL_DATA.categories.length; i++) {
+        var cat = HILFSMITTEL_DATA.categories[i];
+        for (var j = 0; j < cat.items.length; j++) {
+          if (cat.items[j].id === itemId) {
+            return { item: cat.items[j], category: cat };
+          }
+        }
+      }
+      return null;
+    }
+
+    function openModal(itemId) {
+      var result = findItemById(itemId);
+      if (!result) return;
+
+      lastFocusedElement = document.activeElement;
+
+      var modal = document.getElementById('detail-modal');
+      var titleEl = document.getElementById('modal-title');
+      var bodyEl = document.getElementById('modal-body');
+
+      titleEl.textContent = result.item.title;
+      bodyEl.innerHTML = renderModalContent(result.item, result.category);
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      // Focus close button
+      document.getElementById('modal-close').focus();
+    }
+
+    function closeModal() {
+      var modal = document.getElementById('detail-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    function renderModalContent(item, category) {
+      var badge = getEvidenceBadgeHTML(item.evidenceLevel);
+
+      var tagHTML = '';
+      item.tags.forEach(function(t) {
+        if (TAG_LABELS[t]) {
+          tagHTML += '<span class="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">' + TAG_LABELS[t] + '</span>';
+        }
+      });
+
+      var html = '<div class="mb-4 flex flex-wrap items-center gap-2">' + badge + tagHTML + '</div>';
+
+      html += '<div class="space-y-5">';
+
+      html += '<div><h4 class="font-bold text-forest mb-1.5">Was ist das?</h4>' +
+        '<p class="text-gray-600 text-sm leading-relaxed">' + item.sections.wasIstDas + '</p></div>';
+
+      html += '<div><h4 class="font-bold text-forest mb-1.5">Wie wirkt es?</h4>' +
+        '<p class="text-gray-600 text-sm leading-relaxed">' + item.sections.wieWirktEs + '</p></div>';
+
+      html += '<div><h4 class="font-bold text-forest mb-1.5">Was sagt die Forschung?</h4>' +
+        '<p class="text-gray-600 text-sm leading-relaxed">' + item.sections.wasSagtDieForschung + '</p></div>';
+
+      html += '</div>';
+
+      // Sources
+      if (item.sources && item.sources.length > 0) {
+        html += '<div class="mt-6 pt-4 border-t border-gray-100">';
+        html += '<h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>';
+        html += '<ul class="text-xs text-gray-500 space-y-1.5">';
+        item.sources.forEach(function(s) {
+          if (s.url) {
+            html += '<li>' + s.text + ' <a href="' + s.url + '" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">Link</a></li>';
+          } else {
+            html += '<li>' + s.text + '</li>';
+          }
+        });
+        html += '</ul></div>';
+      }
+
+      // Products
+      if (item.products && item.products.length > 0) {
+        html += '<div class="mt-6 pt-4 border-t border-gray-100">';
+        html += '<h4 class="font-bold text-forest text-sm mb-3">Produktbeispiele</h4>';
+        html += '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">';
+        item.products.forEach(function(p) {
+          html += '<div class="border border-gray-200 rounded-lg p-3">' +
+            '<h5 class="font-bold text-brown text-xs mb-1">' + p.title + '</h5>' +
+            '<p class="text-xs text-gray-500 mb-2">' + p.description + '</p>' +
+            '<div class="flex items-center justify-between">' +
+              '<span class="text-xs font-bold text-forest">' + p.price + '</span>' +
+              '<a href="' + p.url + '" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest underline">' + p.urlLabel + ' &rarr;</a>' +
+            '</div>' +
+          '</div>';
+        });
+        html += '</div></div>';
+      }
+
+      return html;
+    }
+
+    // ============================
+    // FOCUS TRAP
+    // ============================
+    function trapFocus(e) {
+      if (e.key !== 'Tab') return;
+
+      var modal = document.getElementById('modal-inner');
+      var focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length === 0) return;
+
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    // ============================
+    // START APP
+    // ============================
+    document.addEventListener('DOMContentLoaded', initApp);
+    </script>
 
     <script>
         // Mobile nav toggle
