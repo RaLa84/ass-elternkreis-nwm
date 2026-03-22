@@ -797,15 +797,37 @@ p {
 
 /* Print Styles */
 @media print {
-  .header, .footer, .article-nav, .hero-badge {
-    display: none;
+  .header, .footer, .article-nav, .hero-badge, .navbar, .back-to-top, footer {
+    display: none !important;
   }
 
   .article-card {
     box-shadow: none;
+    border: none;
+  }
+
+  .article-container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .article-content a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #666;
   }
 
   body {
     background: white;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  .sources-section {
+    page-break-before: always;
   }
 }
