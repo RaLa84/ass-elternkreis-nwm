@@ -161,6 +161,16 @@
 <li><a href="https://www.ehlers-danlos.com/de/Monat-der-Akzeptanz-von-Autismus/" target="_blank" rel="noopener noreferrer">The Ehlers-Danlos Society — Autismus und Ehlers-Danlos-Syndrom</a></li>
 </ul>
 </div>
+
+            <!-- Mikro-Survey -->
+            <div id="survey-widget" class="p-6 sm:p-8 border-t border-gray-100 text-center">
+                <p class="text-lg font-semibold text-forest mb-4">War dieser Beitrag hilfreich?</p>
+                <div class="survey-buttons flex justify-center gap-4">
+                    <button onclick="submitSurvey('ja')" class="px-6 py-3 bg-forest text-white rounded-xl hover:bg-forest-light transition-colors cursor-pointer">👍 Ja</button>
+                    <button onclick="submitSurvey('nein')" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-colors cursor-pointer">👎 Nein</button>
+                </div>
+                <p id="survey-response" class="mt-3 text-sm"></p>
+            </div>
 </div><nav class="flex flex-col sm:flex-row justify-between items-center gap-3 p-6 sm:p-8 border-t border-gray-100"><a href="frage-096.html" class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-forest border border-forest/20 hover:bg-forest/5 transition-colors">Vorherige</a><a href="../faq.html#erwachsene" class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-forest border border-forest/20 hover:bg-forest/5 transition-colors">Übersicht</a><a href="frage-098.html" class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-forest border border-forest/20 hover:bg-forest/5 transition-colors">Nächste</a></nav></article>
     </main>
 
@@ -230,6 +240,7 @@
         });
     })();
     </script>
+<script src="../js/survey.js"></script>
 <script src="../js/search.js"></script>
 </body>
 </html>
