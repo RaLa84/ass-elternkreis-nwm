@@ -41,6 +41,27 @@
             width: 32px;
             height: 32px;
         }
+        .pre-step-card {
+            border-left: 4px solid #2E7D32;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .pre-step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .pre-step-letter {
+            width: 48px;
+            height: 48px;
+            background-color: #2E7D32;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
@@ -89,17 +110,73 @@
     <!-- Hero -->
     <div id="main-content" class="container my-5">
         <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-            <h1 class="text-body-emphasis">Dein Kind hat eine Autismus-Diagnose bekommen?</h1>
+            <h1 class="text-body-emphasis">Du vermutest, dass dein Kind autistisch sein könnte — oder hast gerade eine Diagnose bekommen?</h1>
             <p class="col-lg-8 mx-auto mb-0" style="color: black; font-size: 1.2rem;">
-                Wir kennen dieses Gefühl. Die Unsicherheit, die Fragen, manchmal auch die Angst.
-                Aber du bist nicht allein. Viele Eltern in unserer Gruppe standen genau da, wo du jetzt stehst.
-                Hier findest du eine Orientierung für die ersten Schritte.
+                Ob du noch auf Antworten wartest oder die Diagnose gerade frisch ist — wir kennen beide Gefühle.
+                Die Unsicherheit, die Fragen, manchmal auch die Angst. Aber du bist nicht allein.
+                Viele Eltern in unserer Gruppe standen genau da, wo du jetzt stehst.
+                Hier findest du eine Orientierung für deine nächsten Schritte.
             </p>
+        </div>
+    </div>
+
+    <!-- Pre-Diagnosis Section -->
+    <div class="container" style="max-width: 800px;">
+        <h2 class="mb-4">Noch keine Diagnose?</h2>
+        <p class="mb-4">Du bist dir nicht sicher, ob dein Kind autistisch sein könnte? Das ist völlig okay. Hier sind erste Schritte, die du schon jetzt gehen kannst — ganz ohne Diagnose.</p>
+
+        <!-- Punkt A -->
+        <div class="card pre-step-card mb-4">
+            <div class="card-body d-flex gap-3 align-items-start p-4">
+                <div class="pre-step-letter">A</div>
+                <div>
+                    <h3 class="fs-4 mb-2">Beobachten und dokumentieren</h3>
+                    <p class="mb-2">Schreib auf, was dir auffällt — Situationen, Reaktionen, Muster. Das hilft dir selbst beim Einordnen und später auch bei Arztgesprächen. Sprich deinen Kinderarzt oder deine Kinderärztin auf deine Beobachtungen an.</p>
+                    <a href="vorschule/frage-001.html" class="btn btn-sm btn-outline-secondary">Frühe Anzeichen erkennen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Punkt B -->
+        <div class="card pre-step-card mb-4">
+            <div class="card-body d-flex gap-3 align-items-start p-4">
+                <div class="pre-step-letter">B</div>
+                <div>
+                    <h3 class="fs-4 mb-2">Diagnostik-Wege kennen</h3>
+                    <p class="mb-2">Sozialpädiatrische Zentren (SPZ), Kinder- und Jugendpsychiater oder Autismusambulanz können eine Diagnostik durchführen. Die Wartezeiten sind oft lang (6–18 Monate) — melde dich frühzeitig an, auch wenn du noch unsicher bist. Eine Anmeldung verpflichtet zu nichts.</p>
+                    <a href="vorschule/frage-002.html" class="btn btn-sm btn-outline-secondary">Diagnoseprozess verstehen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Punkt C -->
+        <div class="card pre-step-card mb-4">
+            <div class="card-body d-flex gap-3 align-items-start p-4">
+                <div class="pre-step-letter">C</div>
+                <div>
+                    <h3 class="fs-4 mb-2">Hilfe gibt es auch ohne Diagnose</h3>
+                    <p class="mb-2">Viele Unterstützungsangebote stehen dir schon jetzt offen: Frühförderung, Ergotherapie, die Ergänzende unabhängige Teilhabeberatung (EUTB) und Erziehungsberatung. Du musst nicht auf die Diagnose warten, um Hilfe zu bekommen.</p>
+                    <a href="links.html" class="btn btn-sm btn-outline-secondary">Anlaufstellen ansehen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Punkt D -->
+        <div class="card pre-step-card mb-4">
+            <div class="card-body d-flex gap-3 align-items-start p-4">
+                <div class="pre-step-letter">D</div>
+                <div>
+                    <h3 class="fs-4 mb-2">Austausch suchen</h3>
+                    <p class="mb-2">Du brauchst keine Diagnose, um bei uns willkommen zu sein. In unserer Selbsthilfegruppe sind auch Eltern, die sich gerade im Verdachts- oder Diagnostikprozess befinden. Schreib uns einfach.</p>
+                    <a href="index.html#contact" class="btn btn-custom">Kontaktiere uns</a>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Steps -->
     <div class="container" style="max-width: 800px;">
+        <h2 class="mt-5 mb-4">Wenn die Diagnose da ist — so geht es weiter</h2>
 
         <!-- Schritt 1 -->
         <div class="card step-card mb-4">
