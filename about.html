@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,172 +11,291 @@
     <meta property="og:image" content="https://www.ass-elternkreis-nwm.de/images/ASS_infinity_awareness_symbol.png">
     <title>Über uns — ASS Elternkreis NWM</title>
     <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/about.html">
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="icon" href="images/logoneu.jpg" type="image/jpg">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: { DEFAULT: '#1b4332', light: '#2d6a4f' },
+              sunflower: { DEFAULT: '#FFC107', hover: '#E6A800' },
+              brown: '#3E2723',
+              softwhite: '#FAFAF8',
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+
     <link rel="stylesheet" href="style.css">
-    <style>
-        .centered-cards {
-            width: 80%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .row-centered {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-    </style>
 </head>
-<body>
-    <a href="#main-content" class="visually-hidden-focusable">Zum Inhalt springen</a>
-    <!-- Header Area -->
-         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                ASS Elternkreis NWM
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#f1">Termine</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Über uns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="erste-schritte.html">Erste Schritte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="links.html">Links</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hilfsmittel.html">Hilfsmittel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                </ul>
-            </div>
+
+<body class="bg-softwhite text-brown font-sans antialiased">
+
+    <!-- Skip to content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:text-forest">
+      Zum Inhalt springen
+    </a>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- NAVBAR                                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center gap-2 text-forest font-bold text-lg hover:opacity-80 transition-opacity">
+            <img src="images/ASS_infinity_awareness_symbol.png" alt="ASS Elternkreis Logo" width="32" height="26" class="inline-block">
+            ASS Elternkreis NWM
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center gap-1">
+            <a href="index.html#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="index.html#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-forest bg-forest/5 transition-colors">Über uns</a>
+            <a href="erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+
+          <!-- Mobile Hamburger -->
+          <button id="navToggle" type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors" aria-label="Navigation umschalten" aria-expanded="false">
+            <svg id="navIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="navIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden pb-4">
+          <div class="flex flex-col gap-1 pt-2 border-t border-gray-100">
+            <a href="index.html#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="index.html#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-forest bg-forest/5 transition-colors">Über uns</a>
+            <a href="erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+        </div>
+      </div>
     </nav>
 
-    <!-- Hero -->
-    <div id="main-content" class="container my-5">
-        <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-            <h1 class="text-body-emphasis">Wer wir sind</h1>
-            <p class="col-lg-8 mx-auto mb-0" style="font-size: 1.1rem; color: black;">
-                Wir sind der ASS Elternkreis Nordwestmecklenburg — eine Selbsthilfegruppe von und für Eltern autistischer Kinder. Seit 2025 treffen wir uns regelmäßig, um Erfahrungen zu teilen, uns gegenseitig zu stärken und gemeinsam für bessere Bedingungen einzutreten. Inzwischen sind wir fast 30 Familien aus dem gesamten Landkreis NWM.
-            </p>
-        </div>
-    </div>
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- MAIN CONTENT                                -->
+    <!-- ═══════════════════════════════════════════ -->
+    <main id="main-content">
 
-    <!-- Unsere Werte -->
-    <div class="container px-4 py-5">
-        <h2 class="pb-2 border-bottom">Unsere Werte</h2>
-        <div class="row g-4 py-4 row-cols-1 row-cols-lg-3">
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3 rounded-3" style="background-color: #FFC107;">
-                    <img src="images/ASS_infinity_awareness_symbol.png" alt="Infinity-Symbol" width="32" height="32" class="d-inline-block align-text-top m-1">
-                </div>
-                <h3 class="fs-5 text-body-emphasis">Neurodiversität anerkennen</h3>
-                <p>Wir verwenden bewusst das Infinity-Symbol statt des Puzzle-Teils. Autismus ist keine Krankheit, die es zu heilen gilt, sondern eine neurologische Variante. Jeder Mensch hat seinen Platz.</p>
-            </div>
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3 rounded-3" style="background-color: #FFC107;">
-                    <img src="images/wechat.svg" alt="Peer-Support" width="32" height="32" class="d-inline-block align-text-top m-1">
-                </div>
-                <h3 class="fs-5 text-body-emphasis">Peer-Support statt Belehrung</h3>
-                <p>Wir sind keine Therapeuten und keine Experten. Wir sind Eltern, die sich gegenseitig zuhören, unterstützen und voneinander lernen. Erfahrungswissen ist unbezahlbar.</p>
-            </div>
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3 rounded-3" style="background-color: #FFC107;">
-                    <img src="images/suit-heart.svg" alt="Offenheit" width="32" height="32" class="d-inline-block align-text-top m-1">
-                </div>
-                <h3 class="fs-5 text-body-emphasis">Offen und vertraulich</h3>
-                <p>Jeder ist willkommen — mit und ohne Diagnose. Was in der Gruppe besprochen wird, bleibt in der Gruppe. Wir schaffen einen sicheren Raum für ehrlichen Austausch.</p>
-            </div>
+      <!-- Page Header -->
+      <section class="bg-forest/[0.03] py-16 sm:py-20 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-4xl sm:text-5xl font-extrabold text-forest tracking-tight mb-6">Wer wir sind</h1>
+          <p class="text-lg sm:text-xl text-gray-700 leading-relaxed">
+            Wir sind der ASS Elternkreis Nordwestmecklenburg — eine Selbsthilfegruppe von und für Eltern autistischer Kinder. Seit 2025 treffen wir uns regelmäßig, um Erfahrungen zu teilen, uns gegenseitig zu stärken und gemeinsam für bessere Bedingungen einzutreten. Inzwischen sind wir fast 30 Familien aus dem gesamten Landkreis NWM.
+          </p>
         </div>
-    </div>
+      </section>
 
-    <!-- Wie unsere Treffen ablaufen -->
-    <div class="container px-4 py-4">
-        <h2 class="pb-2 border-bottom">Wie unsere Treffen ablaufen</h2>
-        <div class="row py-4">
-            <div class="col-lg-8">
-                <p>Wir treffen uns einmal im Monat — abwechselnd <strong>vor Ort in Wismar</strong> (im "Treff im Lindengarten") und <strong>online per Videokonferenz</strong>. So können auch Eltern teilnehmen, die weiter entfernt wohnen oder das Haus nicht verlassen können.</p>
-                <p>Jedes Treffen dauert etwa <strong>zwei Stunden</strong>. Es gibt keine feste Tagesordnung — wir sprechen über das, was uns gerade bewegt. Manchmal geht es um Schule und Schulbegleitung, manchmal um Anträge und Behörden, manchmal einfach darum, gehört zu werden.</p>
-                <p>Es gibt keinen Zwang, etwas zu sagen. Zuhören ist genauso willkommen wie Erzählen.</p>
+      <!-- Unsere Werte -->
+      <section class="py-16 sm:py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-forest tracking-tight mb-10 text-center">Unsere Werte</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Card 1: Neurodiversität -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 text-center animate-on-scroll">
+              <div class="w-16 h-16 rounded-full bg-sunflower/20 flex items-center justify-center mx-auto mb-5">
+                <svg class="w-8 h-8 text-sunflower" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Neurodiversität anerkennen</h3>
+              <p class="text-gray-600 leading-relaxed">Wir verwenden bewusst das Infinity-Symbol statt des Puzzle-Teils. Autismus ist keine Krankheit, die es zu heilen gilt, sondern eine neurologische Variante. Jeder Mensch hat seinen Platz.</p>
             </div>
+
+            <!-- Card 2: Peer-Support -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 text-center animate-on-scroll">
+              <div class="w-16 h-16 rounded-full bg-sunflower/20 flex items-center justify-center mx-auto mb-5">
+                <svg class="w-8 h-8 text-sunflower" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Peer-Support statt Belehrung</h3>
+              <p class="text-gray-600 leading-relaxed">Wir sind keine Therapeuten und keine Experten. Wir sind Eltern, die sich gegenseitig zuhören, unterstützen und voneinander lernen. Erfahrungswissen ist unbezahlbar.</p>
+            </div>
+
+            <!-- Card 3: Offen & vertraulich -->
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 text-center animate-on-scroll">
+              <div class="w-16 h-16 rounded-full bg-sunflower/20 flex items-center justify-center mx-auto mb-5">
+                <svg class="w-8 h-8 text-sunflower" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Offen und vertraulich</h3>
+              <p class="text-gray-600 leading-relaxed">Jeder ist willkommen — mit und ohne Diagnose. Was in der Gruppe besprochen wird, bleibt in der Gruppe. Wir schaffen einen sicheren Raum für ehrlichen Austausch.</p>
+            </div>
+
+          </div>
         </div>
-    </div>
+      </section>
 
-    <!-- Gründer -->
-    <div class="container px-4 py-4">
-        <h2 class="pb-2 border-bottom">Die Gründer</h2>
-        <div class="row py-4 justify-content-center">
-            <div class="col-md-5 mb-4">
-                <div class="card shadow-sm">
-                    <img src="images/AntjeRaik.jpg" class="card-img-top" alt="Antje und Raik Lasner">
-                    <div class="card-body">
-                        <p class="card-text">Wir sind Antje und Raik. Wir leben in Wismar und sind die Eltern eines 9-jährigen Jungen mit der Diagnose Asperger-Autismus und ADHS. 2025 haben wir den ASS Elternkreis NWM gegründet, weil wir uns genau so eine Gruppe gewünscht hätten.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5 mb-4">
-                <div class="card shadow-sm">
-                    <img src="images/facelessavatar.jpg" class="card-img-top" alt="Platzhalter">
-                    <div class="card-body">
-                        <p class="card-text">Du? Wenn du Interesse an einem Austausch hast, <a href="index.html#contact">schreib uns gerne</a>. Wir freuen uns über jedes neue Gesicht.</p>
-                    </div>
-                </div>
-            </div>
+      <!-- Wie unsere Treffen ablaufen -->
+      <section class="py-16 sm:py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-forest tracking-tight mb-10 text-center">Wie unsere Treffen ablaufen</h2>
+          <div class="border border-dashed border-forest-light/30 rounded-2xl p-8 sm:p-10 bg-white shadow-sm">
+            <p class="text-gray-700 leading-relaxed mb-4">Wir treffen uns einmal im Monat — abwechselnd <strong>vor Ort in Wismar</strong> (im "Treff im Lindengarten") und <strong>online per Videokonferenz</strong>. So können auch Eltern teilnehmen, die weiter entfernt wohnen oder das Haus nicht verlassen können.</p>
+            <p class="text-gray-700 leading-relaxed mb-4">Jedes Treffen dauert etwa <strong>zwei Stunden</strong>. Es gibt keine feste Tagesordnung — wir sprechen über das, was uns gerade bewegt. Manchmal geht es um Schule und Schulbegleitung, manchmal um Anträge und Behörden, manchmal einfach darum, gehört zu werden.</p>
+            <p class="text-gray-700 leading-relaxed">Es gibt keinen Zwang, etwas zu sagen. Zuhören ist genauso willkommen wie Erzählen.</p>
+          </div>
         </div>
-    </div>
+      </section>
 
-    <!-- CTA -->
-    <div class="container my-4" style="max-width: 800px;">
-        <div class="text-center p-4 bg-body border border-dashed rounded-5">
-            <h3>Werde Teil unserer Gemeinschaft</h3>
-            <p class="mb-3">Egal ob frisch diagnostiziert oder schon länger auf dem Weg — bei uns bist du willkommen.</p>
-            <div class="d-flex gap-3 justify-content-center flex-wrap">
-                <a href="erste-schritte.html" class="btn btn-outline-secondary">Erste Schritte</a>
-                <a href="index.html#contact" class="btn btn-custom">Kontaktiere uns</a>
+      <!-- Die Gründer -->
+      <section class="py-16 sm:py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-forest tracking-tight mb-10 text-center">Die Gründer</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Card: Antje & Raik -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden animate-on-scroll">
+              <img src="images/AntjeRaik.jpg" class="w-full h-64 object-cover" alt="Antje und Raik Lasner">
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Antje und Raik</h3>
+                <p class="text-gray-600 leading-relaxed">Wir sind Antje und Raik. Wir leben in Wismar und sind die Eltern eines 9-jährigen Jungen mit der Diagnose Asperger-Autismus und ADHS. 2025 haben wir den ASS Elternkreis NWM gegründet, weil wir uns genau so eine Gruppe gewünscht hätten.</p>
+              </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Footer Area -->
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Über uns</a></li>
-            <li class="nav-item"><a href="index.html#contact" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
-            <li class="nav-item"><a href="index.html#f1" class="nav-link px-2 text-body-secondary">Termine</a></li>
-            <li class="nav-item"><a href="links.html" class="nav-link px-2 text-body-secondary">Links</a></li>
-            <li class="nav-item"><a href="blog.html" class="nav-link px-2 text-body-secondary">Blog</a></li>
-            <li class="nav-item"><a href="faq.html" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-            <li class="nav-item"><a href="impressum.html" class="nav-link px-2 text-body-secondary">Impressum</a></li>
-            <li class="nav-item"><a href="datenschutz.html" class="nav-link px-2 text-body-secondary">Datenschutz</a></li>
-        </ul>
-        <p class="text-center text-body-secondary">&copy; 2024&ndash;2026 Antje und Raik Lasner</p>
+            <!-- Card: Du? -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden animate-on-scroll">
+              <img src="images/facelessavatar.jpg" class="w-full h-64 object-cover" alt="Platzhalter">
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Du?</h3>
+                <p class="text-gray-600 leading-relaxed">Du? Wenn du Interesse an einem Austausch hast, <a href="index.html#contact" class="text-forest font-semibold hover:underline">schreib uns gerne</a>. Wir freuen uns über jedes neue Gesicht.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="py-16 sm:py-20 px-4">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-forest tracking-tight mb-4">Werde Teil unserer Gemeinschaft</h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-8">Egal ob frisch diagnostiziert oder schon länger auf dem Weg — bei uns bist du willkommen.</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="index.html#contact" class="inline-block bg-sunflower hover:bg-sunflower-hover text-brown font-bold px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">Kontaktiere uns</a>
+            <a href="erste-schritte.html" class="inline-block border-2 border-forest text-forest font-bold px-8 py-3.5 rounded-full hover:bg-forest hover:text-white transition-all duration-300">Erste Schritte</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FOOTER                                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <footer class="bg-forest text-white py-10 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+          <a href="about.html" class="text-sm text-white/70 hover:text-white transition-colors">Über uns</a>
+          <a href="index.html#contact" class="text-sm text-white/70 hover:text-white transition-colors">Kontakt</a>
+          <a href="index.html#termine" class="text-sm text-white/70 hover:text-white transition-colors">Termine</a>
+          <a href="links.html" class="text-sm text-white/70 hover:text-white transition-colors">Links</a>
+          <a href="blog.html" class="text-sm text-white/70 hover:text-white transition-colors">Blog</a>
+          <a href="faq.html" class="text-sm text-white/70 hover:text-white transition-colors">FAQ</a>
+          <a href="impressum.html" class="text-sm text-white/70 hover:text-white transition-colors">Impressum</a>
+          <a href="datenschutz.html" class="text-sm text-white/70 hover:text-white transition-colors">Datenschutz</a>
+        </div>
+        <p class="text-center text-sm text-white/50">&copy; 2024–2026 Antje und Raik Lasner</p>
+      </div>
     </footer>
 
-    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</button>
-    <!-- Bootstrap 5 Js -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/site.js"></script>
+    <!-- Back to Top -->
+    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+    </button>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCRIPTS                                     -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <!-- Mobile Nav Toggle -->
+    <script>
+    (function() {
+        var toggle = document.getElementById('navToggle');
+        var menu = document.getElementById('mobileMenu');
+        var iconOpen = document.getElementById('navIconOpen');
+        var iconClose = document.getElementById('navIconClose');
+
+        toggle.addEventListener('click', function() {
+            var isOpen = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+            toggle.setAttribute('aria-expanded', !isOpen);
+        });
+
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menu.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    })();
+    </script>
+
+    <!-- Scroll Animations (IntersectionObserver) -->
+    <script>
+    (function() {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    </script>
+
+    <!-- Back-to-top button -->
+    <script>
+    (function() {
+        var btn = document.querySelector('.back-to-top');
+        if (!btn) return;
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    })();
+    </script>
+
 </body>
 </html>

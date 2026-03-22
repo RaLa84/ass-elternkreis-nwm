@@ -11,567 +11,878 @@
     <meta property="og:image" content="https://www.ass-elternkreis-nwm.de/images/ASS_infinity_awareness_symbol.png">
     <title>Links — ASS Elternkreis NWM</title>
     <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/links.html">
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="icon" href="images/logoneu.jpg" type="image/jpg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#1b4332',
+                        'forest-light': '#2d6a4f',
+                        sunflower: '#FFC107',
+                        'sunflower-hover': '#E6A800',
+                        brown: '#3E2723',
+                        softwhite: '#FAFAF8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
     <style>
-      .thumb-col { width: 80px; min-width: 80px; vertical-align: middle; text-align: center; }
-      .thumb-col img { max-width: 60px; max-height: 85px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
-      .thumb-col-video { width: 130px; min-width: 130px; vertical-align: middle; text-align: center; }
-      .thumb-col-video img { width: 110px; height: auto; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
-      .thumb-placeholder { width: 60px; height: 85px; background: #e9ecef; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; color: #6c757d; font-size: 1.5rem; }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body>
-    <a href="#main-content" class="visually-hidden-focusable">Zum Inhalt springen</a>
-    <!-- Header Area -->
-     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                ASS Elternkreis NWM
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#f1">Termine</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Über uns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="erste-schritte.html">Erste Schritte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="links.html">Links</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hilfsmittel.html">Hilfsmittel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                </ul>
+<body class="bg-softwhite text-brown font-sans antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-4 focus:py-2 focus:z-50 focus:rounded">Zum Inhalt springen</a>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2 text-forest font-bold text-lg no-underline">
+                    <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" class="w-8 h-6">
+                    ASS Elternkreis NWM
+                </a>
+                <!-- Mobile hamburger -->
+                <button id="nav-toggle" type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-brown hover:bg-gray-100" aria-controls="nav-menu" aria-expanded="false" aria-label="Navigation umschalten">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <!-- Desktop nav -->
+                <div class="hidden lg:flex lg:items-center lg:gap-1">
+                    <a href="index.html#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
+                    <a href="index.html#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Über uns</a>
+                    <a href="erste-schritte.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Erste Schritte</a>
+                    <a href="links.html" class="px-3 py-2 rounded-md text-sm font-medium text-forest bg-forest/10 no-underline">Links</a>
+                    <a href="hilfsmittel.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Hilfsmittel</a>
+                    <a href="blog.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Blog</a>
+                    <a href="faq.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">FAQ</a>
+                </div>
+            </div>
+            <!-- Mobile nav menu -->
+            <div id="nav-menu" class="hidden lg:hidden pb-4">
+                <div class="flex flex-col gap-1">
+                    <a href="index.html#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
+                    <a href="index.html#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Über uns</a>
+                    <a href="erste-schritte.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Erste Schritte</a>
+                    <a href="links.html" class="px-3 py-2 rounded-md text-sm font-medium text-forest bg-forest/10 no-underline">Links</a>
+                    <a href="hilfsmittel.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Hilfsmittel</a>
+                    <a href="blog.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Blog</a>
+                    <a href="faq.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">FAQ</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    
-<div id="main-content" class="container my-5" style="margin-bottom: 10px;">
-    <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-        <h1 class="text-body-emphasis">Linksammlung</h1>
-            <p class="col-lg-6 mx-auto mb-4">
+    <!-- Page Header -->
+    <section id="main-content" class="bg-forest/[0.03]">
+        <div class="max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-forest mb-6 leading-tight">Linksammlung</h1>
+            <p class="text-lg sm:text-xl text-brown/80 leading-relaxed">
                 Eine Sammlung von Organisationen, Links und Medien, die wir empfehlen.
             </p>
-    </div>
-</div>      
+        </div>
+    </section>
 
-<h2 style="margin: 25px 25px 25px 50px;">Nützliche Organisationen in Netz</h2>
+    <!-- 1. Nützliche Organisationen im Netz -->
+    <section class="py-12 px-4" id="organisationen">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-forest mb-6 animate-on-scroll">Nützliche Organisationen in Netz</h2>
+            <div class="bg-white rounded-2xl shadow-sm p-6 animate-on-scroll">
+                <div class="divide-y divide-gray-100">
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.autismeurope.org/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Autism Europe</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autism-Europe (AE) ist eine internationale Vereinigung, deren Hauptziel es ist, die Rechte autistischer Menschen zu fördern und ihnen zu helfen, ihre Lebensqualität zu verbessern.  AE setzt sich auch für mehr Bewusstsein und Verständnis für Autismus in der Gesellschaft ein.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.autismus.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Bundesverband Autismus Deutschland e.V</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Der Bundesverband autismus Deutschland e.V. vertritt als Selbsthilfeverband die Interessen von Menschen mit Autismus und ihrer Angehörigen. Er betreibt umfassende Aufklärung über das Autismus-Spektrum und die vorhandenen wissenschaftlichen Erkenntnisse, veranstaltet Kongresse und Fachtagungen und gibt Bücher sowie Broschüren heraus. Außerdem fördert er Einrichtungen und Maßnahmen, die eine wirksame Hilfe für Menschen mit Autismus bedeuten.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.autismus-mv.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Autismus Landesverband MV e.V</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">​Der Landesverband Autismus Mecklenburg-Vorpommern e.V. informiert über Autismus, berät Betroffene, Angehörige und Fachkräfte, unterstützt Selbsthilfegruppen und fördert Netzwerke zwischen Eltern, Pädagogen, Ärzten und Therapeuten. Zudem organisiert er Veranstaltungen und kooperiert mit anderen Vereinen zur Förderung der sozialen Integration autistischer Menschen.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://pda-autismus-verein.org/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Fachverein PDA-Autismus-Profil</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Der Fachverein PDA-Autismus-Profil (FAPDA) informiert über das Pathological Demand Avoidance (PDA)-Profil innerhalb des Autismus-Spektrums. Er bietet Schulungen, Intervisionen und Beratungen für Betroffene, Angehörige und Fachkräfte an. Zudem fördert FAPDA den Austausch und die Vernetzung durch diverse Veranstaltungen und Online-Plattformen.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.white-unicorn.org/startseite/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">White Unicorn e.V.</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Der White Unicorn e.V. entwickelt als Interessenverband praxistaugliche, wissenschaftlich geprüfte Projekte für ein barrierefreies, autistenfreundliches Umfeld – und gestaltet Sozialräume aktiv mit. Unsere zugrunde liegende Arbeitshypothese findet sich in den Menüpunkten der Website.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.autism.org.uk/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">National Autistic Society (UK)</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Die NAS bietet praktische Unterstützung, Informationen und Beratung an, betreibt spezialisierte Schulen und Einrichtungen, führt Schulungen durch und engagiert sich in der politischen Arbeit, um ein besseres Verständnis für Autismus zu fördern und die Gesellschaft inklusiver zu gestalten.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Institut</th>
-            <th>Beschreibung</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><a href="https://www.autismeurope.org/">Autism Europe</a></td>
-            <td>Autism-Europe (AE) ist eine internationale Vereinigung, deren Hauptziel es ist, die Rechte autistischer Menschen zu fördern und ihnen zu helfen, ihre Lebensqualität zu verbessern.  AE setzt sich auch für mehr Bewusstsein und Verständnis für Autismus in der Gesellschaft ein.</td>
-          </tr>
-            <tr>
-            <td><a href="https://www.autismus.de/">Bundesverband Autismus Deutschland e.V</a></td>
-            <td>Der Bundesverband autismus Deutschland e.V. vertritt als Selbsthilfeverband die Interessen von Menschen mit Autismus und ihrer Angehörigen. Er betreibt umfassende Aufklärung über das Autismus-Spektrum und die vorhandenen wissenschaftlichen Erkenntnisse, veranstaltet Kongresse und Fachtagungen und gibt Bücher sowie Broschüren heraus. Außerdem fördert er Einrichtungen und Maßnahmen, die eine wirksame Hilfe für Menschen mit Autismus bedeuten.</td>
-          </tr>
-            <tr>
-            <td><a href="https://www.autismus-mv.de/">Autismus Landesverband MV e.V</a></td>
-            <td>​Der Landesverband Autismus Mecklenburg-Vorpommern e.V. informiert über Autismus, berät Betroffene, Angehörige und Fachkräfte, unterstützt Selbsthilfegruppen und fördert Netzwerke zwischen Eltern, Pädagogen, Ärzten und Therapeuten. Zudem organisiert er Veranstaltungen und kooperiert mit anderen Vereinen zur Förderung der sozialen Integration autistischer Menschen.</td>
-          </tr>
-            <tr>
-            <td><a href="https://pda-autismus-verein.org/">Fachverein PDA-Autismus-Profil</a></td>
-            <td>Der Fachverein PDA-Autismus-Profil (FAPDA) informiert über das Pathological Demand Avoidance (PDA)-Profil innerhalb des Autismus-Spektrums. Er bietet Schulungen, Intervisionen und Beratungen für Betroffene, Angehörige und Fachkräfte an. Zudem fördert FAPDA den Austausch und die Vernetzung durch diverse Veranstaltungen und Online-Plattformen.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.white-unicorn.org/startseite/">White Unicorn e.V.</a></td>
-            <td>Der White Unicorn e.V. entwickelt als Interessenverband praxistaugliche, wissenschaftlich geprüfte Projekte für ein barrierefreies, autistenfreundliches Umfeld – und gestaltet Sozialräume aktiv mit. Unsere zugrunde liegende Arbeitshypothese findet sich in den Menüpunkten der Website.</td>
-          </tr>
-            <tr>
-            <td><a href="https://www.autism.org.uk/">National Autistic Society (UK)</a></td>
-            <td>Die NAS bietet praktische Unterstützung, Informationen und Beratung an, betreibt spezialisierte Schulen und Einrichtungen, führt Schulungen durch und engagiert sich in der politischen Arbeit, um ein besseres Verständnis für Autismus zu fördern und die Gesellschaft inklusiver zu gestalten.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-    
-<h2 style="margin: 25px 25px 25px 50px;">Hilfreiche Organisationen in NWM</h2>
+    <!-- 2. Hilfreiche Organisationen in NWM -->
+    <section class="py-12 px-4 bg-forest/[0.03]" id="nwm">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-forest mb-6 animate-on-scroll">Hilfreiche Organisationen in NWM</h2>
+            <div class="bg-white rounded-2xl shadow-sm p-6 animate-on-scroll">
+                <div class="divide-y divide-gray-100">
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.salo-ag.de/standorte/salo-wismar/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Salo + Partner</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">SALO+PARTNER in Wismar unterstützt Menschen mit gesundheitlichen Einschränkungen durch berufliche Rehabilitation, Qualifizierung und Integration. Ziel ist der erfolgreiche (Wieder-)Einstieg ins Berufsleben durch individuelle Förderung und Coaching.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://vs-hro.de/autismusambulanzen/region-wismar/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Autismusambulanz Region Wismar</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Die Autismus-Ambulanz Region Wismar bietet individuelle Therapie, Beratung und mobile Unterstützung für autistische Kinder, Jugendliche und Erwachsene, um ihre Teilhabe und Lebensqualität zu verbessern.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.bildung-mv.de/schule/schulentwicklung/beratung-und-unterstuetzung/kubes-kooperations-und-beratungssystem/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">KuBES – Kooperations- und Beratungssystem</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">KuBES unterstützt Schulen und Eltern durch Beratung, Prävention und Netzwerkarbeit. Ziel ist es, gemeinsam Lösungen zu entwickeln, Handlungssicherheit zu stärken und ein lernförderliches Schulklima zu schaffen.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.nordwestmecklenburg.de/de/verfahrenslotsen.html" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Verfahrenslotsen</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Die Leistungen der Verfahrenslotsen richten sich an Kinder, Jugendliche und junge Erwachsene mit (drohender) Behinderung und deren Eltern oder sonstige Erziehungsberechtigte. Sie sind freiwillig, unabhängig und kostenfrei. Die Aufgaben der Verfahrenslotsen sind die Beratung, Begleitung und Unterstützung bei der Inanspruchnahme von Leistungen der Eingliederungshilfe nach den Sozialgesetzbüchern VIII und IX. Sie helfen bei der Orientierung, wer wo und wer wofür einen Antrag auf Eingliederungshilfe stellen kann, um möglicherweise die Teilhabe an der Gesellschaft verbessern zu können. Ebenso klären sie mit den Leistungsberechtigten, warum ein Antrag abgelehnt worden ist.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.bildung-mv.de/schule/inklusion/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Schulamt Schwerin Servicestelle Inklusion</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Die Servicestellen Inklusion der Staatlichen Schulämter in Mecklenburg-Vorpommern beraten Eltern, Lehrkräfte und pädagogisches Personal bei Fragen zur inklusiven Beschulung und individuellen Förderung von Kindern mit sonderpädagogischem Förderbedarf. Sie unterstützen bei der Umsetzung von Inklusion im Schulalltag und vermitteln passende Förderangebote.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.buergerbeauftragter-mv.de/fuer-menschen-mit-behinderungen/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Bürgerbeauftragter für Menschen mit Behinderungen</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Der Bürgerbeauftragte in Mecklenburg-Vorpommern und seine Mitarbeiter kümmern sich auch um Menschen mit Behinderung.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.teilhabeberatung.de/beratung/eutb-nordwestmecklenburg-wismar" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">EUTB Nordwestmecklenburg</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Kostenlose, unabhängige Teilhabeberatung nach dem Peer-Prinzip in Wismar. Beratung zu Rehabilitation und Teilhabe – von Betroffenen für Betroffene.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://lebenshilfe-wismar.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Lebenshilfe Wismar e.V.</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Unterstützung und Familienentlastung für Menschen mit Behinderung in Wismar und Umgebung.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.nordwestmecklenburg.de/de/sozialpsychiatrischer_dienst.html" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Sozialpsychiatrischer Dienst NWM</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Beratung bei psychischen Belastungen für Betroffene und Angehörige – ohne Überweisung oder Diagnose. Rostocker Straße 76, Wismar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Institut</th>
-            <th>Beschreibung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="https://www.salo-ag.de/standorte/salo-wismar/">Salo + Partner</a></td>
-            <td>SALO+PARTNER in Wismar unterstützt Menschen mit gesundheitlichen Einschränkungen durch berufliche Rehabilitation, Qualifizierung und Integration. Ziel ist der erfolgreiche (Wieder-)Einstieg ins Berufsleben durch individuelle Förderung und Coaching.</td>
-          </tr>
-          <tr>
-            <td><a href="https://vs-hro.de/autismusambulanzen/region-wismar/">Autismusambulanz Region Wismar</a></td>
-            <td>Die Autismus-Ambulanz Region Wismar bietet individuelle Therapie, Beratung und mobile Unterstützung für autistische Kinder, Jugendliche und Erwachsene, um ihre Teilhabe und Lebensqualität zu verbessern.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.bildung-mv.de/schule/schulentwicklung/beratung-und-unterstuetzung/kubes-kooperations-und-beratungssystem/">KuBES – Kooperations- und Beratungssystem</a></td>
-            <td>KuBES unterstützt Schulen und Eltern durch Beratung, Prävention und Netzwerkarbeit. Ziel ist es, gemeinsam Lösungen zu entwickeln, Handlungssicherheit zu stärken und ein lernförderliches Schulklima zu schaffen.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.nordwestmecklenburg.de/de/verfahrenslotsen.html">Verfahrenslotsen</a></td>
-            <td>Die Leistungen der Verfahrenslotsen richten sich an Kinder, Jugendliche und junge Erwachsene mit (drohender) Behinderung und deren Eltern oder sonstige Erziehungsberechtigte. Sie sind freiwillig, unabhängig und kostenfrei. Die Aufgaben der Verfahrenslotsen sind die Beratung, Begleitung und Unterstützung bei der Inanspruchnahme von Leistungen der Eingliederungshilfe nach den Sozialgesetzbüchern VIII und IX. Sie helfen bei der Orientierung, wer wo und wer wofür einen Antrag auf Eingliederungshilfe stellen kann, um möglicherweise die Teilhabe an der Gesellschaft verbessern zu können. Ebenso klären sie mit den Leistungsberechtigten, warum ein Antrag abgelehnt worden ist.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.bildung-mv.de/schule/inklusion/">Schulamt Schwerin Servicestelle Inklusion</a></td>
-          <td>Die Servicestellen Inklusion der Staatlichen Schulämter in Mecklenburg-Vorpommern beraten Eltern, Lehrkräfte und pädagogisches Personal bei Fragen zur inklusiven Beschulung und individuellen Förderung von Kindern mit sonderpädagogischem Förderbedarf. Sie unterstützen bei der Umsetzung von Inklusion im Schulalltag und vermitteln passende Förderangebote.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.buergerbeauftragter-mv.de/fuer-menschen-mit-behinderungen/">Bürgerbeauftragter für Menschen mit Behinderungen</a></td>
-          <td>Der Bürgerbeauftragte in Mecklenburg-Vorpommern und seine Mitarbeiter kümmern sich auch um Menschen mit Behinderung.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.teilhabeberatung.de/beratung/eutb-nordwestmecklenburg-wismar">EUTB Nordwestmecklenburg</a></td>
-            <td>Kostenlose, unabhängige Teilhabeberatung nach dem Peer-Prinzip in Wismar. Beratung zu Rehabilitation und Teilhabe – von Betroffenen für Betroffene.</td>
-          </tr>
-          <tr>
-            <td><a href="https://lebenshilfe-wismar.de/">Lebenshilfe Wismar e.V.</a></td>
-            <td>Unterstützung und Familienentlastung für Menschen mit Behinderung in Wismar und Umgebung.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.nordwestmecklenburg.de/de/sozialpsychiatrischer_dienst.html">Sozialpsychiatrischer Dienst NWM</a></td>
-            <td>Beratung bei psychischen Belastungen für Betroffene und Angehörige – ohne Überweisung oder Diagnose. Rostocker Straße 76, Wismar.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <!-- 3. Diagnose und Therapie -->
+    <section class="py-12 px-4" id="diagnose">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-forest mb-6 animate-on-scroll">Diagnose und Therapie</h2>
+            <div class="bg-white rounded-2xl shadow-sm p-6 animate-on-scroll">
+                <div class="divide-y divide-gray-100">
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://kjp-ankerhafen.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">KJP-ankerhafen</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Praxis für Psychiatrie, Psychotherapie und Psychosomatik des Kindes- und Jugendalters in Bahnhofsnähe von Lübeck.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://kjpp.med.uni-rostock.de/institutsambulanz" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">KJPP Uni Rostock</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Klinik für Psychiatrie, Neurologie, Psychosomatik und Psychotherapie im Kindes- und Jugendalter</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://kjpp.med.uni-rostock.de/institutsambulanz" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">KJP Schwerin</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Helios Klinik für Kinder- und Jugenpsychiatrie</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.ggp-gruppe.de/therapie-reha-erwachsene/ambulant/mvz-goerdelerstrasse" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">MVZ Goerdelerstraße, Rostock</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Im Medizinischen Versorgungszentrum (MVZ), zentral in Reutershagen gelegen, befinden sich verschiedene Facharztpraxen. Fachärztinnen*ärzte bieten eine ambulante Behandlung in den Bereichen Psychiatrie, Psychotherapie und Neurologie</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://ergotherapie-nwm.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Ergotherapie-nwm</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Verbund von ergotherapeutischen Facharztpraxen in Wismar, Grevesmühlen und Neukloster</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://ergotherapie-ittrich.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Ergotherapie Ittrich</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Ergotherapeutische Facharztpraxis in Wismar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- 4. Influencer — Deutschsprachig -->
+    <section class="py-12 px-4 bg-forest/[0.03]" id="influencer-de">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-forest mb-6 animate-on-scroll">Influencer &amp; Creator zum Thema Autismus</h2>
 
-<h2 style="margin: 25px 25px 25px 50px;">Diagnose und Therapie</h2>
+            <h3 class="text-xl font-bold text-forest mb-4 animate-on-scroll">Deutschsprachig</h3>
+            <div class="bg-white rounded-2xl shadow-sm p-6 animate-on-scroll mb-8">
+                <div class="divide-y divide-gray-100">
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.fuchskind.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Daniela Schreiter</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistische Comic-Künstlerin und Autorin der „Schattenspringer"-Reihe. Max-und-Moritz-Preisträgerin 2022. Ihre Graphic Novels zeigen authentisch und humorvoll das Aufwachsen im Autismus-Spektrum.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://stephanie-meer-walter.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Stephanie Meer-Walter</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistische Autorin und Podcasterin. Ihr Podcast „Autismus braucht Aufklärung" gibt Einblicke aus erster Hand. Motto: „Redet nicht über uns, sondern mit uns!"</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.robotinabox.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Marlies Hübner</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistische Autorin und Bloggerin. Ihr Blog „robotinabox" gehört zu den meistgelesenen deutschsprachigen Autismus-Blogs. Buchautorin von „Verstörungstheorien".</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://ellasblog.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Ellas Blog (Silke Bauerfeind)</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Eines der bekanntesten deutschsprachigen Online-Magazine zum Thema Autismus. Silke Bauerfeind ist Mutter eines autistischen Sohnes, 9-fache Buchautorin und bietet Blogbeiträge, Online-Kurse und Workshops rund um das Leben mit Autismus.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://autismus-kultur.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Autismus-Kultur (Linus Müller)</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Seit 2007 betriebenes Informationsportal, das autistische Erfahrungen mit Forschungsergebnissen verbindet. Linus Müller ist selbst Autist, Autismus-Pädagoge und setzt sich für die Akzeptanz von Autismus als Teil der neurologischen Vielfalt ein.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://mela.geekgirls.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Melas Autismus- und ADHS-Blog</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Blog einer autistischen Frau mit ADHS, die mit über 30 Jahren ihre Diagnose erhielt. Mela setzt sich für den Abbau von Vorurteilen gegenüber autistischen Menschen ein und schreibt aus der eigenen Innenperspektive.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://aleksander-knauerhase.de/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Aleksander Knauerhase</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistischer Fachberater, freiberuflicher Referent und Buchautor („Autismus mal anders"). Seit 2013 hält er Vorträge und Seminare über Autismus aus der Innenperspektive und berät Einrichtungen und Wohlfahrtsverbände.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://de.wikipedia.org/wiki/Denise_Linke" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Denise Linke</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Journalistin und Autorin mit Asperger-Diagnose und ADHS. Gründerin des Magazins N#mmer und Autorin des Buches „Nicht normal, aber das richtig gut – Mein wunderbares Leben mit Autismus und ADHS".</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://sachendenker.ch/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Sachendenker</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Schweizer Blog über das Autismus-Spektrum, verfasst von einem Elternteil mit eigener Autismus- und ADHS-Erfahrung. Verbindet persönliche Erlebnisse mit wissenschaftlichen Theorien zu Themen wie Reizverarbeitung und Meltdowns.</p>
+                    </div>
+                </div>
+            </div>
 
+            <!-- International -->
+            <h3 class="text-xl font-bold text-forest mb-4 animate-on-scroll">International</h3>
+            <div class="bg-white rounded-2xl shadow-sm p-6 animate-on-scroll">
+                <div class="divide-y divide-gray-100">
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.paigelayle.ca/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Paige Layle</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Kanadische Creatorin mit Millionen Followern auf TikTok und YouTube. Klärt über Autismus bei Mädchen und Frauen auf und bricht mit Stereotypen. Autorin von „But Everyone Feels This Way".</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://chloehayden.com.au/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Chloe Hayden</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Australische Schauspielerin (Quinni in „Heartbreak High" auf Netflix), Autorin und Aktivistin. Ihr Buch „Different, Not Less" ist ein Plädoyer für Selbstakzeptanz.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://yosamdysam.com/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Yo Samdy Sam</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Britische YouTuberin und Psychologin. Spät diagnostiziert, teilt sie evidenzbasierte Inhalte über Autismus und Neurodivergenz. Autorin von „So You Think You're Autistic".</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.purpleella.com/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Purple Ella</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Britische Creatorin, spät diagnostiziert, Beraterin der National Autistic Society. Mutter von drei neurodivergenten Kindern. Teilt Alltag und Wissen auf YouTube und Instagram.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.instagram.com/kaelynnvp/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Kaelynn Partlow</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistische US-amerikanische Therapeutin, Rednerin und Autorin von „Life on the Bridge". Bekannt aus der Netflix-Serie „Love on the Spectrum". Klärt auf TikTok und Instagram (über 800K Follower) über Autismus aus professioneller und persönlicher Sicht auf.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://neurodivergentrebel.com/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Neurodivergent Rebel (Lyric Rivera)</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistische Selbstvertreterin, Autorin und Beraterin aus den USA. Betreibt seit 2016 einen der bekanntesten Blogs zur Neurodiversität und ist Autorin von „Workplace NeuroDiversity Rising".</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://theaspieworld.com/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">The Aspie World (Dan Jones)</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistischer walisischer YouTuber mit über 290.000 Abonnenten – einer der größten Autismus-Kanäle auf YouTube weltweit. Teilt Alltagstipps, Erklärvideos und Interviews rund um Autismus und ADHS.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://orionkelly.com.au/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Orion Kelly (That Autistic Guy)</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Australischer autistischer YouTuber, Podcaster und Autor von „Autism Feels… An Earthlings Guide". Sein Podcast „My Friend Autism" erreicht ein breites Publikum und erklärt Autismus auf zugängliche Weise.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://sbsk.org/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Chris Ulmer (Special Books by Special Kids)</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">US-amerikanischer ehemaliger Sonderpädagoge und Gründer der Non-Profit-Organisation SBSK. Führt einfühlsame Interviews mit neurodivergenten und behinderten Menschen – über 3,4 Mio. YouTube-Abonnenten und Milliarden Aufrufe.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.amygravino.com/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Amy Gravino</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistische Beziehungscoach, Beraterin und internationale Rednerin aus den USA. Pionierin im Bereich Autismus und Sexualität, hat u.a. zweimal vor den Vereinten Nationen gesprochen.</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://majatoudal.com/" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Maja Toudal</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistische dänische Psychologin, Autorin und Rednerin. Entwickelte das „Energy Accounting"-Konzept zum Stressmanagement bei Autismus. Co-Autorin mit Tony Attwood und Gastgeberin des Podcasts „Autistic Tidbits &amp; Tangents".</p>
+                    </div>
+                    <div class="py-4 first:pt-0 last:pb-0">
+                        <h3 class="font-bold text-gray-900 mb-1">
+                            <a href="https://www.tiktok.com/@toren_wolf" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Toren Wolf</a>
+                        </h3>
+                        <p class="text-sm text-gray-600">Autistischer Teenager und ADHS-Advocate aus den USA, der auf TikTok und Instagram Vlogs, Sketche und persönliche Geschichten über sein Leben mit Autismus und ADHS teilt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Praxis</th>
-            <th>Beschreibung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="https://kjp-ankerhafen.de/">KJP-ankerhafen</a></td>
-            <td>Praxis für Psychiatrie, Psychotherapie und Psychosomatik des Kindes- und Jugendalters in Bahnhofsnähe von Lübeck.</td>
-          </tr>
-          <tr>
-            <td><a href="https://kjpp.med.uni-rostock.de/institutsambulanz">KJPP Uni Rostock</a></td>
-            <td>Klinik für Psychiatrie, Neurologie, Psychosomatik und Psychotherapie im Kindes- und Jugendalter</td>
-          </tr>
-          <tr>
-            <td><a href="https://kjpp.med.uni-rostock.de/institutsambulanz">KJP Schwerin</a></td>
-            <td>Helios Klinik für Kinder- und Jugenpsychiatrie</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.ggp-gruppe.de/therapie-reha-erwachsene/ambulant/mvz-goerdelerstrasse">MVZ Goerdelerstraße, Rostock</a></td>
-            <td>Im Medizinischen Versorgungszentrum (MVZ), zentral in Reutershagen gelegen, befinden sich verschiedene Facharztpraxen. Fachärztinnen*ärzte bieten eine ambulante Behandlung in den Bereichen Psychiatrie, Psychotherapie und Neurologie</td>
-          </tr>
-            <tr>
-            <td><a href="https://ergotherapie-nwm.de/">Ergotherapie-nwm</a></td>
-            <td>Verbund von ergotherapeutischen Facharztpraxen in Wismar, Grevesmühlen und Neukloster</td>
-          </tr>
-            <tr>
-            <td><a href="https://ergotherapie-ittrich.de/">Ergotherapie Ittrich</a></td>
-            <td>Ergotherapeutische Facharztpraxis in Wismar</td>
-          </tr>                  
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <!-- 5. Empfohlene Bücher -->
+    <section class="py-12 px-4" id="buecher">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-forest mb-6 animate-on-scroll">Empfohlene Bücher</h2>
+            <div class="bg-white rounded-2xl shadow-sm p-6 animate-on-scroll">
 
-<h2 style="margin: 25px 25px 25px 50px;">Influencer & Creator zum Thema Autismus</h2>
+                <!-- Für Eltern & Angehörige -->
+                <h3 class="text-xl font-bold text-forest mt-0 mb-4 border-b-2 border-sunflower/50 pb-2">Für Eltern &amp; Angehörige</h3>
 
-<h3 style="margin: 15px 25px 10px 50px;">Deutschsprachig</h3>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3958902294&printsec=frontcover&img=1&zoom=1" alt="Cover: Der Junge, der zu viel fühlte" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Der Junge, der zu viel fühlte – Lorenz Wagner</h4>
+                        <p class="text-sm text-gray-600">Die berührende Geschichte des Hirnforschers Henry Markram und seines autistischen Sohnes Kai – und die Erkenntnis, dass Autisten nicht zu wenig, sondern zu viel fühlen. Ein Buch, das unser Bild von Autismus grundlegend verändert. (deutsch)</p>
+                        <a href="https://www.amazon.de/Junge-viel-f%C3%BChlte-weltbekannter-Hirnforscher/dp/3958902294" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-<div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Beschreibung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="https://www.fuchskind.de/">Daniela Schreiter</a></td>
-            <td>Autistische Comic-Künstlerin und Autorin der „Schattenspringer"-Reihe. Max-und-Moritz-Preisträgerin 2022. Ihre Graphic Novels zeigen authentisch und humorvoll das Aufwachsen im Autismus-Spektrum.</td>
-          </tr>
-          <tr>
-            <td><a href="https://stephanie-meer-walter.de/">Stephanie Meer-Walter</a></td>
-            <td>Autistische Autorin und Podcasterin. Ihr Podcast „Autismus braucht Aufklärung" gibt Einblicke aus erster Hand. Motto: „Redet nicht über uns, sondern mit uns!"</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.robotinabox.de/">Marlies Hübner</a></td>
-            <td>Autistische Autorin und Bloggerin. Ihr Blog „robotinabox" gehört zu den meistgelesenen deutschsprachigen Autismus-Blogs. Buchautorin von „Verstörungstheorien".</td>
-          </tr>
-          <tr>
-            <td><a href="https://ellasblog.de/">Ellas Blog (Silke Bauerfeind)</a></td>
-            <td>Eines der bekanntesten deutschsprachigen Online-Magazine zum Thema Autismus. Silke Bauerfeind ist Mutter eines autistischen Sohnes, 9-fache Buchautorin und bietet Blogbeiträge, Online-Kurse und Workshops rund um das Leben mit Autismus.</td>
-          </tr>
-          <tr>
-            <td><a href="https://autismus-kultur.de/">Autismus-Kultur (Linus Müller)</a></td>
-            <td>Seit 2007 betriebenes Informationsportal, das autistische Erfahrungen mit Forschungsergebnissen verbindet. Linus Müller ist selbst Autist, Autismus-Pädagoge und setzt sich für die Akzeptanz von Autismus als Teil der neurologischen Vielfalt ein.</td>
-          </tr>
-          <tr>
-            <td><a href="https://mela.geekgirls.de/">Melas Autismus- und ADHS-Blog</a></td>
-            <td>Blog einer autistischen Frau mit ADHS, die mit über 30 Jahren ihre Diagnose erhielt. Mela setzt sich für den Abbau von Vorurteilen gegenüber autistischen Menschen ein und schreibt aus der eigenen Innenperspektive.</td>
-          </tr>
-          <tr>
-            <td><a href="https://aleksander-knauerhase.de/">Aleksander Knauerhase</a></td>
-            <td>Autistischer Fachberater, freiberuflicher Referent und Buchautor („Autismus mal anders"). Seit 2013 hält er Vorträge und Seminare über Autismus aus der Innenperspektive und berät Einrichtungen und Wohlfahrtsverbände.</td>
-          </tr>
-          <tr>
-            <td><a href="https://de.wikipedia.org/wiki/Denise_Linke">Denise Linke</a></td>
-            <td>Journalistin und Autorin mit Asperger-Diagnose und ADHS. Gründerin des Magazins N#mmer und Autorin des Buches „Nicht normal, aber das richtig gut – Mein wunderbares Leben mit Autismus und ADHS".</td>
-          </tr>
-          <tr>
-            <td><a href="https://sachendenker.ch/">Sachendenker</a></td>
-            <td>Schweizer Blog über das Autismus-Spektrum, verfasst von einem Elternteil mit eigener Autismus- und ADHS-Erfahrung. Verbindet persönliche Erlebnisse mit wissenschaftlichen Theorien zu Themen wie Reizverarbeitung und Meltdowns.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3499628732&printsec=frontcover&img=1&zoom=1" alt="Cover: Warum ich euch nicht in die Augen schauen kann" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Warum ich euch nicht in die Augen schauen kann – Naoki Higashida</h4>
+                        <p class="text-sm text-gray-600">Mit nur 13 Jahren geschrieben, beantwortet Naoki Fragen über sein Verhalten und seine Wahrnehmung als nonverbal-autistischer Junge – poetisch, direkt und tief berührend. (deutsch, Original japanisch)</p>
+                        <a href="https://www.amazon.de/Warum-euch-nicht-Augen-schauen/dp/3499628732" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-<h3 style="margin: 15px 25px 10px 50px;">International</h3>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3830433921&printsec=frontcover&img=1&zoom=1" alt="Cover: Ein ganzes Leben mit dem Asperger-Syndrom" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Ein ganzes Leben mit dem Asperger-Syndrom – Tony Attwood</h4>
+                        <p class="text-sm text-gray-600">Der Klassiker des weltweit bekanntesten Asperger-Experten – von Kindheit bis ins Erwachsenenalter, mit erprobten Strategien und ermutigenden Geschichten von Betroffenen. (deutsch, Original englisch)</p>
+                        <a href="https://www.amazon.de/Ein-ganzes-Leben-Asperger-Syndrom-Erwachsensein/dp/3830433921" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-<div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Beschreibung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="https://www.paigelayle.ca/">Paige Layle</a></td>
-            <td>Kanadische Creatorin mit Millionen Followern auf TikTok und YouTube. Klärt über Autismus bei Mädchen und Frauen auf und bricht mit Stereotypen. Autorin von „But Everyone Feels This Way".</td>
-          </tr>
-          <tr>
-            <td><a href="https://chloehayden.com.au/">Chloe Hayden</a></td>
-            <td>Australische Schauspielerin (Quinni in „Heartbreak High" auf Netflix), Autorin und Aktivistin. Ihr Buch „Different, Not Less" ist ein Plädoyer für Selbstakzeptanz.</td>
-          </tr>
-          <tr>
-            <td><a href="https://yosamdysam.com/">Yo Samdy Sam</a></td>
-            <td>Britische YouTuberin und Psychologin. Spät diagnostiziert, teilt sie evidenzbasierte Inhalte über Autismus und Neurodivergenz. Autorin von „So You Think You're Autistic".</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.purpleella.com/">Purple Ella</a></td>
-            <td>Britische Creatorin, spät diagnostiziert, Beraterin der National Autistic Society. Mutter von drei neurodivergenten Kindern. Teilt Alltag und Wissen auf YouTube und Instagram.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.instagram.com/kaelynnvp/">Kaelynn Partlow</a></td>
-            <td>Autistische US-amerikanische Therapeutin, Rednerin und Autorin von „Life on the Bridge". Bekannt aus der Netflix-Serie „Love on the Spectrum". Klärt auf TikTok und Instagram (über 800K Follower) über Autismus aus professioneller und persönlicher Sicht auf.</td>
-          </tr>
-          <tr>
-            <td><a href="https://neurodivergentrebel.com/">Neurodivergent Rebel (Lyric Rivera)</a></td>
-            <td>Autistische Selbstvertreterin, Autorin und Beraterin aus den USA. Betreibt seit 2016 einen der bekanntesten Blogs zur Neurodiversität und ist Autorin von „Workplace NeuroDiversity Rising".</td>
-          </tr>
-          <tr>
-            <td><a href="https://theaspieworld.com/">The Aspie World (Dan Jones)</a></td>
-            <td>Autistischer walisischer YouTuber mit über 290.000 Abonnenten – einer der größten Autismus-Kanäle auf YouTube weltweit. Teilt Alltagstipps, Erklärvideos und Interviews rund um Autismus und ADHS.</td>
-          </tr>
-          <tr>
-            <td><a href="https://orionkelly.com.au/">Orion Kelly (That Autistic Guy)</a></td>
-            <td>Australischer autistischer YouTuber, Podcaster und Autor von „Autism Feels… An Earthlings Guide". Sein Podcast „My Friend Autism" erreicht ein breites Publikum und erklärt Autismus auf zugängliche Weise.</td>
-          </tr>
-          <tr>
-            <td><a href="https://sbsk.org/">Chris Ulmer (Special Books by Special Kids)</a></td>
-            <td>US-amerikanischer ehemaliger Sonderpädagoge und Gründer der Non-Profit-Organisation SBSK. Führt einfühlsame Interviews mit neurodivergenten und behinderten Menschen – über 3,4 Mio. YouTube-Abonnenten und Milliarden Aufrufe.</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.amygravino.com/">Amy Gravino</a></td>
-            <td>Autistische Beziehungscoach, Beraterin und internationale Rednerin aus den USA. Pionierin im Bereich Autismus und Sexualität, hat u.a. zweimal vor den Vereinten Nationen gesprochen.</td>
-          </tr>
-          <tr>
-            <td><a href="https://majatoudal.com/">Maja Toudal</a></td>
-            <td>Autistische dänische Psychologin, Autorin und Rednerin. Entwickelte das „Energy Accounting"-Konzept zum Stressmanagement bei Autismus. Co-Autorin mit Tony Attwood und Gastgeberin des Podcasts „Autistic Tidbits &amp; Tangents".</td>
-          </tr>
-          <tr>
-            <td><a href="https://www.tiktok.com/@toren_wolf">Toren Wolf</a></td>
-            <td>Autistischer Teenager und ADHS-Advocate aus den USA, der auf TikTok und Instagram Vlogs, Sketche und persönliche Geschichten über sein Leben mit Autismus und ADHS teilt.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3969674824&printsec=frontcover&img=1&zoom=1" alt="Cover: Autismus verstehen" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Autismus verstehen – Tom Harrendorf &amp; Melanie Matzies-Köhler</h4>
+                        <p class="text-sm text-gray-600">Brücken bauen zwischen autistischer und nicht-autistischer Welt – wissenschaftlich fundiert und mit praktischen Hilfsmitteln für den Alltag. (deutsch)</p>
+                        <a href="https://www.amazon.de/Autismus-verstehen-Wissenschaft-Hilfsmittel-Beziehungen/dp/3969674824" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-<h2 style="margin: 25px 25px 25px 50px;">Empfohlene Bücher</h2>
+                <!-- PDA -->
+                <h3 class="text-xl font-bold text-forest mt-8 mb-4 border-b-2 border-sunflower/50 pb-2">PDA (Pathological Demand Avoidance)</h3>
 
-<div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th class="thumb-col">Cover</th>
-            <th>Titel</th>
-            <th>Beschreibung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-secondary"><td colspan="3"><strong>Für Eltern & Angehörige</strong></td></tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3958902294&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Junge-viel-f%C3%BChlte-weltbekannter-Hirnforscher/dp/3958902294">Der Junge, der zu viel fühlte – Lorenz Wagner</a></td>
-            <td>Die berührende Geschichte des Hirnforschers Henry Markram und seines autistischen Sohnes Kai – und die Erkenntnis, dass Autisten nicht zu wenig, sondern zu viel fühlen. Ein Buch, das unser Bild von Autismus grundlegend verändert. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3499628732&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Warum-euch-nicht-Augen-schauen/dp/3499628732">Warum ich euch nicht in die Augen schauen kann – Naoki Higashida</a></td>
-            <td>Mit nur 13 Jahren geschrieben, beantwortet Naoki Fragen über sein Verhalten und seine Wahrnehmung als nonverbal-autistischer Junge – poetisch, direkt und tief berührend. (deutsch, Original japanisch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3830433921&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Ein-ganzes-Leben-Asperger-Syndrom-Erwachsensein/dp/3830433921">Ein ganzes Leben mit dem Asperger-Syndrom – Tony Attwood</a></td>
-            <td>Der Klassiker des weltweit bekanntesten Asperger-Experten – von Kindheit bis ins Erwachsenenalter, mit erprobten Strategien und ermutigenden Geschichten von Betroffenen. (deutsch, Original englisch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3969674824&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Autismus-verstehen-Wissenschaft-Hilfsmittel-Beziehungen/dp/3969674824">Autismus verstehen – Tom Harrendorf &amp; Melanie Matzies-Köhler</a></td>
-            <td>Brücken bauen zwischen autistischer und nicht-autistischer Welt – wissenschaftlich fundiert und mit praktischen Hilfsmitteln für den Alltag. (deutsch)</td>
-          </tr>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3952548464&printsec=frontcover&img=1&zoom=1" alt="Cover: PDA – anders autistisch?" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">PDA – anders autistisch? – Nicole Agathe Chou-Knecht &amp; Elisabeth Carl</h4>
+                        <p class="text-sm text-gray-600">Das erste deutschsprachige Fachbuch zu PDA – fundiert, praxisnah und mit Einblicken von Betroffenen, Angehörigen und Fachpersonen. Unverzichtbar für alle, die PDA verstehen möchten. (deutsch)</p>
+                        <a href="https://www.amazon.de/PDA-autistisch-Antworten-Pathological-Fachpersonen/dp/3952548464" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-          <tr class="table-secondary"><td colspan="3"><strong>PDA (Pathological Demand Avoidance)</strong></td></tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3952548464&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/PDA-autistisch-Antworten-Pathological-Fachpersonen/dp/3952548464">PDA – anders autistisch? – Nicole Agathe Chou-Knecht &amp; Elisabeth Carl</a></td>
-            <td>Das erste deutschsprachige Fachbuch zu PDA – fundiert, praxisnah und mit Einblicken von Betroffenen, Angehörigen und Fachpersonen. Unverzichtbar für alle, die PDA verstehen möchten. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:381871701X&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/How-handle-PANDA-S-Meiners/dp/381871701X">How to Handle a PANDA – S. Meiners</a></td>
-            <td>Ein humorvoller und praxisnaher Wegweiser für Familien mit PDA-Kindern – mit vielen Strategien, die den Alltag erleichtern, ohne die Autonomie des Kindes zu beschneiden. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3910230016&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Zirkus-Kopf-Diagnose-Autismus-t%C3%A4gliche/dp/3910230016">Zirkus im Kopf – Liv Cadler &amp; Saskia Susanne Neu</a></td>
-            <td>Drei Mütter berichten ehrlich und emotional vom Alltag mit ihren PDA-diagnostizierten Söhnen – vom Kampf um die richtige Diagnose bis zu den Hürden bei Behörden und Schulen. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3407869509&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Mein-einzigartiges-Pandakind-PDA-Autismus-Profil-Familienalltag/dp/3407869509">Mein einzigartiges Pandakind – Mark Leonard</a></td>
-            <td>Ein Vater eines PANDA-Kindes gibt betroffenen Eltern warmherzige, alltagstaugliche Tipps – von Zähneputzen über Einschulung bis zum Umgang mit Gefühlsausbrüchen. (deutsch)</td>
-          </tr>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:381871701X&printsec=frontcover&img=1&zoom=1" alt="Cover: How to Handle a PANDA" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">How to Handle a PANDA – S. Meiners</h4>
+                        <p class="text-sm text-gray-600">Ein humorvoller und praxisnaher Wegweiser für Familien mit PDA-Kindern – mit vielen Strategien, die den Alltag erleichtern, ohne die Autonomie des Kindes zu beschneiden. (deutsch)</p>
+                        <a href="https://www.amazon.de/How-handle-PANDA-S-Meiners/dp/381871701X" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-          <tr class="table-secondary"><td colspan="3"><strong>Weiblicher Autismus</strong></td></tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3407859465&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Aspergirls-Welt-Frauen-M%C3%A4dchen-Asperger/dp/3407859465">Aspergirls – Rudy Simone</a></td>
-            <td>Rudy Simone, selbst Aspergirl, gibt einen einfühlsamen Einblick in das Leben autistischer Frauen und Mädchen – von Schule und Beruf bis Freundschaft und Familie. Ein Klassiker. (deutsch, Original englisch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3407861834&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Die-Welt-autistischer-Frauen-M%C3%A4dchen/dp/3407861834">Die Welt autistischer Frauen und Mädchen – Manon Mannherz, Ismene Ditrich &amp; Christa Koentges</a></td>
-            <td>Warum autistische Frauen so oft spät diagnostiziert werden – und wie sie lernen, sich selbst besser zu verstehen. Von Kindergarten bis Menopause. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3432112009&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/%C3%9Cberraschend-anders-M%C3%A4dchen-Frauen-Asperger/dp/3432112009">Überraschend anders – Christine Preißmann</a></td>
-            <td>Fünf Frauen, zwei Mütter und zwei Therapeutinnen erzählen, wie autistische Frauen lernen, lieben und leben. Christine Preißmann ist selbst Ärztin und Autistin. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3451053004&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Ich-Autistin-aber-zeige-nicht/dp/3451053004">Ich bin Autistin – aber ich zeige es nicht – Liane Holliday Willey</a></td>
-            <td>Eine der ersten autobiografischen Erzählungen einer autistischen Frau – von der Kindheit bis zur Mutterschaft. Ehrlich über die Strategien, die halfen, und den emotionalen Preis des Maskierens. (deutsch, Original englisch)</td>
-          </tr>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3910230016&printsec=frontcover&img=1&zoom=1" alt="Cover: Zirkus im Kopf" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Zirkus im Kopf – Liv Cadler &amp; Saskia Susanne Neu</h4>
+                        <p class="text-sm text-gray-600">Drei Mütter berichten ehrlich und emotional vom Alltag mit ihren PDA-diagnostizierten Söhnen – vom Kampf um die richtige Diagnose bis zu den Hürden bei Behörden und Schulen. (deutsch)</p>
+                        <a href="https://www.amazon.de/Zirkus-Kopf-Diagnose-Autismus-t%C3%A4gliche/dp/3910230016" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-          <tr class="table-secondary"><td colspan="3"><strong>Own Voices &amp; Autobiografisches</strong></td></tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3862019500&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Schattenspringer-Wie-ist-anders-sein/dp/3862019500">Schattenspringer – Daniela Schreiter</a></td>
-            <td>Graphic-Novel-Reihe (3 Bände) über das Aufwachsen als autistisches Mädchen. Authentisch, humorvoll und lehrreich – ohne belehrend zu sein. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:3862655377&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Verst%C3%B6rungstheorien-Memoiren-Autistin-gefunden-Badewanne/dp/3862655377">Verstörungstheorien – Marlies Hübner</a></td>
-            <td>Memoiren einer Autistin – ehrlich, klug und selbstbestimmt erzählt. Ein Buch, das zeigt: nicht anders, nicht weniger. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:340786762X&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Autistisch-Kann-ich-flie%C3%9Fend-%C3%9Cbersetzungshilfe/dp/340786762X">Autistisch? Kann ich fließend! – Stephanie Meer-Walter</a></td>
-            <td>Stephanie Meer-Walter ist selbst Autistin und verbindet die wissenschaftliche Perspektive mit ihrem eigenen Erleben – klug, warmherzig und ein Plädoyer für mehr Verständnis. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:389693483X&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Ein-guter-Tag-ist-Wirsing/dp/389693483X">Ein guter Tag ist ein Tag mit Wirsing – Nicole Schuster</a></td>
-            <td>Nicole Schuster erzählt humorvoll und alltagsnah aus ihrem Leben mit Asperger-Syndrom – ein guter Tag ist einer, an dem alles nach Plan läuft. (deutsch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:0593235231&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/-/en/Devon-Price-PhD/dp/0593235231">Unmasking Autism – Devon Price</a></td>
-            <td>Warum Autist*innen sich maskieren und welchen Preis das hat. Mit Übungen zum Entdecken des eigenen authentischen Selbst. (englisch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:1922616184&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/Different-Not-Less-Neurodivergents-Embracing/dp/1922616184">Different, Not Less – Chloe Hayden</a></td>
-            <td>Memoir über Schule, Freundschaft, sensorische Herausforderungen und den Weg zur Selbstakzeptanz. Ehrlich und mit Humor erzählt. (englisch)</td>
-          </tr>
-          <tr>
-            <td class="thumb-col"><img src="https://books.google.com/books/content?vid=isbn:1035414694&printsec=frontcover&img=1&zoom=1" alt="Cover" loading="lazy" onerror="this.parentElement.innerHTML='<span class=thumb-placeholder>📖</span>'"></td>
-            <td><a href="https://www.amazon.de/But-Everyone-Feels-This-Way/dp/1035414694">But Everyone Feels This Way – Paige Layle</a></td>
-            <td>Wie eine späte Autismus-Diagnose ihr Leben verändert hat. Ein Buch gegen Stigma und Stereotype. (englisch)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3407869509&printsec=frontcover&img=1&zoom=1" alt="Cover: Mein einzigartiges Pandakind" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Mein einzigartiges Pandakind – Mark Leonard</h4>
+                        <p class="text-sm text-gray-600">Ein Vater eines PANDA-Kindes gibt betroffenen Eltern warmherzige, alltagstaugliche Tipps – von Zähneputzen über Einschulung bis zum Umgang mit Gefühlsausbrüchen. (deutsch)</p>
+                        <a href="https://www.amazon.de/Mein-einzigartiges-Pandakind-PDA-Autismus-Profil-Familienalltag/dp/3407869509" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-<h2 style="margin: 25px 25px 25px 50px;">Empfohlene Filme & Serien</h2>
+                <!-- Weiblicher Autismus -->
+                <h3 class="text-xl font-bold text-forest mt-8 mb-4 border-b-2 border-sunflower/50 pb-2">Weiblicher Autismus</h3>
 
-<div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th class="thumb-col-video">Trailer</th>
-            <th>Titel</th>
-            <th>Beschreibung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=dXpa5PrtuP0"><img src="https://img.youtube.com/vi/dXpa5PrtuP0/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=dXpa5PrtuP0">Heartbreak High (Netflix)</a></td>
-            <td>Australische Serie mit Chloe Hayden als Quinni – eine der ersten offen autistischen Schauspielerinnen in einer autistischen Hauptrolle. Zeigt Masking, sensorische Herausforderungen und Selbstfindung.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=MxeXECe2t-c"><img src="https://img.youtube.com/vi/MxeXECe2t-c/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=MxeXECe2t-c">Extraordinary Attorney Woo (Netflix)</a></td>
-            <td>Koreanische Serie über die autistische Anwältin Woo Young-woo. Autismus wird als Stärke gezeigt – Detailgenauigkeit, Gedächtnis und kreatives Denken. Weltweit gefeiert.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=rbC_CyzQ6qM"><img src="https://img.youtube.com/vi/rbC_CyzQ6qM/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=rbC_CyzQ6qM">The Reason I Jump (Netflix)</a></td>
-            <td>Dokumentarfilm nach dem Buch von Naoki Higashida. Begleitet fünf nicht-sprechende autistische junge Menschen weltweit. Kernbotschaft: „Nicht sprechen können heißt nicht, dass es nichts zu sagen gibt."</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=Y4Sf_cA41tA"><img src="https://img.youtube.com/vi/Y4Sf_cA41tA/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=Y4Sf_cA41tA">Loop (Disney+)</a></td>
-            <td>Pixar-Kurzfilm über Renee, ein nicht-sprechendes autistisches Mädchen – gesprochen von der autistischen Schauspielerin Madison Bandy. Zeigt einfühlsam das „Double Empathy Problem".</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=kb4vxmq4UwI"><img src="https://img.youtube.com/vi/kb4vxmq4UwI/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=kb4vxmq4UwI">Atypical (Netflix)</a></td>
-            <td>Serie über Sam, einen autistischen Teenager, der versucht selbstständiger zu werden und seine erste Freundin zu finden. Humorvoll und warmherzig erzählt – über vier Staffeln hinweg.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=yaj1zttGqIc"><img src="https://img.youtube.com/vi/yaj1zttGqIc/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=yaj1zttGqIc">Systemsprenger (2019)</a></td>
-            <td>Deutscher Spielfilm über die 9-jährige Benni, die durch alle Raster des Hilfesystems fällt. Nicht direkt über Autismus, aber zeigt eindrücklich, wie dramatisch es werden kann, wenn Kinder nicht ins System passen. Mehrfach preisgekrönt.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=t7nRD5ECl68"><img src="https://img.youtube.com/vi/t7nRD5ECl68/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=t7nRD5ECl68">Matki pingwinów – Die Mütter der Pinguine (Netflix)</a></td>
-            <td>Polnische Serie über Kama, eine MMA-Kämpferin, deren Sohn mit Autismus diagnostiziert wird. Zeigt authentisch den Alltag von Müttern autistischer Kinder zwischen Beruf, Schulsystem und Fürsorge.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=cpkN0JdXRpM"><img src="https://img.youtube.com/vi/cpkN0JdXRpM/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=cpkN0JdXRpM">Temple Grandin (2010, HBO)</a></td>
-            <td>Emmy-prämiertes Biopic über die berühmte autistische Tierwissenschaftlerin Temple Grandin, brillant dargestellt von Claire Danes. Zeigt eindrucksvoll, wie sie trotz aller Hindernisse ihren Weg in der Wissenschaft findet.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=1Hbyvd4Y5hE"><img src="https://img.youtube.com/vi/1Hbyvd4Y5hE/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=1Hbyvd4Y5hE">Wochenendrebellen (2023)</a></td>
-            <td>Deutscher Film nach der wahren Geschichte von Jason und Mirco von Juterczenka: Ein Vater reist mit seinem autistischen Sohn durch alle Fußballstadien Deutschlands, um dessen Lieblingsverein zu finden. Warmherzig und humorvoll.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=_r-lNl1YClg"><img src="https://img.youtube.com/vi/_r-lNl1YClg/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=_r-lNl1YClg">Alles außer gewöhnlich (2019)</a></td>
-            <td>Französische Tragikomödie mit Vincent Cassel und Reda Kateb als engagierte Betreuer von Jugendlichen mit schwerem Autismus. Basiert auf einer wahren Geschichte und zeigt den Alltag jenseits von Klischees.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=B6dXBb9KqL8"><img src="https://img.youtube.com/vi/B6dXBb9KqL8/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=B6dXBb9KqL8">Ezra (2024)</a></td>
-            <td>Road-Trip-Film über einen Comedian und seinen autistischen Sohn – gespielt von William A. Fitzgerald, der selbst autistisch ist. Einfühlsam erzählt, mit Robert De Niro in einer Nebenrolle.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=k3B1Az2x4AI"><img src="https://img.youtube.com/vi/k3B1Az2x4AI/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=k3B1Az2x4AI">Life, Animated (2016)</a></td>
-            <td>Oscar-nominierte Dokumentation über Owen Suskind, der als Kind nach seiner Autismus-Diagnose aufhörte zu sprechen – und über Disney-Zeichentrickfilme zurück zur Kommunikation fand. Zutiefst bewegend.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=TzQe4sqjZT8"><img src="https://img.youtube.com/vi/TzQe4sqjZT8/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=TzQe4sqjZT8">Please Stand By (2017)</a></td>
-            <td>Dakota Fanning als junge autistische Frau, die sich auf eine abenteuerliche Reise begibt, um ihr Star-Trek-Drehbuch bei einem Wettbewerb einzureichen. Ein warmherziger Film über Selbstständigkeit und Träume.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=kX-QbcXyZug"><img src="https://img.youtube.com/vi/kX-QbcXyZug/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=kX-QbcXyZug">Love on the Spectrum (Netflix)</a></td>
-            <td>Australische Doku-Serie, die autistische Menschen auf der Suche nach Liebe und Partnerschaft begleitet. Sehr respektvoll, humorvoll und berührend – mittlerweile auch als US-Version verfügbar.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=H_JA2JXM25Y"><img src="https://img.youtube.com/vi/H_JA2JXM25Y/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=H_JA2JXM25Y">As We See It (Amazon Prime)</a></td>
-            <td>Drei junge autistische Erwachsene leben zusammen in einer WG und meistern den Alltag. Alle drei Hauptdarsteller sind selbst im Autismus-Spektrum. Authentisch und nahbar.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=dqXmmZjsbCQ"><img src="https://img.youtube.com/vi/dqXmmZjsbCQ/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=dqXmmZjsbCQ">Everything's Gonna Be Okay (Streaming)</a></td>
-            <td>Coming-of-Age-Serie, in der die autistische Teenagerin Matilda von Kayla Cromer gespielt wird – einer Schauspielerin, die selbst autistisch ist. Behandelt Themen wie Verlust, Beziehungen und Erwachsenwerden.</td>
-          </tr>
-          <tr>
-            <td class="thumb-col-video"><a href="https://www.youtube.com/watch?v=nNjEWNmb-G8"><img src="https://img.youtube.com/vi/nNjEWNmb-G8/mqdefault.jpg" alt="Trailer" loading="lazy"></a></td>
-            <td><a href="https://www.youtube.com/watch?v=nNjEWNmb-G8">The Pitt (Max/HBO)</a></td>
-            <td>Medizindrama in Echtzeit aus einer Notaufnahme in Pittsburgh. Die Assistenzärztin Dr. Mel King hat eine autistische Zwillingsschwester Becca – gespielt von der autistischen Schauspielerin Tal Anderson. Die Serie wird für ihre authentische und respektvolle Darstellung von Neurodiversität im Krankenhausalltag gelobt.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3407859465&printsec=frontcover&img=1&zoom=1" alt="Cover: Aspergirls" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Aspergirls – Rudy Simone</h4>
+                        <p class="text-sm text-gray-600">Rudy Simone, selbst Aspergirl, gibt einen einfühlsamen Einblick in das Leben autistischer Frauen und Mädchen – von Schule und Beruf bis Freundschaft und Familie. Ein Klassiker. (deutsch, Original englisch)</p>
+                        <a href="https://www.amazon.de/Aspergirls-Welt-Frauen-M%C3%A4dchen-Asperger/dp/3407859465" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
 
-        <!-- Footer Area -->
-        <footer class="py-3 my-4">
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-               <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Über uns</a></li>
-               <li class="nav-item"><a href="index.html#contact" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
-               <li class="nav-item"><a href="index.html#f1" class="nav-link px-2 text-body-secondary">Termine</a></li>
-               <li class="nav-item"><a href="links.html" class="nav-link px-2 text-body-secondary">Links</a></li>
-               <li class="nav-item"><a href="blog.html" class="nav-link px-2 text-body-secondary">Blog</a></li>
-                <li class="nav-item"><a href="faq.html" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-            <li class="nav-item"><a href="impressum.html" class="nav-link px-2 text-body-secondary">Impressum</a></li>
-            <li class="nav-item"><a href="datenschutz.html" class="nav-link px-2 text-body-secondary">Datenschutz</a></li>
-           </ul>
-           <p class="text-center text-body-secondary">© 2024–2026 Antje und Raik Lasner</p>
-       </footer>
-    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</button>
-         <!-- Bootstrap 5 Js -->
-         <script src="js/bootstrap.min.js"></script>
-         <script src="js/site.js"></script>
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3407861834&printsec=frontcover&img=1&zoom=1" alt="Cover: Die Welt autistischer Frauen und Mädchen" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Die Welt autistischer Frauen und Mädchen – Manon Mannherz, Ismene Ditrich &amp; Christa Koentges</h4>
+                        <p class="text-sm text-gray-600">Warum autistische Frauen so oft spät diagnostiziert werden – und wie sie lernen, sich selbst besser zu verstehen. Von Kindergarten bis Menopause. (deutsch)</p>
+                        <a href="https://www.amazon.de/Die-Welt-autistischer-Frauen-M%C3%A4dchen/dp/3407861834" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3432112009&printsec=frontcover&img=1&zoom=1" alt="Cover: Überraschend anders" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Überraschend anders – Christine Preißmann</h4>
+                        <p class="text-sm text-gray-600">Fünf Frauen, zwei Mütter und zwei Therapeutinnen erzählen, wie autistische Frauen lernen, lieben und leben. Christine Preißmann ist selbst Ärztin und Autistin. (deutsch)</p>
+                        <a href="https://www.amazon.de/%C3%9Cberraschend-anders-M%C3%A4dchen-Frauen-Asperger/dp/3432112009" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3451053004&printsec=frontcover&img=1&zoom=1" alt="Cover: Ich bin Autistin – aber ich zeige es nicht" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Ich bin Autistin – aber ich zeige es nicht – Liane Holliday Willey</h4>
+                        <p class="text-sm text-gray-600">Eine der ersten autobiografischen Erzählungen einer autistischen Frau – von der Kindheit bis zur Mutterschaft. Ehrlich über die Strategien, die halfen, und den emotionalen Preis des Maskierens. (deutsch, Original englisch)</p>
+                        <a href="https://www.amazon.de/Ich-Autistin-aber-zeige-nicht/dp/3451053004" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <!-- Own Voices & Autobiografisches -->
+                <h3 class="text-xl font-bold text-forest mt-8 mb-4 border-b-2 border-sunflower/50 pb-2">Own Voices &amp; Autobiografisches</h3>
+
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3862019500&printsec=frontcover&img=1&zoom=1" alt="Cover: Schattenspringer" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Schattenspringer – Daniela Schreiter</h4>
+                        <p class="text-sm text-gray-600">Graphic-Novel-Reihe (3 Bände) über das Aufwachsen als autistisches Mädchen. Authentisch, humorvoll und lehrreich – ohne belehrend zu sein. (deutsch)</p>
+                        <a href="https://www.amazon.de/Schattenspringer-Wie-ist-anders-sein/dp/3862019500" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:3862655377&printsec=frontcover&img=1&zoom=1" alt="Cover: Verstörungstheorien" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Verstörungstheorien – Marlies Hübner</h4>
+                        <p class="text-sm text-gray-600">Memoiren einer Autistin – ehrlich, klug und selbstbestimmt erzählt. Ein Buch, das zeigt: nicht anders, nicht weniger. (deutsch)</p>
+                        <a href="https://www.amazon.de/Verst%C3%B6rungstheorien-Memoiren-Autistin-gefunden-Badewanne/dp/3862655377" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:340786762X&printsec=frontcover&img=1&zoom=1" alt="Cover: Autistisch? Kann ich fließend!" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Autistisch? Kann ich fließend! – Stephanie Meer-Walter</h4>
+                        <p class="text-sm text-gray-600">Stephanie Meer-Walter ist selbst Autistin und verbindet die wissenschaftliche Perspektive mit ihrem eigenen Erleben – klug, warmherzig und ein Plädoyer für mehr Verständnis. (deutsch)</p>
+                        <a href="https://www.amazon.de/Autistisch-Kann-ich-flie%C3%9Fend-%C3%9Cbersetzungshilfe/dp/340786762X" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:389693483X&printsec=frontcover&img=1&zoom=1" alt="Cover: Ein guter Tag ist ein Tag mit Wirsing" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Ein guter Tag ist ein Tag mit Wirsing – Nicole Schuster</h4>
+                        <p class="text-sm text-gray-600">Nicole Schuster erzählt humorvoll und alltagsnah aus ihrem Leben mit Asperger-Syndrom – ein guter Tag ist einer, an dem alles nach Plan läuft. (deutsch)</p>
+                        <a href="https://www.amazon.de/Ein-guter-Tag-ist-Wirsing/dp/389693483X" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:0593235231&printsec=frontcover&img=1&zoom=1" alt="Cover: Unmasking Autism" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Unmasking Autism – Devon Price</h4>
+                        <p class="text-sm text-gray-600">Warum Autist*innen sich maskieren und welchen Preis das hat. Mit Übungen zum Entdecken des eigenen authentischen Selbst. (englisch)</p>
+                        <a href="https://www.amazon.de/-/en/Devon-Price-PhD/dp/0593235231" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 py-4 border-b border-gray-100">
+                    <img src="https://books.google.com/books/content?vid=isbn:1922616184&printsec=frontcover&img=1&zoom=1" alt="Cover: Different, Not Less" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Different, Not Less – Chloe Hayden</h4>
+                        <p class="text-sm text-gray-600">Memoir über Schule, Freundschaft, sensorische Herausforderungen und den Weg zur Selbstakzeptanz. Ehrlich und mit Humor erzählt. (englisch)</p>
+                        <a href="https://www.amazon.de/Different-Not-Less-Neurodivergents-Embracing/dp/1922616184" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 py-4 last:border-0">
+                    <img src="https://books.google.com/books/content?vid=isbn:1035414694&printsec=frontcover&img=1&zoom=1" alt="Cover: But Everyone Feels This Way" class="w-16 h-20 object-cover rounded-lg shadow-sm flex-shrink-0" loading="lazy">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">But Everyone Feels This Way – Paige Layle</h4>
+                        <p class="text-sm text-gray-600">Wie eine späte Autismus-Diagnose ihr Leben verändert hat. Ein Buch gegen Stigma und Stereotype. (englisch)</p>
+                        <a href="https://www.amazon.de/But-Everyone-Feels-This-Way/dp/1035414694" target="_blank" rel="noopener" class="text-xs text-forest-light hover:text-forest mt-1 inline-block">Bei Amazon ansehen</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Empfohlene Filme & Serien -->
+    <section class="py-12 px-4 bg-forest/[0.03]" id="filme">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-forest mb-6 animate-on-scroll">Empfohlene Filme &amp; Serien</h2>
+            <div class="bg-white rounded-2xl shadow-sm p-6 animate-on-scroll">
+                <div class="divide-y divide-gray-100">
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=dXpa5PrtuP0" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/dXpa5PrtuP0/mqdefault.jpg" alt="Trailer: Heartbreak High" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=dXpa5PrtuP0" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Heartbreak High (Netflix)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Australische Serie mit Chloe Hayden als Quinni – eine der ersten offen autistischen Schauspielerinnen in einer autistischen Hauptrolle. Zeigt Masking, sensorische Herausforderungen und Selbstfindung.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=MxeXECe2t-c" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/MxeXECe2t-c/mqdefault.jpg" alt="Trailer: Extraordinary Attorney Woo" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=MxeXECe2t-c" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Extraordinary Attorney Woo (Netflix)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Koreanische Serie über die autistische Anwältin Woo Young-woo. Autismus wird als Stärke gezeigt – Detailgenauigkeit, Gedächtnis und kreatives Denken. Weltweit gefeiert.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=rbC_CyzQ6qM" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/rbC_CyzQ6qM/mqdefault.jpg" alt="Trailer: The Reason I Jump" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=rbC_CyzQ6qM" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">The Reason I Jump (Netflix)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Dokumentarfilm nach dem Buch von Naoki Higashida. Begleitet fünf nicht-sprechende autistische junge Menschen weltweit. Kernbotschaft: „Nicht sprechen können heißt nicht, dass es nichts zu sagen gibt."</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=Y4Sf_cA41tA" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/Y4Sf_cA41tA/mqdefault.jpg" alt="Trailer: Loop" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=Y4Sf_cA41tA" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Loop (Disney+)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Pixar-Kurzfilm über Renee, ein nicht-sprechendes autistisches Mädchen – gesprochen von der autistischen Schauspielerin Madison Bandy. Zeigt einfühlsam das „Double Empathy Problem".</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=kb4vxmq4UwI" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/kb4vxmq4UwI/mqdefault.jpg" alt="Trailer: Atypical" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=kb4vxmq4UwI" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Atypical (Netflix)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Serie über Sam, einen autistischen Teenager, der versucht selbstständiger zu werden und seine erste Freundin zu finden. Humorvoll und warmherzig erzählt – über vier Staffeln hinweg.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=yaj1zttGqIc" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/yaj1zttGqIc/mqdefault.jpg" alt="Trailer: Systemsprenger" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=yaj1zttGqIc" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Systemsprenger (2019)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Deutscher Spielfilm über die 9-jährige Benni, die durch alle Raster des Hilfesystems fällt. Nicht direkt über Autismus, aber zeigt eindrücklich, wie dramatisch es werden kann, wenn Kinder nicht ins System passen. Mehrfach preisgekrönt.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=t7nRD5ECl68" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/t7nRD5ECl68/mqdefault.jpg" alt="Trailer: Matki pingwinów" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=t7nRD5ECl68" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Matki pingwinów – Die Mütter der Pinguine (Netflix)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Polnische Serie über Kama, eine MMA-Kämpferin, deren Sohn mit Autismus diagnostiziert wird. Zeigt authentisch den Alltag von Müttern autistischer Kinder zwischen Beruf, Schulsystem und Fürsorge.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=cpkN0JdXRpM" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/cpkN0JdXRpM/mqdefault.jpg" alt="Trailer: Temple Grandin" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=cpkN0JdXRpM" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Temple Grandin (2010, HBO)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Emmy-prämiertes Biopic über die berühmte autistische Tierwissenschaftlerin Temple Grandin, brillant dargestellt von Claire Danes. Zeigt eindrucksvoll, wie sie trotz aller Hindernisse ihren Weg in der Wissenschaft findet.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=1Hbyvd4Y5hE" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/1Hbyvd4Y5hE/mqdefault.jpg" alt="Trailer: Wochenendrebellen" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=1Hbyvd4Y5hE" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Wochenendrebellen (2023)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Deutscher Film nach der wahren Geschichte von Jason und Mirco von Juterczenka: Ein Vater reist mit seinem autistischen Sohn durch alle Fußballstadien Deutschlands, um dessen Lieblingsverein zu finden. Warmherzig und humorvoll.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=_r-lNl1YClg" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/_r-lNl1YClg/mqdefault.jpg" alt="Trailer: Alles außer gewöhnlich" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=_r-lNl1YClg" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Alles außer gewöhnlich (2019)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Französische Tragikomödie mit Vincent Cassel und Reda Kateb als engagierte Betreuer von Jugendlichen mit schwerem Autismus. Basiert auf einer wahren Geschichte und zeigt den Alltag jenseits von Klischees.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=B6dXBb9KqL8" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/B6dXBb9KqL8/mqdefault.jpg" alt="Trailer: Ezra" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=B6dXBb9KqL8" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Ezra (2024)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Road-Trip-Film über einen Comedian und seinen autistischen Sohn – gespielt von William A. Fitzgerald, der selbst autistisch ist. Einfühlsam erzählt, mit Robert De Niro in einer Nebenrolle.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=k3B1Az2x4AI" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/k3B1Az2x4AI/mqdefault.jpg" alt="Trailer: Life, Animated" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=k3B1Az2x4AI" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Life, Animated (2016)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Oscar-nominierte Dokumentation über Owen Suskind, der als Kind nach seiner Autismus-Diagnose aufhörte zu sprechen – und über Disney-Zeichentrickfilme zurück zur Kommunikation fand. Zutiefst bewegend.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=TzQe4sqjZT8" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/TzQe4sqjZT8/mqdefault.jpg" alt="Trailer: Please Stand By" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=TzQe4sqjZT8" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Please Stand By (2017)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Dakota Fanning als junge autistische Frau, die sich auf eine abenteuerliche Reise begibt, um ihr Star-Trek-Drehbuch bei einem Wettbewerb einzureichen. Ein warmherziger Film über Selbstständigkeit und Träume.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=kX-QbcXyZug" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/kX-QbcXyZug/mqdefault.jpg" alt="Trailer: Love on the Spectrum" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=kX-QbcXyZug" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Love on the Spectrum (Netflix)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Australische Doku-Serie, die autistische Menschen auf der Suche nach Liebe und Partnerschaft begleitet. Sehr respektvoll, humorvoll und berührend – mittlerweile auch als US-Version verfügbar.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=H_JA2JXM25Y" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/H_JA2JXM25Y/mqdefault.jpg" alt="Trailer: As We See It" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=H_JA2JXM25Y" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">As We See It (Amazon Prime)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Drei junge autistische Erwachsene leben zusammen in einer WG und meistern den Alltag. Alle drei Hauptdarsteller sind selbst im Autismus-Spektrum. Authentisch und nahbar.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=dqXmmZjsbCQ" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/dqXmmZjsbCQ/mqdefault.jpg" alt="Trailer: Everything's Gonna Be Okay" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=dqXmmZjsbCQ" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">Everything's Gonna Be Okay (Streaming)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Coming-of-Age-Serie, in der die autistische Teenagerin Matilda von Kayla Cromer gespielt wird – einer Schauspielerin, die selbst autistisch ist. Behandelt Themen wie Verlust, Beziehungen und Erwachsenwerden.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+                        <a href="https://www.youtube.com/watch?v=nNjEWNmb-G8" target="_blank" rel="noopener" class="flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/nNjEWNmb-G8/mqdefault.jpg" alt="Trailer: The Pitt" class="w-32 h-20 object-cover rounded-lg" loading="lazy">
+                        </a>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                <a href="https://www.youtube.com/watch?v=nNjEWNmb-G8" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">The Pitt (Max/HBO)</a>
+                            </h4>
+                            <p class="text-sm text-gray-600">Medizindrama in Echtzeit aus einer Notaufnahme in Pittsburgh. Die Assistenzärztin Dr. Mel King hat eine autistische Zwillingsschwester Becca – gespielt von der autistischen Schauspielerin Tal Anderson. Die Serie wird für ihre authentische und respektvolle Darstellung von Neurodiversität im Krankenhausalltag gelobt.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-forest text-white/80">
+        <div class="max-w-7xl mx-auto px-4 py-10">
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 pb-6 border-b border-white/20">
+                <a href="about.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Über uns</a>
+                <a href="index.html#contact" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Kontakt</a>
+                <a href="index.html#f1" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Termine</a>
+                <a href="links.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Links</a>
+                <a href="blog.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Blog</a>
+                <a href="faq.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">FAQ</a>
+                <a href="impressum.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Impressum</a>
+                <a href="datenschutz.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Datenschutz</a>
+            </div>
+            <p class="text-center text-sm text-white/60">&copy; 2024&ndash;2026 Antje und Raik Lasner</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" type="button" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-forest text-white shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-forest-light flex items-center justify-center z-50" aria-label="Nach oben scrollen">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        navToggle.addEventListener('click', () => {
+            const isOpen = !navMenu.classList.contains('hidden');
+            navMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            navToggle.setAttribute('aria-expanded', !isOpen);
+        });
+
+        // IntersectionObserver for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Back to top
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+                backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>

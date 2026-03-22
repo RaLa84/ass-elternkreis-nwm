@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,359 +12,548 @@
     <meta property="og:image" content="https://www.ass-elternkreis-nwm.de/images/ASS_infinity_awareness_symbol.png">
     <title>Startseite — ASS Elternkreis NWM</title>
     <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/">
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/logoneu.jpg" type="image/jpg">
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "ASS Elternkreis NWM",
-        "url": "https://www.ass-elternkreis-nwm.de",
-        "logo": "https://www.ass-elternkreis-nwm.de/images/logoneu.jpg"
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: { DEFAULT: '#1b4332', light: '#2d6a4f' },
+              sunflower: { DEFAULT: '#FFC107', hover: '#E6A800' },
+              brown: '#3E2723',
+              softwhite: '#FAFAF8',
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+          }
+        }
       }
-      </script>
+    </script>
+
+    <!-- Custom Styles (animations etc.) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JSON-LD Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ASS Elternkreis NWM",
+      "url": "https://www.ass-elternkreis-nwm.de",
+      "logo": "https://www.ass-elternkreis-nwm.de/images/logoneu.jpg"
+    }
+    </script>
 </head>
 
-<body>
-    <a href="#main-content" class="visually-hidden-focusable">Zum Inhalt springen</a>
-    <!-- Header Area -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                ASS Elternkreis NWM
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#f1">Termine</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Über uns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="erste-schritte.html">Erste Schritte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="links.html">Links</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hilfsmittel.html">Hilfsmittel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                </ul>
-            </div>
+<body class="bg-softwhite text-brown font-sans antialiased">
+
+    <!-- Skip to content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:text-forest">
+      Zum Inhalt springen
+    </a>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- NAVBAR                                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center gap-2 text-forest font-bold text-lg hover:opacity-80 transition-opacity">
+            <img src="images/ASS_infinity_awareness_symbol.png" alt="ASS Elternkreis Logo" width="32" height="26" class="inline-block">
+            ASS Elternkreis NWM
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center gap-1">
+            <a href="#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+
+          <!-- Mobile Hamburger -->
+          <button id="navToggle" type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors" aria-label="Navigation umschalten" aria-expanded="false">
+            <svg id="navIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="navIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden pb-4">
+          <div class="flex flex-col gap-1 pt-2 border-t border-gray-100">
+            <a href="#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+        </div>
+      </div>
     </nav>
 
-      
+    <main id="main-content">
 
-     <!-- Hero Image -->
-     <div id="main-content" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-      <div class="col-md-6 p-lg-5 mx-auto my-5">
-          <h1 class="display-3 fw-bold hero-title">ASS Elternkreis NWM</h1>
-          <h3 class="fw-normal hero-subtitle mb-3">Selbsthilfegruppe für Eltern von autistischen Kindern</h3>
-          <div class="hero-badge">Jeder ist Willkommen - mit und ohne Diagnose</div>
-          <div class="d-flex gap-3 justify-content-center lead fw-normal">
-            <a class="icon-link hero-link" href="#contact">
-              Kontaktiere uns
-              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-          </a>
-          </div>
-      </div>
-      <div class="product-device shadow-sm d-none d-md-block"></div>
-      <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-  </div>
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- HERO SECTION                                -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/Sunnflower.webp');" aria-hidden="true"></div>
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/10" aria-hidden="true"></div>
 
-  <!-- Intro -->  
-  <div class="container my-5">
-    <div class="position-relative p-5 text-muted bg-body border border-dashed rounded-5">
-      <p class="col-lg-12 mx-auto" style="color: black; font-size: 20px;">
-        Willkommen zur SHG für Eltern mit Kindern aus dem Autismus-Spektrum. Unsere junge Selbsthilfegruppe bietet Eltern von Kindern im Autismus-Spektrum wertvollen Austausch, Unterstützung und Informationen. Ob nun Schönberg, Lüdersdorf, Wismar, Grevesmühlen oder Klütz – unsere Mitglieder kommen aus dem ganzen Landkreis. Egal, wo du herkommst, wir laden dich herzlich ein, Teil unserer Gemeinschaft zu werden. Da sich die Gruppe gerade findet, ist diese Seite noch im Aufbau. Wir werden die Inhalte nach und nach erweitern, um euch einen echten Mehrwert und praktische Hilfen zu bieten.
-      </p>
-    </div>
-  </div>
-
-     <!-- Importand Dates -->  
-     <div class="container px-4 py-5" id="f1">
-      <h2 class="pb-2 border-bottom">Termine</h2>
-      <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
-          <ul class="list-group">
-            <li class="list-group-item d-flex gap-3 py-3">
-              <img src="images/bookmark-heart.svg" alt="Termin" width="35" height="35">
-              <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                  <h6 class="mb-0">April SHG-Treffen (vor Ort)</h6>
-                  <p class="mb-0 opacity-75">Wir sehen uns am 17. April um 18:00 Uhr im &bdquo;Treff im Lindengarten&ldquo; (TiL) in der Bauhofstra&szlig;e 17 in Wismar.</p>
-                </div>
-                <small class="opacity-50 text-nowrap">17.04.2026</small>
-              </div>
-            </li>
-            <li class="list-group-item d-flex gap-3 py-3">
-              <img src="images/bookmark-heart.svg" alt="Termin" width="35" height="35">
-              <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                  <h6 class="mb-0">Mai SHG-Treffen (remote)</h6>
-                  <p class="mb-0 opacity-75">Wir sehen uns am 15. Mai um 18:00 Uhr online. Anmeldung zur Videokonferenz &uuml;ber das Kontaktformular und in der WhatsApp-Gruppe.</p>
-                </div>
-                <small class="opacity-50 text-nowrap">15.05.2026</small>
-              </div>
-            </li>
-          </ul>
-          <div class="text-center mt-3">
-            <a href="termine.ics" class="btn btn-sm btn-outline-secondary" download>Termine in Kalender importieren (.ics)</a>
-          </div>
-        </div>
-      </div>
-
-     <!-- Features -->  
-     <div class="container px-4 py-5" id="f2">
-      <h2 class="pb-2 border-bottom">Gemeinsam sind wir stärker!</h2>
-      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        <div class="feature col">
-          <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3 rounded-3" style="background-color: #FFC107;">
-            <img src="images/wechat.svg" alt="Logo" width="32" height="32" class="d-inline-block align-text-top m-1">
-          </div>
-          <h3 class="fs-2 text-body-emphasis">Austausch mit Gleichgesinnten</h3>
-          <p>Du triffst Eltern, die deine Herausforderungen verstehen, ohne lange Erklärungen. Gemeinsame Erfahrungen helfen, sich weniger allein zu fühlen.</p>
-        </div>
-        <div class="feature col">
-          <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3 rounded-3" style="background-color: #FFC107;">
-            <img src="images/tools.svg" alt="Logo" width="32" height="32" class="d-inline-block align-text-top m-1">
-          </div>
-          <h3 class="fs-2 text-body-emphasis">Praktische Tipps & Unterstützung</h3>
-          <p>Von Alltagshacks bis Behördendschungel: Andere Eltern teilen bewährte Lösungen, die dir das Leben erleichtern.</p>
-        </div>
-        <div class="feature col">
-          <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-gradient fs-2 mb-3 rounded-3" style="background-color: #FFC107;">
-            <img src="images/suit-heart.svg" alt="Logo" width="32" height="32" class="d-inline-block align-text-top m-1">
-          </div>
-          <h3 class="fs-2 text-body-emphasis">Rückhalt & Emotionale Entlastung</h3>
-          <p>Reden hilft! Die Gruppe gibt dir Rückhalt und neue Perspektiven, um mit Belastungen besser umzugehen.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Erste Schritte CTA -->
-    <div class="container px-4 py-5 text-center">
-      <div class="p-4 bg-body border border-dashed rounded-5">
-        <h2 class="pb-2">Gerade erst die Diagnose bekommen?</h2>
-        <p class="col-lg-8 mx-auto mb-3">Wir haben eine Orientierungshilfe für die ersten Schritte zusammengestellt — von Durchatmen bis Rechte kennen.</p>
-        <a href="erste-schritte.html" class="btn btn-custom btn-lg">Erste Schritte nach der Diagnose</a>
-      </div>
-    </div>
-
-    <!-- Wissen & Hilfe -->
-    <div class="container px-4 py-5" id="wissen">
-      <h2 class="pb-2 border-bottom">Wissen & Hilfe</h2>
-      <p class="text-secondary mb-4">Unsere FAQ-Wissensdatenbank mit 100 Fragen und Antworten — sortiert nach Lebensphasen.</p>
-      <div class="row g-3 row-cols-1 row-cols-md-3 row-cols-lg-5 mb-4">
-        <div class="col">
-          <a href="faq.html#vorschule" class="text-decoration-none">
-            <div class="card h-100 text-center p-3">
-              <div class="card-body">
-                <h6 class="card-title mb-1">Vorschule</h6>
-                <small class="text-secondary">0–6 Jahre &middot; 20 Fragen</small>
-              </div>
-            </div>
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto animate-fade-in">
+          <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-lg">
+            ASS Elternkreis NWM
+          </h1>
+          <p class="text-lg sm:text-xl md:text-2xl text-white/90 font-medium mb-8 drop-shadow-md">
+            Selbsthilfegruppe für Eltern von autistischen Kindern
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 bg-sunflower hover:bg-sunflower-hover text-brown font-bold px-8 py-3.5 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300">
+            Kontaktiere uns
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 12H5m7-7l7 7-7 7"/></svg>
           </a>
         </div>
-        <div class="col">
-          <a href="faq.html#grundschule" class="text-decoration-none">
-            <div class="card h-100 text-center p-3">
-              <div class="card-body">
-                <h6 class="card-title mb-1">Grundschule</h6>
-                <small class="text-secondary">6–12 Jahre &middot; 20 Fragen</small>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col">
-          <a href="faq.html#teenager" class="text-decoration-none">
-            <div class="card h-100 text-center p-3">
-              <div class="card-body">
-                <h6 class="card-title mb-1">Teenager</h6>
-                <small class="text-secondary">12–18 Jahre &middot; 20 Fragen</small>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col">
-          <a href="faq.html#junge-erwachsene" class="text-decoration-none">
-            <div class="card h-100 text-center p-3">
-              <div class="card-body">
-                <h6 class="card-title mb-1">Junge Erwachsene</h6>
-                <small class="text-secondary">18–30 Jahre &middot; 20 Fragen</small>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col">
-          <a href="faq.html#erwachsene" class="text-decoration-none">
-            <div class="card h-100 text-center p-3">
-              <div class="card-body">
-                <h6 class="card-title mb-1">Erwachsene</h6>
-                <small class="text-secondary">30+ Jahre &middot; 20 Fragen</small>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="text-center">
-        <a href="links.html" class="btn btn-outline-secondary">Regionale Anlaufstellen &amp; Linksammlung</a>
-      </div>
-    </div>
 
-    <!-- Aktuelles -->
-    <div class="container px-4 py-5" id="aktuelles">
-      <h2 class="pb-2 border-bottom">Aktuelles aus dem Elternkreis</h2>
-      <div class="card mt-3">
-        <div class="card-body p-4">
-          <h5 class="card-title">20.03.26: März-Treffen – Wachstum, Schulabsentismus und politische Vernetzung</h5>
-          <h6 class="card-subtitle mb-3 text-body-secondary">Unsere Gruppe wächst – und mit ihr der Mut, gemeinsam etwas zu bewegen</h6>
-          <p class="card-text">Am 20. März fand unser monatliches Online-Treffen statt – und wir hatten gleich doppelten Grund zur Freude: Zwei neue Mitglieder haben den Weg zu uns gefunden. Damit nähern wir uns der Marke von 30 Eltern in unserem Netzwerk.</p>
-          <a href="blog.html#maerz-treffen" class="btn btn-outline-secondary btn-sm">Weiterlesen</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Formular -->
-    <section id="contact" class="bg-light py-3 py-md-5">
-      <div class="container">
-          <div class="row justify-content-md-center">
-              <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-                  <h2 class="mb-4 display-5 text-center">Kontaktiere uns</h2>
-                  <p class="text-secondary mb-5 text-center">Wir freuen uns, wenn du mit uns Kontakt aufnimmst.</p>
-                  <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
-              </div>
+        <!-- Badge -->
+        <div class="absolute bottom-6 left-6 right-6 sm:right-auto sm:left-8 sm:bottom-8">
+          <div class="inline-flex items-center gap-2 bg-white/85 backdrop-blur-sm text-forest font-medium px-5 py-2.5 rounded-full text-sm shadow-md">
+            <svg class="w-4 h-4 text-sunflower flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Jeder ist Willkommen – mit und ohne Diagnose
           </div>
-      </div>
-  
-      <!-- So erreichst du uns -->
-      <div class="container mb-5">
-          <div class="row justify-content-lg-center">
-              <div class="col-12 col-lg-9">
-                  <div class="row g-4">
-                      <div class="col-md-4 text-center">
-                          <div class="fs-1 mb-2">1</div>
-                          <h5>Schreib uns</h5>
-                          <p class="text-secondary">Nutze das Kontaktformular oder unsere WhatsApp-Gruppe.</p>
-                      </div>
-                      <div class="col-md-4 text-center">
-                          <div class="fs-1 mb-2">2</div>
-                          <h5>Wir melden uns</h5>
-                          <p class="text-secondary">Innerhalb von 48 Stunden bekommst du eine Antwort von uns.</p>
-                      </div>
-                      <div class="col-md-4 text-center">
-                          <div class="fs-1 mb-2">3</div>
-                          <h5>Komm zum Treffen</h5>
-                          <p class="text-secondary">Unser nächstes Treffen: <strong>17. April 2026</strong> um 18:00 Uhr im TiL Wismar.</p>
-                      </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- INTRO                                       -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="py-16 sm:py-20 px-4">
+        <div class="max-w-4xl mx-auto animate-on-scroll">
+          <div class="border border-dashed border-forest-light/30 rounded-2xl p-8 sm:p-10 bg-white shadow-sm">
+            <p class="text-lg leading-relaxed text-gray-700">
+              Willkommen zur SHG für Eltern mit Kindern aus dem Autismus-Spektrum. Unsere junge Selbsthilfegruppe bietet Eltern von Kindern im Autismus-Spektrum wertvollen Austausch, Unterstützung und Informationen. Ob nun Schönberg, Lüdersdorf, Wismar, Grevesmühlen oder Klütz – unsere Mitglieder kommen aus dem ganzen Landkreis. Egal, wo du herkommst, wir laden dich herzlich ein, Teil unserer Gemeinschaft zu werden. Da sich die Gruppe gerade findet, ist diese Seite noch im Aufbau. Wir werden die Inhalte nach und nach erweitern, um euch einen echten Mehrwert und praktische Hilfen zu bieten.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- TERMINE (Timeline)                          -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="termine" class="py-16 sm:py-20 px-4 bg-forest/[0.03]">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-forest mb-10 animate-on-scroll">Termine</h2>
+
+          <!-- Timeline -->
+          <div class="relative pl-8 border-l-2 border-forest/20 space-y-8 ml-4">
+
+            <!-- Event 1 -->
+            <div class="relative animate-on-scroll">
+              <!-- Timeline dot -->
+              <div class="absolute -left-[calc(2rem+5px)] top-1 w-3 h-3 bg-forest rounded-full ring-4 ring-softwhite"></div>
+              <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+                <div class="flex flex-wrap items-start gap-4">
+                  <div class="flex-shrink-0 bg-sunflower/20 rounded-xl w-14 h-14 flex flex-col items-center justify-center">
+                    <span class="text-lg font-bold text-forest leading-none">17</span>
+                    <span class="text-xs font-semibold text-forest/70 uppercase">Apr</span>
                   </div>
-              </div>
-          </div>
-      </div>
-
-      <div class="container">
-          <div class="row justify-content-lg-center">
-              <div class="col-12 col-lg-9">
-                  <div class="bg-white border rounded shadow-sm overflow-hidden">
-                      <form id="contactForm">
-                          <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-                              <div class="col-12">
-                                  <label for="fullname" class="form-label">Name <span class="text-danger">*</span></label>
-                                  <input type="text" class="form-control" id="fullname" name="fullname" required>
-                              </div>
-                              <div class="col-12 col-md-6">
-                                  <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                                  <input type="email" class="form-control" id="email" name="email" required>
-                              </div>
-                              <div class="col-12 col-md-6">
-                                  <label for="phone" class="form-label">Telefon</label>
-                                  <input type="tel" class="form-control" id="phone" name="phone">
-                              </div>
-                              <div class="col-12">
-                                  <label for="message" class="form-label">Deine Nachricht <span class="text-danger">*</span></label>
-                                  <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-                              </div>
-                              <div class="col-12">
-                                  <div class="d-grid">
-                                      <button class="btn btn-custom btn-lg" type="submit">Absenden</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </form>
-                      <p id="formResponse" class="text-center mt-3"></p>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-1">
+                      <svg class="w-4 h-4 text-forest-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                      <span class="text-xs font-semibold text-forest-light uppercase tracking-wide">Vor Ort</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">April SHG-Treffen</h3>
+                    <p class="text-gray-600 text-sm">Wir sehen uns am 17. April um 18:00 Uhr im &bdquo;Treff im Lindengarten&ldquo; (TiL) in der Bauhofstra&szlig;e 17 in Wismar.</p>
                   </div>
+                </div>
               </div>
-          </div>
-      </div>
-  </section>
-  
-  <script>
-  document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-  
-      var formData = {
-          data: {
-              Name: document.getElementById("fullname").value,
-              Email: document.getElementById("email").value,
-              Telefon: document.getElementById("phone").value,
-              Nachricht: document.getElementById("message").value
-          }
-      };
-  
-      fetch("https://sheetdb.io/api/v1/7z6kfdr7nwb17", { // Ersetze mit deiner API-URL!
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-          document.getElementById("formResponse").innerHTML = "✅ Nachricht erfolgreich gesendet!";
-          document.getElementById("formResponse").style.color = "green";
-          document.getElementById("contactForm").reset();
-      })
-      .catch(error => {
-          document.getElementById("formResponse").innerHTML = "❌ Fehler beim Senden.";
-          document.getElementById("formResponse").style.color = "red";
-      });
-  });
-  </script>
-  
+            </div>
 
-    <!-- Footer Area -->
-    <footer class="py-3 my-4">
-       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Über uns</a></li>
-            <li class="nav-item"><a href="#contact" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
-            <li class="nav-item"><a href="#f1" class="nav-link px-2 text-body-secondary">Termine</a></li>
-            <li class="nav-item"><a href="links.html" class="nav-link px-2 text-body-secondary">Links</a></li>
-            <li class="nav-item"><a href="blog.html" class="nav-link px-2 text-body-secondary">Blog</a></li>
-            <li class="nav-item"><a href="faq.html" class="nav-link px-2 text-body-secondary">Faq</a></li>
-            <li class="nav-item"><a href="impressum.html" class="nav-link px-2 text-body-secondary">Impressum</a></li>
-            <li class="nav-item"><a href="datenschutz.html" class="nav-link px-2 text-body-secondary">Datenschutz</a></li>
-        </ul>
-        <p class="text-center text-body-secondary">© 2024–2026 Antje und Raik Lasner</p>
+            <!-- Event 2 -->
+            <div class="relative animate-on-scroll">
+              <div class="absolute -left-[calc(2rem+5px)] top-1 w-3 h-3 bg-forest rounded-full ring-4 ring-softwhite"></div>
+              <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+                <div class="flex flex-wrap items-start gap-4">
+                  <div class="flex-shrink-0 bg-sunflower/20 rounded-xl w-14 h-14 flex flex-col items-center justify-center">
+                    <span class="text-lg font-bold text-forest leading-none">15</span>
+                    <span class="text-xs font-semibold text-forest/70 uppercase">Mai</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-1">
+                      <svg class="w-4 h-4 text-forest-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                      <span class="text-xs font-semibold text-forest-light uppercase tracking-wide">Remote</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">Mai SHG-Treffen</h3>
+                    <p class="text-gray-600 text-sm">Wir sehen uns am 15. Mai um 18:00 Uhr online. Anmeldung zur Videokonferenz &uuml;ber das Kontaktformular und in der WhatsApp-Gruppe.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calendar Download -->
+          <div class="mt-8 text-center animate-on-scroll">
+            <a href="termine.ics" download class="inline-flex items-center gap-2 text-sm font-medium text-forest hover:text-forest-light transition-colors border border-forest/20 rounded-full px-5 py-2.5 hover:bg-forest/5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Termine in Kalender importieren
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- FEATURES: Gemeinsam sind wir stärker        -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="features" class="py-16 sm:py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-forest mb-12 text-center animate-on-scroll">Gemeinsam sind wir stärker!</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1: Austausch -->
+            <div class="animate-on-scroll bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 text-center">
+              <div class="w-16 h-16 rounded-full bg-sunflower/20 flex items-center justify-center mx-auto mb-5">
+                <svg class="w-7 h-7 text-sunflower" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Austausch mit Gleichgesinnten</h3>
+              <p class="text-gray-600 leading-relaxed">Du triffst Eltern, die deine Herausforderungen verstehen, ohne lange Erklärungen. Gemeinsame Erfahrungen helfen, sich weniger allein zu fühlen.</p>
+            </div>
+
+            <!-- Card 2: Tipps -->
+            <div class="animate-on-scroll bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 text-center">
+              <div class="w-16 h-16 rounded-full bg-sunflower/20 flex items-center justify-center mx-auto mb-5">
+                <svg class="w-7 h-7 text-sunflower" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Praktische Tipps & Unterstützung</h3>
+              <p class="text-gray-600 leading-relaxed">Von Alltagshacks bis Behördendschungel: Andere Eltern teilen bewährte Lösungen, die dir das Leben erleichtern.</p>
+            </div>
+
+            <!-- Card 3: Rückhalt -->
+            <div class="animate-on-scroll bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 text-center">
+              <div class="w-16 h-16 rounded-full bg-sunflower/20 flex items-center justify-center mx-auto mb-5">
+                <svg class="w-7 h-7 text-sunflower" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Rückhalt & Emotionale Entlastung</h3>
+              <p class="text-gray-600 leading-relaxed">Reden hilft! Die Gruppe gibt dir Rückhalt und neue Perspektiven, um mit Belastungen besser umzugehen.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- CTA: Erste Schritte                         -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section class="py-16 sm:py-20 px-4">
+        <div class="max-w-3xl mx-auto animate-on-scroll">
+          <div class="bg-forest/[0.04] border border-dashed border-forest/20 rounded-2xl p-8 sm:p-10 text-center">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-forest mb-3">Gerade erst die Diagnose bekommen?</h2>
+            <p class="text-gray-600 mb-6 max-w-xl mx-auto">Wir haben eine Orientierungshilfe für die ersten Schritte zusammengestellt — von Durchatmen bis Rechte kennen.</p>
+            <a href="erste-schritte.html" class="inline-flex items-center gap-2 bg-sunflower hover:bg-sunflower-hover text-brown font-bold px-7 py-3 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Erste Schritte nach der Diagnose
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- WISSEN & HILFE (FAQ Grid)                   -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="wissen" class="py-16 sm:py-20 px-4 bg-forest/[0.03]">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-forest mb-3 animate-on-scroll">Wissen & Hilfe</h2>
+          <p class="text-gray-500 mb-10 animate-on-scroll">Unsere FAQ-Wissensdatenbank mit 100 Fragen und Antworten — sortiert nach Lebensphasen.</p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+            <!-- Vorschule -->
+            <a href="faq.html#vorschule" class="animate-on-scroll group block bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-5 text-center hover:-translate-y-0.5">
+              <div class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-forest/20 transition-colors">
+                <svg class="w-5 h-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h3 class="text-sm font-bold text-gray-900 mb-0.5">Vorschule</h3>
+              <p class="text-xs text-gray-500">0–6 Jahre · 20 Fragen</p>
+            </a>
+
+            <!-- Grundschule -->
+            <a href="faq.html#grundschule" class="animate-on-scroll group block bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-5 text-center hover:-translate-y-0.5">
+              <div class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-forest/20 transition-colors">
+                <svg class="w-5 h-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </div>
+              <h3 class="text-sm font-bold text-gray-900 mb-0.5">Grundschule</h3>
+              <p class="text-xs text-gray-500">6–12 Jahre · 20 Fragen</p>
+            </a>
+
+            <!-- Teenager -->
+            <a href="faq.html#teenager" class="animate-on-scroll group block bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-5 text-center hover:-translate-y-0.5">
+              <div class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-forest/20 transition-colors">
+                <svg class="w-5 h-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <h3 class="text-sm font-bold text-gray-900 mb-0.5">Teenager</h3>
+              <p class="text-xs text-gray-500">12–18 Jahre · 20 Fragen</p>
+            </a>
+
+            <!-- Junge Erwachsene -->
+            <a href="faq.html#junge-erwachsene" class="animate-on-scroll group block bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-5 text-center hover:-translate-y-0.5">
+              <div class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-forest/20 transition-colors">
+                <svg class="w-5 h-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <h3 class="text-sm font-bold text-gray-900 mb-0.5">Junge Erwachsene</h3>
+              <p class="text-xs text-gray-500">18–30 Jahre · 20 Fragen</p>
+            </a>
+
+            <!-- Erwachsene -->
+            <a href="faq.html#erwachsene" class="animate-on-scroll group block bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-5 text-center hover:-translate-y-0.5">
+              <div class="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-forest/20 transition-colors">
+                <svg class="w-5 h-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              </div>
+              <h3 class="text-sm font-bold text-gray-900 mb-0.5">Erwachsene</h3>
+              <p class="text-xs text-gray-500">30+ Jahre · 20 Fragen</p>
+            </a>
+          </div>
+
+          <div class="text-center animate-on-scroll">
+            <a href="links.html" class="inline-flex items-center gap-2 text-sm font-medium text-forest hover:text-forest-light transition-colors border border-forest/20 rounded-full px-5 py-2.5 hover:bg-forest/5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+              Regionale Anlaufstellen &amp; Linksammlung
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- AKTUELLES (News)                            -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="aktuelles" class="py-16 sm:py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-forest mb-8 animate-on-scroll">Aktuelles aus dem Elternkreis</h2>
+
+          <div class="animate-on-scroll bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="p-6 sm:p-8">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full">20.03.2026</span>
+                <span class="inline-flex items-center bg-sunflower/20 text-brown text-xs font-semibold px-3 py-1 rounded-full">Neuigkeiten</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">März-Treffen – Wachstum, Schulabsentismus und politische Vernetzung</h3>
+              <p class="text-sm text-gray-500 font-medium mb-3">Unsere Gruppe wächst – und mit ihr der Mut, gemeinsam etwas zu bewegen</p>
+              <p class="text-gray-600 leading-relaxed mb-5">Am 20. März fand unser monatliches Online-Treffen statt – und wir hatten gleich doppelten Grund zur Freude: Zwei neue Mitglieder haben den Weg zu uns gefunden. Damit nähern wir uns der Marke von 30 Eltern in unserem Netzwerk.</p>
+              <a href="blog.html#maerz-treffen" class="inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:text-forest-light transition-colors">
+                Weiterlesen
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- CONTACT                                     -->
+      <!-- ═══════════════════════════════════════════ -->
+      <section id="contact" class="py-16 sm:py-20 px-4 bg-forest/[0.03]">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12 animate-on-scroll">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-forest mb-3">Kontaktiere uns</h2>
+            <p class="text-gray-500">Wir freuen uns, wenn du mit uns Kontakt aufnimmst.</p>
+          </div>
+
+          <!-- 3-Step Process -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="text-center animate-on-scroll">
+              <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center mx-auto mb-3 shadow-sm">1</div>
+              <h3 class="font-bold text-gray-900 mb-1">Schreib uns</h3>
+              <p class="text-sm text-gray-500">Nutze das Kontaktformular oder unsere WhatsApp-Gruppe.</p>
+            </div>
+            <div class="text-center animate-on-scroll">
+              <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center mx-auto mb-3 shadow-sm">2</div>
+              <h3 class="font-bold text-gray-900 mb-1">Wir melden uns</h3>
+              <p class="text-sm text-gray-500">Innerhalb von 48 Stunden bekommst du eine Antwort von uns.</p>
+            </div>
+            <div class="text-center animate-on-scroll">
+              <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center mx-auto mb-3 shadow-sm">3</div>
+              <h3 class="font-bold text-gray-900 mb-1">Komm zum Treffen</h3>
+              <p class="text-sm text-gray-500">Unser nächstes Treffen: <strong>17. April 2026</strong> um 18:00 Uhr im TiL Wismar.</p>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="max-w-2xl mx-auto animate-on-scroll">
+            <div class="bg-white rounded-2xl shadow-md p-6 sm:p-8">
+              <form id="contactForm" class="space-y-5">
+                <div>
+                  <label for="fullname" class="block text-sm font-semibold text-gray-700 mb-1.5">Name <span class="text-red-500">*</span></label>
+                  <input type="text" id="fullname" name="fullname" required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition-colors">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-1.5">Email <span class="text-red-500">*</span></label>
+                    <input type="email" id="email" name="email" required
+                      class="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition-colors">
+                  </div>
+                  <div>
+                    <label for="phone" class="block text-sm font-semibold text-gray-700 mb-1.5">Telefon</label>
+                    <input type="tel" id="phone" name="phone"
+                      class="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition-colors">
+                  </div>
+                </div>
+                <div>
+                  <label for="message" class="block text-sm font-semibold text-gray-700 mb-1.5">Deine Nachricht <span class="text-red-500">*</span></label>
+                  <textarea id="message" name="message" rows="4" required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition-colors resize-y"></textarea>
+                </div>
+                <button type="submit"
+                  class="w-full bg-sunflower hover:bg-sunflower-hover text-brown font-bold py-3.5 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-lg">
+                  Absenden
+                </button>
+              </form>
+              <p id="formResponse" class="text-center mt-4 font-medium"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FOOTER                                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <footer class="bg-forest text-white py-10 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+          <a href="about.html" class="text-sm text-white/70 hover:text-white transition-colors">Über uns</a>
+          <a href="#contact" class="text-sm text-white/70 hover:text-white transition-colors">Kontakt</a>
+          <a href="#termine" class="text-sm text-white/70 hover:text-white transition-colors">Termine</a>
+          <a href="links.html" class="text-sm text-white/70 hover:text-white transition-colors">Links</a>
+          <a href="blog.html" class="text-sm text-white/70 hover:text-white transition-colors">Blog</a>
+          <a href="faq.html" class="text-sm text-white/70 hover:text-white transition-colors">FAQ</a>
+          <a href="impressum.html" class="text-sm text-white/70 hover:text-white transition-colors">Impressum</a>
+          <a href="datenschutz.html" class="text-sm text-white/70 hover:text-white transition-colors">Datenschutz</a>
+        </div>
+        <p class="text-center text-sm text-white/50">&copy; 2024–2026 Antje und Raik Lasner</p>
+      </div>
     </footer>
-    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</button>
-    <!-- Bootstrap 5 Js -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/site.js"></script>
+
+    <!-- Back to Top -->
+    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+    </button>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCRIPTS                                     -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <!-- Contact Form: SheetDB Integration -->
+    <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var formData = {
+            data: {
+                Name: document.getElementById("fullname").value,
+                Email: document.getElementById("email").value,
+                Telefon: document.getElementById("phone").value,
+                Nachricht: document.getElementById("message").value
+            }
+        };
+
+        fetch("https://sheetdb.io/api/v1/7z6kfdr7nwb17", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("formResponse").innerHTML = "Nachricht erfolgreich gesendet!";
+            document.getElementById("formResponse").style.color = "#2d6a4f";
+            document.getElementById("contactForm").reset();
+        })
+        .catch(error => {
+            document.getElementById("formResponse").innerHTML = "Fehler beim Senden. Bitte versuche es erneut.";
+            document.getElementById("formResponse").style.color = "#dc2626";
+        });
+    });
+    </script>
+
+    <!-- Mobile Nav Toggle -->
+    <script>
+    (function() {
+        var toggle = document.getElementById('navToggle');
+        var menu = document.getElementById('mobileMenu');
+        var iconOpen = document.getElementById('navIconOpen');
+        var iconClose = document.getElementById('navIconClose');
+
+        toggle.addEventListener('click', function() {
+            var isOpen = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+            toggle.setAttribute('aria-expanded', !isOpen);
+        });
+
+        // Close menu when clicking a link
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menu.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    })();
+    </script>
+
+    <!-- Scroll Animations (IntersectionObserver) -->
+    <script>
+    (function() {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
+    </script>
+
+    <!-- Back-to-top button -->
+    <script>
+    (function() {
+        var btn = document.querySelector('.back-to-top');
+        if (!btn) return;
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    })();
+    </script>
+
 </body>
 </html>

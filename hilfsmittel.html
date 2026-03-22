@@ -11,546 +11,589 @@
     <meta property="og:image" content="https://www.ass-elternkreis-nwm.de/images/ASS_infinity_awareness_symbol.png">
     <title>Hilfsmittel im Alltag — ASS Elternkreis NWM</title>
     <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/hilfsmittel.html">
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="icon" href="images/logoneu.jpg" type="image/jpg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#1b4332',
+                        'forest-light': '#2d6a4f',
+                        sunflower: '#FFC107',
+                        'sunflower-hover': '#E6A800',
+                        brown: '#3E2723',
+                        softwhite: '#FAFAF8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
     <style>
-      .aid-card {
-        border: none;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,.08);
-        transition: transform .2s, box-shadow .2s;
-        height: 100%;
-      }
-      .aid-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0,0,0,.12);
-      }
-      .aid-card .card-header {
-        background: #1b4332;
-        color: #fff;
-        border-radius: 12px 12px 0 0;
-        font-weight: 600;
-        font-size: 1.15rem;
-        padding: .9rem 1.2rem;
-      }
-      .aid-card .card-body {
-        padding: 1.2rem;
-      }
-      .aid-card .card-body h6 {
-        color: #2d6a4f;
-        font-weight: 700;
-        margin-top: .8rem;
-        margin-bottom: .3rem;
-      }
-      .aid-card .card-body h6:first-child {
-        margin-top: 0;
-      }
-      .evidence-badge {
-        display: inline-block;
-        font-size: .75rem;
-        font-weight: 600;
-        padding: .25em .65em;
-        border-radius: 6px;
-        margin-bottom: .5rem;
-      }
-      .evidence-strong {
-        background: #d4edda;
-        color: #155724;
-      }
-      .evidence-moderate {
-        background: #fff3cd;
-        color: #856404;
-      }
-      .evidence-limited {
-        background: #f8d7da;
-        color: #721c24;
-      }
-      .source-list {
-        font-size: .82rem;
-        color: #555;
-        margin-bottom: 0;
-        padding-left: 1rem;
-      }
-      .source-list li {
-        margin-bottom: .25rem;
-      }
-      .source-list a {
-        color: #2d6a4f;
-      }
-      .category-heading {
-        color: #1b4332;
-        font-weight: 700;
-        margin: 2.5rem 0 1rem;
-        padding-bottom: .4rem;
-        border-bottom: 3px solid #FFC107;
-        display: inline-block;
-      }
-      .disclaimer-box {
-        background: #fff3cd;
-        border-left: 4px solid #FFC107;
-        border-radius: 8px;
-        padding: 1rem 1.5rem;
-        margin-top: 2.5rem;
-        font-size: .92rem;
-      }
-      .intro-text {
-        font-size: 1.05rem;
-        line-height: 1.7;
-        color: #333;
-      }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body>
-    <a href="#main-content" class="visually-hidden-focusable">Zum Inhalt springen</a>
-    <!-- Header Area -->
-     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                ASS Elternkreis NWM
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#f1">Termine</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Über uns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="erste-schritte.html">Erste Schritte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="links.html">Links</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="hilfsmittel.html">Hilfsmittel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                </ul>
+<body class="bg-softwhite text-brown font-sans antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-4 focus:py-2 focus:z-50 focus:rounded">Zum Inhalt springen</a>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2 text-forest font-bold text-lg no-underline">
+                    <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" class="w-8 h-6">
+                    ASS Elternkreis NWM
+                </a>
+                <!-- Mobile hamburger -->
+                <button id="nav-toggle" type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-brown hover:bg-gray-100" aria-controls="nav-menu" aria-expanded="false" aria-label="Navigation umschalten">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <!-- Desktop nav -->
+                <div class="hidden lg:flex lg:items-center lg:gap-1">
+                    <a href="index.html#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
+                    <a href="index.html#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Über uns</a>
+                    <a href="erste-schritte.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Erste Schritte</a>
+                    <a href="links.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Links</a>
+                    <a href="hilfsmittel.html" class="px-3 py-2 rounded-md text-sm font-medium text-forest bg-forest/10 no-underline">Hilfsmittel</a>
+                    <a href="blog.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Blog</a>
+                    <a href="faq.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">FAQ</a>
+                </div>
+            </div>
+            <!-- Mobile nav menu -->
+            <div id="nav-menu" class="hidden lg:hidden pb-4">
+                <div class="flex flex-col gap-1">
+                    <a href="index.html#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
+                    <a href="index.html#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Über uns</a>
+                    <a href="erste-schritte.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Erste Schritte</a>
+                    <a href="links.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Links</a>
+                    <a href="hilfsmittel.html" class="px-3 py-2 rounded-md text-sm font-medium text-forest bg-forest/10 no-underline">Hilfsmittel</a>
+                    <a href="blog.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Blog</a>
+                    <a href="faq.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">FAQ</a>
+                </div>
             </div>
         </div>
     </nav>
 
-<div id="main-content" class="container my-5">
-    <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-        <h1 class="text-body-emphasis">Hilfsmittel im Alltag</h1>
-        <p class="col-lg-8 mx-auto mb-0 intro-text">
-            Welche Alltagshilfen helfen autistischen Kindern (und Erwachsenen) wirklich? Hier stellen wir Hilfsmittel vor, deren Wirksamkeit durch wissenschaftliche Studien belegt oder zumindest untersucht wurde. Jeder Eintrag enthält eine Erklärung, <em>wie</em> und <em>warum</em> das Hilfsmittel wirkt, sowie die zugehörigen Quellen.
-        </p>
+    <!-- Page Header -->
+    <section id="main-content" class="bg-forest/[0.03]">
+        <div class="max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-forest mb-6 leading-tight">Hilfsmittel im Alltag</h1>
+            <p class="text-lg sm:text-xl text-brown/80 leading-relaxed">
+                Welche Alltagshilfen helfen autistischen Kindern (und Erwachsenen) wirklich? Hier stellen wir Hilfsmittel vor, deren Wirksamkeit durch wissenschaftliche Studien belegt oder zumindest untersucht wurde. Jeder Eintrag enthält eine Erklärung, <em>wie</em> und <em>warum</em> das Hilfsmittel wirkt, sowie die zugehörigen Quellen.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- KATEGORIE 1: Struktur & Orientierung       -->
+        <!-- ═══════════════════════════════════════════ -->
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 animate-on-scroll">Struktur &amp; Orientierung</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Visuelle Pläne -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Visuelle Pläne (Bildpläne / Visual Schedules)</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Starke Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Bilderfolgen oder Symbolkarten, die den Tagesablauf, einzelne Aktivitäten oder Handlungsschritte visuell darstellen. Sie können als Papierplan, Magnettafel oder App gestaltet sein.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder verarbeiten visuelle Informationen besser als gesprochene Sprache. Ein visueller Plan macht die abstrakte Abfolge „Was kommt als Nächstes?" greifbar und vorhersehbar. Das reduziert Unsicherheit und Angst, unterstützt eigenständiges Handeln und erleichtert Übergänge zwischen Aktivitäten.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Visuelle Pläne gelten als <strong>anerkannte evidenzbasierte Praxis</strong>. Das National Standards Project (Phase 2, 2015) stuft den Einsatz von Plänen als etablierte Intervention ein. Hume et al. (2021) bestätigten visuelle Unterstützungsmittel als evidenzbasiert für Personen mit Autismus vom Vorschul- bis zum jungen Erwachsenenalter.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Hume, K. et al. (2021). Evidence-Based Practices for Children, Youth, and Young Adults with Autism. <em>Journal of Autism and Developmental Disorders, 51</em>, 4013–4032. <a href="https://pubmed.ncbi.nlm.nih.gov/33449225/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
+                            <li>Knight, V. et al. (2015). Evaluating Visual Activity Schedules as Evidence-Based Practice for Individuals with ASD. <em>Journal of Autism and Developmental Disorders, 45</em>, 157–178. <a href="https://pubmed.ncbi.nlm.nih.gov/25081593/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
+                            <li>National Autism Center (2015). <em>National Standards Project, Phase 2.</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sozialgeschichten -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Sozialgeschichten (Social Stories)</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kurze, individuell geschriebene Geschichten, die eine soziale Situation aus der Perspektive des Kindes beschreiben. Entwickelt 1993 von Carol Gray, folgen sie einem festen Format mit beschreibenden und anleitenden Sätzen, oft ergänzt durch Bilder.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder haben Schwierigkeiten, implizite soziale Regeln zu erkennen – Dinge, die neurotypische Kinder „einfach so" verstehen. Sozialgeschichten machen diese unsichtbaren Regeln explizit und vorhersehbar: „Wenn wir in der Bibliothek sind, sprechen wir leise, weil andere Menschen lesen." Das reduziert Angst vor unbekannten Situationen und gibt dem Kind ein Skript für angemessenes Verhalten.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Ein Scoping Review (2024, 22 Studien) ergab, dass 32 % der Studien starke oder moderate kausale Effekte zeigten. Das National Clearinghouse on Autism Evidence and Practice stuft „Social Narratives" als evidenzbasierte Praxis ein. Qi et al. (2018) fanden in einer systematischen Übersicht, dass Social Stories besonders wirksam bei der Reduktion von herausforderndem Verhalten und der Förderung sozialer Fähigkeiten sind.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Scoping Review (2024). Social stories supporting behavior change for individuals with Autism. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11263915/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                            <li>Qi, C. H. et al. (2018). A Systematic Review of Effects of Social Stories Interventions for Individuals With ASD. <em>Focus on Autism and Other Developmental Disabilities.</em> <a href="https://journals.sagepub.com/doi/10.1177/1088357615613516" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">SAGE</a></li>
+                            <li>Gray, C. &amp; Garand, J. (1993). Social Stories: Improving responses of students with autism with accurate social information. <em>Focus on Autistic Behavior, 8</em>(1), 1–10.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visuelle Timer -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Visuelle Timer (z.&thinsp;B. Time Timer)</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Starke Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Timer, die die verbleibende Zeit als farbige Fläche anzeigen, die sichtbar kleiner wird. Anders als Digitaluhren vermitteln sie auch ohne Zahlenverständnis ein intuitives Gefühl für „Wie lange noch?".</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder haben Schwierigkeiten mit dem abstrakten Konzept „Zeit" und mit Übergängen von einer Aktivität zur nächsten. Ein visueller Timer macht die verstreichende Zeit konkret sichtbar. Das Kind kann sich mental vorbereiten, was Stress und Widerstand bei Wechseln reduziert.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Dettmer et al. (2000) zeigten, dass ein visueller Timer einem Schüler mit Autismus half, erfolgreich von bevorzugten zu nicht-bevorzugten Aktivitäten zu wechseln. In einer weiteren Studie konnte das angemessene Warteverhalten von 150 auf 600 Sekunden gesteigert werden, allein durch den Einsatz eines Time Timers.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Dettmer, S. et al. (2000). The Use of Visual Supports to Facilitate Transitions of Students with Autism. <em>Focus on Autism and Other Developmental Disabilities, 15</em>(3), 163–169.</li>
+                            <li>Liang, Z. (2025). Visual Schedules to Support Individuals on the Autism Spectrum. <em>Intervention in School and Clinic.</em> <a href="https://journals.sagepub.com/doi/10.1177/10534512241300157" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">SAGE</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- KATEGORIE: Kommunikation                   -->
+        <!-- ═══════════════════════════════════════════ -->
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 mt-16 animate-on-scroll">Kommunikation</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- AAC / PECS -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll md:col-span-2 lg:col-span-2">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Unterstützte Kommunikation (AAC / PECS)</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Starke Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Hilfsmittel, die Kindern ohne oder mit eingeschränkter Lautsprache ermöglichen zu kommunizieren. Dazu gehören: <strong>PECS</strong> (Picture Exchange Communication System) – ein Bildkartensystem, bei dem das Kind Bilder überreicht, um Wünsche auszudrücken; <strong>Kommunikations-Apps</strong> auf Tablets (z.&thinsp;B. GoTalk NOW, MetaTalkDE); sowie <strong>sprachgenerierende Geräte</strong> (SGDs), die auf Knopfdruck Sätze aussprechen.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder haben Stärken in der visuellen Verarbeitung. AAC-Systeme nutzen diese Stärke: Statt abstrakte Lautsprache zu produzieren, wählt das Kind ein konkretes Bild oder Symbol. Das senkt die Kommunikationsbarriere drastisch. PECS baut systematisch auf – vom einfachen Austausch eines Bildes bis hin zu ganzen Sätzen. Entgegen einer verbreiteten Befürchtung zeigt die Forschung, dass AAC die Lautsprachentwicklung <em>nicht</em> hemmt, sondern sogar fördern kann.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Ein systematisches Review (Moorcroft et al., 2018) bestätigt die Wirksamkeit von PECS und sprachgenerierenden Geräten als am besten belegte AAC-Formen für Kinder mit Autismus. Meta-Analysen zeigen große Effekte auf expressive Kommunikationsfähigkeiten. Logan et al. (2017) fanden, dass AAC-Nutzung im Vorschulalter mit Zuwächsen in der Sprachentwicklung einhergeht.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Moorcroft, A. et al. (2018). Instruments for augmentative and alternative communication for children with ASD: a systematic review. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6238819/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                            <li>Logan, K. et al. (2017). The role of augmentative and alternative communication for children with autism: current status and future trends. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5036660/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- KATEGORIE 2: Reizfilterung                 -->
+        <!-- ═══════════════════════════════════════════ -->
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 mt-16 animate-on-scroll">Reizfilterung</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Gehörschutz -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Gehörschutz / Noise-Cancelling-Kopfhörer</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Starke Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kapselgehörschützer (Ear Defenders), passive Ohrschützer oder aktive Noise-Cancelling-Kopfhörer, die Umgebungsgeräusche dämpfen oder herausfiltern.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische Kinder haben eine Hyperakusis (Überempfindlichkeit gegenüber Geräuschen), die zu erhöhter Aktivierung des sympathischen Nervensystems, Stress, Angst und Verhaltensauffälligkeiten führt. Gehörschutz reduziert die sensorische Überflutung direkt und senkt damit die physiologische Stressreaktion.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Farfán-García et al. (2019) zeigten, dass geräuschdämpfende Kopfhörer die sympathische Aktivierung bei Kindern mit ASS und Hyperakusis reduzieren. Rance et al. (2018) fanden in einer Pilotstudie mit 21 Kindern, dass sowohl Ohrschützer als auch Noise-Cancelling-Kopfhörer die Teilnahme an lauten Aktivitäten ermöglichten. Eltern und Lehrkräfte berichteten von besserer Aufmerksamkeit, Fokussierung und Fähigkeit, ruhig zu bleiben.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Farfán-García, C. et al. (2019). Effectiveness of Noise-Attenuating Headphones on Physiological Responses for Children With ASD. <em>Frontiers in Integrative Neuroscience, 13</em>, 65. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6863142/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                            <li>Rance, G. et al. (2018). Effectiveness of Earmuffs and Noise-cancelling Headphones for Coping with Hyper-reactivity to Auditory Stimuli in Children with ASD. <em>OT International.</em> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6091992/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                            <li>Bouzit, M. et al. (2024). Effectiveness of Noise Cancelling Earbuds in Reducing Hearing and Auditory Attention Deficits in Children with Autism. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11355770/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snoezelen -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Snoezelen / Multisensorische Räume</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Speziell gestaltete Räume mit Lichteffekten (Blasensäulen, Farbwechsellampen, Projektionen), sanfter Musik, taktilen Materialien und manchmal Düften. Auch einzelne Elemente wie Snoezelen-Lampen oder Projektoren können zu Hause eingesetzt werden.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Die kontrollierte, reizarme Umgebung bietet sensorische Stimulation ohne die Überflutung des Alltags. Das Nervensystem kann sich regulieren. Besonders wirksam ist es, wenn das Kind selbst die Kontrolle über die sensorischen Reize hat – also z.&thinsp;B. selbst entscheidet, welche Lampe leuchtet oder welche Musik läuft.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Ein systematisches Review von Leonardi et al. (2025, 10 Studien) ergab, dass multisensorische Umgebungen aggressives und stereotypes Verhalten bei autistischen Menschen modulieren können. Mehling et al. (2022) zeigten, dass autistische Kinder, die die sensorische Ausstattung selbst steuern konnten, mehr Aufmerksamkeit zeigten und weniger repetitives Verhalten und stereotype Sprache produzierten.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Leonardi, S. et al. (2025). The use of multisensory environments in children and adults with ASD: A systematic review. <em>Autism.</em> <a href="https://pubmed.ncbi.nlm.nih.gov/40087858/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
+                            <li>Mehling, M. et al. (2022). The use of Multi-Sensory Environments with autistic children: Exploring the effect of having control of sensory changes. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9340127/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schreibtischtrennwand -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Schreibtischtrennwand / Sichtschutz</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Faltbare oder aufstellbare Trennwände, die am Schreibtisch einen abgeschirmten Arbeitsbereich schaffen. Sie begrenzen das Sichtfeld und reduzieren visuelle Ablenkungen – im Klassenzimmer, beim Homeschooling oder bei den Hausaufgaben.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Autistische Kinder reagieren oft stärker auf visuelle Reize in der Umgebung – bewegende Mitschüler, Wanddekorationen oder Gegenstände im Blickfeld können die Aufmerksamkeit ablenken und das Nervensystem überlasten. Eine Trennwand schafft eine klar begrenzte, reizreduzierte Zone. Das entspricht dem Prinzip der <strong>physischen Strukturierung</strong> aus dem TEACCH-Ansatz (Treatment and Education of Autistic and related Communication-handicapped Children), der klar definierte Bereiche als Kernelement nutzt.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Hanley et al. (2017) untersuchten in <em>Developmental Psychology</em> den Einfluss von Klassenraumdekoration auf Aufmerksamkeit und Lernen bei Kindern mit und ohne Autismus. Ergebnis: Stark dekorierte Umgebungen führten zu mehr Off-Task-Verhalten und geringeren Lernzuwächsen. Die Reduktion visueller Ablenkungen – genau das, was eine Schreibtischtrennwand leistet – verbesserte die Aufmerksamkeit messbar. Der TEACCH-Ansatz, der physische Strukturierung als evidenzbasierte Praxis einsetzt, ist seit Jahrzehnten etabliert und international anerkannt.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Hanley, M. et al. (2017). Classroom Displays—Attraction or Distraction? Evidence of Impact on Attention and Learning From Children With and Without Autism. <em>Developmental Psychology, 53</em>(7), 1265–1275. <a href="https://pubmed.ncbi.nlm.nih.gov/28471220/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
+                            <li>Mesibov, G. B. &amp; Shea, V. (2010). The TEACCH Program in the Era of Evidence-Based Practice. <em>Journal of Autism and Developmental Disorders, 40</em>, 570–579.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- KATEGORIE 3: Sensorische Regulation        -->
+        <!-- ═══════════════════════════════════════════ -->
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 mt-16 animate-on-scroll">Sensorische Regulation (Tiefendruck)</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Gewichtsdecken -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Gewichtsdecken</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Decken, die durch eingenähte Glasperlen oder Kunststoffgranulat deutlich schwerer sind als normale Bettdecken (typisch: 5–12 % des Körpergewichts). Sie werden zum Schlafen, Ausruhen oder in Stresssituationen verwendet.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Gewichtsdecken liefern <strong>Deep Pressure Stimulation (Tiefendruck)</strong> – gleichmäßigen, festen Druck auf den Körper. Dies aktiviert das parasympathische Nervensystem (den „Ruhemodus"), senkt den Cortisolspiegel und fördert die Ausschüttung von Serotonin und Melatonin. Das Ergebnis: ein Gefühl von Geborgenheit und Beruhigung.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Die Ergebnisse sind gemischt. Gringras et al. (2014) fanden in einer großen RCT keine signifikante Verbesserung der objektiven Schlafparameter. Allerdings bevorzugten Eltern und Kinder die Gewichtsdecke deutlich. Gee et al. (2021) berichteten von verbessertem Einschlafen und Durchschlafen. Ekström et al. (2021) zeigten, dass Gewichtsdecken bei ADHS/ASS die Entspannung am Tag verbesserten.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Gringras, P. et al. (2014). Weighted blankets and sleep in autistic children – a randomized controlled trial. <em>Pediatrics, 134</em>(2), 298–306. <a href="https://pubmed.ncbi.nlm.nih.gov/25022743/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
+                            <li>Gee, B. M. et al. (2021). Weighted Blankets and Sleep Quality in Children with ASD: A Single-Subject Design. <em>Children, 8</em>(1), 10. <a href="https://www.mdpi.com/2227-9067/8/1/10" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">MDPI</a></li>
+                            <li>Ekström, A. et al. (2021). The effectiveness of weighted blankets on sleep and everyday activities. <em>Scandinavian Journal of Occupational Therapy.</em> <a href="https://www.tandfonline.com/doi/full/10.1080/11038128.2021.1939414" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">Taylor &amp; Francis</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gewichtswesten -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Gewichtswesten</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Westen mit eingenähten oder einschiebbaren Gewichten, die typischerweise 5–10 % des Körpergewichts ausmachen. Sie werden im Unterricht, bei Hausaufgaben oder in unruhigen Situationen getragen.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Wie Gewichtsdecken nutzen sie das Prinzip des Tiefendrucks. Der gleichmäßige Druck auf den Oberkörper liefert propriozeptiven Input – das Gehirn bekommt verstärkte Informationen darüber, wo der Körper im Raum ist. Das kann beruhigend wirken und die Aufmerksamkeit verbessern.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Hodgetts et al. (2011) untersuchten Gewichtswesten im Klassenzimmer bei Kindern mit Autismus und kognitiven Beeinträchtigungen. Bei einigen Teilnehmern stieg das On-Task-Verhalten um 18–25 %. Allerdings waren die Effekte nicht bei allen Kindern konsistent. Die Wirksamkeit hängt stark von den individuellen sensorischen Bedürfnissen ab.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Hodgetts, S. et al. (2011). Effects of weighted vests on classroom behavior for children with autism and cognitive impairments. <em>Research in Autism Spectrum Disorders, 5</em>(1), 495–505. <a href="https://www.sciencedirect.com/science/article/pii/S1750946710001029" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">ScienceDirect</a></li>
+                            <li>Stephenson, J. &amp; Carter, M. (2009). The use of weighted vests with children with ASD and other disabilities. <em>Journal of Autism and Developmental Disorders, 39</em>, 105–114. <a href="https://pubmed.ncbi.nlm.nih.gov/18592366/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PubMed</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Therapieschaukeln -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Therapieschaukeln</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Spezielle Schaukeln (Hängematte, Kokon-Schaukel, Plattformschaukel), die in der Ergotherapie oder zu Hause eingesetzt werden. Sie bieten kontrollierte vestibuläre Stimulation – also Bewegungsreize, die das Gleichgewichtssystem im Innenohr ansprechen.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Das vestibuläre System ist eines der grundlegendsten sensorischen Systeme. Schaukelbewegungen stimulieren es gleichmäßig und vorhersehbar. Bei vielen autistischen Kindern, die unter- oder übersensibel auf Bewegungsreize reagieren, kann rhythmisches Schaukeln regulierend wirken: Es kann beruhigen (langsames, lineares Schaukeln) oder aktivieren (schnelleres Schaukeln). Zudem verbessert vestibuläre Stimulation die Körperwahrnehmung, Koordination und posturale Kontrolle.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Eine randomisierte kontrollierte Studie (2025) zeigte, dass vestibuläre und propriozeptive Übungen Hyperaktivität und Impulsivität bei Kindern mit ASS signifikant reduzieren. Die Interventionsgruppe zeigte deutliche Verbesserungen in sensorischer Verarbeitung, Modulation sowie Verhaltens- und emotionalen Reaktionen. Sensorische Integrationstherapie, zu der Schaukelübungen gehören, verbessert nachweislich Balance und exekutive Funktionen.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Elsayed, H. et al. (2025). Effectiveness of vestibular and proprioceptive exercises in reducing hyperactivity in children with ASD: A randomized controlled trial. <a href="https://www.sciencedirect.com/science/article/abs/pii/S305065652500015X" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">ScienceDirect</a></li>
+                            <li>Liu, Y. et al. (2023). Effects of sensory integration training on balance function and executive function in children with ASD. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10631781/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bewegungssitze -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Bewegungssitze (Sitzkissen, Therapiebälle)</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Aufblasbare Wackelkissen, Therapiebälle oder Keilkissen, die als Alternative zu starren Stühlen eingesetzt werden. Sie ermöglichen kontrollierte Mikrobewegungen beim Sitzen – im Unterricht, bei Hausaufgaben oder am Esstisch.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Viele autistische und ADHS-betroffene Kinder brauchen Bewegung, um aufmerksam bleiben zu können. Bewegungssitze liefern kontinuierlichen vestibulären und propriozeptiven Input durch kleine Ausgleichsbewegungen. Das hilft dem Nervensystem, ein optimales Erregungsniveau aufrechtzuerhalten – das Kind kann sich besser konzentrieren, ohne aufstehen zu müssen. Anders als Zappeln oder Kippeln ist es eine kontrollierte, sozial akzeptierte Form der Bewegung.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Schilling et al. (2003) zeigten im <em>American Journal of Occupational Therapy</em>, dass Schüler mit ADHS auf Therapiebällen deutlich verbessertes On-Task-Verhalten zeigten. Fedewa &amp; Erwin (2011) fanden in einer Studie mit Kindern mit ASD und ADHS signifikante Verbesserungen beim Sitzverhalten (In-Seat-Behavior) und eine Reduktion von störendem Verhalten im Klassenzimmer.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Schilling, D. L. et al. (2003). Classroom seating for children with ADHD: Therapy balls versus chairs. <em>American Journal of Occupational Therapy, 57</em>(5), 534–541.</li>
+                            <li>Fedewa, A. L. &amp; Erwin, H. E. (2011). The Impact of Dynamic Seating on Classroom Behavior of Students with Autism Spectrum Disorder. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5329757/" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">PMC</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- KATEGORIE 4: Selbstregulation               -->
+        <!-- ═══════════════════════════════════════════ -->
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-forest border-b-2 border-sunflower pb-2 mb-8 mt-16 animate-on-scroll">Selbstregulation</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Fidgets -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Fidgets (Knetmasse, Stressbälle, Tangle)</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Moderate Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kleine, handliche Gegenstände, die taktile und propriozeptive Stimulation bieten: Knetmasse, Stressbälle, Tangle-Ringe, texturierte Putty oder weiche Quetschbälle. Wichtig: Einfache, nicht-ablenkende Fidgets sind wirksamer als aufwendige Spielzeuge wie Fidget Spinner.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Rhythmische Handbewegungen liefern sensorischen Input, der das Erregungsniveau des Nervensystems reguliert. Bei Unter-Stimulation kann Fidgeting das Arousal auf ein Niveau heben, das Aufmerksamkeit ermöglicht. Bei Über-Stimulation kann die fokussierte, repetitive Bewegung beruhigend wirken. Die Forschung bestätigt: Fidgeting an sich (nicht spezifische Fidget-Spielzeuge) hilft bei der Aufmerksamkeitsregulation.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Graziano et al. (2024, UC Davis) bestätigten, dass Kinder mit ADHS durch Bewegung (Fidgeting) besser fokussieren können – die Bewegung hilft dem Gehirn, das nötige Erregungsniveau aufrechtzuerhalten. Stalvey &amp; Brasell (2006) zeigten erhöhtes On-Task-Verhalten mit Stressbällen. Zimmerman &amp; Ledford (2024) fanden bei autistischen Kindern allerdings, dass Fidget Toys die visuelle Aufmerksamkeit teilweise verringerten – ein Hinweis, dass einfache, taktile Fidgets besser geeignet sind als visuell ansprechende.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Zimmerman, K. N. &amp; Ledford, J. R. (2024). The Impact of Fidget Toys on Story Detail Acquisition and Visual Attention for Elementary Students With Autism. <em>Journal of Positive Behavior Interventions.</em> <a href="https://journals.sagepub.com/doi/abs/10.1177/10983007231200529" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">SAGE</a></li>
+                            <li>Graziano, P. et al. (2024). Does fidgeting help people with ADHD focus? UC Davis Health. <a href="https://health.ucdavis.edu/news/headlines/does-fidgeting-help-people-with-adhd-focus-/2024/10" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">UC Davis</a></li>
+                            <li>Kriescher, S. L. et al. (2023). Evaluating the Evidence for Fidget Toys in the Classroom. <em>Intervention in School and Clinic.</em> <a href="https://journals.sagepub.com/doi/10.1177/10534512221130070" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline">SAGE</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kau-Hilfsmittel -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow animate-on-scroll">
+                <div class="bg-forest p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white">Kau-Hilfsmittel (Chewelry / Beißringe)</h3>
+                        <span class="inline-flex items-center text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-800">Begrenzte Evidenz</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-forest mb-2">Was ist das?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kaubare Anhänger, Armbänder oder Sticks aus lebensmittelechtem Silikon, die sicheres Kauen ermöglichen. Sie werden als Halskette oder Armband getragen und sind diskret einsetzbar.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Wie wirkt es?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kauen liefert starken propriozeptiven Input über die Kiefermuskulatur und wirkt auf das orale sensorische System. Die rhythmische Kaubewegung hat eine ähnlich regulierende Wirkung wie Fidgeting mit den Händen: Sie kann beruhigend wirken, die Konzentration fördern und das Bedürfnis nach oraler Stimulation auf sichere Weise befriedigen – statt auf Kleidung, Stifte oder Fingernägel zu kauen.</p>
+
+                    <h4 class="font-bold text-forest mb-2">Was sagt die Forschung?</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Kau-Hilfsmittel werden in der ergotherapeutischen Praxis breit eingesetzt und von Fachleuten empfohlen. <strong>Es gibt jedoch bisher keine peer-reviewed Studien, die ihre Wirksamkeit spezifisch bei autistischen Kindern untersucht haben.</strong> Die theoretische Grundlage basiert auf dem allgemeinen Verständnis sensorischer Verarbeitungsprozesse und klinischer Erfahrung.</p>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h4 class="font-bold text-forest text-sm mb-2">Quellen</h4>
+                        <ul class="text-xs text-gray-500 space-y-1">
+                            <li>Klinische Praxis; derzeit keine spezifischen peer-reviewed Studien verfügbar.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="bg-sunflower/10 border-l-4 border-sunflower rounded-xl p-6 mt-16">
+            <h3 class="font-bold text-brown mb-2">Wichtiger Hinweis</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">Diese Übersicht dient der Information und ersetzt keine individuelle therapeutische Beratung. Jedes autistische Kind ist anders – was für das eine Kind hilfreich ist, kann für ein anderes unpassend sein. Sprechen Sie mit Ergotherapeut*innen, Kinderärzt*innen oder anderen Fachleuten, um die passenden Hilfsmittel für Ihr Kind zu finden. Die Evidenzlage entwickelt sich ständig weiter; die hier genannten Studien spiegeln den Stand von März 2026 wider.</p>
+        </div>
+
     </div>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- KATEGORIE 1: Struktur & Orientierung       -->
-    <!-- ═══════════════════════════════════════════ -->
-    <h2 class="category-heading">Struktur &amp; Orientierung</h2>
-
-    <div class="row g-4">
-
-      <!-- Visuelle Pläne -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card aid-card">
-          <div class="card-header">Visuelle Pläne (Bildpläne / Visual Schedules)</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-strong">Starke Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Bilderfolgen oder Symbolkarten, die den Tagesablauf, einzelne Aktivitäten oder Handlungsschritte visuell darstellen. Sie können als Papierplan, Magnettafel oder App gestaltet sein.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Viele autistische Kinder verarbeiten visuelle Informationen besser als gesprochene Sprache. Ein visueller Plan macht die abstrakte Abfolge „Was kommt als Nächstes?" greifbar und vorhersehbar. Das reduziert Unsicherheit und Angst, unterstützt eigenständiges Handeln und erleichtert Übergänge zwischen Aktivitäten.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Visuelle Pläne gelten als <strong>anerkannte evidenzbasierte Praxis</strong>. Das National Standards Project (Phase 2, 2015) stuft den Einsatz von Plänen als etablierte Intervention ein. Hume et al. (2021) bestätigten visuelle Unterstützungsmittel als evidenzbasiert für Personen mit Autismus vom Vorschul- bis zum jungen Erwachsenenalter.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Hume, K. et al. (2021). Evidence-Based Practices for Children, Youth, and Young Adults with Autism. <em>Journal of Autism and Developmental Disorders, 51</em>, 4013–4032. <a href="https://pubmed.ncbi.nlm.nih.gov/33449225/" target="_blank" rel="noopener">PubMed</a></li>
-              <li>Knight, V. et al. (2015). Evaluating Visual Activity Schedules as Evidence-Based Practice for Individuals with ASD. <em>Journal of Autism and Developmental Disorders, 45</em>, 157–178. <a href="https://pubmed.ncbi.nlm.nih.gov/25081593/" target="_blank" rel="noopener">PubMed</a></li>
-              <li>National Autism Center (2015). <em>National Standards Project, Phase 2.</em></li>
-            </ul>
-          </div>
+    <!-- Footer -->
+    <footer class="bg-forest text-white/80">
+        <div class="max-w-7xl mx-auto px-4 py-10">
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 pb-6 border-b border-white/20">
+                <a href="about.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Über uns</a>
+                <a href="index.html#contact" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Kontakt</a>
+                <a href="index.html#f1" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Termine</a>
+                <a href="links.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Links</a>
+                <a href="hilfsmittel.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Hilfsmittel</a>
+                <a href="blog.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Blog</a>
+                <a href="faq.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">FAQ</a>
+                <a href="impressum.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Impressum</a>
+                <a href="datenschutz.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Datenschutz</a>
+            </div>
+            <p class="text-center text-sm text-white/60">&copy; 2024&ndash;2026 Antje und Raik Lasner</p>
         </div>
-      </div>
-
-      <!-- Sozialgeschichten -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card aid-card">
-          <div class="card-header">Sozialgeschichten (Social Stories)</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-moderate">Moderate Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Kurze, individuell geschriebene Geschichten, die eine soziale Situation aus der Perspektive des Kindes beschreiben. Entwickelt 1993 von Carol Gray, folgen sie einem festen Format mit beschreibenden und anleitenden Sätzen, oft ergänzt durch Bilder.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Viele autistische Kinder haben Schwierigkeiten, implizite soziale Regeln zu erkennen – Dinge, die neurotypische Kinder „einfach so" verstehen. Sozialgeschichten machen diese unsichtbaren Regeln explizit und vorhersehbar: „Wenn wir in der Bibliothek sind, sprechen wir leise, weil andere Menschen lesen." Das reduziert Angst vor unbekannten Situationen und gibt dem Kind ein Skript für angemessenes Verhalten.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Ein Scoping Review (2024, 22 Studien) ergab, dass 32 % der Studien starke oder moderate kausale Effekte zeigten. Das National Clearinghouse on Autism Evidence and Practice stuft „Social Narratives" als evidenzbasierte Praxis ein. Qi et al. (2018) fanden in einer systematischen Übersicht, dass Social Stories besonders wirksam bei der Reduktion von herausforderndem Verhalten und der Förderung sozialer Fähigkeiten sind.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Scoping Review (2024). Social stories supporting behavior change for individuals with Autism. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11263915/" target="_blank" rel="noopener">PMC</a></li>
-              <li>Qi, C. H. et al. (2018). A Systematic Review of Effects of Social Stories Interventions for Individuals With ASD. <em>Focus on Autism and Other Developmental Disabilities.</em> <a href="https://journals.sagepub.com/doi/10.1177/1088357615613516" target="_blank" rel="noopener">SAGE</a></li>
-              <li>Gray, C. &amp; Garand, J. (1993). Social Stories: Improving responses of students with autism with accurate social information. <em>Focus on Autistic Behavior, 8</em>(1), 1–10.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Visuelle Timer -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card aid-card">
-          <div class="card-header">Visuelle Timer (z.&thinsp;B. Time Timer)</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-strong">Starke Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Timer, die die verbleibende Zeit als farbige Fläche anzeigen, die sichtbar kleiner wird. Anders als Digitaluhren vermitteln sie auch ohne Zahlenverständnis ein intuitives Gefühl für „Wie lange noch?".</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Viele autistische Kinder haben Schwierigkeiten mit dem abstrakten Konzept „Zeit" und mit Übergängen von einer Aktivität zur nächsten. Ein visueller Timer macht die verstreichende Zeit konkret sichtbar. Das Kind kann sich mental vorbereiten, was Stress und Widerstand bei Wechseln reduziert.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Dettmer et al. (2000) zeigten, dass ein visueller Timer einem Schüler mit Autismus half, erfolgreich von bevorzugten zu nicht-bevorzugten Aktivitäten zu wechseln. In einer weiteren Studie konnte das angemessene Warteverhalten von 150 auf 600 Sekunden gesteigert werden, allein durch den Einsatz eines Time Timers.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Dettmer, S. et al. (2000). The Use of Visual Supports to Facilitate Transitions of Students with Autism. <em>Focus on Autism and Other Developmental Disabilities, 15</em>(3), 163–169.</li>
-              <li>Liang, Z. (2025). Visual Schedules to Support Individuals on the Autism Spectrum. <em>Intervention in School and Clinic.</em> <a href="https://journals.sagepub.com/doi/10.1177/10534512241300157" target="_blank" rel="noopener">SAGE</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /row -->
-
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- KATEGORIE: Kommunikation                   -->
-    <!-- ═══════════════════════════════════════════ -->
-    <h2 class="category-heading">Kommunikation</h2>
-
-    <div class="row g-4">
-
-      <!-- AAC / PECS -->
-      <div class="col-md-8 col-lg-6">
-        <div class="card aid-card">
-          <div class="card-header">Unterstützte Kommunikation (AAC / PECS)</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-strong">Starke Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Hilfsmittel, die Kindern ohne oder mit eingeschränkter Lautsprache ermöglichen zu kommunizieren. Dazu gehören: <strong>PECS</strong> (Picture Exchange Communication System) – ein Bildkartensystem, bei dem das Kind Bilder überreicht, um Wünsche auszudrücken; <strong>Kommunikations-Apps</strong> auf Tablets (z.&thinsp;B. GoTalk NOW, MetaTalkDE); sowie <strong>sprachgenerierende Geräte</strong> (SGDs), die auf Knopfdruck Sätze aussprechen.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Viele autistische Kinder haben Stärken in der visuellen Verarbeitung. AAC-Systeme nutzen diese Stärke: Statt abstrakte Lautsprache zu produzieren, wählt das Kind ein konkretes Bild oder Symbol. Das senkt die Kommunikationsbarriere drastisch. PECS baut systematisch auf – vom einfachen Austausch eines Bildes bis hin zu ganzen Sätzen. Entgegen einer verbreiteten Befürchtung zeigt die Forschung, dass AAC die Lautsprachentwicklung <em>nicht</em> hemmt, sondern sogar fördern kann.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Ein systematisches Review (Moorcroft et al., 2018) bestätigt die Wirksamkeit von PECS und sprachgenerierenden Geräten als am besten belegte AAC-Formen für Kinder mit Autismus. Meta-Analysen zeigen große Effekte auf expressive Kommunikationsfähigkeiten. Logan et al. (2017) fanden, dass AAC-Nutzung im Vorschulalter mit Zuwächsen in der Sprachentwicklung einhergeht.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Moorcroft, A. et al. (2018). Instruments for augmentative and alternative communication for children with ASD: a systematic review. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6238819/" target="_blank" rel="noopener">PMC</a></li>
-              <li>Logan, K. et al. (2017). The role of augmentative and alternative communication for children with autism: current status and future trends. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5036660/" target="_blank" rel="noopener">PMC</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /row -->
-
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- KATEGORIE 2: Reizfilterung                 -->
-    <!-- ═══════════════════════════════════════════ -->
-    <h2 class="category-heading">Reizfilterung</h2>
-
-    <div class="row g-4">
-
-      <!-- Gehörschutz -->
-      <div class="col-md-6">
-        <div class="card aid-card">
-          <div class="card-header">Gehörschutz / Noise-Cancelling-Kopfhörer</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-strong">Starke Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Kapselgehörschützer (Ear Defenders), passive Ohrschützer oder aktive Noise-Cancelling-Kopfhörer, die Umgebungsgeräusche dämpfen oder herausfiltern.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Viele autistische Kinder haben eine Hyperakusis (Überempfindlichkeit gegenüber Geräuschen), die zu erhöhter Aktivierung des sympathischen Nervensystems, Stress, Angst und Verhaltensauffälligkeiten führt. Gehörschutz reduziert die sensorische Überflutung direkt und senkt damit die physiologische Stressreaktion.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Farfán-García et al. (2019) zeigten, dass geräuschdämpfende Kopfhörer die sympathische Aktivierung bei Kindern mit ASS und Hyperakusis reduzieren. Rance et al. (2018) fanden in einer Pilotstudie mit 21 Kindern, dass sowohl Ohrschützer als auch Noise-Cancelling-Kopfhörer die Teilnahme an lauten Aktivitäten ermöglichten. Eltern und Lehrkräfte berichteten von besserer Aufmerksamkeit, Fokussierung und Fähigkeit, ruhig zu bleiben.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Farfán-García, C. et al. (2019). Effectiveness of Noise-Attenuating Headphones on Physiological Responses for Children With ASD. <em>Frontiers in Integrative Neuroscience, 13</em>, 65. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6863142/" target="_blank" rel="noopener">PMC</a></li>
-              <li>Rance, G. et al. (2018). Effectiveness of Earmuffs and Noise-cancelling Headphones for Coping with Hyper-reactivity to Auditory Stimuli in Children with ASD. <em>OT International.</em> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6091992/" target="_blank" rel="noopener">PMC</a></li>
-              <li>Bouzit, M. et al. (2024). Effectiveness of Noise Cancelling Earbuds in Reducing Hearing and Auditory Attention Deficits in Children with Autism. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11355770/" target="_blank" rel="noopener">PMC</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Snoezelen -->
-      <div class="col-md-6">
-        <div class="card aid-card">
-          <div class="card-header">Snoezelen / Multisensorische Räume</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-moderate">Moderate Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Speziell gestaltete Räume mit Lichteffekten (Blasensäulen, Farbwechsellampen, Projektionen), sanfter Musik, taktilen Materialien und manchmal Düften. Auch einzelne Elemente wie Snoezelen-Lampen oder Projektoren können zu Hause eingesetzt werden.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Die kontrollierte, reizarme Umgebung bietet sensorische Stimulation ohne die Überflutung des Alltags. Das Nervensystem kann sich regulieren. Besonders wirksam ist es, wenn das Kind selbst die Kontrolle über die sensorischen Reize hat – also z.&thinsp;B. selbst entscheidet, welche Lampe leuchtet oder welche Musik läuft.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Ein systematisches Review von Leonardi et al. (2025, 10 Studien) ergab, dass multisensorische Umgebungen aggressives und stereotypes Verhalten bei autistischen Menschen modulieren können. Mehling et al. (2022) zeigten, dass autistische Kinder, die die sensorische Ausstattung selbst steuern konnten, mehr Aufmerksamkeit zeigten und weniger repetitives Verhalten und stereotype Sprache produzierten.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Leonardi, S. et al. (2025). The use of multisensory environments in children and adults with ASD: A systematic review. <em>Autism.</em> <a href="https://pubmed.ncbi.nlm.nih.gov/40087858/" target="_blank" rel="noopener">PubMed</a></li>
-              <li>Mehling, M. et al. (2022). The use of Multi-Sensory Environments with autistic children: Exploring the effect of having control of sensory changes. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9340127/" target="_blank" rel="noopener">PMC</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Schreibtischtrennwand -->
-      <div class="col-md-6">
-        <div class="card aid-card">
-          <div class="card-header">Schreibtischtrennwand / Sichtschutz</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-moderate">Moderate Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Faltbare oder aufstellbare Trennwände, die am Schreibtisch einen abgeschirmten Arbeitsbereich schaffen. Sie begrenzen das Sichtfeld und reduzieren visuelle Ablenkungen – im Klassenzimmer, beim Homeschooling oder bei den Hausaufgaben.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Autistische Kinder reagieren oft stärker auf visuelle Reize in der Umgebung – bewegende Mitschüler, Wanddekorationen oder Gegenstände im Blickfeld können die Aufmerksamkeit ablenken und das Nervensystem überlasten. Eine Trennwand schafft eine klar begrenzte, reizreduzierte Zone. Das entspricht dem Prinzip der <strong>physischen Strukturierung</strong> aus dem TEACCH-Ansatz (Treatment and Education of Autistic and related Communication-handicapped Children), der klar definierte Bereiche als Kernelement nutzt.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Hanley et al. (2017) untersuchten in <em>Developmental Psychology</em> den Einfluss von Klassenraumdekoration auf Aufmerksamkeit und Lernen bei Kindern mit und ohne Autismus. Ergebnis: Stark dekorierte Umgebungen führten zu mehr Off-Task-Verhalten und geringeren Lernzuwächsen. Die Reduktion visueller Ablenkungen – genau das, was eine Schreibtischtrennwand leistet – verbesserte die Aufmerksamkeit messbar. Der TEACCH-Ansatz, der physische Strukturierung als evidenzbasierte Praxis einsetzt, ist seit Jahrzehnten etabliert und international anerkannt.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Hanley, M. et al. (2017). Classroom Displays—Attraction or Distraction? Evidence of Impact on Attention and Learning From Children With and Without Autism. <em>Developmental Psychology, 53</em>(7), 1265–1275. <a href="https://pubmed.ncbi.nlm.nih.gov/28471220/" target="_blank" rel="noopener">PubMed</a></li>
-              <li>Mesibov, G. B. &amp; Shea, V. (2010). The TEACCH Program in the Era of Evidence-Based Practice. <em>Journal of Autism and Developmental Disorders, 40</em>, 570–579.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /row -->
-
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- KATEGORIE 3: Sensorische Regulation        -->
-    <!-- ═══════════════════════════════════════════ -->
-    <h2 class="category-heading">Sensorische Regulation (Tiefendruck)</h2>
-
-    <div class="row g-4">
-
-      <!-- Gewichtsdecken -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card aid-card">
-          <div class="card-header">Gewichtsdecken</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-moderate">Moderate Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Decken, die durch eingenähte Glasperlen oder Kunststoffgranulat deutlich schwerer sind als normale Bettdecken (typisch: 5–12 % des Körpergewichts). Sie werden zum Schlafen, Ausruhen oder in Stresssituationen verwendet.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Gewichtsdecken liefern <strong>Deep Pressure Stimulation (Tiefendruck)</strong> – gleichmäßigen, festen Druck auf den Körper. Dies aktiviert das parasympathische Nervensystem (den „Ruhemodus"), senkt den Cortisolspiegel und fördert die Ausschüttung von Serotonin und Melatonin. Das Ergebnis: ein Gefühl von Geborgenheit und Beruhigung.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Die Ergebnisse sind gemischt. Gringras et al. (2014) fanden in einer großen RCT keine signifikante Verbesserung der objektiven Schlafparameter. Allerdings bevorzugten Eltern und Kinder die Gewichtsdecke deutlich. Gee et al. (2021) berichteten von verbessertem Einschlafen und Durchschlafen. Ekström et al. (2021) zeigten, dass Gewichtsdecken bei ADHS/ASS die Entspannung am Tag verbesserten.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Gringras, P. et al. (2014). Weighted blankets and sleep in autistic children – a randomized controlled trial. <em>Pediatrics, 134</em>(2), 298–306. <a href="https://pubmed.ncbi.nlm.nih.gov/25022743/" target="_blank" rel="noopener">PubMed</a></li>
-              <li>Gee, B. M. et al. (2021). Weighted Blankets and Sleep Quality in Children with ASD: A Single-Subject Design. <em>Children, 8</em>(1), 10. <a href="https://www.mdpi.com/2227-9067/8/1/10" target="_blank" rel="noopener">MDPI</a></li>
-              <li>Ekström, A. et al. (2021). The effectiveness of weighted blankets on sleep and everyday activities. <em>Scandinavian Journal of Occupational Therapy.</em> <a href="https://www.tandfonline.com/doi/full/10.1080/11038128.2021.1939414" target="_blank" rel="noopener">Taylor &amp; Francis</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Gewichtswesten -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card aid-card">
-          <div class="card-header">Gewichtswesten</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-moderate">Moderate Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Westen mit eingenähten oder einschiebbaren Gewichten, die typischerweise 5–10 % des Körpergewichts ausmachen. Sie werden im Unterricht, bei Hausaufgaben oder in unruhigen Situationen getragen.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Wie Gewichtsdecken nutzen sie das Prinzip des Tiefendrucks. Der gleichmäßige Druck auf den Oberkörper liefert propriozeptiven Input – das Gehirn bekommt verstärkte Informationen darüber, wo der Körper im Raum ist. Das kann beruhigend wirken und die Aufmerksamkeit verbessern.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Hodgetts et al. (2011) untersuchten Gewichtswesten im Klassenzimmer bei Kindern mit Autismus und kognitiven Beeinträchtigungen. Bei einigen Teilnehmern stieg das On-Task-Verhalten um 18–25 %. Allerdings waren die Effekte nicht bei allen Kindern konsistent. Die Wirksamkeit hängt stark von den individuellen sensorischen Bedürfnissen ab.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Hodgetts, S. et al. (2011). Effects of weighted vests on classroom behavior for children with autism and cognitive impairments. <em>Research in Autism Spectrum Disorders, 5</em>(1), 495–505. <a href="https://www.sciencedirect.com/science/article/pii/S1750946710001029" target="_blank" rel="noopener">ScienceDirect</a></li>
-              <li>Stephenson, J. &amp; Carter, M. (2009). The use of weighted vests with children with ASD and other disabilities. <em>Journal of Autism and Developmental Disorders, 39</em>, 105–114. <a href="https://pubmed.ncbi.nlm.nih.gov/18592366/" target="_blank" rel="noopener">PubMed</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Therapieschaukeln -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card aid-card">
-          <div class="card-header">Therapieschaukeln</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-moderate">Moderate Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Spezielle Schaukeln (Hängematte, Kokon-Schaukel, Plattformschaukel), die in der Ergotherapie oder zu Hause eingesetzt werden. Sie bieten kontrollierte vestibuläre Stimulation – also Bewegungsreize, die das Gleichgewichtssystem im Innenohr ansprechen.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Das vestibuläre System ist eines der grundlegendsten sensorischen Systeme. Schaukelbewegungen stimulieren es gleichmäßig und vorhersehbar. Bei vielen autistischen Kindern, die unter- oder übersensibel auf Bewegungsreize reagieren, kann rhythmisches Schaukeln regulierend wirken: Es kann beruhigen (langsames, lineares Schaukeln) oder aktivieren (schnelleres Schaukeln). Zudem verbessert vestibuläre Stimulation die Körperwahrnehmung, Koordination und posturale Kontrolle.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Eine randomisierte kontrollierte Studie (2025) zeigte, dass vestibuläre und propriozeptive Übungen Hyperaktivität und Impulsivität bei Kindern mit ASS signifikant reduzieren. Die Interventionsgruppe zeigte deutliche Verbesserungen in sensorischer Verarbeitung, Modulation sowie Verhaltens- und emotionalen Reaktionen. Sensorische Integrationstherapie, zu der Schaukelübungen gehören, verbessert nachweislich Balance und exekutive Funktionen.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Elsayed, H. et al. (2025). Effectiveness of vestibular and proprioceptive exercises in reducing hyperactivity in children with ASD: A randomized controlled trial. <a href="https://www.sciencedirect.com/science/article/abs/pii/S305065652500015X" target="_blank" rel="noopener">ScienceDirect</a></li>
-              <li>Liu, Y. et al. (2023). Effects of sensory integration training on balance function and executive function in children with ASD. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10631781/" target="_blank" rel="noopener">PMC</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bewegungssitze -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card aid-card">
-          <div class="card-header">Bewegungssitze (Sitzkissen, Therapiebälle)</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-moderate">Moderate Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Aufblasbare Wackelkissen, Therapiebälle oder Keilkissen, die als Alternative zu starren Stühlen eingesetzt werden. Sie ermöglichen kontrollierte Mikrobewegungen beim Sitzen – im Unterricht, bei Hausaufgaben oder am Esstisch.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Viele autistische und ADHS-betroffene Kinder brauchen Bewegung, um aufmerksam bleiben zu können. Bewegungssitze liefern kontinuierlichen vestibulären und propriozeptiven Input durch kleine Ausgleichsbewegungen. Das hilft dem Nervensystem, ein optimales Erregungsniveau aufrechtzuerhalten – das Kind kann sich besser konzentrieren, ohne aufstehen zu müssen. Anders als Zappeln oder Kippeln ist es eine kontrollierte, sozial akzeptierte Form der Bewegung.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Schilling et al. (2003) zeigten im <em>American Journal of Occupational Therapy</em>, dass Schüler mit ADHS auf Therapiebällen deutlich verbessertes On-Task-Verhalten zeigten. Fedewa &amp; Erwin (2011) fanden in einer Studie mit Kindern mit ASD und ADHS signifikante Verbesserungen beim Sitzverhalten (In-Seat-Behavior) und eine Reduktion von störendem Verhalten im Klassenzimmer.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Schilling, D. L. et al. (2003). Classroom seating for children with ADHD: Therapy balls versus chairs. <em>American Journal of Occupational Therapy, 57</em>(5), 534–541.</li>
-              <li>Fedewa, A. L. &amp; Erwin, H. E. (2011). The Impact of Dynamic Seating on Classroom Behavior of Students with Autism Spectrum Disorder. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5329757/" target="_blank" rel="noopener">PMC</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /row -->
-
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- KATEGORIE 4: Selbstregulation               -->
-    <!-- ═══════════════════════════════════════════ -->
-    <h2 class="category-heading">Selbstregulation</h2>
-
-    <div class="row g-4">
-
-      <!-- Fidgets -->
-      <div class="col-md-6">
-        <div class="card aid-card">
-          <div class="card-header">Fidgets (Knetmasse, Stressbälle, Tangle)</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-moderate">Moderate Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Kleine, handliche Gegenstände, die taktile und propriozeptive Stimulation bieten: Knetmasse, Stressbälle, Tangle-Ringe, texturierte Putty oder weiche Quetschbälle. Wichtig: Einfache, nicht-ablenkende Fidgets sind wirksamer als aufwendige Spielzeuge wie Fidget Spinner.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Rhythmische Handbewegungen liefern sensorischen Input, der das Erregungsniveau des Nervensystems reguliert. Bei Unter-Stimulation kann Fidgeting das Arousal auf ein Niveau heben, das Aufmerksamkeit ermöglicht. Bei Über-Stimulation kann die fokussierte, repetitive Bewegung beruhigend wirken. Die Forschung bestätigt: Fidgeting an sich (nicht spezifische Fidget-Spielzeuge) hilft bei der Aufmerksamkeitsregulation.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Graziano et al. (2024, UC Davis) bestätigten, dass Kinder mit ADHS durch Bewegung (Fidgeting) besser fokussieren können – die Bewegung hilft dem Gehirn, das nötige Erregungsniveau aufrechtzuerhalten. Stalvey &amp; Brasell (2006) zeigten erhöhtes On-Task-Verhalten mit Stressbällen. Zimmerman &amp; Ledford (2024) fanden bei autistischen Kindern allerdings, dass Fidget Toys die visuelle Aufmerksamkeit teilweise verringerten – ein Hinweis, dass einfache, taktile Fidgets besser geeignet sind als visuell ansprechende.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Zimmerman, K. N. &amp; Ledford, J. R. (2024). The Impact of Fidget Toys on Story Detail Acquisition and Visual Attention for Elementary Students With Autism. <em>Journal of Positive Behavior Interventions.</em> <a href="https://journals.sagepub.com/doi/abs/10.1177/10983007231200529" target="_blank" rel="noopener">SAGE</a></li>
-              <li>Graziano, P. et al. (2024). Does fidgeting help people with ADHD focus? UC Davis Health. <a href="https://health.ucdavis.edu/news/headlines/does-fidgeting-help-people-with-adhd-focus-/2024/10" target="_blank" rel="noopener">UC Davis</a></li>
-              <li>Kriescher, S. L. et al. (2023). Evaluating the Evidence for Fidget Toys in the Classroom. <em>Intervention in School and Clinic.</em> <a href="https://journals.sagepub.com/doi/10.1177/10534512221130070" target="_blank" rel="noopener">SAGE</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Kau-Hilfsmittel -->
-      <div class="col-md-6">
-        <div class="card aid-card">
-          <div class="card-header">Kau-Hilfsmittel (Chewelry / Beißringe)</div>
-          <div class="card-body">
-            <span class="evidence-badge evidence-limited">Begrenzte Evidenz</span>
-
-            <h6>Was ist das?</h6>
-            <p>Kaubare Anhänger, Armbänder oder Sticks aus lebensmittelechtem Silikon, die sicheres Kauen ermöglichen. Sie werden als Halskette oder Armband getragen und sind diskret einsetzbar.</p>
-
-            <h6>Wie wirkt es?</h6>
-            <p>Kauen liefert starken propriozeptiven Input über die Kiefermuskulatur und wirkt auf das orale sensorische System. Die rhythmische Kaubewegung hat eine ähnlich regulierende Wirkung wie Fidgeting mit den Händen: Sie kann beruhigend wirken, die Konzentration fördern und das Bedürfnis nach oraler Stimulation auf sichere Weise befriedigen – statt auf Kleidung, Stifte oder Fingernägel zu kauen.</p>
-
-            <h6>Was sagt die Forschung?</h6>
-            <p>Kau-Hilfsmittel werden in der ergotherapeutischen Praxis breit eingesetzt und von Fachleuten empfohlen. <strong>Es gibt jedoch bisher keine peer-reviewed Studien, die ihre Wirksamkeit spezifisch bei autistischen Kindern untersucht haben.</strong> Die theoretische Grundlage basiert auf dem allgemeinen Verständnis sensorischer Verarbeitungsprozesse und klinischer Erfahrung.</p>
-
-            <h6>Quellen</h6>
-            <ul class="source-list">
-              <li>Klinische Praxis; derzeit keine spezifischen peer-reviewed Studien verfügbar.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /row -->
-
-    <!-- Disclaimer -->
-    <div class="disclaimer-box">
-      <strong>Wichtiger Hinweis:</strong> Diese Übersicht dient der Information und ersetzt keine individuelle therapeutische Beratung. Jedes autistische Kind ist anders – was für das eine Kind hilfreich ist, kann für ein anderes unpassend sein. Sprechen Sie mit Ergotherapeut*innen, Kinderärzt*innen oder anderen Fachleuten, um die passenden Hilfsmittel für Ihr Kind zu finden. Die Evidenzlage entwickelt sich ständig weiter; die hier genannten Studien spiegeln den Stand von März 2026 wider.
-    </div>
-
-</div><!-- /container -->
-
-        <!-- Footer Area -->
-        <footer class="py-3 my-4">
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-               <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Über uns</a></li>
-               <li class="nav-item"><a href="index.html#contact" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
-               <li class="nav-item"><a href="index.html#f1" class="nav-link px-2 text-body-secondary">Termine</a></li>
-               <li class="nav-item"><a href="links.html" class="nav-link px-2 text-body-secondary">Links</a></li>
-               <li class="nav-item"><a href="hilfsmittel.html" class="nav-link px-2 text-body-secondary">Hilfsmittel</a></li>
-               <li class="nav-item"><a href="blog.html" class="nav-link px-2 text-body-secondary">Blog</a></li>
-                <li class="nav-item"><a href="faq.html" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-            <li class="nav-item"><a href="impressum.html" class="nav-link px-2 text-body-secondary">Impressum</a></li>
-            <li class="nav-item"><a href="datenschutz.html" class="nav-link px-2 text-body-secondary">Datenschutz</a></li>
-           </ul>
-           <p class="text-center text-body-secondary">&copy; 2024–2026 Antje und Raik Lasner</p>
-       </footer>
-    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</button>
-         <!-- Bootstrap 5 Js -->
-         <script src="js/bootstrap.min.js"></script>
-         <script src="js/site.js"></script>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" type="button" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-forest text-white shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-forest-light flex items-center justify-center z-50" aria-label="Nach oben scrollen">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        navToggle.addEventListener('click', () => {
+            const isOpen = !navMenu.classList.contains('hidden');
+            navMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            navToggle.setAttribute('aria-expanded', !isOpen);
+        });
+
+        // IntersectionObserver for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Back to top
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+                backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>

@@ -11,278 +11,299 @@
     <meta property="og:image" content="https://www.ass-elternkreis-nwm.de/images/ASS_infinity_awareness_symbol.png">
     <title>Erste Schritte — ASS Elternkreis NWM</title>
     <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/erste-schritte.html">
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/logoneu.jpg" type="image/jpg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#1b4332',
+                        'forest-light': '#2d6a4f',
+                        sunflower: '#FFC107',
+                        'sunflower-hover': '#E6A800',
+                        brown: '#3E2723',
+                        softwhite: '#FAFAF8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
     <style>
-        .step-card {
-            border-left: 4px solid #FFC107;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        .step-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .step-number {
-            width: 48px;
-            height: 48px;
-            background-color: #FFC107;
-            color: #3E2723;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-        .step-icon {
-            width: 32px;
-            height: 32px;
-        }
-        .pre-step-card {
-            border-left: 4px solid #2E7D32;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .pre-step-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .pre-step-letter {
-            width: 48px;
-            height: 48px;
-            background-color: #2E7D32;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.25rem;
-            flex-shrink: 0;
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body>
-    <a href="#main-content" class="visually-hidden-focusable">Zum Inhalt springen</a>
-    <!-- Header Area -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                ASS Elternkreis NWM
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#f1">Termine</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Über uns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="erste-schritte.html">Erste Schritte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="links.html">Links</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hilfsmittel.html">Hilfsmittel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                </ul>
+<body class="bg-softwhite text-brown font-sans antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-4 focus:py-2 focus:z-50 focus:rounded">Zum Inhalt springen</a>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2 text-forest font-bold text-lg no-underline">
+                    <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" class="w-8 h-6">
+                    ASS Elternkreis NWM
+                </a>
+                <!-- Mobile hamburger -->
+                <button id="nav-toggle" type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-brown hover:bg-gray-100" aria-controls="nav-menu" aria-expanded="false" aria-label="Navigation umschalten">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <!-- Desktop nav -->
+                <div class="hidden lg:flex lg:items-center lg:gap-1">
+                    <a href="index.html#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
+                    <a href="index.html#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Über uns</a>
+                    <a href="erste-schritte.html" class="px-3 py-2 rounded-md text-sm font-medium text-forest bg-forest/10 no-underline">Erste Schritte</a>
+                    <a href="links.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Links</a>
+                    <a href="hilfsmittel.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Hilfsmittel</a>
+                    <a href="blog.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Blog</a>
+                    <a href="faq.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">FAQ</a>
+                </div>
+            </div>
+            <!-- Mobile nav menu -->
+            <div id="nav-menu" class="hidden lg:hidden pb-4">
+                <div class="flex flex-col gap-1">
+                    <a href="index.html#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
+                    <a href="index.html#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Über uns</a>
+                    <a href="erste-schritte.html" class="px-3 py-2 rounded-md text-sm font-medium text-forest bg-forest/10 no-underline">Erste Schritte</a>
+                    <a href="links.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Links</a>
+                    <a href="hilfsmittel.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Hilfsmittel</a>
+                    <a href="blog.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Blog</a>
+                    <a href="faq.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">FAQ</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <div id="main-content" class="container my-5">
-        <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-            <h1 class="text-body-emphasis">Du vermutest, dass dein Kind autistisch sein könnte — oder hast gerade eine Diagnose bekommen?</h1>
-            <p class="col-lg-8 mx-auto mb-0" style="color: black; font-size: 1.2rem;">
+    <!-- Page Header -->
+    <section id="main-content" class="bg-forest/[0.03]">
+        <div class="max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-forest mb-6 leading-tight">Du vermutest, dass dein Kind autistisch sein könnte — oder hast gerade eine Diagnose bekommen?</h1>
+            <p class="text-lg sm:text-xl text-brown/80 leading-relaxed">
                 Ob du noch auf Antworten wartest oder die Diagnose gerade frisch ist — wir kennen beide Gefühle.
                 Die Unsicherheit, die Fragen, manchmal auch die Angst. Aber du bist nicht allein.
                 Viele Eltern in unserer Gruppe standen genau da, wo du jetzt stehst.
                 Hier findest du eine Orientierung für deine nächsten Schritte.
             </p>
         </div>
-    </div>
+    </section>
 
     <!-- Pre-Diagnosis Section -->
-    <div class="container" style="max-width: 800px;">
-        <h2 class="mb-4">Noch keine Diagnose?</h2>
-        <p class="mb-4">Du bist dir nicht sicher, ob dein Kind autistisch sein könnte? Das ist völlig okay. Hier sind erste Schritte, die du schon jetzt gehen kannst — ganz ohne Diagnose.</p>
+    <section class="max-w-3xl mx-auto px-4 py-12 sm:py-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-forest mb-4">Noch keine Diagnose?</h2>
+        <p class="text-brown/80 text-lg mb-8">Du bist dir nicht sicher, ob dein Kind autistisch sein könnte? Das ist völlig okay. Hier sind erste Schritte, die du schon jetzt gehen kannst — ganz ohne Diagnose.</p>
 
-        <!-- Punkt A -->
-        <div class="card pre-step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="pre-step-letter">A</div>
+        <div class="space-y-4">
+            <!-- Punkt A -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-forest animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-forest text-white font-bold text-lg flex items-center justify-center flex-shrink-0">A</div>
                 <div>
-                    <h3 class="fs-4 mb-2">Beobachten und dokumentieren</h3>
-                    <p class="mb-2">Schreib auf, was dir auffällt — Situationen, Reaktionen, Muster. Das hilft dir selbst beim Einordnen und später auch bei Arztgesprächen. Sprich deinen Kinderarzt oder deine Kinderärztin auf deine Beobachtungen an.</p>
-                    <a href="vorschule/frage-001.html" class="btn btn-sm btn-outline-secondary">Frühe Anzeichen erkennen</a>
+                    <h3 class="text-xl font-bold text-brown mb-2">Beobachten und dokumentieren</h3>
+                    <p class="text-brown/80 mb-3">Schreib auf, was dir auffällt — Situationen, Reaktionen, Muster. Das hilft dir selbst beim Einordnen und später auch bei Arztgesprächen. Sprich deinen Kinderarzt oder deine Kinderärztin auf deine Beobachtungen an.</p>
+                    <a href="vorschule/frage-001.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-forest hover:text-forest transition-colors no-underline">Frühe Anzeichen erkennen</a>
+                </div>
+            </div>
+
+            <!-- Punkt B -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-forest animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-forest text-white font-bold text-lg flex items-center justify-center flex-shrink-0">B</div>
+                <div>
+                    <h3 class="text-xl font-bold text-brown mb-2">Diagnostik-Wege kennen</h3>
+                    <p class="text-brown/80 mb-3">Sozialpädiatrische Zentren (SPZ), Kinder- und Jugendpsychiater oder Autismusambulanz können eine Diagnostik durchführen. Die Wartezeiten sind oft lang (6–18 Monate) — melde dich frühzeitig an, auch wenn du noch unsicher bist. Eine Anmeldung verpflichtet zu nichts.</p>
+                    <a href="vorschule/frage-002.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-forest hover:text-forest transition-colors no-underline">Diagnoseprozess verstehen</a>
+                </div>
+            </div>
+
+            <!-- Punkt C -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-forest animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-forest text-white font-bold text-lg flex items-center justify-center flex-shrink-0">C</div>
+                <div>
+                    <h3 class="text-xl font-bold text-brown mb-2">Hilfe gibt es auch ohne Diagnose</h3>
+                    <p class="text-brown/80 mb-3">Viele Unterstützungsangebote stehen dir schon jetzt offen: Frühförderung, Ergotherapie, die Ergänzende unabhängige Teilhabeberatung (EUTB) und Erziehungsberatung. Du musst nicht auf die Diagnose warten, um Hilfe zu bekommen.</p>
+                    <a href="links.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-forest hover:text-forest transition-colors no-underline">Anlaufstellen ansehen</a>
+                </div>
+            </div>
+
+            <!-- Punkt D -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-forest animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-forest text-white font-bold text-lg flex items-center justify-center flex-shrink-0">D</div>
+                <div>
+                    <h3 class="text-xl font-bold text-brown mb-2">Austausch suchen</h3>
+                    <p class="text-brown/80 mb-3">Du brauchst keine Diagnose, um bei uns willkommen zu sein. In unserer Selbsthilfegruppe sind auch Eltern, die sich gerade im Verdachts- oder Diagnostikprozess befinden. Schreib uns einfach.</p>
+                    <a href="index.html#contact" class="inline-block text-sm font-semibold px-5 py-2.5 rounded-lg bg-sunflower text-brown hover:bg-sunflower-hover transition-colors no-underline">Kontaktiere uns</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Punkt B -->
-        <div class="card pre-step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="pre-step-letter">B</div>
+    <!-- Post-Diagnosis Section -->
+    <section class="max-w-3xl mx-auto px-4 py-12 sm:py-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-forest mb-8">Wenn die Diagnose da ist — so geht es weiter</h2>
+
+        <div class="space-y-4">
+            <!-- Schritt 1 -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-sunflower animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center flex-shrink-0">1</div>
                 <div>
-                    <h3 class="fs-4 mb-2">Diagnostik-Wege kennen</h3>
-                    <p class="mb-2">Sozialpädiatrische Zentren (SPZ), Kinder- und Jugendpsychiater oder Autismusambulanz können eine Diagnostik durchführen. Die Wartezeiten sind oft lang (6–18 Monate) — melde dich frühzeitig an, auch wenn du noch unsicher bist. Eine Anmeldung verpflichtet zu nichts.</p>
-                    <a href="vorschule/frage-002.html" class="btn btn-sm btn-outline-secondary">Diagnoseprozess verstehen</a>
+                    <h3 class="text-xl font-bold text-brown mb-2">Durchatmen</h3>
+                    <p class="text-brown/80">Du hast Zeit. Eine Diagnose ist kein Notfall. Sie ist eine Erklärung, kein Urteil. Dein Kind ist immer noch dasselbe Kind wie gestern. Nimm dir die Zeit, die du brauchst, um das Gehörte zu verarbeiten. Es ist völlig okay, wenn du gerade nicht weißt, wie es weitergeht.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Punkt C -->
-        <div class="card pre-step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="pre-step-letter">C</div>
+            <!-- Schritt 2 -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-sunflower animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center flex-shrink-0">2</div>
                 <div>
-                    <h3 class="fs-4 mb-2">Hilfe gibt es auch ohne Diagnose</h3>
-                    <p class="mb-2">Viele Unterstützungsangebote stehen dir schon jetzt offen: Frühförderung, Ergotherapie, die Ergänzende unabhängige Teilhabeberatung (EUTB) und Erziehungsberatung. Du musst nicht auf die Diagnose warten, um Hilfe zu bekommen.</p>
-                    <a href="links.html" class="btn btn-sm btn-outline-secondary">Anlaufstellen ansehen</a>
+                    <h3 class="text-xl font-bold text-brown mb-2">Verstehen</h3>
+                    <p class="text-brown/80 mb-3">Was bedeutet Autismus eigentlich? Und was bedeutet es nicht? Es gibt viele Vorurteile und veraltete Bilder. Informiere dich aus vertrauenswürdigen Quellen und lass dich nicht von Klischees verunsichern.</p>
+                    <a href="vorschule/frage-003.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-sunflower hover:text-brown transition-colors no-underline">Was bedeutet die Diagnose für mein Kind?</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Punkt D -->
-        <div class="card pre-step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="pre-step-letter">D</div>
+            <!-- Schritt 3 -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-sunflower animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center flex-shrink-0">3</div>
                 <div>
-                    <h3 class="fs-4 mb-2">Austausch suchen</h3>
-                    <p class="mb-2">Du brauchst keine Diagnose, um bei uns willkommen zu sein. In unserer Selbsthilfegruppe sind auch Eltern, die sich gerade im Verdachts- oder Diagnostikprozess befinden. Schreib uns einfach.</p>
-                    <a href="index.html#contact" class="btn btn-custom">Kontaktiere uns</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Steps -->
-    <div class="container" style="max-width: 800px;">
-        <h2 class="mt-5 mb-4">Wenn die Diagnose da ist — so geht es weiter</h2>
-
-        <!-- Schritt 1 -->
-        <div class="card step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="step-number">1</div>
-                <div>
-                    <h3 class="fs-4 mb-2">Durchatmen</h3>
-                    <p class="mb-0">Du hast Zeit. Eine Diagnose ist kein Notfall. Sie ist eine Erklärung, kein Urteil. Dein Kind ist immer noch dasselbe Kind wie gestern. Nimm dir die Zeit, die du brauchst, um das Gehörte zu verarbeiten. Es ist völlig okay, wenn du gerade nicht weißt, wie es weitergeht.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Schritt 2 -->
-        <div class="card step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="step-number">2</div>
-                <div>
-                    <h3 class="fs-4 mb-2">Verstehen</h3>
-                    <p class="mb-2">Was bedeutet Autismus eigentlich? Und was bedeutet es nicht? Es gibt viele Vorurteile und veraltete Bilder. Informiere dich aus vertrauenswürdigen Quellen und lass dich nicht von Klischees verunsichern.</p>
-                    <a href="vorschule/frage-003.html" class="btn btn-sm btn-outline-secondary">Was bedeutet die Diagnose für mein Kind?</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Schritt 3 -->
-        <div class="card step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="step-number">3</div>
-                <div>
-                    <h3 class="fs-4 mb-2">Rechte kennen</h3>
-                    <p class="mb-2">Deinem Kind stehen Unterstützungsleistungen zu. Pflegegrad, Nachteilsausgleich in der Schule, Schulbegleitung, Eingliederungshilfe — vieles davon ist nicht kompliziert, wenn man weiß wo man anfangen muss.</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <a href="vorschule/frage-016.html" class="btn btn-sm btn-outline-secondary">Finanzielle Unterstützung</a>
-                        <a href="vorschule/frage-017.html" class="btn btn-sm btn-outline-secondary">Pflegegrad beantragen</a>
-                        <a href="grundschule/frage-022.html" class="btn btn-sm btn-outline-secondary">Nachteilsausgleich</a>
-                        <a href="grundschule/frage-023.html" class="btn btn-sm btn-outline-secondary">Schulbegleitung</a>
+                    <h3 class="text-xl font-bold text-brown mb-2">Rechte kennen</h3>
+                    <p class="text-brown/80 mb-3">Deinem Kind stehen Unterstützungsleistungen zu. Pflegegrad, Nachteilsausgleich in der Schule, Schulbegleitung, Eingliederungshilfe — vieles davon ist nicht kompliziert, wenn man weiß wo man anfangen muss.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="vorschule/frage-016.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-sunflower hover:text-brown transition-colors no-underline">Finanzielle Unterstützung</a>
+                        <a href="vorschule/frage-017.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-sunflower hover:text-brown transition-colors no-underline">Pflegegrad beantragen</a>
+                        <a href="grundschule/frage-022.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-sunflower hover:text-brown transition-colors no-underline">Nachteilsausgleich</a>
+                        <a href="grundschule/frage-023.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-sunflower hover:text-brown transition-colors no-underline">Schulbegleitung</a>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Schritt 4 -->
-        <div class="card step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="step-number">4</div>
+            <!-- Schritt 4 -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-sunflower animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center flex-shrink-0">4</div>
                 <div>
-                    <h3 class="fs-4 mb-2">Unterstützung finden</h3>
-                    <p class="mb-2">In Nordwestmecklenburg gibt es Anlaufstellen, die dir helfen können: die Autismusambulanz, Ergotherapie, Verfahrenslotsen, die EUTB und mehr. Du musst nicht alles allein herausfinden.</p>
-                    <a href="links.html#hilfreiche-organisationen" class="btn btn-sm btn-outline-secondary">Regionale Anlaufstellen ansehen</a>
+                    <h3 class="text-xl font-bold text-brown mb-2">Unterstützung finden</h3>
+                    <p class="text-brown/80 mb-3">In Nordwestmecklenburg gibt es Anlaufstellen, die dir helfen können: die Autismusambulanz, Ergotherapie, Verfahrenslotsen, die EUTB und mehr. Du musst nicht alles allein herausfinden.</p>
+                    <a href="links.html#hilfreiche-organisationen" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-sunflower hover:text-brown transition-colors no-underline">Regionale Anlaufstellen ansehen</a>
+                </div>
+            </div>
+
+            <!-- Schritt 5 -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-sunflower animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center flex-shrink-0">5</div>
+                <div>
+                    <h3 class="text-xl font-bold text-brown mb-2">Austausch suchen</h3>
+                    <p class="text-brown/80 mb-3">Andere Eltern verstehen dich ohne lange Erklärungen. In unserer Selbsthilfegruppe treffen sich fast 30 Familien aus dem ganzen Landkreis — monatlich vor Ort in Wismar und online. Melde dich über das Kontaktformular und wir laden dich zu unserem nächsten Treffen ein.</p>
+                    <a href="index.html#contact" class="inline-block text-sm font-semibold px-5 py-2.5 rounded-lg bg-sunflower text-brown hover:bg-sunflower-hover transition-colors no-underline">Kontaktiere uns</a>
+                </div>
+            </div>
+
+            <!-- Schritt 6 -->
+            <div class="flex gap-4 items-start bg-white rounded-2xl shadow-sm p-6 border-l-4 border-sunflower animate-on-scroll">
+                <div class="w-12 h-12 rounded-full bg-sunflower text-brown font-bold text-lg flex items-center justify-center flex-shrink-0">6</div>
+                <div>
+                    <h3 class="text-xl font-bold text-brown mb-2">Dein Kind stärken</h3>
+                    <p class="text-brown/80 mb-3">In unserer Wissensdatenbank findest du 100 Fragen und Antworten — sortiert nach Lebensphasen, von Vorschule bis Erwachsenenalter. Praktisch, verständlich und aus Elternsicht geschrieben.</p>
+                    <a href="faq.html" class="inline-block text-sm font-medium px-4 py-2 rounded-lg border border-brown/20 text-brown/70 hover:border-sunflower hover:text-brown transition-colors no-underline">Zur FAQ-Wissensdatenbank</a>
                 </div>
             </div>
         </div>
-
-        <!-- Schritt 5 -->
-        <div class="card step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="step-number">5</div>
-                <div>
-                    <h3 class="fs-4 mb-2">Austausch suchen</h3>
-                    <p class="mb-2">Andere Eltern verstehen dich ohne lange Erklärungen. In unserer Selbsthilfegruppe treffen sich fast 30 Familien aus dem ganzen Landkreis — monatlich vor Ort in Wismar und online. Melde dich über das Kontaktformular und wir laden dich zu unserem nächsten Treffen ein.</p>
-                    <a href="index.html#contact" class="btn btn-custom">Kontaktiere uns</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Schritt 6 -->
-        <div class="card step-card mb-4">
-            <div class="card-body d-flex gap-3 align-items-start p-4">
-                <div class="step-number">6</div>
-                <div>
-                    <h3 class="fs-4 mb-2">Dein Kind stärken</h3>
-                    <p class="mb-2">In unserer Wissensdatenbank findest du 100 Fragen und Antworten — sortiert nach Lebensphasen, von Vorschule bis Erwachsenenalter. Praktisch, verständlich und aus Elternsicht geschrieben.</p>
-                    <a href="faq.html" class="btn btn-sm btn-outline-secondary">Zur FAQ-Wissensdatenbank</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    </section>
 
     <!-- Closing CTA -->
-    <div class="container my-5" style="max-width: 800px;">
-        <div class="text-center p-4 bg-body border border-dashed rounded-5">
-            <p class="mb-3" style="font-size: 1.1rem;">
-                <strong>Du bist nicht allein.</strong> Schreib uns — wir melden uns innerhalb von 48 Stunden und laden dich zu unserem nächsten Treffen ein.
+    <section class="max-w-3xl mx-auto px-4 pb-16">
+        <div class="text-center bg-white rounded-2xl shadow-sm p-8 sm:p-10 border border-gray-100">
+            <p class="text-lg sm:text-xl text-brown/80 mb-6">
+                <strong class="text-brown">Du bist nicht allein.</strong> Schreib uns — wir melden uns innerhalb von 48 Stunden und laden dich zu unserem nächsten Treffen ein.
             </p>
-            <a href="index.html#contact" class="btn btn-custom btn-lg">Kontaktiere uns</a>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="index.html#contact" class="inline-block font-semibold px-8 py-3 rounded-lg bg-sunflower text-brown hover:bg-sunflower-hover transition-colors text-lg no-underline">Kontaktiere uns</a>
+                <a href="faq.html" class="inline-block font-semibold px-8 py-3 rounded-lg border-2 border-forest text-forest hover:bg-forest hover:text-white transition-colors text-lg no-underline">Zur FAQ-Datenbank</a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer Area -->
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Über uns</a></li>
-            <li class="nav-item"><a href="index.html#contact" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
-            <li class="nav-item"><a href="index.html#f1" class="nav-link px-2 text-body-secondary">Termine</a></li>
-            <li class="nav-item"><a href="links.html" class="nav-link px-2 text-body-secondary">Links</a></li>
-            <li class="nav-item"><a href="blog.html" class="nav-link px-2 text-body-secondary">Blog</a></li>
-            <li class="nav-item"><a href="faq.html" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-            <li class="nav-item"><a href="impressum.html" class="nav-link px-2 text-body-secondary">Impressum</a></li>
-            <li class="nav-item"><a href="datenschutz.html" class="nav-link px-2 text-body-secondary">Datenschutz</a></li>
-        </ul>
-        <p class="text-center text-body-secondary">&copy; 2024&ndash;2026 Antje und Raik Lasner</p>
+    <!-- Footer -->
+    <footer class="bg-forest text-white/80">
+        <div class="max-w-7xl mx-auto px-4 py-10">
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 pb-6 border-b border-white/20">
+                <a href="about.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Über uns</a>
+                <a href="index.html#contact" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Kontakt</a>
+                <a href="index.html#f1" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Termine</a>
+                <a href="links.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Links</a>
+                <a href="blog.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Blog</a>
+                <a href="faq.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">FAQ</a>
+                <a href="impressum.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Impressum</a>
+                <a href="datenschutz.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Datenschutz</a>
+            </div>
+            <p class="text-center text-sm text-white/60">&copy; 2024&ndash;2026 Antje und Raik Lasner</p>
+        </div>
     </footer>
-    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</button>
-    <!-- Bootstrap 5 Js -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/site.js"></script>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" type="button" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-forest text-white shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-forest-light flex items-center justify-center z-50" aria-label="Nach oben scrollen">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        navToggle.addEventListener('click', () => {
+            const isOpen = !navMenu.classList.contains('hidden');
+            navMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            navToggle.setAttribute('aria-expanded', !isOpen);
+        });
+
+        // IntersectionObserver for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Back to top
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+                backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>

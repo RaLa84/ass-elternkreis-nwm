@@ -11,320 +11,330 @@
     <meta property="og:image" content="https://www.ass-elternkreis-nwm.de/images/ASS_infinity_awareness_symbol.png">
     <title>Blog — ASS Elternkreis NWM</title>
     <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/blog.html">
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: '#1b4332',
+              'forest-light': '#2d6a4f',
+              sunflower: '#FFC107',
+              'sunflower-hover': '#E6A800',
+              brown: '#3E2723',
+              softwhite: '#FAFAF8',
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <a href="#main-content" class="visually-hidden-focusable">Zum Inhalt springen</a>
-    <!-- Header Area -->
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                ASS Elternkreis NWM
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#f1">Termine</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Über uns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="erste-schritte.html">Erste Schritte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="links.html">Links</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hilfsmittel.html">Hilfsmittel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                </ul>
-            </div>
+<body class="bg-softwhite text-brown font-sans antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Zum Inhalt springen</a>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a href="index.html" class="flex items-center gap-2 text-forest font-bold text-lg hover:text-forest-light transition-colors">
+            <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" class="w-8 h-6 object-contain">
+            ASS Elternkreis NWM
+          </a>
+          <!-- Desktop Nav -->
+          <div class="hidden lg:flex items-center gap-1">
+            <a href="index.html#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="index.html#f1" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-forest bg-forest/5 transition-colors">Blog</a>
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+          <!-- Mobile Hamburger -->
+          <button type="button" id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Navigation umschalten" aria-expanded="false">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
         </div>
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="hidden lg:hidden pb-4">
+          <div class="flex flex-col gap-1">
+            <a href="index.html#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="index.html#f1" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-forest bg-forest/5 transition-colors">Blog</a>
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+        </div>
+      </div>
     </nav>
 
+    <!-- Page Header -->
+    <section class="bg-forest/[0.03] py-12 sm:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Aktuelles aus dem Elternkreis</h1>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Berichte von unseren Treffen, Neuigkeiten und persönliche Erfahrungsberichte rund um das Thema Autismus.</p>
+      </div>
+    </section>
 
+    <!-- Main Content -->
+    <main id="main-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-<div id="main-content" class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 10px;">
-  <div class="card mx-1">
-    <div class="card-body" style="padding: 20px;">
-      <h5 class="card-title">Inhalt</h5>
-      <h6 class="mt-3 mb-2 text-body-secondary">Treffen &amp; Neuigkeiten</h6>
-      <ul class="list-unstyled mb-3">
-        <li><a href="#maerz-treffen">20.03.26: März-Treffen – Wachstum, Schulabsentismus und politische Vernetzung</a></li>
-        <li><a href="#online-treffen">21.11.25: Unser erstes Online-Treffen im ASS-Elternkreis NWM</a></li>
-        <li><a href="#oktober-treffen">17.10.25: Oktober 2025: Unser Treffen der Selbsthilfegruppe Autismus Wismar</a></li>
-        <li><a href="#erstes-treffen">13.05.25: Erstes Treffen unserer Selbsthilfegruppe</a></li>
-        <li><a href="#leben-mit-autismus">Leben mit Autismus in Wismar</a></li>
-      </ul>
-      <h6 class="mb-2 text-body-secondary" id="filterlos">Artikel von filterlos.blog</h6>
-      <ul class="list-unstyled mb-0">
-        <li><a href="blog/falschinformationen-autismus.html">Falschinformationen über Autismus zerstören Leben!</a></li>
-        <li><a href="blog/angst-lernen-autismus.html">Wie Angst das Lernen bei Autismus blockiert</a></li>
-        <li><a href="blog/autismus-ist-politisch.html">Autismus ist politisch – und wir müssen mehr darüber reden</a></li>
-        <li><a href="blog/empathieproblem.html">Empathieproblem – Warum ich am falschen Ende Mitgefühl hatte</a></li>
-        <li><a href="blog/grundregeln-umgang-autisten.html">Die drei Grundregeln im Umgang mit Autisten</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+      <!-- Table of Contents -->
+      <div class="border border-dashed border-forest-light/30 rounded-2xl p-6 bg-white shadow-sm mb-10">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Inhalt</h2>
+        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2">Treffen &amp; Neuigkeiten</h3>
+        <ul class="space-y-1.5 mb-5">
+          <li><a href="#maerz-treffen" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">20.03.26: März-Treffen – Wachstum, Schulabsentismus und politische Vernetzung</a></li>
+          <li><a href="#online-treffen" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">21.11.25: Unser erstes Online-Treffen im ASS-Elternkreis NWM</a></li>
+          <li><a href="#oktober-treffen" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">17.10.25: Oktober 2025: Unser Treffen der Selbsthilfegruppe Autismus Wismar</a></li>
+          <li><a href="#erstes-treffen" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">13.05.25: Erstes Treffen unserer Selbsthilfegruppe</a></li>
+          <li><a href="#leben-mit-autismus" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">Leben mit Autismus in Wismar</a></li>
+        </ul>
+        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2" id="filterlos">Artikel von filterlos.blog</h3>
+        <ul class="space-y-1.5">
+          <li><a href="#filterlos-falschinformationen" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">Falschinformationen über Autismus zerstören Leben!</a></li>
+          <li><a href="#filterlos-angst" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">Wie Angst das Lernen bei Autismus blockiert</a></li>
+          <li><a href="#filterlos-politisch" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">Autismus ist politisch – und wir müssen mehr darüber reden</a></li>
+          <li><a href="#filterlos-empathie" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">Empathieproblem – Warum ich am falschen Ende Mitgefühl hatte</a></li>
+          <li><a href="#filterlos-grundregeln" class="text-sm text-forest hover:text-forest-light transition-colors hover:underline">Die drei Grundregeln im Umgang mit Autisten</a></li>
+        </ul>
+      </div>
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1" id="maerz-treffen">
-    <div class="card-body" style="padding: 20px;" height="250px">
-      <h5 class="card-title">20.03.26: März-Treffen – Wachstum, Schulabsentismus und politische Vernetzung</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">Unsere Gruppe wächst – und mit ihr der Mut, gemeinsam etwas zu bewegen</h6>
-      <p class="card-text">
-        Am 20. März fand unser monatliches Online-Treffen statt – und wir hatten gleich doppelten Grund zur Freude: Zwei neue Mitglieder haben den Weg zu uns gefunden. Damit nähern wir uns der Marke von 30 Eltern in unserem Netzwerk. Was vor nicht allzu langer Zeit als kleine Runde begann, ist zu einer echten Gemeinschaft gewachsen. Das berührt uns sehr.
-      </p>
-      <p class="card-text">
-        Inhaltlich haben wir uns an diesem Abend intensiv mit dem Thema <strong>Schulabsentismus</strong> auseinandergesetzt. Für viele unserer Kinder ist der Schulbesuch keine Selbstverständlichkeit. Die Gründe dafür sind vielfältig: Reizüberflutung, fehlende Rückzugsmöglichkeiten, starre Strukturen, mangelndes Verständnis. Irgendwann sagt der Körper oder die Seele einfach Nein. Als Eltern stehen wir dann zwischen Schulpflicht, Behörden und dem tiefen Wissen, dass unser Kind nicht kann – nicht nicht will.
-      </p>
-      <p class="card-text">
-        Dabei wurde auch deutlich, welche <strong>schwerwiegenden Folgen der reguläre Schulbetrieb für die psychische Gesundheit</strong> von Kindern auf dem Spektrum haben kann. Angststörungen, Erschöpfungszustände, Rückzug, Selbstzweifel – die Liste ist lang und die Geschichten dahinter sind schmerzhaft. Viele Eltern berichteten, wie ihre Kinder sich nach Schultagen kaum noch regulieren können, wie Wutausbrüche und Zusammenbrüche zum Alltag gehören. Schule, die eigentlich ein sicherer Lernort sein sollte, wird für manche Kinder zur täglichen Überforderung.
-      </p>
-      <p class="card-text">
-        Neben diesen schweren Themen haben wir aber auch nach vorn geschaut. Wir haben darüber gesprochen, wie wir uns als Gruppe <strong>besser organisieren und vernetzen</strong> können. Einzeln stoßen wir schnell an Grenzen – gemeinsam haben wir eine Stimme, die gehört werden kann. Wir möchten politisch wirksamer werden: für bessere Schulbegleitung, für flexible Lernorte, für ein Bildungssystem, das unsere Kinder nicht krank macht. Dafür braucht es Struktur, Zusammenhalt und den Willen, sichtbar zu werden.
-      </p>
-      <p class="card-text">
-        Dieses Treffen hat uns einmal mehr gezeigt: Wir sind nicht allein. Und je mehr wir werden, desto stärker wird unsere gemeinsame Stimme.
-      </p>
-    </div>
-  </div>
-</div>
+      <!-- Blog Posts -->
+      <div class="space-y-6">
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1" id="online-treffen">
-    <div class="card-body" style="padding: 20px;" height="250px">
-      <h5 class="card-title">21.11.25: Unser erstes Online-Treffen im ASS-Elternkreis NWM</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">Neue Möglichkeiten für Eltern, die nicht vor Ort sein können</h6>
-      <p class="card-text">
-        Am 21. November fand unser erstes Online-Treffen des ASS-Elternkreis Nordwestmecklenburg statt. Die Idee dahinter war
-        einfach: Eltern erreichen, die zu weit von Wismar entfernt wohnen oder aus anderen Gründen nicht persönlich im Till ein
-        Treffen besuchen können. Viele von uns begleiten ihre autistischen Kinder rund um die Uhr. Für pflegende Eltern ist es
-        oft nicht möglich, das Haus zu verlassen. Genau deshalb wollten wir einen niedrigschwelligen Raum schaffen, in dem
-        Austausch trotzdem möglich ist.
-      </p>
-      <p class="card-text">
-        Insgesamt waren wir sieben Teilnehmende. Wir haben uns sehr gefreut, erneut zwei neue Mitglieder begrüßen zu dürfen und
-        gleichzeitig viele vertraute Gesichter wiederzusehen. Die Mischung aus neuen Perspektiven und bekannten Stimmen hat
-        sich richtig gut angefühlt.
-      </p>
-      <p class="card-text">
-        Ein Schwerpunkt des Abends war das Thema Schule. Viele unserer Kinder kämpfen im Regelschulbetrieb. Die Umgebung ist
-        oft zu laut und voller Reize. Lehrkräfte haben häufig wenig Wissen über autistische Bedürfnisse oder können ihnen
-        aufgrund von Strukturen und Vorgaben nicht ausreichend nachkommen. Dazu kommt, dass Schulabsentismus schnell zum großen
-        Thema wird. Eltern stehen dann zwischen Schulamt, Schule und dem Bedürfnis, ihr Kind zu schützen. Das kostet Kraft.
-      </p>
-      <p class="card-text">
-        Besonders schwierig ist es nach wie vor, in Nordwestmecklenburg passende Lernorte zu finden. Trotzdem hat der Austausch
-        gezeigt, wie wertvoll es ist, miteinander zu sprechen. Zuhören hilft. Verstanden werden hilft. Und manchmal passiert
-        etwas, das noch lange nachwirkt. Als ein Mitglied am Ende des Treffens einem anderen ganz selbstverständlich
-        Unterstützung angeboten hat, wurde spürbar, worum es in unserer Selbsthilfegruppe geht. Gemeinschaft trägt.
-      </p>
-      <p class="card-text">
-        Wir nehmen aus diesem ersten Online-Treffen viel mit und freuen uns schon auf das nächste Mal.
-      </p>
-    </div>
-  </div>
-</div>
+        <!-- Post: März-Treffen -->
+        <article id="maerz-treffen" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">20.03.2026</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">März-Treffen – Wachstum, Schulabsentismus und politische Vernetzung</h2>
+          <p class="text-sm text-gray-500 font-medium mb-3">Unsere Gruppe wächst – und mit ihr der Mut, gemeinsam etwas zu bewegen</p>
+          <div class="text-gray-600 leading-relaxed space-y-4">
+            <p>Am 20. März fand unser monatliches Online-Treffen statt – und wir hatten gleich doppelten Grund zur Freude: Zwei neue Mitglieder haben den Weg zu uns gefunden. Damit nähern wir uns der Marke von 30 Eltern in unserem Netzwerk. Was vor nicht allzu langer Zeit als kleine Runde begann, ist zu einer echten Gemeinschaft gewachsen. Das berührt uns sehr.</p>
+            <p>Inhaltlich haben wir uns an diesem Abend intensiv mit dem Thema <strong>Schulabsentismus</strong> auseinandergesetzt. Für viele unserer Kinder ist der Schulbesuch keine Selbstverständlichkeit. Die Gründe dafür sind vielfältig: Reizüberflutung, fehlende Rückzugsmöglichkeiten, starre Strukturen, mangelndes Verständnis. Irgendwann sagt der Körper oder die Seele einfach Nein. Als Eltern stehen wir dann zwischen Schulpflicht, Behörden und dem tiefen Wissen, dass unser Kind nicht kann – nicht nicht will.</p>
+            <p>Dabei wurde auch deutlich, welche <strong>schwerwiegenden Folgen der reguläre Schulbetrieb für die psychische Gesundheit</strong> von Kindern auf dem Spektrum haben kann. Angststörungen, Erschöpfungszustände, Rückzug, Selbstzweifel – die Liste ist lang und die Geschichten dahinter sind schmerzhaft. Viele Eltern berichteten, wie ihre Kinder sich nach Schultagen kaum noch regulieren können, wie Wutausbrüche und Zusammenbrüche zum Alltag gehören. Schule, die eigentlich ein sicherer Lernort sein sollte, wird für manche Kinder zur täglichen Überforderung.</p>
+            <p>Neben diesen schweren Themen haben wir aber auch nach vorn geschaut. Wir haben darüber gesprochen, wie wir uns als Gruppe <strong>besser organisieren und vernetzen</strong> können. Einzeln stoßen wir schnell an Grenzen – gemeinsam haben wir eine Stimme, die gehört werden kann. Wir möchten politisch wirksamer werden: für bessere Schulbegleitung, für flexible Lernorte, für ein Bildungssystem, das unsere Kinder nicht krank macht. Dafür braucht es Struktur, Zusammenhalt und den Willen, sichtbar zu werden.</p>
+            <p>Dieses Treffen hat uns einmal mehr gezeigt: Wir sind nicht allein. Und je mehr wir werden, desto stärker wird unsere gemeinsame Stimme.</p>
+          </div>
+        </article>
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1" id="oktober-treffen">
-    <div class="card-body" style="padding: 20px;" height="250px">
-      <h5 class="card-title">Oktober 2025: Unser Treffen der Selbsthilfegruppe Autismus Wismar</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">Neue Gesichter, vielfältige Erfahrungen und wichtige Themen</h6>
-      <p class="card-text">
-        Beim Treffen unserer <strong>Selbsthilfegruppe Autismus Wismar</strong> im Oktober konnten wir gleich fünf neue Mitglieder begrüßen. Das war ein besonderer Moment für uns. So viele neue Eltern auf einmal – das hat uns wirklich gefreut. Unsere Gruppe wächst weiter, und mit jedem Treffen wird sie bunter und lebendiger.
-      </p>
-      <p class="card-text">
-        Unter den neuen Teilnehmerinnen und Teilnehmern waren Eltern von autistischen Kindern im Grundschulalter, aber auch von Jugendlichen und <strong>jungen Erwachsenen mit Autismus</strong>. Diese Vielfalt zeigt, wie unterschiedlich der Alltag mit Autismus aussehen kann – je nachdem, in welcher Lebensphase sich das Kind oder der junge Mensch befindet.
-      </p>
-      <p class="card-text">
-        Auch die Themen des Abends waren so vielseitig wie die Familien selbst. Es ging um den oft langen und kräftezehrenden Weg zur <strong>Autismus-Diagnose</strong>. Viele Eltern berichteten, wie schwierig es ist, frühe Anzeichen richtig einzuordnen und Fachkräfte zu finden, die wirklich verstehen, was Autismus bedeutet.
-      </p>
-      <p class="card-text">
-        Besonders bewegend war der Austausch über <strong>Autismus und Freundschaft</strong>. Viele Eltern sprachen über den Wunsch ihrer Kinder, Freundschaften zu schließen, und die damit verbundenen Herausforderungen. Hier wurde deutlich, wie wichtig es ist, <strong>soziale Beziehungen von Kindern mit Autismus</strong> bewusst zu begleiten und passende Unterstützungsangebote zu schaffen.
-      </p>
-      <p class="card-text">
-        Auch der Übergang ins Erwachsenenleben war Thema: Ausbildung, Studium oder betreutes Wohnen – viele Eltern <strong>junger Erwachsener mit Autismus</strong> beschäftigen sich mit der Frage, wie Selbstständigkeit gelingen kann. Der Austausch darüber war ehrlich, unterstützend und sehr hilfreich.
-      </p>
-      <p class="card-text">
-        Wir haben gespürt, wie viel Vertrauen in unserer Gruppe gewachsen ist. Niemand musste sich erklären. Jede Erfahrung durfte geteilt werden – ob es um Schulprobleme, Sorgen im Alltag oder schöne Fortschritte ging. Genau dafür ist die <strong>Selbsthilfegruppe Autismus Wismar</strong> da.
-      </p>
-      <p class="card-text">
-        Im November wagen wir etwas Neues: Zum ersten Mal wird unser Treffen zusätzlich als <strong>Videokonferenz</strong> stattfinden. Damit wollen wir noch mehr Eltern erreichen, die aus verschiedenen Gründen nicht persönlich vor Ort sein können. Wir hoffen, dass dieses neue Format vielen den Einstieg erleichtert.
-      </p>
-      <p class="card-text">
-        Wenn du selbst Mutter oder Vater eines Kindes mit Autismus bist – ob noch klein, Teenager oder schon erwachsen – bist du bei uns herzlich willkommen. Schreib uns oder komm einfach dazu. Unsere Treffen bieten Raum für alles, was Eltern autistischer Kinder bewegt.
-      </p>
-      <p class="card-text text-end">
-        <em>„Niemand von uns ist so klug wie wir alle zusammen.“ – Ken Blanchard</em>
-      </p>
-    </div>
-  </div>
-</div>
-    
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1" id="erstes-treffen">
-    <div class="card-body" style="padding: 20px;" height="250px">
-      <h5 class="card-title">13.05.25: Erstes Treffen unserer Selbsthilfegruppe für Eltern mit autistischen Kindern</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">Ein gelungener Start im TiL Wismar</h6>
-      <p class="card-text">
-        Die großzügigen <strong>Räumlichkeiten im TiL Wismar</strong> boten ausreichend Platz, sodass sich alle Teilnehmenden von Anfang an wohlfühlen konnten. Bereits beim Eintreffen war eine <strong>offene, vertrauensvolle Atmosphäre</strong> spürbar. Es fiel leicht, mit anderen <strong>betroffenen Eltern in den Austausch</strong> zu kommen – man hatte sofort das Gefühl verstanden zu werden.
-      </p>
-      <p class="card-text">
-        Besonders wertvoll war der Moment, als wir bemerkten: <strong>Viele Eltern machen ähnliche Erfahrungen.</strong> Der Austausch über Sorgen, Herausforderungen und Hoffnungen im Zusammenhang mit Autismus schuf eine starke Verbundenheit.
-      </p>
-      <p class="card-text">
-        Die <strong>zwei Stunden Elterntreffen</strong> vergingen wie im Flug – wir hätten noch stundenlang weiterreden können. Der offene Dialog, das gegenseitige Zuhören und die ehrliche Kommunikation taten allen sichtlich gut.
-      </p>
-    </div>
-  </div>
-</div>
+        <!-- Post: Online-Treffen -->
+        <article id="online-treffen" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">21.11.2025</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Unser erstes Online-Treffen im ASS-Elternkreis NWM</h2>
+          <p class="text-sm text-gray-500 font-medium mb-3">Neue Möglichkeiten für Eltern, die nicht vor Ort sein können</p>
+          <div class="text-gray-600 leading-relaxed space-y-4">
+            <p>Am 21. November fand unser erstes Online-Treffen des ASS-Elternkreis Nordwestmecklenburg statt. Die Idee dahinter war einfach: Eltern erreichen, die zu weit von Wismar entfernt wohnen oder aus anderen Gründen nicht persönlich im Till ein Treffen besuchen können. Viele von uns begleiten ihre autistischen Kinder rund um die Uhr. Für pflegende Eltern ist es oft nicht möglich, das Haus zu verlassen. Genau deshalb wollten wir einen niedrigschwelligen Raum schaffen, in dem Austausch trotzdem möglich ist.</p>
+            <p>Insgesamt waren wir sieben Teilnehmende. Wir haben uns sehr gefreut, erneut zwei neue Mitglieder begrüßen zu dürfen und gleichzeitig viele vertraute Gesichter wiederzusehen. Die Mischung aus neuen Perspektiven und bekannten Stimmen hat sich richtig gut angefühlt.</p>
+            <p>Ein Schwerpunkt des Abends war das Thema Schule. Viele unserer Kinder kämpfen im Regelschulbetrieb. Die Umgebung ist oft zu laut und voller Reize. Lehrkräfte haben häufig wenig Wissen über autistische Bedürfnisse oder können ihnen aufgrund von Strukturen und Vorgaben nicht ausreichend nachkommen. Dazu kommt, dass Schulabsentismus schnell zum großen Thema wird. Eltern stehen dann zwischen Schulamt, Schule und dem Bedürfnis, ihr Kind zu schützen. Das kostet Kraft.</p>
+            <p>Besonders schwierig ist es nach wie vor, in Nordwestmecklenburg passende Lernorte zu finden. Trotzdem hat der Austausch gezeigt, wie wertvoll es ist, miteinander zu sprechen. Zuhören hilft. Verstanden werden hilft. Und manchmal passiert etwas, das noch lange nachwirkt. Als ein Mitglied am Ende des Treffens einem anderen ganz selbstverständlich Unterstützung angeboten hat, wurde spürbar, worum es in unserer Selbsthilfegruppe geht. Gemeinschaft trägt.</p>
+            <p>Wir nehmen aus diesem ersten Online-Treffen viel mit und freuen uns schon auf das nächste Mal.</p>
+          </div>
+        </article>
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1" id="leben-mit-autismus">
-    <div class="card-body" style="padding: 20px;" height="250px">
-      <h5 class="card-title">Leben mit Autismus in Wismar: Herausforderungen und Hilfe durch Selbsthilfegruppen</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">Ein ehrlicher Einblick aus Elternsicht</h6>
-      <p class="card-text">
-        Wismar ist eine schöne Hansestadt mit Geschichte, kurzen Wegen und viel Gemeinschaft. Wer hier lebt, spürt schnell die Nähe zur Natur und den Charme der alten Gassen. Für viele Familien ist das ein Ort zum Ankommen. Doch wenn man ein Kind mit Autismus hat, sieht der Alltag oft ganz anders aus.
-      </p>
-      <p class="card-text">
-        Wir, die betroffen sind, kennen diese Realität. Wir wissen, wie es sich anfühlt, mit einem Kind mit <strong>Autismus in Wismar</strong> zu leben. Und wir möchten zeigen, wie wichtig eine <strong>Selbsthilfegruppe Autismus Wismar</strong> sein kann.
-      </p>
-      <p class="card-text">
-        In einer Stadt wie Wismar kennt man sich. Das kann schön sein, aber auch anstrengend. Wenn ein Kind in der Öffentlichkeit auffällt, weil es schreit, sich weigert oder sich auf den Boden legt, bleiben die Blicke nicht aus. Viele Menschen meinen es nicht böse, aber sie verstehen oft nicht, was los ist. Und dann kommen Sätze wie: „Der braucht einfach mal klare Ansagen.“
-      </p>
-      <p class="card-text">
-        Fachliche Unterstützung ist schwer zu finden. Ergotherapie, Diagnostik oder Autismusberatung gibt es oft erst in Schwerin oder Rostock. Das bedeutet lange Fahrten und Wartezeiten. In der Schule fehlen erfahrene Fachkräfte. Vieles muss man sich als Eltern selbst zusammensuchen.
-      </p>
-      <p class="card-text">
-        Genau hier hilft eine <strong>Selbsthilfegruppe für Autismus in Wismar</strong>. In unserer Gruppe begegnen sich Eltern auf Augenhöhe. Niemand muss sich erklären. Niemand muss sich schämen. Wir sprechen ehrlich über das, was uns im Alltag beschäftigt. Manchmal ist es der Streit mit dem Jugendamt. Manchmal ein Erfolgserlebnis in der Schule. Oft einfach nur das Gefühl, verstanden zu werden.
-      </p>
-      <p class="card-text">
-        In der Gruppe entstehen Kontakte, die helfen. Jemand kennt eine gute Therapeutin. Jemand weiß, welcher Kinderarzt zuhört. Jemand hat Erfahrung mit Anträgen. Und manchmal ist da einfach jemand, der sagt: „Du bist nicht allein.“
-      </p>
-      <p class="card-text">
-        Auch wenn vieles schwer ist, hat das Leben mit Autismus in Wismar seine guten Seiten. Die Stadt ist ruhig, der Verkehr hält sich in Grenzen, und es gibt viele Orte, an denen man durchatmen kann. Ein Spaziergang am Wasser oder eine ruhige Ecke im Park tun oft mehr als jedes Therapiezimmer.
-      </p>
-      <p class="card-text">
-        Wenn man Menschen gefunden hat, die einem wohlgesonnen sind, dann hält diese Verbindung oft lange. Manche Lehrkräfte oder Erzieherinnen wachsen mit den Kindern mit. Diese Beziehungen machen einen großen Unterschied.
-      </p>
-      <p class="card-text">
-        Die <strong>Selbsthilfegruppe Autismus Wismar</strong> ist kein Wunderheilmittel. Aber sie ist ein Anfang. Ein Ort zum Reden, Zuhören und Kraft tanken. Ein Netzwerk, das Halt gibt. Ein Platz, an dem man mit allem da sein darf, was man gerade trägt.
-      </p>
-      <p class="card-text">
-        Wenn du selbst betroffen bist oder jemanden kennst, der Unterstützung sucht: Komm gern vorbei. Schreib uns. Unsere Gruppe trifft sich regelmäßig und freut sich über neue Gesichter.
-      </p>
-      <p class="card-text text-end">
-        <em>„Zusammenkommen ist ein Beginn, Zusammenbleiben ein Fortschritt, Zusammenarbeiten ein Erfolg.“
-– Henry Ford</em>
-      </p>
-    </div>
-  </div>
-</div>
+        <!-- Post: Oktober-Treffen -->
+        <article id="oktober-treffen" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">17.10.2025</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Oktober 2025: Unser Treffen der Selbsthilfegruppe Autismus Wismar</h2>
+          <p class="text-sm text-gray-500 font-medium mb-3">Neue Gesichter, vielfältige Erfahrungen und wichtige Themen</p>
+          <div class="text-gray-600 leading-relaxed space-y-4">
+            <p>Beim Treffen unserer <strong>Selbsthilfegruppe Autismus Wismar</strong> im Oktober konnten wir gleich fünf neue Mitglieder begrüßen. Das war ein besonderer Moment für uns. So viele neue Eltern auf einmal – das hat uns wirklich gefreut. Unsere Gruppe wächst weiter, und mit jedem Treffen wird sie bunter und lebendiger.</p>
+            <p>Unter den neuen Teilnehmerinnen und Teilnehmern waren Eltern von autistischen Kindern im Grundschulalter, aber auch von Jugendlichen und <strong>jungen Erwachsenen mit Autismus</strong>. Diese Vielfalt zeigt, wie unterschiedlich der Alltag mit Autismus aussehen kann – je nachdem, in welcher Lebensphase sich das Kind oder der junge Mensch befindet.</p>
+            <p>Auch die Themen des Abends waren so vielseitig wie die Familien selbst. Es ging um den oft langen und kräftezehrenden Weg zur <strong>Autismus-Diagnose</strong>. Viele Eltern berichteten, wie schwierig es ist, frühe Anzeichen richtig einzuordnen und Fachkräfte zu finden, die wirklich verstehen, was Autismus bedeutet.</p>
+            <p>Besonders bewegend war der Austausch über <strong>Autismus und Freundschaft</strong>. Viele Eltern sprachen über den Wunsch ihrer Kinder, Freundschaften zu schließen, und die damit verbundenen Herausforderungen. Hier wurde deutlich, wie wichtig es ist, <strong>soziale Beziehungen von Kindern mit Autismus</strong> bewusst zu begleiten und passende Unterstützungsangebote zu schaffen.</p>
+            <p>Auch der Übergang ins Erwachsenenleben war Thema: Ausbildung, Studium oder betreutes Wohnen – viele Eltern <strong>junger Erwachsener mit Autismus</strong> beschäftigen sich mit der Frage, wie Selbstständigkeit gelingen kann. Der Austausch darüber war ehrlich, unterstützend und sehr hilfreich.</p>
+            <p>Wir haben gespürt, wie viel Vertrauen in unserer Gruppe gewachsen ist. Niemand musste sich erklären. Jede Erfahrung durfte geteilt werden – ob es um Schulprobleme, Sorgen im Alltag oder schöne Fortschritte ging. Genau dafür ist die <strong>Selbsthilfegruppe Autismus Wismar</strong> da.</p>
+            <p>Im November wagen wir etwas Neues: Zum ersten Mal wird unser Treffen zusätzlich als <strong>Videokonferenz</strong> stattfinden. Damit wollen wir noch mehr Eltern erreichen, die aus verschiedenen Gründen nicht persönlich vor Ort sein können. Wir hoffen, dass dieses neue Format vielen den Einstieg erleichtert.</p>
+            <p>Wenn du selbst Mutter oder Vater eines Kindes mit Autismus bist – ob noch klein, Teenager oder schon erwachsen – bist du bei uns herzlich willkommen. Schreib uns oder komm einfach dazu. Unsere Treffen bieten Raum für alles, was Eltern autistischer Kinder bewegt.</p>
+            <p class="text-right italic">&bdquo;Niemand von uns ist so klug wie wir alle zusammen.&ldquo; – Ken Blanchard</p>
+          </div>
+        </article>
 
-<div class="container-fluid px-2" style="padding-top: 30px;">
-  <div class="mx-1">
-    <h4 class="text-body-secondary">Artikel von filterlos.blog</h4>
-    <p class="text-body-secondary mb-0">
-      <small>Persönliche Erfahrungsberichte, ursprünglich veröffentlicht auf
-      <a href="https://filterlos.blog" target="_blank" rel="noopener">filterlos.blog</a></small>
-    </p>
-  </div>
-</div>
+        <!-- Post: Erstes Treffen -->
+        <article id="erstes-treffen" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">13.05.2025</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Erstes Treffen unserer Selbsthilfegruppe für Eltern mit autistischen Kindern</h2>
+          <p class="text-sm text-gray-500 font-medium mb-3">Ein gelungener Start im TiL Wismar</p>
+          <div class="text-gray-600 leading-relaxed space-y-4">
+            <p>Die großzügigen <strong>Räumlichkeiten im TiL Wismar</strong> boten ausreichend Platz, sodass sich alle Teilnehmenden von Anfang an wohlfühlen konnten. Bereits beim Eintreffen war eine <strong>offene, vertrauensvolle Atmosphäre</strong> spürbar. Es fiel leicht, mit anderen <strong>betroffenen Eltern in den Austausch</strong> zu kommen – man hatte sofort das Gefühl verstanden zu werden.</p>
+            <p>Besonders wertvoll war der Moment, als wir bemerkten: <strong>Viele Eltern machen ähnliche Erfahrungen.</strong> Der Austausch über Sorgen, Herausforderungen und Hoffnungen im Zusammenhang mit Autismus schuf eine starke Verbundenheit.</p>
+            <p>Die <strong>zwei Stunden Elterntreffen</strong> vergingen wie im Flug – wir hätten noch stundenlang weiterreden können. Der offene Dialog, das gegenseitige Zuhören und die ehrliche Kommunikation taten allen sichtlich gut.</p>
+          </div>
+        </article>
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1">
-    <div class="card-body" style="padding: 20px;">
-      <h5 class="card-title">Falschinformationen über Autismus zerstören Leben!</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">27. September 2025</h6>
-      <p class="card-text">Gestern habe ich auf Instagram ein Reel gesehen: Barack Obama spricht darin über die Lügen von Trump, Kennedy und Co., die behaupten, Paracetamol verursache Autismus. Er warnt vor den gefährlichen Konsequenzen solcher Falschmeldungen – für Betroffene und vor allem für Eltern, die dadurch verunsichert werden.</p>
-      <a href="blog/falschinformationen-autismus.html" class="btn btn-custom">Weiterlesen &rarr;</a>
-    </div>
-  </div>
-</div>
+        <!-- Post: Leben mit Autismus -->
+        <article id="leben-mit-autismus" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Leben mit Autismus in Wismar: Herausforderungen und Hilfe durch Selbsthilfegruppen</h2>
+          <p class="text-sm text-gray-500 font-medium mb-3">Ein ehrlicher Einblick aus Elternsicht</p>
+          <div class="text-gray-600 leading-relaxed space-y-4">
+            <p>Wismar ist eine schöne Hansestadt mit Geschichte, kurzen Wegen und viel Gemeinschaft. Wer hier lebt, spürt schnell die Nähe zur Natur und den Charme der alten Gassen. Für viele Familien ist das ein Ort zum Ankommen. Doch wenn man ein Kind mit Autismus hat, sieht der Alltag oft ganz anders aus.</p>
+            <p>Wir, die betroffen sind, kennen diese Realität. Wir wissen, wie es sich anfühlt, mit einem Kind mit <strong>Autismus in Wismar</strong> zu leben. Und wir möchten zeigen, wie wichtig eine <strong>Selbsthilfegruppe Autismus Wismar</strong> sein kann.</p>
+            <p>In einer Stadt wie Wismar kennt man sich. Das kann schön sein, aber auch anstrengend. Wenn ein Kind in der Öffentlichkeit auffällt, weil es schreit, sich weigert oder sich auf den Boden legt, bleiben die Blicke nicht aus. Viele Menschen meinen es nicht böse, aber sie verstehen oft nicht, was los ist. Und dann kommen Sätze wie: &bdquo;Der braucht einfach mal klare Ansagen.&ldquo;</p>
+            <p>Fachliche Unterstützung ist schwer zu finden. Ergotherapie, Diagnostik oder Autismusberatung gibt es oft erst in Schwerin oder Rostock. Das bedeutet lange Fahrten und Wartezeiten. In der Schule fehlen erfahrene Fachkräfte. Vieles muss man sich als Eltern selbst zusammensuchen.</p>
+            <p>Genau hier hilft eine <strong>Selbsthilfegruppe für Autismus in Wismar</strong>. In unserer Gruppe begegnen sich Eltern auf Augenhöhe. Niemand muss sich erklären. Niemand muss sich schämen. Wir sprechen ehrlich über das, was uns im Alltag beschäftigt. Manchmal ist es der Streit mit dem Jugendamt. Manchmal ein Erfolgserlebnis in der Schule. Oft einfach nur das Gefühl, verstanden zu werden.</p>
+            <p>In der Gruppe entstehen Kontakte, die helfen. Jemand kennt eine gute Therapeutin. Jemand weiß, welcher Kinderarzt zuhört. Jemand hat Erfahrung mit Anträgen. Und manchmal ist da einfach jemand, der sagt: &bdquo;Du bist nicht allein.&ldquo;</p>
+            <p>Auch wenn vieles schwer ist, hat das Leben mit Autismus in Wismar seine guten Seiten. Die Stadt ist ruhig, der Verkehr hält sich in Grenzen, und es gibt viele Orte, an denen man durchatmen kann. Ein Spaziergang am Wasser oder eine ruhige Ecke im Park tun oft mehr als jedes Therapiezimmer.</p>
+            <p>Wenn man Menschen gefunden hat, die einem wohlgesonnen sind, dann hält diese Verbindung oft lange. Manche Lehrkräfte oder Erzieherinnen wachsen mit den Kindern mit. Diese Beziehungen machen einen großen Unterschied.</p>
+            <p>Die <strong>Selbsthilfegruppe Autismus Wismar</strong> ist kein Wunderheilmittel. Aber sie ist ein Anfang. Ein Ort zum Reden, Zuhören und Kraft tanken. Ein Netzwerk, das Halt gibt. Ein Platz, an dem man mit allem da sein darf, was man gerade trägt.</p>
+            <p>Wenn du selbst betroffen bist oder jemanden kennst, der Unterstützung sucht: Komm gern vorbei. Schreib uns. Unsere Gruppe trifft sich regelmäßig und freut sich über neue Gesichter.</p>
+            <p class="text-right italic">&bdquo;Zusammenkommen ist ein Beginn, Zusammenbleiben ein Fortschritt, Zusammenarbeiten ein Erfolg.&ldquo; – Henry Ford</p>
+          </div>
+        </article>
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1">
-    <div class="card-body" style="padding: 20px;">
-      <h5 class="card-title">Wie Angst das Lernen bei Autismus blockiert</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">20. September 2025</h6>
-      <p class="card-text">Ich bin nicht autistisch. Ich maße mir nicht an, zu behaupten, dass ich weiß, wie es ist. Was ich versuche, ist lediglich zu beschreiben, wie ich es wahrnehme. Damit ich es besser nachvollziehen kann, versetze ich mich in die Perspektive meines Sohnes.</p>
-      <a href="blog/angst-lernen-autismus.html" class="btn btn-custom">Weiterlesen &rarr;</a>
-    </div>
-  </div>
-</div>
+      </div>
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1">
-    <div class="card-body" style="padding: 20px;">
-      <h5 class="card-title">Autismus ist politisch – und wir müssen mehr darüber reden</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">30. Mai 2025</h6>
-      <p class="card-text">In den Medien häufen sich gerade wieder die Schlagzeilen: „Die Inklusion an Berliner Schulen ist gescheitert." Gleichzeitig lese ich in Elternchats, wie Familien verzweifeln, weil sie keinen Diagnoseplatz für ihr Kind finden. Es reicht nicht mehr, nur unser Verhalten zu reflektieren.</p>
-      <a href="blog/autismus-ist-politisch.html" class="btn btn-custom">Weiterlesen &rarr;</a>
-    </div>
-  </div>
-</div>
+      <!-- filterlos.blog Section -->
+      <div class="mt-14 mb-8">
+        <div class="flex items-center gap-3 mb-2">
+          <h2 class="text-2xl font-bold text-gray-900">Artikel von</h2>
+          <span class="inline-flex items-center bg-forest/10 text-forest text-sm font-semibold px-3 py-1 rounded-full">filterlos.blog</span>
+        </div>
+        <p class="text-sm text-gray-500">Persönliche Erfahrungsberichte, ursprünglich veröffentlicht auf <a href="https://filterlos.blog" target="_blank" rel="noopener" class="text-forest hover:text-forest-light underline transition-colors">filterlos.blog</a></p>
+      </div>
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1">
-    <div class="card-body" style="padding: 20px;">
-      <h5 class="card-title">Empathieproblem – Warum ich am falschen Ende Mitgefühl hatte</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">23. April 2025</h6>
-      <p class="card-text">Wir hatten als Familie ein wunderschönes Wochenende. Am Sonntagabend überkam mich vollkommene Dankbarkeit. Doch am Montag folgte ein Tag zum Vergessen. Und ich erkannte: Ich hatte einen entscheidenden Denkfehler gemacht.</p>
-      <a href="blog/empathieproblem.html" class="btn btn-custom">Weiterlesen &rarr;</a>
-    </div>
-  </div>
-</div>
+      <div class="space-y-6">
 
-<div class="container-fluid px-2" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card mx-1">
-    <div class="card-body" style="padding: 20px;">
-      <h5 class="card-title">Die drei Grundregeln im Umgang mit Autisten</h5>
-      <h6 class="card-subtitle mb-3 text-body-secondary">16. April 2025</h6>
-      <p class="card-text">Ich lese gerade das Buch „Der Junge, der zu viel fühlte" von Lorenz Wagner. Eine Expertin gibt darin drei einfache Regeln für den Umgang mit Autisten. Sie sind leicht zu verstehen, universell anwendbar und vor allem für Erwachsene ein klarer Kompass.</p>
-      <a href="blog/grundregeln-umgang-autisten.html" class="btn btn-custom">Weiterlesen &rarr;</a>
-    </div>
-  </div>
-</div>
+        <!-- filterlos: Falschinformationen -->
+        <article id="filterlos-falschinformationen" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">27. September 2025</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Falschinformationen über Autismus zerstören Leben!</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Gestern habe ich auf Instagram ein Reel gesehen: Barack Obama spricht darin über die Lügen von Trump, Kennedy und Co., die behaupten, Paracetamol verursache Autismus. Er warnt vor den gefährlichen Konsequenzen solcher Falschmeldungen – für Betroffene und vor allem für Eltern, die dadurch verunsichert werden.</p>
+          <a href="blog/falschinformationen-autismus.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:text-forest-light transition-colors">
+            Weiterlesen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </article>
 
-        <!-- Footer Area -->
-        <footer class="py-3 my-4">
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-               <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Über uns</a></li>
-               <li class="nav-item"><a href="index.html#contact" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
-               <li class="nav-item"><a href="index.html#f1" class="nav-link px-2 text-body-secondary">Termine</a></li>
-               <li class="nav-item"><a href="links.html" class="nav-link px-2 text-body-secondary">Links</a></li>
-               <li class="nav-item"><a href="blog.html" class="nav-link px-2 text-body-secondary">Blog</a></li>
-              <li class="nav-item"><a href="faq.html" class="nav-link px-2 text-body-secondary">Faq</a></li>
-            <li class="nav-item"><a href="impressum.html" class="nav-link px-2 text-body-secondary">Impressum</a></li>
-            <li class="nav-item"><a href="datenschutz.html" class="nav-link px-2 text-body-secondary">Datenschutz</a></li>
-            </ul>
-           <p class="text-center text-body-secondary">© 2024–2026 Antje und Raik Lasner</p>
-       </footer>
-    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</button>
-         <!-- Bootstrap 5 Js -->
-         <script src="js/bootstrap.min.js"></script>
-         <script src="js/site.js"></script>
+        <!-- filterlos: Angst -->
+        <article id="filterlos-angst" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">20. September 2025</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Wie Angst das Lernen bei Autismus blockiert</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Ich bin nicht autistisch. Ich maße mir nicht an, zu behaupten, dass ich weiß, wie es ist. Was ich versuche, ist lediglich zu beschreiben, wie ich es wahrnehme. Damit ich es besser nachvollziehen kann, versetze ich mich in die Perspektive meines Sohnes.</p>
+          <a href="blog/angst-lernen-autismus.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:text-forest-light transition-colors">
+            Weiterlesen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <!-- filterlos: Politisch -->
+        <article id="filterlos-politisch" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">30. Mai 2025</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Autismus ist politisch – und wir müssen mehr darüber reden</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">In den Medien häufen sich gerade wieder die Schlagzeilen: &bdquo;Die Inklusion an Berliner Schulen ist gescheitert.&ldquo; Gleichzeitig lese ich in Elternchats, wie Familien verzweifeln, weil sie keinen Diagnoseplatz für ihr Kind finden. Es reicht nicht mehr, nur unser Verhalten zu reflektieren.</p>
+          <a href="blog/autismus-ist-politisch.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:text-forest-light transition-colors">
+            Weiterlesen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <!-- filterlos: Empathie -->
+        <article id="filterlos-empathie" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">23. April 2025</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Empathieproblem – Warum ich am falschen Ende Mitgefühl hatte</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Wir hatten als Familie ein wunderschönes Wochenende. Am Sonntagabend überkam mich vollkommene Dankbarkeit. Doch am Montag folgte ein Tag zum Vergessen. Und ich erkannte: Ich hatte einen entscheidenden Denkfehler gemacht.</p>
+          <a href="blog/empathieproblem.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:text-forest-light transition-colors">
+            Weiterlesen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <!-- filterlos: Grundregeln -->
+        <article id="filterlos-grundregeln" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 animate-on-scroll">
+          <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-semibold px-3 py-1 rounded-full mb-3">16. April 2025</span>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">Die drei Grundregeln im Umgang mit Autisten</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">Ich lese gerade das Buch &bdquo;Der Junge, der zu viel fühlte&ldquo; von Lorenz Wagner. Eine Expertin gibt darin drei einfache Regeln für den Umgang mit Autisten. Sie sind leicht zu verstehen, universell anwendbar und vor allem für Erwachsene ein klarer Kompass.</p>
+          <a href="blog/grundregeln-umgang-autisten.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:text-forest-light transition-colors">
+            Weiterlesen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-forest text-white mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm mb-6">
+          <a href="about.html" class="text-white/70 hover:text-white transition-colors">Über uns</a>
+          <a href="index.html#contact" class="text-white/70 hover:text-white transition-colors">Kontakt</a>
+          <a href="index.html#f1" class="text-white/70 hover:text-white transition-colors">Termine</a>
+          <a href="links.html" class="text-white/70 hover:text-white transition-colors">Links</a>
+          <a href="blog.html" class="text-white/70 hover:text-white transition-colors">Blog</a>
+          <a href="faq.html" class="text-white/70 hover:text-white transition-colors">FAQ</a>
+          <a href="impressum.html" class="text-white/70 hover:text-white transition-colors">Impressum</a>
+          <a href="datenschutz.html" class="text-white/70 hover:text-white transition-colors">Datenschutz</a>
+        </div>
+        <div class="border-t border-white/20 pt-6 text-center text-sm text-white/50">
+          &copy; 2024–2026 Antje und Raik Lasner
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button type="button" id="back-to-top" class="fixed bottom-6 right-6 z-50 w-11 h-11 bg-forest text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-forest-light" aria-label="Nach oben scrollen">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+    </button>
+
+    <script>
+      // Mobile nav toggle
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      menuBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        iconOpen.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', !isOpen);
+      });
+
+      // IntersectionObserver for scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+
+      // Back to top button
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTop.style.opacity = '1';
+          backToTop.style.pointerEvents = 'auto';
+        } else {
+          backToTop.style.opacity = '0';
+          backToTop.style.pointerEvents = 'none';
+        }
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
 </body>
 </html>
-
-

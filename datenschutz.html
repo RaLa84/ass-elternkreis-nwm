@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,157 +7,238 @@
     <meta name="robots" content="noindex, follow">
     <title>Datenschutzerklärung — ASS Elternkreis NWM</title>
     <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/datenschutz.html">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/logoneu.jpg" type="image/jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { DEFAULT: '#1b4332', light: '#2d6a4f' },
+            sunflower: { DEFAULT: '#FFC107', hover: '#E6A800' },
+            brown: '#3E2723',
+            softwhite: '#FAFAF8',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <a href="#main-content" class="visually-hidden-focusable">Zum Inhalt springen</a>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                ASS Elternkreis NWM
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#f1">Termine</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">Über uns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="erste-schritte.html">Erste Schritte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="links.html">Links</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hilfsmittel.html">Hilfsmittel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                </ul>
-            </div>
+<body class="bg-softwhite text-brown font-sans antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:text-forest">Zum Inhalt springen</a>
+
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="index.html" class="flex items-center gap-2 text-forest font-bold text-lg hover:opacity-80 transition-opacity">
+            <img src="images/ASS_infinity_awareness_symbol.png" alt="ASS Elternkreis Logo" width="32" height="26">
+            ASS Elternkreis NWM
+          </a>
+          <div class="hidden lg:flex items-center gap-1">
+            <a href="index.html#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="index.html#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+          <button id="navToggle" type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors" aria-label="Navigation umschalten" aria-expanded="false">
+            <svg id="navIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="navIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
         </div>
+        <div id="mobileMenu" class="lg:hidden hidden pb-4">
+          <div class="flex flex-col gap-1 pt-2 border-t border-gray-100">
+            <a href="index.html#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="index.html#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
+            <a href="faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+        </div>
+      </div>
     </nav>
 
-    <main id="main-content" class="container my-5">
-        <h1>Datenschutzerklärung</h1>
-        <p class="text-body-secondary">Stand: März 2026</p>
+    <main id="main-content">
+        <section class="py-12 sm:py-16 px-4 bg-forest/[0.03]">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-forest tracking-tight mb-3">Datenschutzerklärung</h1>
+                <p class="text-gray-500">Stand: März 2026</p>
+            </div>
+        </section>
 
-        <h2 class="h4 mt-4">1. Verantwortlicher</h2>
-        <p>
-            Raik Lasner<br>
-            Selbsthilfegruppe ASS Elternkreis NWM<br>
-            c/o Arbeiter-Samariter-Bund<br>
-            Kreisverband Wismar / Nordwestmecklenburg e.V.<br>
-            Dorfstr. 10, 23968 Gägelow<br>
-            E-Mail: <span id="contact-email-ds" class="email-protected">[JavaScript erforderlich]</span>
-        </p>
+        <section class="py-16 sm:py-20 px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-xl font-bold text-forest mb-3 mt-8">1. Verantwortlicher</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Raik Lasner<br>
+                    Selbsthilfegruppe ASS Elternkreis NWM<br>
+                    c/o Arbeiter-Samariter-Bund<br>
+                    Kreisverband Wismar / Nordwestmecklenburg e.V.<br>
+                    Dorfstr. 10, 23968 Gägelow<br>
+                    E-Mail: <span id="contact-email-ds" class="email-protected">[JavaScript erforderlich]</span>
+                </p>
 
-        <h2 class="h4 mt-4">2. Hosting</h2>
-        <p>
-            Diese Website wird über <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St,
-            San Francisco, CA 94107, USA) gehostet. Beim Aufruf unserer Website werden durch GitHub
-            automatisch technische Daten erfasst, insbesondere Ihre IP-Adresse, Browsertyp,
-            Betriebssystem und Zeitpunkt des Zugriffs. Diese Daten werden in Server-Logfiles gespeichert.
-        </p>
-        <p>
-            Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der stabilen
-            Bereitstellung der Website). Weitere Informationen finden Sie in der
-            <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.
-        </p>
-        <p>
-            GitHub Inc. ist unter dem EU-U.S. Data Privacy Framework zertifiziert, sodass ein
-            angemessenes Datenschutzniveau gewährleistet ist.
-        </p>
+                <h2 class="text-xl font-bold text-forest mb-3 mt-8">2. Hosting</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Diese Website wird über <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St,
+                    San Francisco, CA 94107, USA) gehostet. Beim Aufruf unserer Website werden durch GitHub
+                    automatisch technische Daten erfasst, insbesondere Ihre IP-Adresse, Browsertyp,
+                    Betriebssystem und Zeitpunkt des Zugriffs. Diese Daten werden in Server-Logfiles gespeichert.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der stabilen
+                    Bereitstellung der Website). Weitere Informationen finden Sie in der
+                    <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline transition-colors">Datenschutzerklärung von GitHub</a>.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    GitHub Inc. ist unter dem EU-U.S. Data Privacy Framework zertifiziert, sodass ein
+                    angemessenes Datenschutzniveau gewährleistet ist.
+                </p>
 
-        <h2 class="h4 mt-4">3. Kontaktformular</h2>
-        <p>
-            Unser Kontaktformular übermittelt Ihre Angaben (Name, E-Mail-Adresse, Telefonnummer,
-            Nachricht) an den Dienst <strong>SheetDB</strong>, der die Daten in einer Google-Tabelle
-            (Google Sheets) speichert. Dabei werden Ihre Daten an Server von Google LLC (USA) übertragen.
-        </p>
-        <p>
-            Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung durch Absenden des
-            Formulars). Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie uns per E-Mail
-            kontaktieren.
-        </p>
-        <p>
-            Google LLC ist unter dem EU-U.S. Data Privacy Framework zertifiziert. Weitere Informationen:
-            <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.
-        </p>
+                <h2 class="text-xl font-bold text-forest mb-3 mt-8">3. Kontaktformular</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Unser Kontaktformular übermittelt Ihre Angaben (Name, E-Mail-Adresse, Telefonnummer,
+                    Nachricht) an den Dienst <strong>SheetDB</strong>, der die Daten in einer Google-Tabelle
+                    (Google Sheets) speichert. Dabei werden Ihre Daten an Server von Google LLC (USA) übertragen.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung durch Absenden des
+                    Formulars). Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie uns per E-Mail
+                    kontaktieren.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Google LLC ist unter dem EU-U.S. Data Privacy Framework zertifiziert. Weitere Informationen:
+                    <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline transition-colors">Datenschutzerklärung von Google</a>.
+                </p>
 
-        <h2 class="h4 mt-4">4. Schriftarten</h2>
-        <p>
-            Diese Website verwendet die Schriftart „Rubik", die <strong>lokal auf unserem Server</strong>
-            gehostet wird. Es findet keine Verbindung zu externen Schriftarten-Diensten (wie Google Fonts) statt.
-            Es werden keine personenbezogenen Daten an Dritte übermittelt.
-        </p>
+                <h2 class="text-xl font-bold text-forest mb-3 mt-8">4. Schriftarten</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Diese Website verwendet die Schriftart „Rubik", die <strong>lokal auf unserem Server</strong>
+                    gehostet wird. Es findet keine Verbindung zu externen Schriftarten-Diensten (wie Google Fonts) statt.
+                    Es werden keine personenbezogenen Daten an Dritte übermittelt.
+                </p>
 
-        <h2 class="h4 mt-4">5. Cookies und Tracking</h2>
-        <p>
-            Diese Website verwendet <strong>keine Cookies</strong>, keine Analyse-Tools und kein Tracking.
-            Es werden keine Nutzungsprofile erstellt.
-        </p>
+                <h2 class="text-xl font-bold text-forest mb-3 mt-8">5. Cookies und Tracking</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Diese Website verwendet <strong>keine Cookies</strong>, keine Analyse-Tools und kein Tracking.
+                    Es werden keine Nutzungsprofile erstellt.
+                </p>
 
-        <h2 class="h4 mt-4">6. Ihre Rechte</h2>
-        <p>Sie haben gemäß DSGVO folgende Rechte:</p>
-        <ul>
-            <li><strong>Auskunft</strong> (Art. 15) — Sie können Auskunft über Ihre bei uns gespeicherten Daten verlangen.</li>
-            <li><strong>Berichtigung</strong> (Art. 16) — Sie können die Berichtigung unrichtiger Daten verlangen.</li>
-            <li><strong>Löschung</strong> (Art. 17) — Sie können die Löschung Ihrer Daten verlangen.</li>
-            <li><strong>Einschränkung der Verarbeitung</strong> (Art. 18) — Sie können die Einschränkung der Verarbeitung verlangen.</li>
-            <li><strong>Datenübertragbarkeit</strong> (Art. 20) — Sie können Ihre Daten in einem gängigen Format erhalten.</li>
-            <li><strong>Widerspruch</strong> (Art. 21) — Sie können der Verarbeitung Ihrer Daten widersprechen.</li>
-        </ul>
-        <p>
-            Zur Ausübung Ihrer Rechte wenden Sie sich bitte per E-Mail an uns.
-        </p>
+                <h2 class="text-xl font-bold text-forest mb-3 mt-8">6. Ihre Rechte</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">Sie haben gemäß DSGVO folgende Rechte:</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700 leading-relaxed mb-4">
+                    <li><strong>Auskunft</strong> (Art. 15) — Sie können Auskunft über Ihre bei uns gespeicherten Daten verlangen.</li>
+                    <li><strong>Berichtigung</strong> (Art. 16) — Sie können die Berichtigung unrichtiger Daten verlangen.</li>
+                    <li><strong>Löschung</strong> (Art. 17) — Sie können die Löschung Ihrer Daten verlangen.</li>
+                    <li><strong>Einschränkung der Verarbeitung</strong> (Art. 18) — Sie können die Einschränkung der Verarbeitung verlangen.</li>
+                    <li><strong>Datenübertragbarkeit</strong> (Art. 20) — Sie können Ihre Daten in einem gängigen Format erhalten.</li>
+                    <li><strong>Widerspruch</strong> (Art. 21) — Sie können der Verarbeitung Ihrer Daten widersprechen.</li>
+                </ul>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Zur Ausübung Ihrer Rechte wenden Sie sich bitte per E-Mail an uns.
+                </p>
 
-        <h2 class="h4 mt-4">7. Beschwerderecht</h2>
-        <p>
-            Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
-            Die für uns zuständige Aufsichtsbehörde ist:
-        </p>
-        <p>
-            Der Landesbeauftragte für Datenschutz und Informationsfreiheit Mecklenburg-Vorpommern<br>
-            Werderstraße 74a<br>
-            19055 Schwerin<br>
-            <a href="https://www.datenschutz-mv.de" target="_blank" rel="noopener">www.datenschutz-mv.de</a>
-        </p>
+                <h2 class="text-xl font-bold text-forest mb-3 mt-8">7. Beschwerderecht</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
+                    Die für uns zuständige Aufsichtsbehörde ist:
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Der Landesbeauftragte für Datenschutz und Informationsfreiheit Mecklenburg-Vorpommern<br>
+                    Werderstraße 74a<br>
+                    19055 Schwerin<br>
+                    <a href="https://www.datenschutz-mv.de" target="_blank" rel="noopener" class="text-forest-light hover:text-forest underline transition-colors">www.datenschutz-mv.de</a>
+                </p>
+            </div>
+        </section>
     </main>
 
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="about.html" class="nav-link px-2 text-body-secondary">Über uns</a></li>
-            <li class="nav-item"><a href="index.html#contact" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
-            <li class="nav-item"><a href="index.html#f1" class="nav-link px-2 text-body-secondary">Termine</a></li>
-            <li class="nav-item"><a href="links.html" class="nav-link px-2 text-body-secondary">Links</a></li>
-            <li class="nav-item"><a href="blog.html" class="nav-link px-2 text-body-secondary">Blog</a></li>
-            <li class="nav-item"><a href="faq.html" class="nav-link px-2 text-body-secondary">FAQ</a></li>
-            <li class="nav-item"><a href="impressum.html" class="nav-link px-2 text-body-secondary">Impressum</a></li>
-            <li class="nav-item"><a href="datenschutz.html" class="nav-link px-2 text-body-secondary">Datenschutz</a></li>
-        </ul>
-        <p class="text-center text-body-secondary">© 2024–2026 Antje und Raik Lasner</p>
+    <footer class="bg-forest text-white py-10 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+          <a href="about.html" class="text-sm text-white/70 hover:text-white transition-colors">Über uns</a>
+          <a href="index.html#contact" class="text-sm text-white/70 hover:text-white transition-colors">Kontakt</a>
+          <a href="index.html#termine" class="text-sm text-white/70 hover:text-white transition-colors">Termine</a>
+          <a href="links.html" class="text-sm text-white/70 hover:text-white transition-colors">Links</a>
+          <a href="blog.html" class="text-sm text-white/70 hover:text-white transition-colors">Blog</a>
+          <a href="faq.html" class="text-sm text-white/70 hover:text-white transition-colors">FAQ</a>
+          <a href="impressum.html" class="text-sm text-white/70 hover:text-white transition-colors">Impressum</a>
+          <a href="datenschutz.html" class="text-sm text-white/70 hover:text-white transition-colors">Datenschutz</a>
+        </div>
+        <p class="text-center text-sm text-white/50">&copy; 2024&ndash;2026 Antje und Raik Lasner</p>
+      </div>
     </footer>
 
-    <button type="button" class="back-to-top" aria-label="Nach oben scrollen">&#8679;</button>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/site.js"></script>
+    <button id="backToTop" type="button" class="fixed bottom-6 right-6 z-50 bg-forest text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-forest-light" aria-label="Nach oben scrollen">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+    </button>
+
     <script>
+    // Mobile nav toggle
+    (function() {
+        var toggle = document.getElementById('navToggle');
+        var menu = document.getElementById('mobileMenu');
+        var iconOpen = document.getElementById('navIconOpen');
+        var iconClose = document.getElementById('navIconClose');
+        if (toggle && menu) {
+            toggle.addEventListener('click', function() {
+                var expanded = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!expanded));
+                menu.classList.toggle('hidden');
+                iconOpen.classList.toggle('hidden');
+                iconClose.classList.toggle('hidden');
+            });
+        }
+    })();
+
+    // IntersectionObserver for .animate-on-scroll
+    (function() {
+        var els = document.querySelectorAll('.animate-on-scroll');
+        if (els.length && 'IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            els.forEach(function(el) { observer.observe(el); });
+        }
+    })();
+
+    // Back to top
+    (function() {
+        var btn = document.getElementById('backToTop');
+        if (btn) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    btn.classList.remove('opacity-0', 'pointer-events-none');
+                    btn.classList.add('opacity-100', 'pointer-events-auto');
+                } else {
+                    btn.classList.add('opacity-0', 'pointer-events-none');
+                    btn.classList.remove('opacity-100', 'pointer-events-auto');
+                }
+            });
+            btn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    })();
+
     // E-Mail-Obfuskierung gegen Bots
     (function() {
         var n = 'raik.lasner';
