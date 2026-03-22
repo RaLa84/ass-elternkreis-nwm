@@ -57,11 +57,12 @@
     <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center gap-2 text-forest font-bold text-lg no-underline">
+                <a href="/" class="flex items-center gap-2 text-forest font-bold text-lg no-underline">
                     <img src="images/ASS_infinity_awareness_symbol.png" alt="Logo" class="w-8 h-6">
                     ASS Elternkreis NWM
                 </a>
                 <!-- Mobile hamburger -->
+                <button data-search-trigger type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Suche öffnen"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
                 <button id="nav-toggle" type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-brown hover:bg-gray-100" aria-controls="nav-menu" aria-expanded="false" aria-label="Navigation umschalten">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -70,21 +71,22 @@
                 </button>
                 <!-- Desktop nav -->
                 <div class="hidden lg:flex lg:items-center lg:gap-1">
-                    <a href="index.html#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
-                    <a href="index.html#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
+                    <a href="/#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
+                    <a href="/#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
                     <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Über uns</a>
                     <a href="erste-schritte.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Erste Schritte</a>
                     <a href="links.html" class="px-3 py-2 rounded-md text-sm font-medium text-forest bg-forest/10 no-underline">Links</a>
                     <a href="hilfsmittel.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Hilfsmittel</a>
                     <a href="blog.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Blog</a>
                     <a href="faq.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">FAQ</a>
+                    <button data-search-trigger type="button" class="p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Suche öffnen"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
                 </div>
             </div>
             <!-- Mobile nav menu -->
             <div id="nav-menu" class="hidden lg:hidden pb-4">
                 <div class="flex flex-col gap-1">
-                    <a href="index.html#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
-                    <a href="index.html#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
+                    <a href="/#contact" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Kontakt</a>
+                    <a href="/#f1" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Termine</a>
                     <a href="about.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Über uns</a>
                     <a href="erste-schritte.html" class="px-3 py-2 rounded-md text-sm font-medium text-brown/70 hover:text-forest hover:bg-forest/5 transition-colors no-underline">Erste Schritte</a>
                     <a href="links.html" class="px-3 py-2 rounded-md text-sm font-medium text-forest bg-forest/10 no-underline">Links</a>
@@ -825,8 +827,8 @@
         <div class="max-w-7xl mx-auto px-4 py-10">
             <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 pb-6 border-b border-white/20">
                 <a href="about.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Über uns</a>
-                <a href="index.html#contact" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Kontakt</a>
-                <a href="index.html#f1" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Termine</a>
+                <a href="/#contact" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Kontakt</a>
+                <a href="/#f1" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Termine</a>
                 <a href="links.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Links</a>
                 <a href="blog.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">Blog</a>
                 <a href="faq.html" class="text-sm text-white/70 hover:text-white transition-colors no-underline">FAQ</a>
