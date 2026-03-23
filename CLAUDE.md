@@ -30,10 +30,10 @@ No build, test, or lint commands. Open HTML files directly in a browser or use a
 | index.html | Home: hero, feature cards, events (#f1), contact form (#contact) |
 | about.html | Team member profiles |
 | blog.html | News/blog content |
-| faq.html | FAQ hub linking to 100 individual question pages |
+| faq.html | FAQ hub linking to 100+ individual question pages |
 | links.html | Resource tables (organizations, local services, diagnosis centers) |
 
-### FAQ System (100 questions across 5 age-group directories)
+### FAQ System (100+ questions across 5 age-group directories)
 
 - `vorschule/frage-001.html` through `frage-020.html` (ages 0–6)
 - `grundschule/frage-021.html` through `frage-040.html` (ages 6–12)
