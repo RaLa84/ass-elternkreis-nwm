@@ -211,6 +211,13 @@
           accent: 'forest',
           accentClasses: { tab: 'bg-forest text-white', strip: 'bg-forest', badge: 'border-l-forest' },
           productDisclaimer: 'Diese Produkte dienen als Orientierung und Einstiegshilfe \u2014 keine Werbung. Bitte sprechen Sie vor dem Kauf mit Therapeut*innen, ob das Hilfsmittel f\u00fcr Ihr Kind geeignet ist.',
+          relatedFAQ: [
+            { title: 'Warum sind Routinen so wichtig und wie etabliere ich sie?', url: 'vorschule/frage-012.html', label: 'Vorschule' },
+            { title: 'Wie gestalte ich \u00dcberg\u00e4nge und Ver\u00e4nderungen leichter?', url: 'grundschule/frage-033.html', label: 'Grundschule' },
+            { title: 'Wie f\u00f6rdere ich gesunde Medien- und Gaming-Nutzung?', url: 'teenager/frage-047.html', label: 'Teenager' },
+            { title: 'Wie finde ich eine eigene Wohnung und lebe selbstst\u00e4ndig?', url: 'junge-erwachsene/frage-070.html', label: 'Junge Erwachsene' },
+            { title: 'Essen und Schlafen bei autistischen Kindern', url: 'vorschule/frage-013.html', label: 'Vorschule' }
+          ],
           items: [
             {
               id: 'visuelle-plaene',
@@ -309,6 +316,11 @@
           accent: 'forest',
           accentClasses: { tab: 'bg-forest text-white', strip: 'bg-forest', badge: 'border-l-forest' },
           productDisclaimer: 'Kommunikationshilfen sind sehr individuell. Lassen Sie sich vor dem Kauf unbedingt von Logop\u00e4d*innen oder UK-Fachberatungen beraten.',
+          relatedFAQ: [
+            { title: 'Wie kann ich die Kommunikation mit meinem Kind f\u00f6rdern?', url: 'vorschule/frage-010.html', label: 'Vorschule' },
+            { title: 'Welche digitalen Hilfsmittel und Apps k\u00f6nnen helfen?', url: 'grundschule/frage-036.html', label: 'Grundschule' },
+            { title: 'Welche Therapie- und F\u00f6rderm\u00f6glichkeiten gibt es f\u00fcr Kleinkinder?', url: 'vorschule/frage-004.html', label: 'Vorschule' }
+          ],
           items: [
             {
               id: 'aac-pecs',
@@ -361,6 +373,12 @@
           accent: 'forest',
           accentClasses: { tab: 'bg-forest text-white', strip: 'bg-forest', badge: 'border-l-forest' },
           productDisclaimer: 'Reizfilterung ist sehr individuell \u2014 manche Kinder m\u00f6gen Kapselgeh\u00f6rschutz, andere bevorzugen In-Ear-L\u00f6sungen. Ausprobieren lohnt sich.',
+          relatedFAQ: [
+            { title: 'Was ist sensorische \u00dcberempfindlichkeit und wie helfe ich meinem Kind?', url: 'vorschule/frage-011.html', label: 'Vorschule' },
+            { title: 'Wie erhalte ich langfristig meinen Arbeitsplatz?', url: 'erwachsene/frage-083.html', label: 'Erwachsene' },
+            { title: 'Nachteilsausgleich in der Schule', url: 'grundschule/frage-022.html', label: 'Grundschule' },
+            { title: 'Was sind Shutdowns und wie reagiere ich?', url: 'vorschule/frage-009.html', label: 'Vorschule' }
+          ],
           items: [
             {
               id: 'gehoerschutz',
@@ -460,6 +478,11 @@
           accent: 'forest',
           accentClasses: { tab: 'bg-forest text-white', strip: 'bg-forest', badge: 'border-l-forest' },
           productDisclaimer: 'Tiefendruck-Hilfsmittel wirken sehr individuell. Faustregel f\u00fcr Gewicht: ca. 10 % des K\u00f6rpergewichts des Kindes. Beginnen Sie mit kurzen Einsatzzeiten.',
+          relatedFAQ: [
+            { title: 'Was ist sensorische \u00dcberempfindlichkeit und wie helfe ich meinem Kind?', url: 'vorschule/frage-011.html', label: 'Vorschule' },
+            { title: 'Meltdowns verstehen und begleiten', url: 'vorschule/frage-008.html', label: 'Vorschule' },
+            { title: 'Was sind Shutdowns und wie reagiere ich?', url: 'vorschule/frage-009.html', label: 'Vorschule' }
+          ],
           items: [
             {
               id: 'gewichtsdecken',
@@ -578,6 +601,11 @@
           accent: 'forest',
           accentClasses: { tab: 'bg-forest text-white', strip: 'bg-forest', badge: 'border-l-forest' },
           productDisclaimer: 'Einfache, nicht-ablenkende Fidgets sind wirksamer als aufwendige Spielzeuge. Bei Kau-Hilfsmitteln auf lebensmittelechtes Silikon und den passenden H\u00e4rtegrad achten.',
+          relatedFAQ: [
+            { title: 'Mein Kind zeigt Anzeichen von Depression oder Angst \u2013 was tun?', url: 'teenager/frage-046.html', label: 'Teenager' },
+            { title: 'Wie unterst\u00fctze ich mein Kind bei Pr\u00fcfungsangst?', url: 'teenager/frage-054.html', label: 'Teenager' },
+            { title: 'Wie verhindere ich autistisches Burnout?', url: 'junge-erwachsene/frage-078.html', label: 'Junge Erwachsene' }
+          ],
           items: [
             {
               id: 'fidgets',
@@ -829,6 +857,23 @@
           html += renderProductCardHTML(p, category);
         });
         html += '</div></div>';
+      }
+
+      // Related FAQ section
+      if (category.relatedFAQ && category.relatedFAQ.length > 0) {
+        html += '<div class="mt-8 bg-forest/5 border border-forest/10 rounded-2xl p-6 sm:p-8 tab-panel-enter">';
+        html += '<div class="flex items-center gap-2 mb-4">';
+        html += '<svg class="w-5 h-5 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-1.02l4.5-4.5a4.5 4.5 0 00-6.364-6.364l-1.757 1.757"/></svg>';
+        html += '<h3 class="text-lg font-bold text-forest">Verwandte Fragen aus dem FAQ</h3>';
+        html += '</div>';
+        html += '<ul class="space-y-2">';
+        category.relatedFAQ.forEach(function(faq) {
+          html += '<li><a href="' + faq.url + '" class="group flex items-start gap-2 text-sm text-gray-600 hover:text-forest transition-colors">';
+          html += '<span class="text-forest/40 group-hover:text-forest transition-colors mt-0.5">\u2192</span>';
+          html += '<span>' + faq.title + ' <span class="text-xs text-gray-400">(' + faq.label + ')</span></span>';
+          html += '</a></li>';
+        });
+        html += '</ul></div>';
       }
 
       container.innerHTML = html;
