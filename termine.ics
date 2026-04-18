@@ -6,18 +6,18 @@ METHOD:PUBLISH
 X-WR-CALNAME:ASS Elternkreis NWM
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
-DTSTART:20260417T180000
-DTEND:20260417T200000
-SUMMARY:SHG-Treffen (vor Ort)
-DESCRIPTION:Monatliches Treffen des ASS Elternkreis NWM im Treff im Lindengarten (TiL).
-LOCATION:Treff im Lindengarten (TiL)\, Bauhofstraße 17\, 23966 Wismar
-URL:https://www.ass-elternkreis-nwm.de/
-END:VEVENT
-BEGIN:VEVENT
 DTSTART:20260515T180000
 DTEND:20260515T200000
 SUMMARY:SHG-Treffen (remote)
 DESCRIPTION:Monatliches Online-Treffen des ASS Elternkreis NWM per Videokonferenz. Anmeldung über das Kontaktformular.
+URL:https://www.ass-elternkreis-nwm.de/
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260619T180000
+DTEND:20260619T200000
+SUMMARY:SHG-Treffen (vor Ort)
+DESCRIPTION:Monatliches Treffen des ASS Elternkreis NWM im Treff im Lindengarten (TiL). Thema: Wir stellen uns gegenseitig Bücher vor\, die uns geholfen haben.
+LOCATION:Treff im Lindengarten (TiL)\, Bauhofstraße 17\, 23966 Wismar
 URL:https://www.ass-elternkreis-nwm.de/
 END:VEVENT
 END:VCALENDAR
