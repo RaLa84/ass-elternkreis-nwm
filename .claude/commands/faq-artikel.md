@@ -1,11 +1,75 @@
+# FAQ-Artikel erstellen
+
+Erstelle einen neuen FAQ-Artikel zum Thema: **$ARGUMENTS**
+
+## Vorgehen
+
+1. **Kategorie bestimmen:** Ordne das Thema der passenden Kategorie zu:
+   - `vorschule/` (0-6 Jahre) — Nummern 001-020
+   - `grundschule/` (6-12 Jahre) — Nummern 021-040 (+ 101+)
+   - `teenager/` (12-18 Jahre) — Nummern 041-060
+   - `junge-erwachsene/` (18-30 Jahre) — Nummern 061-080
+   - `erwachsene/` (30+) — Nummern 081-100
+   - `wissen/` (altersunabhaengig, konzeptuell) — Nummern ab 201
+
+2. **Naechste freie Nummer finden:** Liste die vorhandenen Dateien im Zielverzeichnis auf und waehle die naechste freie Nummer.
+
+3. **Artikel schreiben:** Verwende das HTML-Template unten. Schreibe den Inhalt auf Deutsch mit HTML-Entities fuer Umlaute (`&uuml;`, `&auml;`, `&ouml;`, `&szlig;`, `&Uuml;`, `&Auml;`, `&Ouml;`).
+
+4. **Nach dem Erstellen:**
+   - `faq.html` aktualisieren: Link zum neuen Artikel in der passenden Sektion hinzufuegen
+   - `searchindex.json` aktualisieren: Neuen Eintrag mit title, category, preview, url und tags hinzufuegen
+   - Prev/Next-Navigation pruefen und ggf. beim vorherigen Artikel den Next-Link setzen
+
+## Content-Richtlinien
+
+- **Ton:** Modern, progressiv, offen, wissenschaftlich fundiert, objektiv
+- **Perspektive:** Neurodiversitaets-Paradigma (Autismus als neurologische Variante, nicht als Defizit)
+- **Struktur:** Einleitung, mehrere H2-Abschnitte, ggf. Info-Boxen, Quellen-Sektion
+- **Quellen:** 3-5 relevante, seriose Quellen verlinken (Fachpublikationen, anerkannte Organisationen)
+- **Sprache:** Verstaendlich fuer Eltern ohne Fachkenntnisse, aber inhaltlich praezise
+- **Laenge:** 800-1500 Woerter Artikeltext
+
+## Info-Box Varianten
+
+Gruene Box (Tipps/Wichtig):
+```html
+<div class="bg-green-50 border-l-4 border-green-500 rounded-xl p-5 my-6">
+    <div class="font-bold text-gray-900 mb-2">Tipp</div>
+    <p>Inhalt hier</p>
+</div>
+```
+
+Blaue Box (Info/Schritte):
+```html
+<div class="bg-blue-50 border-l-4 border-blue-500 rounded-xl p-5 my-6">
+    <div class="font-bold text-gray-900 mb-2">Gut zu wissen</div>
+    <p>Inhalt hier</p>
+</div>
+```
+
+## Kategorie-Badge Styling
+
+| Kategorie | Badge-Klassen |
+|-----------|---------------|
+| Vorschule | `bg-sunflower/20 text-brown` |
+| Grundschule | `bg-sunflower/20 text-brown` |
+| Teenager | `bg-sunflower/20 text-brown` |
+| Junge Erwachsene | `bg-sunflower/20 text-brown` |
+| Erwachsene | `bg-sunflower/20 text-brown` |
+| Wissen | `bg-amber-100 text-amber-800` |
+
+## HTML-Template
+
+```html
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Wie gehe ich mit Essens- und Schlafproblemen um? – Antworten und Tipps für Eltern autistischer Kinder. ASS Elternkreis NWM.">
-    <title>Essen und Schlafen — ASS Elternkreis NWM</title>
-    <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/vorschule/frage-013.html">
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <title>{{TITLE}} — ASS Elternkreis NWM</title>
+    <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/{{CATEGORY_DIR}}/frage-{{FRAGE_NR}}.html">
     <link rel="icon" href="../images/logoneu.jpg" type="image/jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,16 +99,15 @@
       "@type": "FAQPage",
       "mainEntity": [{
         "@type": "Question",
-        "name": "Wie gehe ich mit Essens- und Schlafproblemen um?",
+        "name": "{{JSON_LD_QUESTION}}",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ess- und Schlafprobleme sind bei autistischen Kindern häufig. Sie haben meist sensorische oder regulatorische Ursachen - und verdienen Verständnis statt Druck."
+          "text": "{{JSON_LD_ANSWER_SNIPPET}}"
         }
       }]
     }
     </script>
     <style>
-    /* Prose styles for article content - must be after Tailwind CDN */
     .prose-custom h2 { font-size: 1.5rem; font-weight: 700; color: #1b4332; border-bottom: 2px solid rgba(255,193,7,0.5); padding-bottom: 0.5rem; margin-bottom: 1rem; margin-top: 2rem; }
     .prose-custom h3 { font-size: 1.2rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; margin-top: 1.5rem; }
     .prose-custom p { color: #4b5563; line-height: 1.75; margin-bottom: 1rem; }
@@ -73,15 +136,15 @@
           <div class="hidden lg:flex items-center gap-1">
             <a href="/#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
             <a href="/#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
-            <a href="../about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="../about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">&Uuml;ber uns</a>
             <a href="../erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
             <a href="../links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
             <a href="../hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
             <a href="../blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
             <a href="../faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
-          <button data-search-trigger type="button" class="p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Suche öffnen"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+          <button data-search-trigger type="button" class="p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Suche &ouml;ffnen"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
           </div>
-          <button data-search-trigger type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Suche öffnen"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+          <button data-search-trigger type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Suche &ouml;ffnen"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
           <button id="navToggle" type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors" aria-label="Navigation umschalten" aria-expanded="false">
             <svg id="navIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             <svg id="navIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -91,7 +154,7 @@
           <div class="flex flex-col gap-1 pt-2 border-t border-gray-100">
             <a href="/#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
             <a href="/#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
-            <a href="../about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="../about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">&Uuml;ber uns</a>
             <a href="../erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
             <a href="../links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
             <a href="../hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
@@ -103,139 +166,44 @@
     </nav>
 
     <main id="main-content" class="max-w-3xl mx-auto py-8 sm:py-12 px-4">
-
-        <article class="bg-white rounded-2xl shadow-md overflow-hidden">
-            <div class="p-6 sm:p-8 border-b-2 border-sunflower">
+<article class="bg-white rounded-2xl shadow-md overflow-hidden">
+<div class="p-6 sm:p-8 border-b-2 border-sunflower">
                 <div class="flex items-center gap-1 text-sm text-gray-500 mb-3">
                     <a href="/">Start</a>
-                    <span>›</span>
-                    <a href="../faq.html#vorschule">Vorschule</a>
-                    <span>›</span>
-                    <span>Wie gehe ich mit Essens- und Schlafproblemen um?</span>
+                    <span>&rsaquo;</span>
+                    <a href="../faq.html#{{CATEGORY_ANCHOR}}">{{CATEGORY_NAME}}</a>
+                    <span>&rsaquo;</span>
+                    <span>{{BREADCRUMB_SHORT_TITLE}}...</span>
                 </div>
-                <span class="inline-flex items-center bg-sunflower/20 text-brown text-xs font-semibold px-3 py-1 rounded-full mb-3">Vorschule</span>
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-forest leading-tight">Wie gehe ich mit Essens- und Schlafproblemen um?</h1>
-                <div class="flex flex-wrap gap-2 mt-3">
-                    <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-medium px-2.5 py-0.5 rounded-full">Essen</span>
-                    <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-medium px-2.5 py-0.5 rounded-full">Schlaf</span>
-                    <span class="inline-flex items-center bg-forest/10 text-forest text-xs font-medium px-2.5 py-0.5 rounded-full">Alltag</span>
-                </div>
-            </div>
+                <span class="inline-flex items-center {{BADGE_CLASSES}} text-xs font-semibold px-3 py-1 rounded-full mb-3">{{CATEGORY_NAME}}</span>
+<h1 class="text-2xl sm:text-3xl font-extrabold text-forest leading-tight">{{H1_TITLE}}</h1></div><div class="p-6 sm:p-8 prose-custom">
 
-            <div class="p-6 sm:p-8 prose-custom">
-                <p>Ess- und Schlafprobleme sind bei autistischen Kindern häufig. Sie haben meist sensorische oder regulatorische Ursachen - und verdienen Verständnis statt Druck.</p>
+<!-- ARTIKELINHALT HIER -->
 
-                <h2>Essprobleme verstehen</h2>
-
-                <h3>Warum ist Essen oft schwierig?</h3>
-                <ul>
-                    <li><strong>Sensorik:</strong> Texturen, Gerüche, Geschmack sind intensiver</li>
-                    <li><strong>Bedürfnis nach Vorhersehbarkeit:</strong> Neue Lebensmittel sind "unsicher"</li>
-                    <li><strong>Interozeption:</strong> Hunger/Sättigung werden anders wahrgenommen</li>
-                    <li><strong>Motorik:</strong> Kauen und Schlucken können schwierig sein</li>
-                    <li><strong>Routine:</strong> Nur bestimmte Marken, Farben, Formen werden akzeptiert</li>
-                </ul>
-
-                <h3>Was hilft bei wählerischem Essen?</h3>
-                <ul>
-                    <li><strong>Kein Druck:</strong> Zwang macht alles schlimmer</li>
-                    <li><strong>Sichere Lebensmittel immer anbieten:</strong> Das was das Kind mag</li>
-                    <li><strong>Neue Dinge ohne Erwartung anbieten:</strong> Nur anschauen/riechen ist okay</li>
-                    <li><strong>Konsistenz achten:</strong> Manche mögen nur Knuspriges oder nur Weiches</li>
-                    <li><strong>Präsentaion:</strong> Manchmal hilft getrennt servieren</li>
-                    <li><strong>Vorbild sein:</strong> Gemeinsam essen, ohne Kommentare</li>
-                </ul>
-
-                <div class="bg-green-50 border-l-4 border-green-500 rounded-xl p-5 my-6">
-                    <div class="font-bold text-gray-900 mb-2">&#128161; ARFID beachten</div>
-                    <p>Bei sehr eingeschränktem Essverhalten kann eine Essstörung namens ARFID (Avoidant/Restrictive Food Intake Disorder) vorliegen. Wenn Ihr Kind nur wenige Lebensmittel isst und Nährstoffmängel drohen, holen Sie ärztliche Beratung.</p>
-                </div>
-
-                <h2>Schlafprobleme verstehen</h2>
-
-                <h3>Warum ist Schlafen oft schwierig?</h3>
-                <ul>
-                    <li><strong>Erhöhte Wachsamkeit:</strong> Schwer "abzuschalten"</li>
-                    <li><strong>Sensorik:</strong> Kleinste Geräusche oder Lichter stören</li>
-                    <li><strong>Innere Unruhe:</strong> Gedanken kreisen</li>
-                    <li><strong>Melatonin:</strong> Manchmal anders reguliert</li>
-                    <li><strong>Angst:</strong> Dunkelheit, Alleinsein</li>
-                </ul>
-
-                <h3>Was hilft bei Schlafproblemen?</h3>
-
-                <h4>Schlafumgebung optimieren</h4>
-                <ul>
-                    <li>Komplette Dunkelheit (Verdunkelungsvorhänge)</li>
-                    <li>Stille oder weisses Rauschen</li>
-                    <li>Kühle Temperatur</li>
-                    <li>Gewichtsdecke (kann beruhigend wirken)</li>
-                    <li>Vertraute Gegenstände im Bett</li>
-                </ul>
-
-                <h4>Routine und Timing</h4>
-                <ul>
-                    <li>Feste Bettgehzeit - auch am Wochenende</li>
-                    <li>Lange "Herunterfahrphase" vor dem Schlafen</li>
-                    <li>Keine Bildschirme 1-2 Stunden vorher</li>
-                    <li>Beruhigendes Abendritual</li>
-                    <li>Körperliche Aktivität am Tag (nicht kurz vor dem Schlafen)</li>
-                </ul>
-
-                <h4>Medizinische Optionen</h4>
-                <p>Bei anhaltenden Schlafproblemen kann ärztlich abgeklärt werden:</p>
-                <ul>
-                    <li>Melatonin (in Deutschland verschreibungspflichtig)</li>
-                    <li>Andere Schlafhygiene-Massnahmen</li>
-                    <li>Ausschluss anderer Ursachen (Schlafapnö, Restless Legs)</li>
-                </ul>
-
-                <div class="bg-orange-50 border-l-4 border-orange-500 rounded-xl p-5 my-6">
-                    <div class="font-bold text-gray-900 mb-2">&#9888; Elterliche Erschöpfung</div>
-                    <p>Wenn Ihr Kind nicht schläft, schlafen Sie auch nicht. Das ist extrem belastend. Suchen Sie sich Unterstützung - Entlastungsangebote, geteilte Nachtschichten, professionelle Hilfe. Ihre Gesundheit ist wichtig!</p>
-                </div>
-
+</div>
                 <div class="bg-gray-50 rounded-2xl p-6 mt-8">
-                    <h3>Quellen und weiterführende Informationen</h3>
+                    <h3>Quellen</h3>
                     <ul class="text-sm text-gray-600 space-y-2 mt-3">
-                        <li><a href="https://www.autismus.de" target="_blank">Bundesverband Autismus Deutschland</a></li>
-                        <li><a href="https://www.schlafprobleme-bei-autismus.de" target="_blank">Schlafprobleme bei Autismus</a></li>
+                        <!-- QUELLEN HIER -->
                     </ul>
                 </div>
-            </div>
+</div>
 
-
-            <!-- Hilfsmittel-Hinweis -->
-            <div class="mx-6 sm:mx-8 mb-6 bg-forest/5 border border-forest/20 rounded-xl p-4">
-                <p class="text-sm font-semibold text-forest mb-1">Passende Hilfsmittel</p>
-                <p class="text-sm text-gray-600">Konkrete Produktbeispiele und Evidenz-Infos findest du auf unserer Hilfsmittel-Seite:</p>
-                <div class="flex flex-wrap gap-2 mt-2">
-                    <a href="../hilfsmittel.html" class="inline-flex items-center gap-1 text-sm text-forest font-medium hover:underline">&#8594; Struktur &amp; Orientierung (Tagesplaner, visuelle Pl&auml;ne)</a>
-                </div>
-            </div>
-
-            <!-- Mikro-Survey -->
             <div id="survey-widget" class="p-6 sm:p-8 border-t border-gray-100 text-center">
                 <p class="text-lg font-semibold text-forest mb-4">War dieser Beitrag hilfreich?</p>
                 <div class="survey-buttons flex justify-center gap-4">
-                    <button onclick="submitSurvey('ja')" class="px-6 py-3 bg-forest text-white rounded-xl hover:bg-forest-light transition-colors cursor-pointer">👍 Ja</button>
-                    <button onclick="submitSurvey('nein')" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-colors cursor-pointer">👎 Nein</button>
+                    <button onclick="submitSurvey('ja')" class="px-6 py-3 bg-forest text-white rounded-xl hover:bg-forest-light transition-colors cursor-pointer">Ja</button>
+                    <button onclick="submitSurvey('nein')" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-colors cursor-pointer">Nein</button>
                 </div>
                 <p id="survey-response" class="mt-3 text-sm"></p>
             </div>
-            <nav class="flex flex-col sm:flex-row justify-between items-center gap-3 p-6 sm:p-8 border-t border-gray-100">
-                <a href="frage-012.html" class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-forest border border-forest/20 hover:bg-forest/5 transition-colors">&#8592; Vorherige Frage</a>
-                <a href="../faq.html#vorschule" class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-forest border border-forest/20 hover:bg-forest/5 transition-colors">Zur Übersicht</a>
-                <a href="frage-015.html" class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-forest border border-forest/20 hover:bg-forest/5 transition-colors">Nächste Frage &#8594;</a>
-            </nav>
-        </article>
-    
+<nav class="flex flex-col sm:flex-row justify-between items-center gap-3 p-6 sm:p-8 border-t border-gray-100">{{PREV_LINK}}<a href="../faq.html#{{CATEGORY_ANCHOR}}" class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-forest border border-forest/20 hover:bg-forest/5 transition-colors">&Uuml;bersicht</a>{{NEXT_LINK}}</nav></article>
     </main>
 
     <footer class="bg-forest text-white py-10 px-4">
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
-          <a href="../about.html" class="text-sm text-white/70 hover:text-white transition-colors">Über uns</a>
+          <a href="../about.html" class="text-sm text-white/70 hover:text-white transition-colors">&Uuml;ber uns</a>
           <a href="/#contact" class="text-sm text-white/70 hover:text-white transition-colors">Kontakt</a>
           <a href="/#termine" class="text-sm text-white/70 hover:text-white transition-colors">Termine</a>
           <a href="../links.html" class="text-sm text-white/70 hover:text-white transition-colors">Links</a>
@@ -302,3 +270,16 @@
 <script src="../js/search.js"></script>
 </body>
 </html>
+```
+
+## Prev/Next Link Templates
+
+Aktiver Link:
+```html
+<a href="frage-{{NR}}.html" class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-forest border border-forest/20 hover:bg-forest/5 transition-colors">Vorherige</a>
+```
+
+Deaktiviert (erste/letzte Frage):
+```html
+<span class="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium text-gray-300 border border-gray-200 cursor-default">Vorherige</span>
+```

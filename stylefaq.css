@@ -312,8 +312,11 @@ p {
 .category-icon.junge-erwachsene { 
   background: linear-gradient(135deg, var(--sunflower-yellow), var(--sunflower-yellow-dark)); 
 }
-.category-icon.erwachsene { 
-  background: linear-gradient(135deg, var(--primary-green-medium), var(--primary-green)); 
+.category-icon.erwachsene {
+  background: linear-gradient(135deg, var(--primary-green-medium), var(--primary-green));
+}
+.category-icon.wissen {
+  background: linear-gradient(135deg, #d97706, #b45309);
 }
 
 .category-title {

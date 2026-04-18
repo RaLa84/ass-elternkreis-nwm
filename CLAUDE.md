@@ -33,15 +33,20 @@ No build, test, or lint commands. Open HTML files directly in a browser or use a
 | faq.html | FAQ hub linking to 100+ individual question pages |
 | links.html | Resource tables (organizations, local services, diagnosis centers) |
 
-### FAQ System (100+ questions across 5 age-group directories)
+### FAQ System (100+ questions across 6 directories)
 
 - `vorschule/frage-001.html` through `frage-020.html` (ages 0–6)
 - `grundschule/frage-021.html` through `frage-040.html` (ages 6–12)
 - `teenager/frage-041.html` through `frage-060.html` (ages 12–18)
 - `junge-erwachsene/frage-061.html` through `frage-080.html` (ages 18–30)
 - `erwachsene/frage-081.html` through `frage-100.html` (ages 30+)
+- `wissen/frage-201.html` onwards (age-independent knowledge articles, amber/orange theme)
 
 Each FAQ page is a standalone HTML file with: breadcrumb navigation, category badge, article content, sources section, and prev/next navigation buttons. All FAQ pages share the same template structure.
+
+### Custom Slash Commands
+
+- `.claude/commands/faq-artikel.md` — generates a new FAQ article with the full HTML template. Usage: `/faq-artikel [topic]`
 
 ### Styling
 

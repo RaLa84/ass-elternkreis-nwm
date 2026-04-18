@@ -16,7 +16,7 @@
   var path = window.location.pathname;
   if (path.indexOf('/vorschule/') !== -1 || path.indexOf('/grundschule/') !== -1 ||
       path.indexOf('/teenager/') !== -1 || path.indexOf('/junge-erwachsene/') !== -1 ||
-      path.indexOf('/erwachsene/') !== -1 || path.indexOf('/blog/') !== -1) {
+      path.indexOf('/erwachsene/') !== -1 || path.indexOf('/wissen/') !== -1 || path.indexOf('/blog/') !== -1) {
     basePath = '../';
   }
 
