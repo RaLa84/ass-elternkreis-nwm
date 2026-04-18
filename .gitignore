@@ -1,0 +1,15 @@
+# Playwright MCP logs
+.playwright-mcp/
+
+# Temporäre Screenshots & Test-Bilder im Root
+/*.png
+/*.jpeg
+
+# Referenzmaterial (nicht Teil der Website)
+Blogbeitrage/
+Tool_bilder/
+
+# OS-Dateien
+.DS_Store
+Thumbs.db
+desktop.ini
