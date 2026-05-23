@@ -97,7 +97,7 @@ return scenes.map(s => {
       sceneIndex: sceneNo,
       imagePrompt: finalPrompt,
       imageFilename: prev.slug + '-' + sceneNo + '.png',
-      imageGithubPath: 'bilder/' + prev.slug + '-' + sceneNo + '.png',
+      imageGithubPath: 'social-stories/bilder/' + prev.slug + '-' + sceneNo + '.png',
       geminiRequestBody: {
         contents: [{ role: 'user', parts: [{ text: finalPrompt }] }],
         generationConfig: { responseModalities: ['image', 'text'] }

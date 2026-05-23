@@ -5,34 +5,54 @@ Lesekumpel-Projekt** (`c:\Users\raikl\Dev\lesekumpel`). Er dient als Bauklotz,
 aus dem die Social-Stories-Pipeline (Carol-Gray-Methodik) für die SHG-Website
 entstehen soll.
 
-**Bei Kopierzeitpunkt unverändert übernommen — du passt das hier an.**
+**Bei Kopierzeitpunkt unverändert übernommen — die Push-/Pfadanpassungen sind
+inzwischen erledigt; die Carol-Gray-Logik fehlt noch.**
 
 ## Zugehöriger n8n-Workflow
 
 | Feld | Wert |
 |---|---|
 | Name | `SHG-Story-Generator` |
-| ID | `iKNT46tAjFqf0OM5` |
+| ID | `iKNT46tAjFqf0OM5` (in n8n Cloud) |
 | URL | https://rala84.app.n8n.cloud/workflow/iKNT46tAjFqf0OM5 |
-| Status | **inactive** — bewusst, vor Aktivierung anpassen |
-| Webhook-Pfad | `shg-story` (provisorisch, wurde vom Original `lesekumpel-story` umbenannt um Pfad-Kollision mit dem aktiven Lesekumpel-Workflow zu vermeiden) |
+| Status | **inactive** — bewusst, vor Aktivierung Repo-Änderungen in n8n Cloud nachziehen |
+| Webhook-Pfad | `shg-story` |
 | Knotenzahl | 72 (identisch zum Lesekumpel-Original `eHfC95UaMbJMcLTb`) |
+| Lokale Definition | [`n8n-config/workflows/shg-story-generator.json`](n8n-config/workflows/shg-story-generator.json) |
 
-Der Workflow ist ein 1:1-Klon. Credentials (GitHub-Token, Gemini-API) sind als
-Referenzen übernommen — du musst nichts neu konfigurieren, nur ggf. den
-Repo-Target ändern (siehe unten).
+Die lokale JSON enthält bereits die SHG-Pfade (Repo: `ass-elternkreis-nwm`,
+Webhook: `shg-story`, Template-URL aus SHG-Repo). Die n8n-Cloud-Instanz muss
+einmalig nachgezogen werden — entweder per UI oder per REST-Re-Import der JSON.
 
-## Was du voraussichtlich anpassen wirst
+## Was schon erledigt ist (Stand: 2026-05-23)
 
-### Im n8n-Workflow (Cloud-UI oder REST API)
+Push-Ziele und URLs in den JS-Codes auf SHG umgestellt:
 
-- **GitHub-Push-Knoten** → Owner/Repo von `RaLa84/lesekumpel` auf
-  `RaLa84/ass-elternkreis-nwm` umstellen, Zielpfad ggf. von `texte/` auf
-  z.B. `social-stories/<altersgruppe>/`.
-- **Webhook-Pfad** `shg-story` ggf. final benennen (`shg-social-story` o.ä.),
-  **bevor** du den Workflow aktivierst.
+| Stelle | vorher (Lesekumpel) | jetzt (SHG) |
+|---|---|---|
+| `assemble-html-v2.js` — `filePath` | `demo-texte/<slug>.html` | `social-stories/<altersgruppe>/<slug>.html` |
+| `assemble-html-v2.js` — `storyUrl`, Hero-Img, Inline-Imgs | `rala84.github.io/lesekumpel/...` | `www.ass-elternkreis-nwm.de/...` |
+| `szenen-parsen-v2.js` — `imageGithubPath` | `bilder/<slug>-<n>.png` | `social-stories/bilder/<slug>-<n>.png` |
+| Workflow-JSON — GitHub-Nodes Repository | `RaLa84/lesekumpel` | `RaLa84/ass-elternkreis-nwm` |
+| Workflow-JSON — Template-URL (HTTP Request) | `…/lesekumpel/main/n8n-config/demo-template.html` | `…/ass-elternkreis-nwm/main/n8n-pipeline/n8n-config/demo-template.html` |
+| Workflow-JSON — Webhook-Pfad | `lesekumpel-story` | `shg-story` |
+| Workflow-JSON — Name / id / active | `Lesekumpel — …` / `eHfC95UaMbJMcLTb` / `true` | `SHG-Story-Generator` / *(entfernt)* / `false` |
+
+Fallback in `assemble-html-v2.js`: solange das Webhook-Feld `Altersgruppe`
+nicht existiert, landet alles unter `social-stories/allgemein/<slug>.html`.
+
+## Was noch zu tun ist
+
+### Im n8n-Workflow (Cloud-UI)
+
+- Die JSON-Änderungen sind aktuell nur lokal — die **n8n-Cloud-Instanz
+  `iKNT46tAjFqf0OM5` muss noch nachgezogen werden** (GitHub-Nodes auf
+  `ass-elternkreis-nwm`, Template-URL, Webhook-Pfad, Name). Entweder per
+  UI klicken oder Workflow per REST-API ersetzen.
 - **Persona-/Neurotyp-Logik** → für Carol-Gray-Stories braucht es andere
-  Eingabe-Felder: `Situation`, `Verhaltensziel`, `Altersgruppe`.
+  Eingabe-Felder: `Situation`, `Verhaltensziel`, `Altersgruppe`. Sobald
+  `Altersgruppe` durch den Webhook kommt, bucketet `assemble-html-v2.js`
+  automatisch korrekt.
 
 ### In dieser Ordnerstruktur
 
@@ -40,6 +60,7 @@ Repo-Target ändern (siehe unten).
 |---|---|
 | `n8n-config/assemble-html-v2.js` | HTML-Template an SHG-Design: **Tailwind, Forest-Green (#1b4332), Sonnen-Gelb (#FFC107), Inter-Font** — NICHT Coral/Fredoka/Quicksand aus Lesekumpel |
 | `n8n-config/daten-vorbereiten-v4.js` | Webhook-Felder umstellen: `Situation`/`Verhaltensziel`/`Altersgruppe` statt `Persona`/`Neurotyp` |
+| `n8n-config/bildszenen-vorbereiten-v2.js` | Style-Reference-Pfade (`bilder/bildstil-vorschau/...`) zeigen noch auf das Lesekumpel-CDN; bei Bedarf in SHG-Repo migrieren |
 | `prompts/*.md` | Neuer Carol-Gray-Persona-Prompt; die Lesekumpel-Personas (pip-punkt, mia-mitte etc.) dienen nur als Strukturvorlage |
 | `n8n-config/.env` | Anlegen aus `.env.example`, mit `N8N_API_KEY` aus der Lesekumpel-Quelle (oder eigenen ableiten) |
 

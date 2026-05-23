@@ -12,11 +12,16 @@ data.imageModel = ($('Probe auswerten').first()?.json?.imageModel) || 'unknown';
 
 let template = $input.item.json.data;
 
+// Zielort SHG-Website (GitHub Pages über CNAME): social-stories/<altersgruppe>/<slug>.html
+// Solange Carol-Gray-Inputs (Altersgruppe) noch nicht im Webhook stecken, fällt es auf 'allgemein' zurück.
+const altersgruppe = (data.altersgruppe || 'allgemein').toString().trim().toLowerCase();
+const SITE_BASE = 'https://www.ass-elternkreis-nwm.de';
+
 // Generate image tags
 const imageCount = data.imageCount || 0;
 let imagesHtml = '';
 for (let i = 1; i <= imageCount; i++) {
-  const imgUrl = `https://rala84.github.io/lesekumpel/bilder/${data.slug}-${i}.png`;
+  const imgUrl = `${SITE_BASE}/social-stories/bilder/${data.slug}-${i}.png`;
   imagesHtml += `<img src="${imgUrl}" alt="${data.title}" class="hero-image" onerror="this.style.display='none'">\n        `;
 }
 
@@ -41,7 +46,7 @@ const metaDescription = descRaw.length > 157 ? descRaw.substring(0, 157).trimEnd
 const metaKeywords = [data.personaName, data.neurotyp, data.genre, 'Lesetext', 'Lesen lernen', `Kinder ${typicalAge}`]
   .filter(v => v && v !== 'Standard').join(', ');
 const topic = data.description ? data.description.toString().substring(0, 60).trim() : '';
-const storyPath = `demo-texte/${data.slug}.html`;
+const storyPath = `social-stories/${altersgruppe}/${data.slug}.html`;
 const ogImageUrl = data.personaImg || '';
 
 // HTML-Escape für Attribut-Kontexte (Titel/Beschreibung können Quotes enthalten)
@@ -60,7 +65,7 @@ template = template
   .replace(/\{\{NEUROTYP\}\}/g, htmlEscape(data.neurotyp))
   .replace(/\{\{GENRE\}\}/g, htmlEscape(data.genre))
   .replace(/\{\{STORY_IMAGES_HTML\}\}/g, imagesHtml.trim())
-  .replace(/\{\{HERO_IMAGE_URL\}\}/g, `https://rala84.github.io/lesekumpel/bilder/${data.slug}-1.png`)
+  .replace(/\{\{HERO_IMAGE_URL\}\}/g, `${SITE_BASE}/social-stories/bilder/${data.slug}-1.png`)
   .replace(/\{\{RAW_STORY_TEXT\}\}/g, JSON.stringify(data.storyText || ''))
   .replace(/\{\{EMOJI_STORY_TEXT\}\}/g, JSON.stringify(data.emojiStoryText || ''))
   .replace(/\{\{RAW_SUMMARY_TEXT\}\}/g, JSON.stringify(data.summaryText || ''))
@@ -93,6 +98,6 @@ if (residuals) {
 }
 
 const htmlBase64 = Buffer.from(template, 'utf8').toString('base64');
-const storyUrl = `https://rala84.github.io/lesekumpel/demo-texte/${data.slug}.html`;
+const storyUrl = `${SITE_BASE}/${storyPath}`;
 
-return { json: { ...data, htmlBase64, filePath: `demo-texte/${data.slug}.html`, commitMessage: `Demo-Text: ${data.title} — ${data.personaName} ${data.neurotyp || ''}`.trim(), storyUrl } };
+return { json: { ...data, htmlBase64, filePath: storyPath, commitMessage: `Social Story: ${data.title} — ${data.personaName} ${data.neurotyp || ''}`.trim(), storyUrl } };
