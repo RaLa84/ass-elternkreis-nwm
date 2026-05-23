@@ -36,9 +36,12 @@ for (let i = 0; i < slugInput.length; i++) { _h = ((_h * 33) ^ slugInput.charCod
 const slugSuffix = ((_h >>> 0).toString(36) + '0000').substring(0, 4);
 const slug = slugBase + '-' + slugSuffix;
 
-// Bildstil ist fest „Traumwelt" — sorgt für visuelle Konsistenz über alle Stories.
-const imageStylePositive = "dreamlike magical digital painting, soft glowing volumetric light, ethereal misty atmosphere, luminous pastel palette with high contrast highlights, rim lighting on characters, inspired by Ori and the Blind Forest and Studio Ghibli night scenes, consistent luminosity and palette across all panels of this story, same character proportions and facial features in every panel, full bleed composition extending to all four image edges, no inner framing, subjects and background reach every corner of the image, square 1:1 aspect ratio";
-const imageStyleNegative = "no text, no watermarks, no labels, no tags, no annotations, no nameplates, no UI overlays, no callouts, no captions, no speech bubbles, no sign text, no alphanumeric text in image, no letterboxing, no black bars, no white margin, no cream margin, no paper border, no inner matte, no mat board, no illustration frame, no vignette, no aspect-ratio padding, no harsh black outlines, no flat cartoon shading, no photorealism, no gritty realism, no extra limbs, no duplicate props, no floating objects, no mixed art styles, no style drift";
+// Bildstil ist fest „Aquarell" — warmes, kinderbuchartiges Handgemalt-Gefühl
+// (Beatrix Potter / Quentin Blake). Sorgt für visuelle Konsistenz über alle
+// Stories. Frühere Wahl „Traumwelt" produzierte mit ihren großen Anime-Augen
+// und kühlem Rim-Light teils distanziert/melancholisch wirkende Gesichter.
+const imageStylePositive = "traditional children's book watercolor illustration, hand-painted with warm cream paper texture filling the entire image, soft pastel palette, gentle wet-on-wet washes with visible bleeding edges, loose expressive brush strokes, soft painterly rendering, warm friendly facial expressions, inspired by Beatrix Potter and Quentin Blake, consistent palette and brush handling across all panels of this story, same character proportions and facial features in every panel, full bleed composition extending to all four image edges, no inner framing, subjects and background reach every corner of the image, square 1:1 aspect ratio";
+const imageStyleNegative = "no text, no watermarks, no labels, no tags, no annotations, no nameplates, no UI overlays, no callouts, no captions, no speech bubbles, no sign text, no alphanumeric text in image, no letterboxing, no black bars, no white margin, no cream margin, no paper border, no inner matte, no mat board, no illustration frame, no vignette, no aspect-ratio padding, no hard black outlines, no digital vector look, no CGI, no 3D shading, no photorealism, no extra limbs, no duplicate props, no floating objects, no mixed art styles, no style drift, no oversized anime eyes, no rim lighting, no eerie atmosphere, no melancholic faces";
 
 const imageCount = 5;
 
