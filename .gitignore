@@ -13,3 +13,6 @@ Tool_bilder/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# n8n-Pipeline Secrets
+n8n-pipeline/n8n-config/.env
