@@ -1,5 +1,27 @@
 const d = $input.item.json;
-const elementsUserPrompt = `Analyze this German children's story and extract ALL visual elements needed to illustrate it consistently and physically plausibly.
+
+// Hard constraints für die Hauptfigur kommen aus 'Daten vorbereiten':
+// mainCharacterAge (Mitte der Altersgruppe) und mainCharacterGender
+// (Webhook-Override oder deterministische Rotation über Slug-Hash).
+// Ohne diese Vorgabe würde der Extraktor das Alter aus dem Story-Text
+// raten (meistens 8) und das Geschlecht aus seinem Trainingsbias wählen
+// (fast immer männlich).
+const mainCharAge = (typeof d.mainCharacterAge === 'number') ? d.mainCharacterAge : 9;
+const mainCharGender = d.mainCharacterGender || 'female';
+const HEIGHT_CATEGORY = mainCharAge < 12 ? 'child' : (mainCharAge < 19 ? 'teen' : 'adult');
+
+const mainCharacterConstraints = [
+  'MANDATORY MAIN CHARACTER CONSTRAINTS — non-negotiable:',
+  `- The narrating "Ich" (storyteller, role="main") MUST be exactly ${mainCharAge} years old.`,
+  `- The narrating "Ich" MUST be of gender: ${mainCharGender}.`,
+  `- body.heightCategory MUST be "${HEIGHT_CATEGORY}".`,
+  `- The character's body proportions, facial features, hair style and outfit MUST be plausible for a ${mainCharAge}-year-old ${mainCharGender} person.`,
+  '- For diversity: vary skin tone, hair color and hair style across stories — do not default to fair-skinned light-brown-haired.',
+  '- This applies even if the story text uses neutral "ich"/"mein" without explicit age or gender markers.',
+  ''
+].join('\n');
+
+const elementsUserPrompt = `${mainCharacterConstraints}Analyze this German children's story and extract ALL visual elements needed to illustrate it consistently and physically plausibly.
 
 Output ONLY a JSON object (no markdown, no explanation):
 {

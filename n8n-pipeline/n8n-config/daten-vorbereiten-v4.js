@@ -45,6 +45,34 @@ const imageStyleNegative = "no text, no watermarks, no labels, no tags, no annot
 
 const imageCount = 5;
 
+// Alter & Geschlecht der Hauptfigur ("Ich") für die Bildgenerierung deterministisch
+// festlegen. Ohne diese explizite Vorgabe interpretiert der Story-Elemente-Extraktor
+// das Alter aus dem Story-Text-Kontext (oft falsch: alle Stories landeten bei 8 J.)
+// und wählt das Geschlecht aus seinem Trainingsbias (fast immer männlich).
+//
+// Alter pro Altersgruppe (Mitte des Bereichs):
+const AGE_MAP = {
+  'vorschule': 5,
+  'grundschule': 9,
+  'teenager': 15,
+  'junge-erwachsene': 23,
+  'erwachsene': 38,
+  'allgemein': 9
+};
+const mainCharacterAge = AGE_MAP[altersgruppe] || 9;
+
+// Geschlecht: optional per Webhook-Feld "Hauptfigur" überschreibbar, sonst
+// deterministische Rotation über alle 3 Gender, basierend auf Slug-Hash.
+const hauptfigurInput = (input['Hauptfigur'] || '').toString().trim().toLowerCase();
+let mainCharacterGender;
+if (/m[aä]dchen|frau|weibl/.test(hauptfigurInput))                mainCharacterGender = 'female';
+else if (/junge|mann|männl|maennl/.test(hauptfigurInput))         mainCharacterGender = 'male';
+else if (/nicht.?binär|nicht.?binaer|non.?binary|nb/.test(hauptfigurInput)) mainCharacterGender = 'non-binary';
+else {
+  const GENDERS = ['female', 'male', 'non-binary'];
+  mainCharacterGender = GENDERS[Math.abs(_h) % GENDERS.length];
+}
+
 // SEO-Beschreibung: erste 140 Zeichen der Situation, an Wortgrenze geschnitten.
 function shortDesc(text, maxLen) {
   const s = String(text || '').replace(/\s+/g, ' ').trim();
@@ -89,6 +117,8 @@ return {
     imageStyleNegative,
     description,
     userPrompt,
+    mainCharacterAge,
+    mainCharacterGender,
     date: today
   }
 };
