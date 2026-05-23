@@ -91,10 +91,15 @@ return scenes.map(s => {
   const fullNegative = [imageStyleNegative, safetyNegative, frameNegative].filter(has).join(', ');
   const finalPrompt  = positive + '\n\n| NEGATIVE: ' + fullNegative;
 
+  // paragraphIndex vom AI-Output durchreichen — wird im HTML-Assembler genutzt,
+  // um Bilder zwischen den richtigen Absätzen zu platzieren.
+  const paragraphIndex = (typeof s.paragraphIndex === 'number' && s.paragraphIndex >= 1) ? s.paragraphIndex : null;
+
   return {
     json: {
       ...prev,
       sceneIndex: sceneNo,
+      paragraphIndex,
       imagePrompt: finalPrompt,
       imageFilename: prev.slug + '-' + sceneNo + '.png',
       imageGithubPath: 'social-stories/bilder/' + prev.slug + '-' + sceneNo + '.png',

@@ -32,15 +32,23 @@ const metaKeywords = ['Soziale Geschichte', 'Autismus', 'ASS', 'Carol Gray', dat
 const heroImageUrl = `${SITE_BASE}/social-stories/bilder/${slug}-1.png`;
 const imageCount = Number(data.imageCount || 0);
 
-// imagePositions: [{scene: N, paragraphIndex: P}, ...] — Bild N erscheint UNMITTELBAR ÜBER paragraph P.
+// imagePositions baue ich aus den Szenen-Items zusammen — jedes Szene-Item kommt
+// aus 'Szenen parsen' und enthält sceneIndex + paragraphIndex (sofern AI ihn lieferte).
 // paragraphIndex ist 0-basiert; per Konvention >= 1 (Story beginnt immer mit Prosa).
-const imagePositions = Array.isArray(data.imagePositions) ? data.imagePositions : [];
+// Bild scene 1 ist immer Hero; inline-Bilder sind scene >= 2.
 const positionsByParagraph = new Map();
-for (const p of imagePositions) {
-  if (p && typeof p.paragraphIndex === 'number' && typeof p.scene === 'number' && p.scene >= 2 && p.scene <= imageCount) {
-    positionsByParagraph.set(p.paragraphIndex, p.scene);
+try {
+  const sceneItems = $('Szenen parsen').all() || [];
+  for (const item of sceneItems) {
+    const j = item.json || {};
+    const scene = j.sceneIndex;
+    const pIdx = j.paragraphIndex;
+    if (typeof scene === 'number' && scene >= 2 && scene <= imageCount &&
+        typeof pIdx === 'number' && pIdx >= 1) {
+      positionsByParagraph.set(pIdx, scene);
+    }
   }
-}
+} catch (e) { /* fallback regelt das */ }
 
 const paragraphs = (data.storyText || '').toString().split(/\n\n+/).map(p => p.trim()).filter(Boolean);
 let storyHtml = '';
