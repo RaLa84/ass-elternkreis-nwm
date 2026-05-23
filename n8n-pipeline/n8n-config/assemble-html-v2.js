@@ -6,7 +6,7 @@
 // und werden hier deshalb ignoriert, selbst wenn die vorgeschalteten Workflow-Nodes
 // sie noch liefern.
 
-const data = $('Schatz parsen').first().json;
+const data = $('Geschichte parsen').first().json;
 let template = $input.item.json.data;
 
 const SITE_BASE = 'https://www.ass-elternkreis-nwm.de';
