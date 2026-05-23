@@ -70,25 +70,66 @@ Spart pro Lauf 8 LLM-Calls und macht den Workflow lesbar — die Bild-Pipeline
 (Story-Elemente → Bildszenen → Probe-Scout → Bild-Loop mit Gemini-Generator
 oder Style-Ref-Fallback → GitHub-Push) bleibt unverändert.
 
+### 4. Carol-Gray-Umstellung (2026-05-23)
+
+Workflow erzeugt jetzt ausschließlich Social Stories nach der Methode von
+Carol Gray (1993). Eingabevertrag und Story-Stil wurden hart umgestellt —
+keine Rückkompatibilität zu den Lesekumpel-Feldern.
+
+**Neuer Webhook-Vertrag** (`POST https://rala84.app.n8n.cloud/webhook/shg-story`):
+
+```json
+{
+  "Titel": "Besuch beim Zahnarzt",
+  "Situation": "Heute gehe ich zum Zahnarzt zur Kontrolle. Mama kommt mit. Wir warten kurz, dann werde ich auf dem Behandlungsstuhl untersucht.",
+  "Verhaltensziel": "ruhig im Behandlungsstuhl liegen, den Mund öffnen lassen, mit Bohrergeräusch, hellem Licht und ungewohnten Berührungen klarkommen",
+  "Altersgruppe": "grundschule"
+}
+```
+
+`Altersgruppe`-Whitelist: `vorschule` · `grundschule` · `teenager` ·
+`junge-erwachsene` · `erwachsene`. Ungültige Werte fallen auf `allgemein`.
+
+**Festgesetzte Defaults** (visuelle Konsistenz über alle Stories):
+
+- 200–300 Wörter Story-Text
+- 6 Absätze (Einstieg → Vorbereitung → Erste Schritte → Höhepunkt →
+  Bewältigung → Abschluss)
+- 5 Bilder (Bild 1 = geblurrtes Hero + klar nach Absatz 1, Bilder 2–5
+  zwischen den weiteren Absätzen)
+- Bildstil fest `Traumwelt`
+
+**Code-Änderungen**:
+
+- [prompts/carol-gray-autor.md](prompts/carol-gray-autor.md) neu — System-Prompt
+  mit Satztypen-Taxonomie (DESKRIPTIV/PERSPEKTIVISCH/DIREKTIV/AFFIRMATIV),
+  Verhältnis-Regel, Story-Bogen, Sprachregeln je Altersgruppe
+- [`daten-vorbereiten-v4.js`](n8n-config/daten-vorbereiten-v4.js) komplett
+  neu (17 KB → ~100 Zeilen). Liest Carol-Gray-Felder, validiert Altersgruppe,
+  fest `imageCount: 5` und Bildstil Traumwelt, baut `userPrompt` aus den
+  Webhook-Variablen
+- Cloud-Workflow: `🌉 Mia Mitte (Flüssig)` umbenannt zu `✍️ Carol-Gray-Autor`,
+  System-Prompt ersetzt; `⚙️ Gemini (Mia)` umbenannt zu `⚙️ Gemini (Carol-Gray)`;
+  Connections aktualisiert
+- `assemble-html-v2.js` unverändert — `data.altersgruppe` kommt nun befüllt
+  durch und bucketet Stories automatisch nach `social-stories/<altersgruppe>/<slug>.html`
+
 ## Was noch zu tun ist
 
 - **GitHub-Push-Node** ist auf `operation: create`. Wenn die Story-Dateien
-  (HTML + 3 PNGs) im Repo schon existieren, scheitert ein Re-Run mit
+  (HTML + Bilder) im Repo schon existieren, scheitert ein Re-Run mit
   422 *"sha wasn't supplied"*. Workaround: vor jedem Re-Run die alten
   Artefakte per `git rm` löschen. Sauberer wäre Operation `edit` mit
   Lookup der aktuellen SHA — separater Task.
-- **Persona-/Neurotyp-Logik** → für echte Carol-Gray-Stories braucht es
-  andere Eingabe-Felder: `Situation`, `Verhaltensziel`, `Altersgruppe`.
-  Sobald `Altersgruppe` durch den Webhook kommt, bucketet
-  `assemble-html-v2.js` automatisch korrekt.
 - **`bildszenen-vorbereiten-v2.js`**: Style-Reference-Pfade
   (`bilder/bildstil-vorschau/...`) zeigen noch auf das Lesekumpel-CDN.
   Bei Bedarf in SHG-Repo migrieren.
-- **`social-stories/index.html`** als Hub-Seite mit Übersicht aller
-  generierten Stories anlegen.
-- **`prompts/*.md`**: dort liegen noch die Lesekumpel-Personas als
-  Strukturvorlage. Bei einer späteren Carol-Gray-Umstellung kann ein
-  echter Carol-Gray-Persona-Prompt hier landen.
+- **`social-stories/index.html`** als Hub-Seite mit 5 Altersgruppen-Kacheln
+  und Übersicht der generierten Stories.
+- **`searchindex.json`-Erweiterung** für Site-Suche um Social-Story-Einträge.
+- **Lesekumpel-Persona-Prompts** (`prompts/mia-mitte.md`, `pip-punkt.md` etc.)
+  können entfernt werden — sie werden vom Workflow nicht mehr referenziert,
+  Carol-Gray-Autor hat seinen eigenen Prompt-File.
 - **`n8n-config/.env`**: aus `.env.example` anlegen mit `N8N_API_KEY` aus
   der Lesekumpel-Quelle (oder eigenen erzeugen).
 
