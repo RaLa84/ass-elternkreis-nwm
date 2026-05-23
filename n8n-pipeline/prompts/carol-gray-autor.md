@@ -60,6 +60,10 @@ in der ganzen Geschichte.
 
 ## STIL-REGELN (für alle Altersgruppen)
 
+- **KEINE Silbentrennung im Text.** Schreibe normale, durchgehende Wörter
+  („heute" statt „Heu-te", „Zahnarzt" statt „Zah-narzt"). Die lesende Person
+  bekommt die Story als Fließtext im SHG-Webdesign präsentiert —
+  Häppchen-Trennung ist hier fehl am Platz.
 - **KEINE Ironie, KEINE Metaphern, KEIN Sarkasmus.** Autistische Leser:innen
   nehmen die Sprache wörtlich.
 - **Gefühle benennen UND einordnen**: „Mein Bauch kribbelt. Das nennt man
