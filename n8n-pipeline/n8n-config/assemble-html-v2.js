@@ -35,7 +35,8 @@ const imageCount = Number(data.imageCount || 0);
 // imagePositions baue ich aus den Szenen-Items zusammen — jedes Szene-Item kommt
 // aus 'Szenen parsen' und enthält sceneIndex + paragraphIndex (sofern AI ihn lieferte).
 // paragraphIndex ist 0-basiert; per Konvention >= 1 (Story beginnt immer mit Prosa).
-// Bild scene 1 ist immer Hero; inline-Bilder sind scene >= 2.
+// Bild scene 1 ist als geblurrtes Hero-Bild ZUSÄTZLICH oben — die klare Inline-Version
+// folgt unten an der vom AI gewählten paragraphIndex-Position.
 const positionsByParagraph = new Map();
 try {
   const sceneItems = $('Szenen parsen').all() || [];
@@ -43,7 +44,7 @@ try {
     const j = item.json || {};
     const scene = j.sceneIndex;
     const pIdx = j.paragraphIndex;
-    if (typeof scene === 'number' && scene >= 2 && scene <= imageCount &&
+    if (typeof scene === 'number' && scene >= 1 && scene <= imageCount &&
         typeof pIdx === 'number' && pIdx >= 1) {
       positionsByParagraph.set(pIdx, scene);
     }
@@ -60,9 +61,9 @@ for (let i = 0; i < paragraphs.length; i++) {
   }
   storyHtml += `          <p>${htmlEscape(paragraphs[i])}</p>\n`;
 }
-// Falls keine Position-Mappings vorhanden: alle Bilder ab scene 2 ans Ende, damit nichts verloren geht.
-if (positionsByParagraph.size === 0 && imageCount >= 2) {
-  for (let scene = 2; scene <= imageCount; scene++) {
+// Falls keine Position-Mappings vorhanden: alle Bilder ab scene 1 ans Ende, damit nichts verloren geht.
+if (positionsByParagraph.size === 0 && imageCount >= 1) {
+  for (let scene = 1; scene <= imageCount; scene++) {
     const imgUrl = `${SITE_BASE}/social-stories/bilder/${slug}-${scene}.png`;
     storyHtml += `          <img src="${imgUrl}" alt="${htmlEscape(data.title)} – Bild ${scene}" loading="lazy">\n`;
   }

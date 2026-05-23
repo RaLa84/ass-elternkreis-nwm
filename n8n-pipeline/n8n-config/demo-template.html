@@ -71,6 +71,7 @@
     .prose-custom em { font-style: italic; }
     .prose-custom img { border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin: 1.5rem 0; width: 100%; height: auto; }
     .hero-fade { background: linear-gradient(to top, rgba(27,67,50,0.92) 0%, rgba(27,67,50,0.45) 55%, rgba(27,67,50,0.05) 100%); }
+    .hero-blur { filter: blur(10px) brightness(0.92); }
     </style>
 </head>
 
@@ -117,8 +118,8 @@
       </div>
     </nav>
 
-    <section class="relative w-full">
-      <img src="{{HERO_IMAGE_URL}}" alt="{{STORY_TITLE}}" class="w-full h-[44vh] sm:h-[60vh] object-cover" loading="eager">
+    <section class="relative w-full overflow-hidden">
+      <img src="{{HERO_IMAGE_URL}}" alt="" aria-hidden="true" class="w-full h-[44vh] sm:h-[60vh] object-cover scale-110 hero-blur" loading="eager">
       <div class="absolute inset-0 hero-fade"></div>
       <div class="absolute inset-x-0 bottom-0">
         <div class="max-w-3xl mx-auto px-4 sm:px-8 pb-8 sm:pb-12">
