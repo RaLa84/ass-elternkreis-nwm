@@ -51,7 +51,17 @@ try {
   }
 } catch (e) { /* fallback regelt das */ }
 
-const paragraphs = (data.storyText || '').toString().split(/\n\n+/).map(p => p.trim()).filter(Boolean);
+// Silbentrennung entfernen: Sicherheitsnetz, falls die LLM trotz Prompt-Verbot
+// doch Häppchen-Trennung produziert (Lesekumpel-Erbe im Gemini-Trainingskontext).
+function removeHyphenation(s) {
+  const pat = /([a-zäöüßA-ZÄÖÜ])-([a-zäöüß])/g;
+  let prev;
+  do { prev = s; s = s.replace(pat, '$1$2'); } while (prev !== s);
+  return s;
+}
+const paragraphs = (data.storyText || '').toString().split(/\n\n+/)
+  .map(p => removeHyphenation(p.trim()))
+  .filter(Boolean);
 let storyHtml = '';
 for (let i = 0; i < paragraphs.length; i++) {
   if (positionsByParagraph.has(i)) {
