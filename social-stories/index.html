@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soziale Geschichten nach Carol Gray für autistische Kinder, Jugendliche und Erwachsene — Vorbereitung auf Alltagssituationen wie Zahnarzt, Klassenfahrt oder Praktikum.">
+    <title>Soziale Geschichten — ASS Elternkreis NWM</title>
+    <link rel="canonical" href="https://www.ass-elternkreis-nwm.de/social-stories/">
+    <link rel="icon" href="../images/logoneu.jpg" type="image/jpg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Soziale Geschichten — ASS Elternkreis NWM">
+    <meta property="og:description" content="Soziale Geschichten nach Carol Gray für autistische Kinder, Jugendliche und Erwachsene.">
+    <meta property="og:url" content="https://www.ass-elternkreis-nwm.de/social-stories/">
+    <meta property="og:locale" content="de_DE">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { DEFAULT: '#1b4332', light: '#2d6a4f' },
+            sunflower: { DEFAULT: '#FFC107', hover: '#E6A800' },
+            brown: '#3E2723',
+            softwhite: '#FAFAF8',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Soziale Geschichten",
+      "description": "Soziale Geschichten nach Carol Gray für autistische Kinder, Jugendliche und Erwachsene.",
+      "url": "https://www.ass-elternkreis-nwm.de/social-stories/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ASS Elternkreis NWM",
+        "url": "https://www.ass-elternkreis-nwm.de/"
+      }
+    }
+    </script>
+</head>
+
+<body class="bg-softwhite text-brown font-sans antialiased">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:text-forest">Zum Inhalt springen</a>
+
+    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="flex items-center gap-2 text-forest font-bold text-lg hover:opacity-80 transition-opacity">
+            <img src="../images/ASS_infinity_awareness_symbol.png" alt="ASS Elternkreis Logo" width="32" height="26">
+            ASS Elternkreis NWM
+          </a>
+          <div class="hidden lg:flex items-center gap-1">
+            <a href="/#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="/#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="../about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="../erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="../links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="../hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="./" class="px-3 py-2 rounded-lg text-sm font-medium text-forest bg-forest/5 transition-colors" aria-current="page">Soziale Geschichten</a>
+            <a href="../blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
+            <a href="../faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+            <button data-search-trigger type="button" class="p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Suche öffnen"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+          </div>
+          <button data-search-trigger type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors" aria-label="Suche öffnen"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+          <button id="navToggle" type="button" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors" aria-label="Navigation umschalten" aria-expanded="false">
+            <svg id="navIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="navIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div id="mobileMenu" class="lg:hidden hidden pb-4">
+          <div class="flex flex-col gap-1 pt-2 border-t border-gray-100">
+            <a href="/#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Kontakt</a>
+            <a href="/#termine" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Termine</a>
+            <a href="../about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Über uns</a>
+            <a href="../erste-schritte.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Erste Schritte</a>
+            <a href="../links.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Links</a>
+            <a href="../hilfsmittel.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Hilfsmittel</a>
+            <a href="./" class="px-3 py-2 rounded-lg text-sm font-medium text-forest bg-forest/5 transition-colors" aria-current="page">Soziale Geschichten</a>
+            <a href="../blog.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">Blog</a>
+            <a href="../faq.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-forest hover:bg-forest/5 transition-colors">FAQ</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="bg-forest/[0.03] py-16 sm:py-20 px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-forest mb-4">Soziale Geschichten</h1>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Kurze, sensorisch ehrliche Geschichten, die autistische Kinder, Jugendliche und Erwachsene konkret auf eine Alltagssituation vorbereiten. Geschrieben nach der Methode von
+          <a href="../hilfsmittel.html" class="text-forest font-medium hover:underline">Carol Gray</a> — mit klarer Ich-Perspektive, Präsens, sensorischen Details und ohne Belehrung.
+        </p>
+      </div>
+    </section>
+
+    <div class="py-8 px-4">
+      <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-2">
+        <a href="#vorschule" class="px-4 py-2 rounded-full text-sm font-medium bg-white shadow-sm text-gray-700 hover:bg-forest/5 hover:text-forest transition-colors">Vorschule</a>
+        <a href="#grundschule" class="px-4 py-2 rounded-full text-sm font-medium bg-white shadow-sm text-gray-700 hover:bg-forest/5 hover:text-forest transition-colors">Grundschule</a>
+        <a href="#teenager" class="px-4 py-2 rounded-full text-sm font-medium bg-white shadow-sm text-gray-700 hover:bg-forest/5 hover:text-forest transition-colors">Teenager</a>
+        <a href="#junge-erwachsene" class="px-4 py-2 rounded-full text-sm font-medium bg-white shadow-sm text-gray-700 hover:bg-forest/5 hover:text-forest transition-colors">Junge Erwachsene</a>
+        <a href="#erwachsene" class="px-4 py-2 rounded-full text-sm font-medium bg-white shadow-sm text-gray-700 hover:bg-forest/5 hover:text-forest transition-colors">Erwachsene</a>
+      </div>
+    </div>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16">
+
+      <section id="vorschule" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-forest mb-2">Vorschule</h2>
+        <p class="text-sm text-gray-500 mb-6">Für Kinder bis etwa 6 Jahre. Sehr kurze Sätze, viel Wiederholung, viel sensorische Beschreibung.</p>
+        <div class="bg-white/60 rounded-2xl p-6 border border-gray-100 text-center text-gray-500">
+          <p>Hier entstehen bald Geschichten. Schau gerne wieder rein.</p>
+        </div>
+      </section>
+
+      <section id="grundschule" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-forest mb-2">Grundschule</h2>
+        <p class="text-sm text-gray-500 mb-6">Für Kinder im Alter von etwa 6 bis 12 Jahren. Klare Sätze, Schritt-für-Schritt-Erklärungen.</p>
+        <div class="grid gap-6 sm:grid-cols-2">
+
+          <article class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow flex flex-col">
+            <a href="grundschule/besuch-beim-zahnarzt-b0v6.html" class="block">
+              <img src="bilder/besuch-beim-zahnarzt-b0v6-1.png" alt="" class="w-full aspect-square object-cover">
+            </a>
+            <div class="p-5 flex flex-col flex-grow">
+              <h3 class="text-lg font-bold text-forest mb-2">
+                <a href="grundschule/besuch-beim-zahnarzt-b0v6.html" class="hover:underline">Besuch beim Zahnarzt</a>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed flex-grow">Was passiert in der Praxis? Vom Wartezimmer über das Behandlungszimmer bis zur Untersuchung — mit ehrlich benannten Geräuschen und Lichtverhältnissen.</p>
+              <a href="grundschule/besuch-beim-zahnarzt-b0v6.html" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-forest hover:text-forest-light">Lesen →</a>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow flex flex-col">
+            <a href="grundschule/der-neue-schueler-18uz.html" class="block">
+              <img src="bilder/der-neue-schueler-18uz-1.png" alt="" class="w-full aspect-square object-cover">
+            </a>
+            <div class="p-5 flex flex-col flex-grow">
+              <h3 class="text-lg font-bold text-forest mb-2">
+                <a href="grundschule/der-neue-schueler-18uz.html" class="hover:underline">Der neue Schüler</a>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed flex-grow">Ein neues Kind kommt in die vertraute Klasse. Was sich ändert, was gleich bleibt — und wie sich Veränderung im Bauch anfühlen kann.</p>
+              <a href="grundschule/der-neue-schueler-18uz.html" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-forest hover:text-forest-light">Lesen →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="teenager" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-forest mb-2">Teenager</h2>
+        <p class="text-sm text-gray-500 mb-6">Für 12- bis 18-Jährige. Längere Sätze, Fachbegriffe erklärt, erwachsenere Ansprache.</p>
+        <div class="grid gap-6 sm:grid-cols-2">
+
+          <article class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow flex flex-col">
+            <a href="teenager/klassenfahrt-mit-uebernachtung-fxal.html" class="block">
+              <img src="bilder/klassenfahrt-mit-uebernachtung-fxal-1.png" alt="" class="w-full aspect-square object-cover">
+            </a>
+            <div class="p-5 flex flex-col flex-grow">
+              <h3 class="text-lg font-bold text-forest mb-2">
+                <a href="teenager/klassenfahrt-mit-uebernachtung-fxal.html" class="hover:underline">Klassenfahrt mit Übernachtung</a>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed flex-grow">Drei Tage Jugendherberge — fremdes Bett, Gemeinschaftsbad, lauter Speisesaal. Mit konkreten Strategien für Überreizung und vertrauten Dingen von zu Hause.</p>
+              <a href="teenager/klassenfahrt-mit-uebernachtung-fxal.html" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-forest hover:text-forest-light">Lesen →</a>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow flex flex-col">
+            <a href="teenager/praktikum-der-erste-tag-15gh.html" class="block">
+              <img src="bilder/praktikum-der-erste-tag-15gh-1.png" alt="" class="w-full aspect-square object-cover">
+            </a>
+            <div class="p-5 flex flex-col flex-grow">
+              <h3 class="text-lg font-bold text-forest mb-2">
+                <a href="teenager/praktikum-der-erste-tag-15gh.html" class="hover:underline">Praktikum: Der erste Tag</a>
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed flex-grow">Übergang Schule → Berufsleben. Vom Empfang an der Pforte über erste Aufgaben bis zur Mittagspause. Mit konkretem Frage-Skript für Unklarheiten.</p>
+              <a href="teenager/praktikum-der-erste-tag-15gh.html" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-forest hover:text-forest-light">Lesen →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="junge-erwachsene" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-forest mb-2">Junge Erwachsene</h2>
+        <p class="text-sm text-gray-500 mb-6">Für 18- bis etwa 30-Jährige. Erwachsene Ansprache ohne Verniedlichung.</p>
+        <div class="bg-white/60 rounded-2xl p-6 border border-gray-100 text-center text-gray-500">
+          <p>Hier entstehen bald Geschichten. Schau gerne wieder rein.</p>
+        </div>
+      </section>
+
+      <section id="erwachsene" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-forest mb-2">Erwachsene</h2>
+        <p class="text-sm text-gray-500 mb-6">Sachlich, selbstbestimmt formuliert. Für 30 Jahre und älter.</p>
+        <div class="bg-white/60 rounded-2xl p-6 border border-gray-100 text-center text-gray-500">
+          <p>Hier entstehen bald Geschichten. Schau gerne wieder rein.</p>
+        </div>
+      </section>
+
+      <p class="text-center text-xs text-gray-400 mt-8">Alle Geschichten sind mit KI-Unterstützung nach der Carol-Gray-Methode erstellt und auf Plausibilität geprüft.</p>
+
+    </main>
+
+    <footer class="bg-forest text-white py-10 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+          <a href="../about.html" class="text-sm text-white/70 hover:text-white transition-colors">Über uns</a>
+          <a href="/#contact" class="text-sm text-white/70 hover:text-white transition-colors">Kontakt</a>
+          <a href="/#termine" class="text-sm text-white/70 hover:text-white transition-colors">Termine</a>
+          <a href="../links.html" class="text-sm text-white/70 hover:text-white transition-colors">Links</a>
+          <a href="../blog.html" class="text-sm text-white/70 hover:text-white transition-colors">Blog</a>
+          <a href="../faq.html" class="text-sm text-white/70 hover:text-white transition-colors">FAQ</a>
+          <a href="../blog/inklusives-mindset.html" class="text-sm text-white/70 hover:text-white transition-colors">Inklusion</a>
+          <a href="../impressum.html" class="text-sm text-white/70 hover:text-white transition-colors">Impressum</a>
+          <a href="../datenschutz.html" class="text-sm text-white/70 hover:text-white transition-colors">Datenschutz</a>
+        </div>
+        <p class="text-center text-sm text-white/50">&copy; 2024–2026 Antje und Raik Lasner</p>
+      </div>
+    </footer>
+
+    <script>
+    (function(){
+      var t = document.getElementById('navToggle');
+      var m = document.getElementById('mobileMenu');
+      var open = document.getElementById('navIconOpen');
+      var close = document.getElementById('navIconClose');
+      if (!t || !m) return;
+      t.addEventListener('click', function() {
+        var wasHidden = m.classList.contains('hidden');
+        m.classList.toggle('hidden');
+        if (open && close) {
+          open.classList.toggle('hidden', wasHidden);
+          close.classList.toggle('hidden', !wasHidden);
+        }
+        t.setAttribute('aria-expanded', wasHidden ? 'true' : 'false');
+      });
+    })();
+    </script>
+
+</body>
+</html>
