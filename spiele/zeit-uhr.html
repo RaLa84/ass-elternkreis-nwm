@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="robots" content="noindex">
+<title>Zeit-Uhr — ASS Elternkreis NWM</title>
+<link rel="icon" href="../images/logoneu.jpg" type="image/jpg">
+<style>
+:root{
+  --bg:#F5F1E8; --ink:#4E4038; --soft:#8C7B70;
+  --ok:#9DBE92; --ok-t:#E5F0E0; --hint:#EBC766; --hint-t:#FFF5D6;
+  --btn:#9FBF95; --shadow:0 4px 14px rgba(78,64,56,.10);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#FAFAF8;color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+svg{display:block}
+
+/* Website-Header & -Footer (eigenes CSS, damit es auch offline gleich aussieht) */
+.site-nav{position:sticky;top:0;z-index:20;height:64px;background:rgba(255,255,255,.92);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.nav-in{max-width:1280px;margin:0 auto;height:64px;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:8px;color:#1b4332;font-weight:700;font-size:18px;text-decoration:none}
+.brand img{display:block}
+.nav-links{display:flex;gap:4px}
+.nav-links a{padding:8px 12px;border-radius:8px;font-size:14px;font-weight:500;color:#4b5563;text-decoration:none}
+.nav-links a:hover{color:#1b4332;background:rgba(27,67,50,.05)}
+.nav-toggle{display:none;border:none;background:none;padding:8px;border-radius:8px;color:#4b5563}
+.nav-toggle svg{width:24px;height:24px}
+@media (max-width:1023px){
+  .nav-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#fff;padding:8px 16px 16px;box-shadow:0 6px 12px rgba(0,0,0,.08)}
+  .nav-links.open{display:flex}
+}
+.site-footer{background:#1b4332;color:#fff;padding:40px 16px}
+.site-footer .fl{max-width:1150px;margin:0 auto 24px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px}
+.site-footer a{font-size:14px;color:rgba(255,255,255,.7);text-decoration:none}
+.site-footer a:hover,.site-footer a[aria-current]{color:#fff}
+.site-footer p{text-align:center;font-size:14px;color:rgba(255,255,255,.5);margin:0}
+
+/* Spielfläche */
+#app{position:relative;height:calc(100vh - 64px);height:calc(100dvh - 64px);min-height:420px;overflow:hidden;background:var(--bg);
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+#app:fullscreen{height:100vh;height:100dvh}
+#app:-webkit-full-screen{height:100vh;width:100vw}
+.back-link{font-size:14px;color:var(--soft);text-decoration:none;border-bottom:1px solid #D9CFC2}
+
+.screen{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(10px,2.4vh,26px);padding:max(14px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
+.screen.active{display:flex;animation:fade .45s ease-out}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.big-btn{width:clamp(96px,18vmin,150px);height:clamp(96px,18vmin,150px);border-radius:50%;border:none;
+  background:var(--btn);box-shadow:var(--shadow);display:grid;place-items:center;flex:none;transition:transform .15s}
+.big-btn:active{transform:scale(.96)}
+.big-btn svg{width:56%;height:56%}
+.big-btn.calm{background:#C9BBAE}
+.btn-row{display:flex;gap:clamp(14px,3.5vw,36px);justify-content:center;align-items:center;flex-wrap:wrap}
+
+/* Erst-Dann */
+.ed{display:flex;align-items:center;gap:clamp(8px,2vw,20px)}
+.ed-arrow{width:clamp(34px,6vw,56px);flex:none}
+.slot{width:clamp(104px,min(20vw,21vh),170px);background:#fff;border:3px solid #EDE7DC;border-radius:22px;padding:6px 6px 8px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .5s,border-color .5s,box-shadow .5s,opacity .5s}
+.slot .lbl{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#B5A89C}
+.slot svg{width:78%;height:auto;aspect-ratio:1}
+.slot .nm{font-size:clamp(13px,1.8vmin,16px);font-weight:600;color:var(--soft);min-height:1.2em;text-align:center}
+.slot.empty svg{opacity:.35}
+button.slot:active{transform:scale(.98)}
+.slot{position:relative}
+.slot .check{position:absolute;top:8px;right:8px;width:34px;height:34px;display:none}
+.slot.done .check{display:block}
+.slot.done{opacity:.75}
+.slot.next{background:var(--hint-t);border-color:var(--hint);box-shadow:0 0 0 7px rgba(242,210,122,.35)}
+.slot.now{border-color:var(--ok)}
+.ed-small .slot{width:clamp(84px,min(14vw,15vh),130px)}
+
+/* Dauer */
+.durs{display:grid;grid-template-columns:repeat(4,minmax(64px,96px));gap:clamp(6px,1.4vw,12px)}
+.dur{min-height:64px;border-radius:18px;border:3px solid #EDE7DC;background:#fff;box-shadow:var(--shadow);
+  font-size:clamp(20px,3vmin,26px);font-weight:700;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.dur small{font-size:12px;font-weight:600;color:#B5A89C;margin-top:3px}
+.dur[aria-pressed="true"]{border-color:var(--ok);background:var(--ok-t)}
+
+/* Uhr */
+#timer{justify-content:flex-start}
+.disc-wrap{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;width:100%}
+.disc{height:100%;max-height:min(52vh,440px);width:auto;aspect-ratio:1;max-width:86vw}
+.timeleft{font-size:clamp(26px,5vmin,44px);font-weight:700;color:var(--soft);font-variant-numeric:tabular-nums;min-height:1.2em}
+.timeleft[hidden]{display:block;visibility:hidden}
+.ctrl{width:72px;height:72px;border-radius:50%;border:none;background:#E3DCD0;display:grid;place-items:center;font-weight:700;font-size:20px;color:#6E5E54}
+.ctrl svg{width:42%;height:42%}
+#timer[data-state="done"] .run-only{display:none}
+#timer:not([data-state="done"]) .done-only{display:none}
+.done-disc{display:none}
+#timer[data-state="done"] .done-disc{display:block}
+#timer[data-state="done"] .live-disc{display:none}
+#timer[data-state="paused"] .live-disc{opacity:.6}
+
+/* Bildauswahl */
+.picker{position:absolute;inset:0;background:var(--bg);z-index:6;display:flex;flex-direction:column;align-items:center;padding:16px;gap:12px;overflow:auto}
+.picker[hidden]{display:none}
+.picker h2{margin:4px 0 0;font-size:20px;color:var(--soft)}
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;width:100%;max-width:900px}
+.icon-btn{background:#fff;border:3px solid #EDE7DC;border-radius:18px;padding:8px 4px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;box-shadow:var(--shadow);min-height:96px}
+.icon-btn svg{width:64px;height:64px}
+.icon-btn span{font-size:13px;font-weight:600;color:var(--soft);text-align:center}
+.picker .row{display:flex;gap:10px}
+.picker .row button{border:2px solid #E3DCD0;background:#FAF8F3;border-radius:14px;padding:12px 16px;min-height:48px;font-size:15px}
+
+/* Einstellungen */
+#parentBtn{position:absolute;top:8px;right:max(8px,env(safe-area-inset-right));
+  width:52px;height:52px;border:none;border-radius:50%;background:transparent;padding:0;z-index:5;display:grid;place-items:center}
+#parentBtn:hover,#parentBtn:focus-visible{background:rgba(78,64,56,.07)}
+#parentBtn svg{width:26px;height:26px}
+.overlay{position:fixed;inset:0;background:rgba(78,64,56,.35);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;user-select:text;-webkit-user-select:text}
+.overlay[hidden]{display:none}
+.dialog{background:#fff;border-radius:24px;padding:22px 22px 18px;width:100%;max-width:560px;max-height:92vh;overflow:auto;box-shadow:0 10px 40px rgba(78,64,56,.25)}
+.dialog h2{margin:0 0 4px;font-size:22px}
+.dialog h3{margin:16px 0 8px;font-size:16px}
+.muted{color:var(--soft);font-size:14px;margin:0;line-height:1.45}
+.toggle-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #EFEAE1}
+.toggle-row small{display:block;color:var(--soft);font-size:13px}
+.switch{flex:none;width:64px;height:36px;border-radius:18px;border:none;background:#DDD5C8;position:relative;transition:background .25s}
+.switch::after{content:"";position:absolute;top:4px;left:4px;width:28px;height:28px;border-radius:50%;background:#fff;transition:transform .25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.switch[aria-pressed="true"]{background:var(--ok)}
+.switch[aria-pressed="true"]::after{transform:translateX(28px)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.actions button{border:2px solid #E3DCD0;background:#FAF8F3;border-radius:14px;padding:12px 14px;min-height:48px;font-size:15px}
+.actions .primary{background:var(--btn);border-color:var(--btn);color:#fff;font-weight:600;margin-left:auto}
+details{margin-top:14px;font-size:14px;line-height:1.5;color:var(--soft)}
+summary{cursor:pointer;color:var(--ink)}
+.note{font-size:13px;color:#A0826D;margin:6px 0 0}
+
+@media (max-width:520px){ .durs{grid-template-columns:repeat(4,1fr);width:100%} }
+@media (max-height:560px){ .ed-small{display:none} }
+@media (prefers-reduced-motion:reduce){ .screen.active{animation:none} }
+</style>
+</head>
+<body>
+
+<!-- Alle Bildkarten selbst gezeichnet -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-empty" viewBox="0 0 200 200">
+    <rect x="30" y="30" width="140" height="140" rx="24" fill="none" stroke="#C9BBAE" stroke-width="6" stroke-dasharray="14 12"/>
+    <path d="M100 72 V128 M72 100 H128" stroke="#C9BBAE" stroke-width="10" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-teeth" viewBox="0 0 200 200">
+    <path d="M62 40 C62 18 92 18 100 30 C108 18 138 18 138 40 C138 76 128 108 120 128 C116 140 106 134 104 118 C102 108 98 108 96 118 C94 134 84 140 80 128 C72 108 62 76 62 40 Z" fill="#fff" stroke="#B5A89C" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="28" y="160" width="112" height="16" rx="8" fill="#8FADC4"/>
+    <rect x="128" y="152" width="40" height="26" rx="8" fill="#8FADC4"/>
+    <rect x="132" y="136" width="32" height="18" rx="3" fill="#E3EDF4" stroke="#8FADC4" stroke-width="3"/>
+    <path d="M140 137 V152 M148 137 V152 M156 137 V152" stroke="#8FADC4" stroke-width="2"/>
+  </symbol>
+  <symbol id="i-dress" viewBox="0 0 200 200">
+    <path d="M64 42 L86 32 Q100 50 114 32 L136 42 L170 76 L148 98 L136 88 L136 168 L64 168 L64 88 L52 98 L30 76 Z" fill="#9DBE92" stroke="#86A97A" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M86 32 Q100 50 114 32" fill="none" stroke="#86A97A" stroke-width="5"/>
+  </symbol>
+  <symbol id="i-eat" viewBox="0 0 200 200">
+    <circle cx="100" cy="104" r="56" fill="#fff" stroke="#DCCBB4" stroke-width="6"/>
+    <circle cx="100" cy="104" r="38" fill="none" stroke="#EDE7DC" stroke-width="5"/>
+    <path d="M24 56 V84 Q24 94 32 94 Q40 94 40 84 V56 M32 56 V84" fill="none" stroke="#B5A89C" stroke-width="5" stroke-linecap="round"/>
+    <rect x="28" y="92" width="8" height="70" rx="4" fill="#B5A89C"/>
+    <ellipse cx="170" cy="72" rx="12" ry="18" fill="#B5A89C"/>
+    <rect x="166" y="86" width="8" height="76" rx="4" fill="#B5A89C"/>
+  </symbol>
+  <symbol id="i-homework" viewBox="0 0 200 200">
+    <rect x="46" y="30" width="100" height="140" rx="10" fill="#A8C1D3"/>
+    <rect x="60" y="30" width="86" height="140" rx="6" fill="#fff" stroke="#A8C1D3" stroke-width="5"/>
+    <path d="M74 64 H132 M74 88 H132 M74 112 H120" stroke="#C9D9E5" stroke-width="5" stroke-linecap="round"/>
+    <g transform="rotate(-40 150 130)"><rect x="118" y="122" width="72" height="16" rx="3" fill="#F2D27A"/>
+      <path d="M190 122 L206 130 L190 138 Z" fill="#E8C9A2"/><rect x="110" y="122" width="10" height="16" rx="3" fill="#E8B4B8"/></g>
+  </symbol>
+  <symbol id="i-tidy" viewBox="0 0 200 200">
+    <circle cx="72" cy="94" r="24" fill="#E8B4B8"/>
+    <rect x="104" y="60" width="38" height="38" rx="6" fill="#9DBE92" transform="rotate(12 123 79)"/>
+    <rect x="36" y="100" width="128" height="72" rx="10" fill="#D2B396"/>
+    <rect x="36" y="100" width="128" height="18" rx="6" fill="#C2A07F"/>
+    <rect x="86" y="132" width="28" height="10" rx="5" fill="#B08968"/>
+  </symbol>
+  <symbol id="i-bath" viewBox="0 0 200 200">
+    <path d="M150 60 V36 Q150 26 140 26 H128" fill="none" stroke="#B5A89C" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="78" cy="74" r="14" fill="#fff" stroke="#A8C1D3" stroke-width="4"/>
+    <circle cx="104" cy="58" r="10" fill="#fff" stroke="#A8C1D3" stroke-width="4"/>
+    <circle cx="112" cy="84" r="8" fill="#fff" stroke="#A8C1D3" stroke-width="4"/>
+    <path d="M24 100 H176 V118 Q176 160 134 160 H66 Q24 160 24 118 Z" fill="#A8C1D3"/>
+    <path d="M56 160 L48 178 M144 160 L152 178" stroke="#8FADC4" stroke-width="8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-sleep" viewBox="0 0 200 200">
+    <circle cx="150" cy="46" r="22" fill="#F2D27A"/><circle cx="162" cy="38" r="20" fill="#fff"/>
+    <rect x="28" y="84" width="16" height="88" rx="6" fill="#B8A3D9"/>
+    <rect x="36" y="118" width="140" height="40" rx="10" fill="#C9B6E4"/>
+    <ellipse cx="70" cy="112" rx="24" ry="13" fill="#fff" stroke="#DCD0EE" stroke-width="3"/>
+    <rect x="88" y="106" width="88" height="30" rx="10" fill="#B8A3D9"/>
+    <path d="M44 158 V172 M168 158 V172" stroke="#A890CC" stroke-width="8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 200 200">
+    <rect x="44" y="112" width="52" height="52" rx="8" fill="#E8B4B8"/>
+    <rect x="104" y="112" width="52" height="52" rx="8" fill="#A8C1D3"/>
+    <rect x="74" y="54" width="52" height="52" rx="8" fill="#F2D27A"/>
+    <circle cx="70" cy="138" r="8" fill="#fff" opacity=".7"/><path d="M118 138 H142 M130 126 V150" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+    <path d="M100 68 L112 92 H88 Z" fill="#fff" opacity=".7"/>
+  </symbol>
+  <symbol id="i-tablet" viewBox="0 0 200 200">
+    <rect x="48" y="26" width="104" height="148" rx="16" fill="#8C7B70"/>
+    <rect x="58" y="40" width="84" height="112" rx="6" fill="#DCE8F1"/>
+    <circle cx="100" cy="163" r="5" fill="#C9BBAE"/>
+    <circle cx="82" cy="70" r="10" fill="#F2D27A"/><path d="M62 140 L88 106 L104 124 L118 110 L140 140 Z" fill="#9DBE92"/>
+  </symbol>
+  <symbol id="i-outside" viewBox="0 0 200 200">
+    <circle cx="152" cy="52" r="22" fill="#F6DC94"/>
+    <rect x="20" y="164" width="160" height="12" rx="6" fill="#B9D3AE"/>
+    <rect x="70" y="108" width="18" height="60" rx="5" fill="#B08968"/>
+    <circle cx="79" cy="86" r="40" fill="#9DBE92"/><circle cx="58" cy="104" r="22" fill="#9DBE92"/><circle cx="102" cy="104" r="22" fill="#9DBE92"/>
+  </symbol>
+  <symbol id="i-read" viewBox="0 0 200 200">
+    <path d="M100 58 Q70 42 32 52 V150 Q70 140 100 156 Z" fill="#fff" stroke="#B5A89C" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M100 58 Q130 42 168 52 V150 Q130 140 100 156 Z" fill="#fff" stroke="#B5A89C" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M46 76 Q70 70 88 78 M46 98 Q70 92 88 100 M46 120 Q70 114 88 122 M112 78 Q130 70 154 76 M112 100 Q130 92 154 98" fill="none" stroke="#DCCBB4" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-paint" viewBox="0 0 200 200">
+    <rect x="30" y="36" width="116" height="128" rx="8" fill="#fff" stroke="#DCCBB4" stroke-width="5"/>
+    <path d="M50 120 Q66 70 84 110 T120 90" fill="none" stroke="#E8B4B8" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="112" cy="64" r="12" fill="#F2D27A"/>
+    <g transform="rotate(40 150 120)"><rect x="140" y="60" width="16" height="84" rx="4" fill="#8FADC4"/>
+      <path d="M140 144 H156 L148 164 Z" fill="#E8C9A2"/><path d="M145 156 L151 156 L148 164 Z" fill="#8FADC4"/></g>
+  </symbol>
+  <symbol id="i-music" viewBox="0 0 200 200">
+    <path d="M80 136 V52 L150 38 V122" fill="none" stroke="#8C7B70" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M80 52 L150 38 V58 L80 72 Z" fill="#8C7B70"/>
+    <ellipse cx="64" cy="140" rx="20" ry="15" fill="#8C7B70"/><ellipse cx="134" cy="126" rx="20" ry="15" fill="#8C7B70"/>
+  </symbol>
+  <symbol id="i-car" viewBox="0 0 200 200">
+    <path d="M26 128 Q28 100 56 96 L78 70 H128 L152 96 Q174 100 174 126 V140 H26 Z" fill="#E8B4B8"/>
+    <path d="M86 78 H120 L138 98 H70 Z" fill="#DCE8F1"/><path d="M104 78 V98" stroke="#E8B4B8" stroke-width="5"/>
+    <circle cx="62" cy="142" r="18" fill="#6E5E54"/><circle cx="62" cy="142" r="7" fill="#C9BBAE"/>
+    <circle cx="140" cy="142" r="18" fill="#6E5E54"/><circle cx="140" cy="142" r="7" fill="#C9BBAE"/>
+    <rect x="160" y="110" width="12" height="8" rx="3" fill="#F6DC94"/>
+  </symbol>
+  <symbol id="i-toilet" viewBox="0 0 200 200">
+    <rect x="58" y="28" width="84" height="44" rx="10" fill="#fff" stroke="#B5A89C" stroke-width="5"/>
+    <path d="M52 100 Q56 150 100 156 Q144 150 148 100 Z" fill="#fff" stroke="#B5A89C" stroke-width="5" stroke-linejoin="round"/>
+    <ellipse cx="100" cy="100" rx="52" ry="16" fill="#fff" stroke="#B5A89C" stroke-width="5"/>
+    <path d="M80 156 L76 176 H124 L120 156" fill="#fff" stroke="#B5A89C" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="70" y="72" width="60" height="14" fill="#fff" stroke="#B5A89C" stroke-width="5"/>
+  </symbol>
+  <symbol id="i-shoes" viewBox="0 0 200 200">
+    <path d="M26 132 Q26 88 56 88 L86 94 Q106 120 156 120 Q176 122 176 142 V150 H26 Z" fill="#A8C1D3"/>
+    <rect x="22" y="148" width="158" height="14" rx="7" fill="#8C7B70"/>
+    <path d="M70 100 L84 92 M78 112 L94 102 M88 122 L104 112" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="ic-play" viewBox="0 0 100 100">
+    <path d="M38 27 L77 50 L38 73 Z" fill="#fff" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-pause" viewBox="0 0 100 100">
+    <rect x="26" y="22" width="16" height="56" rx="5" fill="#6E5E54"/><rect x="58" y="22" width="16" height="56" rx="5" fill="#6E5E54"/>
+  </symbol>
+  <symbol id="ic-resume" viewBox="0 0 100 100">
+    <path d="M36 24 L78 50 L36 76 Z" fill="#6E5E54" stroke="#6E5E54" stroke-width="6" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-stop" viewBox="0 0 100 100">
+    <rect x="22" y="22" width="56" height="56" rx="12" fill="#6E5E54"/>
+  </symbol>
+  <symbol id="ic-again" viewBox="0 0 100 100">
+    <path d="M69.9 35.3 A26 26 0 1 0 74.4 60.9" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+    <path d="M77 43 L73 22 L57 37 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-home" viewBox="0 0 100 100">
+    <path d="M22 52 L50 28 L78 52 M33 45 V74 H67 V45" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-check" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="18" fill="#9DBE92"/>
+    <path d="M11 20 L18 27 L30 13" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-arrow" viewBox="0 0 60 40">
+    <path d="M6 20 H48 M36 8 L52 20 L36 32" fill="none" stroke="#C9BBAE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<header class="site-nav">
+  <div class="nav-in">
+    <a href="/" class="brand"><img src="../images/ASS_infinity_awareness_symbol.png" alt="ASS Elternkreis Logo" width="32" height="26">ASS Elternkreis NWM</a>
+    <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
+      <a href="/#contact">Kontakt</a>
+      <a href="/#termine">Termine</a>
+      <a href="../about.html">Über uns</a>
+      <a href="../erste-schritte.html">Erste Schritte</a>
+      <a href="../links.html">Links</a>
+      <a href="../hilfsmittel.html">Hilfsmittel</a>
+      <a href="../social-stories/">Soziale Geschichten</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="navLinks">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="app">
+
+<!-- Einrichten -->
+<section id="setup" class="screen" aria-label="Zeit-Uhr einstellen">
+  <div class="ed">
+    <button class="slot" id="slotFirst" data-slot="first" aria-label="Erst: Bild wählen"></button>
+    <svg class="ed-arrow" viewBox="0 0 60 40" aria-hidden="true"><use href="#ic-arrow"/></svg>
+    <button class="slot" id="slotThen" data-slot="then" aria-label="Dann: Bild wählen"></button>
+  </div>
+  <div class="durs" id="durs" role="group" aria-label="Dauer wählen"></div>
+  <button class="big-btn" id="goBtn" aria-label="Uhr starten"><svg><use href="#ic-play"/></svg></button>
+  <a class="back-link" href="./">← Alle Spiele</a>
+</section>
+
+<!-- Uhr -->
+<section id="timer" class="screen" aria-label="Zeit-Uhr" data-state="running">
+  <div class="ed ed-small" id="edRun">
+    <div class="slot" id="runFirst"></div>
+    <svg class="ed-arrow" viewBox="0 0 60 40" aria-hidden="true"><use href="#ic-arrow"/></svg>
+    <div class="slot" id="runThen"></div>
+  </div>
+  <div class="disc-wrap">
+    <svg class="disc live-disc" id="disc" viewBox="0 0 220 220" role="img" aria-label="Verbleibende Zeit">
+      <circle cx="110" cy="110" r="104" fill="#fff" stroke="#EDE7DC" stroke-width="4"/>
+      <g id="ticksUnder"></g>
+      <path id="sector" d="" fill="#9DBE92"/>
+      <g id="ticks"></g>
+      <circle cx="110" cy="110" r="10" fill="#fff" stroke="#EDE7DC" stroke-width="3"/>
+    </svg>
+    <svg class="disc done-disc" viewBox="0 0 220 220" aria-hidden="true">
+      <circle cx="110" cy="110" r="104" fill="#E5F0E0"/>
+      <path d="M62 112 L96 146 L160 78" fill="none" stroke="#9DBE92" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="timeleft" id="timeleft" aria-live="off"></div>
+  <div class="btn-row run-only">
+    <button class="ctrl" id="pauseBtn" aria-label="Pause"><svg><use id="pauseIcon" href="#ic-pause"/></svg></button>
+    <button class="ctrl" id="plusBtn" aria-label="Eine Minute mehr">+1</button>
+    <button class="ctrl" id="stopBtn" aria-label="Beenden"><svg><use href="#ic-stop"/></svg></button>
+  </div>
+  <div class="btn-row done-only">
+    <button class="big-btn" id="againBtn" aria-label="Nochmal"><svg><use href="#ic-again"/></svg></button>
+    <button class="big-btn calm" id="homeBtn" aria-label="Zurück"><svg><use href="#ic-home"/></svg></button>
+  </div>
+</section>
+
+<!-- Bildauswahl -->
+<div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickTitle">
+  <h2 id="pickTitle">Bild wählen</h2>
+  <div class="icons" id="icons"></div>
+  <div class="row">
+    <button id="pickNone">Kein Bild</button>
+    <button id="pickClose">Abbrechen</button>
+  </div>
+</div>
+
+<button id="parentBtn" type="button" aria-label="Einstellungen" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="#8C7B70">
+    <circle cx="12" cy="5" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="19" r="2.2"/>
+  </svg>
+</button>
+
+<div id="panel" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="pTitle">
+  <div class="dialog">
+    <h2 id="pTitle">Einstellungen</h2>
+    <p class="muted">Die Zeit-Uhr sendet keine Daten. Nur diese Einstellungen werden auf diesem Gerät gemerkt.</p>
+    <div class="toggle-row"><span>Restzeit als Zahl zeigen<small>Zum Beispiel „4:30“ unter der Scheibe. Ohne Zahl wirkt die Uhr für manche Kinder ruhiger.</small></span>
+      <button class="switch" data-key="showNum" aria-pressed="false" aria-label="Restzeit als Zahl"></button></div>
+    <div class="toggle-row"><span>Vorwarnung<small>Eine Minute vor Schluss: „Noch eine Minute.“ Das „Dann“-Bild leuchtet sanft auf.</small></span>
+      <button class="switch" data-key="warn" aria-pressed="false" aria-label="Vorwarnung"></button></div>
+    <div class="toggle-row"><span>Sprache<small>Die Stimme sagt Start, Vorwarnung und Ende an.</small></span>
+      <button class="switch" data-key="speech" aria-pressed="false" aria-label="Sprache"></button></div>
+    <div class="toggle-row"><span>Sanfter Klang am Ende<small>Drei leise Töne, wenn die Zeit um ist.</small></span>
+      <button class="switch" data-key="sound" aria-pressed="false" aria-label="Klang am Ende"></button></div>
+    <p class="note" id="pSpeechNote" hidden>Dieser Browser bietet keine Sprachausgabe an.</p>
+
+    <div class="actions">
+      <button id="pFull">Vollbild</button>
+      <button id="pClose" class="primary">Schließen</button>
+    </div>
+
+    <details>
+      <summary>So funktioniert die Zeit-Uhr</summary>
+      <p>Die grüne Scheibe zeigt, wie viel Zeit noch bleibt, und wird langsam kleiner. So wird Zeit sichtbar, auch ohne die Uhr lesen zu können.
+      Über die beiden Felder oben stellen Sie optional eine <b>Erst-Dann-Tafel</b> ein, z. B. „Erst Zähne putzen, dann Tablet“.</p>
+      <p>Visuelle Hilfen wie diese gelten in der Autismus-Forschung als gut belegt (NCAEP-Bericht 2020, „Visual Supports“).
+      Am besten wirkt die Uhr, wenn sie immer gleich benutzt wird und das Versprochene danach auch kommt.</p>
+      <p>Die Zeit läuft korrekt weiter, auch wenn das Gerät kurz in eine andere App wechselt. Solange die Uhr läuft, bleibt der Bildschirm an, wenn das Gerät das unterstützt.</p>
+    </details>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="fl">
+    <a href="../about.html">Über uns</a>
+    <a href="/#contact">Kontakt</a>
+    <a href="/#termine">Termine</a>
+    <a href="../links.html">Links</a>
+    <a href="../blog.html">Blog</a>
+    <a href="./" aria-current="page">Spiele</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../blog/inklusives-mindset.html">Inklusion</a>
+    <a href="../impressum.html">Impressum</a>
+    <a href="../datenschutz.html">Datenschutz</a>
+  </div>
+  <p>&copy; 2024–2026 Antje und Raik Lasner</p>
+</footer>
+
+<noscript><p style="padding:24px">Bitte JavaScript aktivieren, damit die Zeit-Uhr läuft.</p></noscript>
+
+<script>
+(function () {
+  'use strict';
+
+  var ICONS = [
+    ['teeth', 'Zähne putzen'], ['dress', 'Anziehen'], ['shoes', 'Schuhe an'], ['toilet', 'Toilette'],
+    ['eat', 'Essen'], ['homework', 'Hausaufgaben'], ['tidy', 'Aufräumen'], ['bath', 'Baden'],
+    ['sleep', 'Schlafen'], ['play', 'Spielen'], ['tablet', 'Tablet'], ['outside', 'Draußen'],
+    ['read', 'Lesen'], ['paint', 'Malen'], ['music', 'Musik'], ['car', 'Autofahrt']
+  ];
+  var NAME = {}; ICONS.forEach(function (i) { NAME[i[0]] = i[1]; });
+  var DURS = [1, 2, 3, 5, 10, 15, 20, 30];
+
+  // ---------- Einstellungen ----------
+  var KEY = 'zeitUhr.v1';
+  var settings = { mins: 5, first: '', then: '', showNum: true, warn: true, speech: true, sound: false };
+  try {
+    var s = JSON.parse(localStorage.getItem(KEY) || '{}');
+    if (DURS.indexOf(s.mins) >= 0) settings.mins = s.mins;
+    if (s.first === '' || NAME[s.first]) settings.first = s.first || '';
+    if (s.then === '' || NAME[s.then]) settings.then = s.then || '';
+    ['showNum', 'warn', 'speech', 'sound'].forEach(function (k) { if (typeof s[k] === 'boolean') settings[k] = s[k]; });
+  } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch (e) {} }
+
+  var state = { screen: 'setup', total: 0, endAt: 0, left: 0, paused: false, warned: false, iv: 0, panelOpen: false, pickFor: '' };
+  function $(q) { return document.querySelector(q); }
+
+  function showScreen(id) {
+    state.screen = id;
+    document.querySelectorAll('.screen').forEach(function (el) { el.classList.toggle('active', el.id === id); });
+  }
+
+  // ---------- Sprache, Klang, Bildschirm wach ----------
+  var hasSpeech = 'speechSynthesis' in window;
+  function deVoice() {
+    try { return speechSynthesis.getVoices().filter(function (v) { return /^de([-_]|$)/i.test(v.lang); })[0] || null; }
+    catch (e) { return null; }
+  }
+  if (hasSpeech) try { speechSynthesis.getVoices(); } catch (e) {}
+  function speak(text) {
+    if (!settings.speech || !hasSpeech) return;
+    try {
+      speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = 'de-DE'; var v = deVoice(); if (v) u.voice = v;
+      u.rate = 0.95; u.pitch = 1.05; u.volume = 0.9;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  var actx = null;
+  function chime() {
+    if (!settings.sound) return;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+      var t = actx.currentTime + 0.02;
+      [523.25, 659.25, 783.99].forEach(function (f, i) {
+        var o = actx.createOscillator(), g = actx.createGain(), w = t + i * 0.3;
+        o.type = 'sine'; o.frequency.value = f;
+        g.gain.setValueAtTime(0.0001, w); g.gain.exponentialRampToValueAtTime(0.04, w + 0.05);
+        g.gain.exponentialRampToValueAtTime(0.0001, w + 1.1);
+        o.connect(g); g.connect(actx.destination); o.start(w); o.stop(w + 1.2);
+      });
+    } catch (e) {}
+  }
+  function unlockAudio() {   // iOS: Audio nur nach einer Berührung erlaubt
+    if (!settings.sound) return;
+    try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); } catch (e) {}
+  }
+  var wake = null;
+  function holdWake() {
+    try { if (navigator.wakeLock && !wake) navigator.wakeLock.request('screen').then(function (w) { wake = w; w.addEventListener('release', function () { wake = null; }); }).catch(function () {}); } catch (e) {}
+  }
+  function releaseWake() { try { if (wake) wake.release(); } catch (e) {} wake = null; }
+
+  // ---------- Einrichten ----------
+  function slotHTML(label, key) {
+    return '<span class="lbl">' + label + '</span>' +
+      '<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#i-' + (key || 'empty') + '"/></svg>' +
+      '<span class="nm">' + (key ? NAME[key] : '') + '</span>' +
+      '<svg class="check" viewBox="0 0 40 40" aria-hidden="true"><use href="#ic-check"/></svg>';
+  }
+  function renderSetup() {
+    var f = $('#slotFirst'), t = $('#slotThen');
+    f.innerHTML = slotHTML('Erst', settings.first); f.classList.toggle('empty', !settings.first);
+    t.innerHTML = slotHTML('Dann', settings.then); t.classList.toggle('empty', !settings.then);
+    f.setAttribute('aria-label', 'Erst: ' + (settings.first ? NAME[settings.first] : 'kein Bild') + '. Ändern');
+    t.setAttribute('aria-label', 'Dann: ' + (settings.then ? NAME[settings.then] : 'kein Bild') + '. Ändern');
+    $('#durs').innerHTML = DURS.map(function (m) {
+      return '<button class="dur" data-m="' + m + '" aria-pressed="' + (m === settings.mins) + '" aria-label="' + m + ' Minuten">' +
+        m + '<small>Min</small></button>';
+    }).join('');
+    document.querySelectorAll('.dur').forEach(function (b) {
+      b.addEventListener('click', function () { settings.mins = +b.dataset.m; save(); renderSetup(); });
+    });
+  }
+
+  // Bildauswahl
+  $('#icons').innerHTML = ICONS.map(function (i) {
+    return '<button class="icon-btn" data-k="' + i[0] + '"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#i-' + i[0] + '"/></svg><span>' + i[1] + '</span></button>';
+  }).join('');
+  function openPicker(which) {
+    state.pickFor = which;
+    $('#pickTitle').textContent = which === 'first' ? 'Was kommt zuerst?' : 'Was kommt danach?';
+    $('#picker').hidden = false;
+  }
+  function choose(key) {
+    settings[state.pickFor] = key; save();
+    $('#picker').hidden = true; renderSetup();
+  }
+  document.querySelectorAll('.icon-btn').forEach(function (b) { b.addEventListener('click', function () { choose(b.dataset.k); }); });
+  $('#pickNone').addEventListener('click', function () { choose(''); });
+  $('#pickClose').addEventListener('click', function () { $('#picker').hidden = true; });
+  $('#slotFirst').addEventListener('click', function () { openPicker('first'); });
+  $('#slotThen').addEventListener('click', function () { openPicker('then'); });
+
+  // ---------- Uhr zeichnen ----------
+  var ticks = '';
+  for (var i = 0; i < 12; i++) {
+    var a = i * Math.PI / 6, r1 = 92, r2 = i % 3 === 0 ? 80 : 86;
+    ticks += '<line x1="' + (110 + r1 * Math.sin(a)).toFixed(1) + '" y1="' + (110 - r1 * Math.cos(a)).toFixed(1) +
+      '" x2="' + (110 + r2 * Math.sin(a)).toFixed(1) + '" y2="' + (110 - r2 * Math.cos(a)).toFixed(1) +
+      '" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>';
+  }
+  $('#ticks').innerHTML = ticks;                                              // weiß auf Grün
+  $('#ticksUnder').innerHTML = ticks.replace(/stroke="#fff"/g, 'stroke="#E6E0D5"');   // grau auf Weiß
+  var sector = $('#sector');
+  function drawSector(frac) {
+    frac = Math.max(0, Math.min(1, frac));
+    if (frac >= 0.9999) { sector.setAttribute('d', 'M110 10 A100 100 0 1 1 109.99 10 Z'); return; }
+    if (frac <= 0) { sector.setAttribute('d', ''); return; }
+    var th = frac * 2 * Math.PI, x = 110 + 100 * Math.sin(th), y = 110 - 100 * Math.cos(th);
+    sector.setAttribute('d', 'M110 110 L110 10 A100 100 0 ' + (frac > 0.5 ? 1 : 0) + ' 1 ' + x.toFixed(2) + ' ' + y.toFixed(2) + ' Z');
+  }
+  function fmt(ms) {
+    var s = Math.ceil(ms / 1000), m = Math.floor(s / 60); s = s % 60;
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  // ---------- Ablauf ----------
+  function runSlots() {
+    var has = settings.first || settings.then;
+    $('#edRun').style.visibility = has ? 'visible' : 'hidden';
+    var f = $('#runFirst'), t = $('#runThen');
+    f.innerHTML = slotHTML('Erst', settings.first); t.innerHTML = slotHTML('Dann', settings.then);
+    f.className = 'slot' + (settings.first ? ' now' : ' empty');
+    t.className = 'slot' + (settings.then ? '' : ' empty');
+  }
+
+  function start() {
+    unlockAudio();
+    state.total = settings.mins * 60000;
+    state.endAt = Date.now() + state.total;
+    state.left = state.total; state.paused = false; state.warned = false;
+    runSlots();
+    $('#timer').setAttribute('data-state', 'running');
+    $('#pauseIcon').setAttribute('href', '#ic-pause'); $('#pauseBtn').setAttribute('aria-label', 'Pause');
+    $('#timeleft').hidden = !settings.showNum;
+    showScreen('timer');
+    holdWake();
+    update();
+    clearInterval(state.iv); state.iv = setInterval(update, 200);
+    var m = settings.mins === 1 ? 'eine Minute' : settings.mins + ' Minuten';
+    if (settings.first && settings.then) speak('Erst ' + NAME[settings.first] + ', dann ' + NAME[settings.then] + '. Die Uhr läuft: ' + m + '.');
+    else speak('Die Uhr läuft: ' + m + '.');
+  }
+
+  function update() {
+    if (!state.paused) state.left = Math.max(0, state.endAt - Date.now());
+    drawSector(state.left / state.total);
+    $('#timeleft').textContent = fmt(state.left);
+    if (settings.warn && !state.warned && state.total > 90000 && state.left <= 60000 && state.left > 0) {
+      state.warned = true;
+      if (settings.then) $('#runThen').classList.add('next');
+      speak('Noch eine Minute.');
+    }
+    if (state.left <= 0) done();
+  }
+
+  function done() {
+    clearInterval(state.iv); releaseWake();
+    $('#timer').setAttribute('data-state', 'done');
+    $('#timeleft').textContent = '';
+    if (settings.first) { var f = $('#runFirst'); f.classList.remove('now'); f.classList.add('done'); }
+    if (settings.then) $('#runThen').classList.add('next');
+    chime();
+    speak(settings.then ? 'Die Zeit ist um. Jetzt: ' + NAME[settings.then] + '.' : 'Die Zeit ist um.');
+  }
+
+  function togglePause() {
+    if (state.paused) {
+      state.endAt = Date.now() + state.left; state.paused = false;
+      $('#timer').setAttribute('data-state', 'running');
+      $('#pauseIcon').setAttribute('href', '#ic-pause'); $('#pauseBtn').setAttribute('aria-label', 'Pause');
+      holdWake();
+    } else {
+      state.left = Math.max(0, state.endAt - Date.now()); state.paused = true;
+      $('#timer').setAttribute('data-state', 'paused');
+      $('#pauseIcon').setAttribute('href', '#ic-resume'); $('#pauseBtn').setAttribute('aria-label', 'Weiter');
+      releaseWake();
+    }
+    update();
+  }
+
+  function plusOne() {
+    state.total += 60000;
+    if (state.paused) state.left += 60000; else state.endAt += 60000;
+    var newLeft = state.paused ? state.left : state.endAt - Date.now();
+    if (newLeft > 60000) { state.warned = false; $('#runThen').classList.remove('next'); }   // Vorwarnung darf wieder kommen
+    update();
+  }
+
+  function backToSetup() {
+    clearInterval(state.iv); releaseWake();
+    if (hasSpeech) try { speechSynthesis.cancel(); } catch (e) {}
+    renderSetup(); showScreen('setup');
+  }
+
+  $('#goBtn').addEventListener('click', start);
+  $('#pauseBtn').addEventListener('click', togglePause);
+  $('#plusBtn').addEventListener('click', plusOne);
+  $('#stopBtn').addEventListener('click', backToSetup);
+  $('#againBtn').addEventListener('click', start);
+  $('#homeBtn').addEventListener('click', backToSetup);
+  $('#app').addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible' && state.screen === 'timer') {
+      update();
+      if ($('#timer').getAttribute('data-state') === 'running') holdWake();
+    }
+  });
+
+  var navT = $('#navToggle'), navL = $('#navLinks');
+  navT.addEventListener('click', function () {
+    var open = navL.classList.toggle('open');
+    navT.setAttribute('aria-expanded', String(open));
+  });
+
+  // ---------- Einstellungen ----------
+  var panel = $('#panel');
+  function syncPanel() {
+    document.querySelectorAll('.switch').forEach(function (sw) { sw.setAttribute('aria-pressed', String(!!settings[sw.dataset.key])); });
+    $('#pSpeechNote').hidden = hasSpeech;
+  }
+  function openPanel() { state.panelOpen = true; syncPanel(); panel.hidden = false; $('#pClose').focus(); }
+  function closePanel() {
+    panel.hidden = true; state.panelOpen = false;
+    $('#timeleft').hidden = !settings.showNum;
+  }
+  $('#parentBtn').addEventListener('click', function () { if (!state.panelOpen) openPanel(); });
+  document.querySelectorAll('.switch').forEach(function (sw) {
+    sw.addEventListener('click', function () {
+      var k = sw.dataset.key; settings[k] = !settings[k]; save(); syncPanel();
+      if (k === 'speech' && settings.speech) speak('Sprache ist an.');
+      if (k === 'sound' && settings.sound) chime();
+    });
+  });
+  $('#pClose').addEventListener('click', closePanel);
+  $('#pFull').addEventListener('click', function () {
+    var el = $('#app');
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    } catch (e) {}
+  });
+  panel.addEventListener('click', function (e) { if (e.target === panel) closePanel(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { if (state.panelOpen) closePanel(); else $('#picker').hidden = true; }
+  });
+
+  renderSetup();
+  showScreen('setup');
+
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>
