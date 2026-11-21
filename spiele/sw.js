@@ -1,6 +1,6 @@
 // Service Worker: macht das Hände-Spiel nach dem ersten Aufruf offline spielbar.
 // Strategie: sofort aus dem Cache liefern, im Hintergrund still aktualisieren.
-const CACHE = 'haende-spiel-v1';
+const CACHE = 'haende-spiel-v2';
 const FILES = ['./haende-spiel.html'];
 
 self.addEventListener('install', (e) => {
