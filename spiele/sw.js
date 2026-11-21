@@ -16,7 +16,8 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  if (e.request.method !== 'GET') return;
+  // Nur das Spiel selbst offline halten, nicht die Übersichtsseite im selben Ordner
+  if (e.request.method !== 'GET' || !new URL(e.request.url).pathname.endsWith('/haende-spiel.html')) return;
   e.respondWith(
     caches.open(CACHE).then((cache) =>
       cache.match(e.request, { ignoreSearch: true }).then((cached) => {
