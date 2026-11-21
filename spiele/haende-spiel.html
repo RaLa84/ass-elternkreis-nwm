@@ -7,21 +7,48 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="robots" content="noindex">
-<title>Hände-Spiel</title>
-<style>
+<title>Hände-Spiel — ASS Elternkreis NWM</title>
+<link rel="icon" href="../images/logoneu.jpg" type="image/jpg"><style>
 :root{
   --bg:#F5F1E8; --ink:#4E4038; --soft:#8C7B70;
   --ok:#9DBE92; --ok-t:#E5F0E0; --hint:#EBC766; --hint-t:#FFF5D6;
   --btn:#9FBF95; --shadow:0 4px 14px rgba(78,64,56,.10);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  overflow:hidden;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+html,body{margin:0;background:#FAFAF8;color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
 button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
 svg{display:block}
 
-.screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
+/* Website-Header & -Footer (eigenes CSS, damit es auch offline gleich aussieht) */
+.site-nav{position:sticky;top:0;z-index:20;height:64px;background:rgba(255,255,255,.92);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.nav-in{max-width:1280px;margin:0 auto;height:64px;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:8px;color:#1b4332;font-weight:700;font-size:18px;text-decoration:none}
+.brand img{display:block}
+.nav-links{display:flex;gap:4px}
+.nav-links a{padding:8px 12px;border-radius:8px;font-size:14px;font-weight:500;color:#4b5563;text-decoration:none}
+.nav-links a:hover{color:#1b4332;background:rgba(27,67,50,.05)}
+.nav-toggle{display:none;border:none;background:none;padding:8px;border-radius:8px;color:#4b5563}
+.nav-toggle svg{width:24px;height:24px}
+@media (max-width:1023px){
+  .nav-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#fff;padding:8px 16px 16px;box-shadow:0 6px 12px rgba(0,0,0,.08)}
+  .nav-links.open{display:flex}
+}
+.site-footer{background:#1b4332;color:#fff;padding:40px 16px}
+.site-footer .fl{max-width:1150px;margin:0 auto 24px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px}
+.site-footer a{font-size:14px;color:rgba(255,255,255,.7);text-decoration:none}
+.site-footer a:hover,.site-footer a[aria-current]{color:#fff}
+.site-footer p{text-align:center;font-size:14px;color:rgba(255,255,255,.5);margin:0}
+
+/* Spielfläche: füllt den Bildschirm unter dem Header */
+#app{position:relative;height:calc(100vh - 64px);height:calc(100dvh - 64px);min-height:380px;overflow:hidden;background:var(--bg);
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+#app:fullscreen{height:100vh;height:100dvh}
+#app:-webkit-full-screen{height:100vh;width:100vw}
+.back-link{font-size:14px;color:var(--soft);text-decoration:none;border-bottom:1px solid #D9CFC2}
+
+.screen{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
   gap:clamp(10px,2.5vh,28px);padding:max(14px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
 .screen.active{display:flex;animation:fade .45s ease-out}
 @keyframes fade{from{opacity:0}to{opacity:1}}
@@ -82,10 +109,10 @@ svg{display:block}
 @keyframes grow{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 /* Elternbereich */
-#parentBtn{position:fixed;top:max(8px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right));
-  width:60px;height:60px;border:none;background:transparent;padding:0;opacity:.6;z-index:5}
-#parentBtn .ring{stroke-dasharray:163.4;stroke-dashoffset:163.4;transition:stroke-dashoffset .25s}
-#parentBtn.pressing .ring{stroke-dashoffset:0;transition:stroke-dashoffset 2s linear}
+#parentBtn{position:absolute;top:8px;right:max(8px,env(safe-area-inset-right));
+  width:52px;height:52px;border:none;border-radius:50%;background:transparent;padding:0;z-index:5;display:grid;place-items:center}
+#parentBtn:hover,#parentBtn:focus-visible{background:rgba(78,64,56,.07)}
+#parentBtn svg{width:26px;height:26px}
 .overlay{position:fixed;inset:0;background:rgba(78,64,56,.35);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;user-select:text;-webkit-user-select:text}
 .overlay[hidden]{display:none}
 .dialog{background:#fff;border-radius:24px;padding:22px 22px 18px;width:100%;max-width:560px;max-height:92vh;overflow:auto;box-shadow:0 10px 40px rgba(78,64,56,.25)}
@@ -176,6 +203,28 @@ summary{cursor:pointer;color:var(--ink)}
   </symbol>
 </svg>
 
+<header class="site-nav">
+  <div class="nav-in">
+    <a href="/" class="brand"><img src="../images/ASS_infinity_awareness_symbol.png" alt="ASS Elternkreis Logo" width="32" height="26">ASS Elternkreis NWM</a>
+    <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
+      <a href="/#contact">Kontakt</a>
+      <a href="/#termine">Termine</a>
+      <a href="../about.html">Über uns</a>
+      <a href="../erste-schritte.html">Erste Schritte</a>
+      <a href="../links.html">Links</a>
+      <a href="../hilfsmittel.html">Hilfsmittel</a>
+      <a href="../social-stories/">Soziale Geschichten</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="navLinks">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="app">
+
 <!-- Start -->
 <section id="start" class="screen" aria-label="Start">
   <div class="start-hands">
@@ -185,6 +234,7 @@ summary{cursor:pointer;color:var(--ink)}
   </div>
   <button class="big-btn" id="startGo" aria-label="Spielen"><svg><use href="#ic-play"/></svg></button>
   <p class="start-title">Hände-Spiel · Mach mit!</p>
+  <a class="back-link" href="./">← Alle Spiele</a>
 </section>
 
 <!-- Spiel -->
@@ -217,19 +267,16 @@ summary{cursor:pointer;color:var(--ink)}
   </div>
 </section>
 
-<!-- Elternbereich: Blatt 2 Sekunden gedrückt halten -->
-<button id="parentBtn" aria-label="Elternbereich (2 Sekunden gedrückt halten)">
-  <svg viewBox="0 0 60 60" aria-hidden="true">
-    <circle cx="30" cy="30" r="26" fill="none" stroke="#E3DCD0" stroke-width="4"/>
-    <circle class="ring" cx="30" cy="30" r="26" fill="none" stroke="#9FBF95" stroke-width="4" stroke-linecap="round" transform="rotate(-90 30 30)"/>
-    <path d="M29 45 C17 39 17 22 35 15 C43 26 41 40 29 45 Z" fill="#B3CDA8"/>
-    <path d="M29 45 Q30 31 34 20" fill="none" stroke="#8FAE85" stroke-width="2.5" stroke-linecap="round"/>
+<!-- Einstellungen: Drei-Punkte-Menü -->
+<button id="parentBtn" type="button" aria-label="Einstellungen" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="#8C7B70">
+    <circle cx="12" cy="5" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="19" r="2.2"/>
   </svg>
 </button>
 
 <div id="panel" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="pTitle">
   <div class="dialog">
-    <h2 id="pTitle">Elternbereich</h2>
+    <h2 id="pTitle">Einstellungen</h2>
     <p class="muted">Das Spiel sendet keine Daten. Nur diese Einstellungen werden auf diesem Gerät gemerkt.</p>
 
     <h3>Level (Anzahl der Gesten in einer Folge)</h3>
@@ -237,7 +284,7 @@ summary{cursor:pointer;color:var(--ink)}
 
     <h3>Tempo</h3>
     <div class="seg" id="pTempo">
-      <button data-v="slow">Langsam</button><button data-v="mid">Mittel</button><button data-v="fast">Schnell</button>
+      <button data-v="slow">Langsam</button><button data-v="mid">Mittel</button><button data-v="fast">Schnell</button><button data-v="turbo">Sehr schnell</button>
     </div>
 
     <h3>Durchgänge pro Folge</h3>
@@ -269,10 +316,29 @@ summary{cursor:pointer;color:var(--ink)}
       Dann zeigt und sagt es die Gesten im Takt, und alle machen mit den eigenen Händen mit.</p>
       <p>Danach erscheint wieder der Play-Knopf mit einer neuen Folge. Nach einigen Folgen wird sie um eine Geste länger.
       Es gibt keine Kamera, keine Bewertung und keine Punkte.</p>
-      <p>Den Elternbereich öffnen Sie, indem Sie das Blatt oben rechts 2 Sekunden gedrückt halten.</p>
+      <p>Die Einstellungen öffnen Sie über die drei Punkte oben rechts. „Vollbild“ blendet die Website-Navigation aus,
+      damit niemand aus Versehen das Spiel verlässt.</p>
     </details>
   </div>
 </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="fl">
+    <a href="../about.html">Über uns</a>
+    <a href="/#contact">Kontakt</a>
+    <a href="/#termine">Termine</a>
+    <a href="../links.html">Links</a>
+    <a href="../blog.html">Blog</a>
+    <a href="./" aria-current="page">Spiele</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../blog/inklusives-mindset.html">Inklusion</a>
+    <a href="../impressum.html">Impressum</a>
+    <a href="../datenschutz.html">Datenschutz</a>
+  </div>
+  <p>&copy; 2024–2026 Antje und Raik Lasner</p>
+</footer>
 
 <noscript><p style="padding:24px">Bitte JavaScript aktivieren, damit das Spiel läuft.</p></noscript>
 
@@ -283,7 +349,8 @@ summary{cursor:pointer;color:var(--ink)}
   var GESTURES = ['edge', 'fist', 'flat'];
   var WORD = { edge: 'Hoch', fist: 'Faust', flat: 'Flach' };
   var MAX_LEVEL = 6;                      // Level n = n+1 Gesten (2 bis 7)
-  var TEMPO = { slow: 2200, mid: 1600, fast: 1150 };
+  var TEMPO = { slow: 2200, mid: 1500, fast: 900, turbo: 600 };   // ms pro Geste
+  var RATE  = { slow: 1, mid: 1.15, fast: 1.45, turbo: 1.8 };      // Sprechtempo passend dazu
 
   // ---------- Einstellungen ----------
   var KEY = 'haendeSpiel.v2';
@@ -434,7 +501,7 @@ summary{cursor:pointer;color:var(--ink)}
       cards.forEach(function (c, k) { c.classList.toggle('now', k === i); });
       $('#bigUse').setAttribute('href', '#g-' + g);
       $('#bigword').textContent = WORD[g];
-      speak(WORD[g]); tick();
+      speak(WORD[g], RATE[settings.tempo]); tick();
       i++;
       later(step, beat);
     })();
@@ -492,21 +559,20 @@ summary{cursor:pointer;color:var(--ink)}
   $('#stopBtn').addEventListener('click', stopRun);
   $('#endAgain').addEventListener('click', function () { startGame(1); });
   $('#endHome').addEventListener('click', function () { showScreen('start'); });
-  document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  $('#app').addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  // Website-Navigation (mobil aufklappbar)
+  var navT = $('#navToggle'), navL = $('#navLinks');
+  navT.addEventListener('click', function () {
+    var open = navL.classList.toggle('open');
+    navT.setAttribute('aria-expanded', String(open));
+  });
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState !== 'visible' && state.screen === 'game' && state.mode !== 'ready') stopRun();
   });
 
-  // ---------- Elternbereich ----------
-  var pb = $('#parentBtn'), lp = null;
-  function cancelLP() { clearTimeout(lp); lp = null; pb.classList.remove('pressing'); }
-  pb.addEventListener('pointerdown', function (e) {
-    e.preventDefault();
-    if (state.panelOpen) return;
-    pb.classList.add('pressing');
-    lp = setTimeout(function () { cancelLP(); openPanel(); }, 2000);
-  });
-  ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) { pb.addEventListener(ev, cancelLP); });
+  // ---------- Einstellungen (Drei-Punkte-Menü) ----------
+  $('#parentBtn').addEventListener('click', function () { if (!state.panelOpen) openPanel(); });
 
   var lvlHtml = '';
   for (var L = 1; L <= MAX_LEVEL; L++) lvlHtml += '<button data-v="' + L + '">' + L + ' <small>(' + len(L) + ' Gesten)</small></button>';
@@ -555,7 +621,7 @@ summary{cursor:pointer;color:var(--ink)}
   $('#pRestart').addEventListener('click', function () { closePanel('restart'); });
   $('#pHome').addEventListener('click', function () { closePanel('home'); });
   $('#pFull').addEventListener('click', function () {
-    var de = document.documentElement;
+    var de = $('#app');   // nur die Spielfläche, ohne Website-Navigation
     try {
       if (document.fullscreenElement) document.exitFullscreen();
       else if (de.requestFullscreen) de.requestFullscreen();

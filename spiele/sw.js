@@ -1,7 +1,12 @@
 // Service Worker: macht das Hände-Spiel nach dem ersten Aufruf offline spielbar.
 // Strategie: sofort aus dem Cache liefern, im Hintergrund still aktualisieren.
-const CACHE = 'haende-spiel-v2';
-const FILES = ['./haende-spiel.html'];
+const CACHE = 'haende-spiel-v3';
+const FILES = [
+  './haende-spiel.html',
+  '../images/ASS_infinity_awareness_symbol.png',
+  '../images/logoneu.jpg'
+];
+const PATHS = FILES.map((f) => new URL(f, self.location).pathname);
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
@@ -16,8 +21,8 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  // Nur das Spiel selbst offline halten, nicht die Übersichtsseite im selben Ordner
-  if (e.request.method !== 'GET' || !new URL(e.request.url).pathname.endsWith('/haende-spiel.html')) return;
+  // Nur das Spiel und die Bilder im Header offline halten, nicht die Übersichtsseite im selben Ordner
+  if (e.request.method !== 'GET' || PATHS.indexOf(new URL(e.request.url).pathname) < 0) return;
   e.respondWith(
     caches.open(CACHE).then((cache) =>
       cache.match(e.request, { ignoreSearch: true }).then((cached) => {
