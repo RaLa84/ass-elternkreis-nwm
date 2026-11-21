@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="robots" content="noindex">
+<title>Hände-Spiel</title>
+<style>
+:root{
+  --bg:#F5F1E8; --ink:#4E4038; --soft:#8C7B70;
+  --blue:#A8C1D3; --blue-t:#E9F0F5; --blue-s:#8FADC4;
+  --green:#B3CDA8; --green-t:#ECF3E7; --green-s:#9CBF8E;
+  --hint:#EBC766; --hint-t:#FFF5D6;
+  --ok:#9DBE92; --ok-t:#E5F0E0;
+  --btn:#9FBF95;
+  --shadow:0 4px 14px rgba(78,64,56,.10);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  overflow:hidden;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+svg{display:block}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Screens */
+.screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(12px,3vh,32px);padding:max(14px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
+.screen.active{display:flex;animation:fade .45s ease-out}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.big-btn{width:clamp(96px,17vmin,140px);height:clamp(96px,17vmin,140px);border-radius:50%;border:none;
+  background:var(--btn);box-shadow:var(--shadow);display:grid;place-items:center;flex:none;transition:transform .15s}
+.big-btn:active{transform:scale(.96)}
+.big-btn svg{width:58%;height:58%}
+.big-btn.alt{background:#AFC4D4}
+.big-btn.calm{background:#C9BBAE}
+.btn-row{display:flex;gap:clamp(16px,4vw,40px);justify-content:center;flex-wrap:wrap}
+
+/* Start */
+.start-hands{display:flex;gap:clamp(8px,3vw,32px)}
+.start-hands svg{width:clamp(90px,22vmin,180px);height:auto;aspect-ratio:1}
+.start-title{font-size:clamp(15px,2.2vmin,20px);color:var(--soft);margin:0;letter-spacing:.02em}
+
+/* Rule screen */
+.rule-wrap{display:flex;gap:clamp(16px,4vw,56px);align-items:center;justify-content:center;flex-wrap:wrap;max-width:1100px}
+.scene{width:min(44vw,440px)}
+.scene svg{width:100%;height:auto}
+.maps{display:flex;flex-direction:column;gap:clamp(6px,1.4vh,14px)}
+.map-row{display:flex;align-items:center;gap:clamp(6px,1.5vw,16px);padding:6px 14px;border-radius:22px;border:3px solid transparent}
+.map-row.changed{background:var(--hint-t);border-color:var(--hint)}
+.map-hand{width:clamp(56px,11vh,90px);height:auto;aspect-ratio:1}
+.map-arrow{width:clamp(40px,7vh,64px);height:auto}
+.map-card{width:clamp(56px,11vh,90px);aspect-ratio:1;background:#fff;border-radius:18px;border:3px solid #EDE7DC;box-shadow:var(--shadow);display:grid;place-items:center}
+.map-card svg{width:80%;height:auto;aspect-ratio:1}
+@media (max-aspect-ratio:1/1){.scene{width:min(88vw,420px)}}
+
+/* Game */
+#game{justify-content:flex-start;gap:clamp(8px,2vh,22px)}
+.topbar{width:100%;max-width:1100px;display:flex;justify-content:center;align-items:center;min-height:48px}
+.progress{display:flex;gap:clamp(6px,1.2vw,12px)}
+.dot{width:16px;height:16px;border-radius:50%;background:#E3DCD0;transition:background .8s}
+.dot.on{background:var(--ok)}
+.timer{width:min(100%,700px);height:12px;background:#E6E0D5;border-radius:6px;overflow:hidden;visibility:hidden;flex:none}
+.timer.on{visibility:visible}
+.timer-fill{height:100%;width:100%;background:#AFC4D4;border-radius:6px;transform-origin:left center}
+.hands{width:100%;max-width:1100px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;flex:1 1 auto;min-height:0}
+.hand-box{display:flex;justify-content:center}
+.stage{border-radius:50%;padding:4%;background:var(--blue-t)}
+.stage.green{background:var(--green-t)}
+.hand{width:clamp(90px,min(30vh,30vw),250px);height:auto;aspect-ratio:1;transition:opacity .25s}
+.hand.mirror{transform:scaleX(-1)}
+.hands.swap .hand{opacity:0}
+.center-col{display:flex;flex-direction:column;align-items:center;gap:12px;width:clamp(60px,10vw,100px)}
+.say-btn{width:80px;height:80px;border-radius:50%;border:none;background:#C9BBAE;display:none;place-items:center;box-shadow:var(--shadow)}
+.say-btn.on{display:grid}
+.say-btn svg{width:56%;height:56%}
+.mirror-badge{width:clamp(56px,9vw,92px);display:none}
+.mirror-badge.on{display:block}
+.rows{width:100%;max-width:1100px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,3vw,36px);flex:none}
+.row{background:var(--blue-t);border:3px solid var(--blue);border-radius:28px;padding:clamp(10px,1.6vw,18px);
+  display:flex;gap:clamp(8px,1.4vw,16px);justify-content:center;transition:background .4s,border-color .4s}
+.row.green{background:var(--green-t);border-color:var(--green)}
+.card{flex:1 1 0;max-width:170px;min-width:84px;min-height:84px;aspect-ratio:1;border-radius:22px;background:#fff;
+  border:3px solid #EDE7DC;box-shadow:var(--shadow);padding:0;display:grid;place-items:center;
+  transition:background .5s,border-color .5s,box-shadow .7s,opacity .5s,transform .15s}
+.card:active{transform:scale(.97)}
+.card svg{width:80%;height:auto;aspect-ratio:1;pointer-events:none}
+.card.hint{background:var(--hint-t);border-color:var(--hint);box-shadow:0 0 0 8px rgba(242,210,122,.40),0 0 30px rgba(242,210,122,.55)}
+.card.ok{background:var(--ok-t);border-color:var(--ok);box-shadow:0 0 0 6px rgba(157,190,146,.32)}
+.row.done .card:not(.ok){opacity:.4}
+@media (max-width:620px){
+  .row{flex-direction:column;align-items:center}
+  .card{flex:none;width:clamp(84px,30vw,128px)}
+  .hand{width:clamp(90px,32vw,170px)}
+}
+
+/* End */
+.end-scene{width:min(88vw,620px)}
+.end-scene svg{width:100%;height:auto}
+.flower{opacity:0;animation:grow 1s ease-out forwards}
+@keyframes grow{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Parent button */
+#parentBtn{position:fixed;top:max(8px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right));
+  width:60px;height:60px;border:none;background:transparent;padding:0;opacity:.6;z-index:5}
+#parentBtn .ring{stroke-dasharray:163.4;stroke-dashoffset:163.4;transition:stroke-dashoffset .25s}
+#parentBtn.pressing .ring{stroke-dashoffset:0;transition:stroke-dashoffset 2s linear}
+
+/* Parent panel */
+.overlay{position:fixed;inset:0;background:rgba(78,64,56,.35);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;user-select:text;-webkit-user-select:text}
+.overlay[hidden]{display:none}
+.dialog{background:#fff;border-radius:24px;padding:22px 22px 18px;width:100%;max-width:540px;max-height:92vh;overflow:auto;box-shadow:0 10px 40px rgba(78,64,56,.25)}
+.dialog h2{margin:0 0 4px;font-size:22px}
+.dialog h3{margin:18px 0 8px;font-size:16px}
+.muted{color:var(--soft);font-size:14px;margin:0;line-height:1.45}
+.levels{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.lvl{border:2px solid #E3DCD0;background:#FAF8F3;border-radius:14px;padding:12px;text-align:left;min-height:56px;font-size:15px}
+.lvl b{display:block;font-size:17px}
+.lvl[aria-pressed="true"]{border-color:var(--ok);background:var(--ok-t)}
+.toggle-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #EFEAE1}
+.toggle-row small{display:block;color:var(--soft);font-size:13px}
+.switch{flex:none;width:64px;height:36px;border-radius:18px;border:none;background:#DDD5C8;position:relative;transition:background .25s}
+.switch::after{content:"";position:absolute;top:4px;left:4px;width:28px;height:28px;border-radius:50%;background:#fff;transition:transform .25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.switch[aria-pressed="true"]{background:var(--ok)}
+.switch[aria-pressed="true"]::after{transform:translateX(28px)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.actions button{border:2px solid #E3DCD0;background:#FAF8F3;border-radius:14px;padding:12px 14px;min-height:48px;font-size:15px}
+.actions .primary{background:var(--btn);border-color:var(--btn);color:#fff;font-weight:600;margin-left:auto}
+details{margin-top:14px;font-size:14px;line-height:1.5;color:var(--soft)}
+summary{cursor:pointer;color:var(--ink)}
+.note{font-size:13px;color:#A0826D;margin:6px 0 0}
+
+@media (prefers-reduced-motion:reduce){
+  .screen.active,.flower{animation:none;opacity:1}
+  .hand,.card,.dot{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Alle Grafiken selbst gezeichnet -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="shp-open">
+      <rect x="62" y="38" width="22" height="90" rx="11"/>
+      <rect x="87" y="26" width="22" height="100" rx="11"/>
+      <rect x="112" y="34" width="22" height="92" rx="11"/>
+      <rect x="136" y="56" width="20" height="74" rx="10"/>
+      <rect x="36" y="92" width="24" height="72" rx="12" transform="rotate(-35 48 128)"/>
+      <rect x="60" y="92" width="98" height="82" rx="32"/>
+      <rect x="76" y="160" width="66" height="26"/>
+    </g>
+    <g id="shp-fist">
+      <rect x="50" y="56" width="104" height="108" rx="36"/>
+      <rect x="74" y="150" width="60" height="36"/>
+    </g>
+    <g id="shp-thumb">
+      <rect x="64" y="20" width="32" height="100" rx="16"/>
+      <rect x="58" y="86" width="96" height="80" rx="28"/>
+      <rect x="78" y="152" width="60" height="34"/>
+    </g>
+  </defs>
+
+  <symbol id="hand-open" viewBox="0 0 200 200">
+    <use href="#shp-open" fill="#A07E68" stroke="#A07E68" stroke-width="10" stroke-linejoin="round"/>
+    <use href="#shp-open" fill="#F5D5B8"/>
+    <path d="M86 140 q14 8 30 0" fill="none" stroke="#D9AE8E" stroke-width="4" stroke-linecap="round"/>
+    <rect x="64" y="178" width="90" height="22" rx="8" style="fill:var(--sleeve,#C9BBAE)"/>
+  </symbol>
+
+  <symbol id="hand-fist" viewBox="0 0 200 200">
+    <use href="#shp-fist" fill="#A07E68" stroke="#A07E68" stroke-width="10" stroke-linejoin="round"/>
+    <use href="#shp-fist" fill="#F5D5B8"/>
+    <path d="M78 64v32 M103 62v34 M128 64v32" fill="none" stroke="#A07E68" stroke-width="5" stroke-linecap="round"/>
+    <rect x="44" y="100" width="88" height="30" rx="15" fill="#F5D5B8" stroke="#A07E68" stroke-width="5"/>
+    <rect x="64" y="178" width="80" height="22" rx="8" style="fill:var(--sleeve,#C9BBAE)"/>
+  </symbol>
+
+  <symbol id="hand-thumb" viewBox="0 0 200 200">
+    <use href="#shp-thumb" fill="#A07E68" stroke="#A07E68" stroke-width="10" stroke-linejoin="round"/>
+    <use href="#shp-thumb" fill="#F5D5B8"/>
+    <rect x="71" y="28" width="18" height="14" rx="6" fill="#FBE6D3"/>
+    <path d="M114 108h34 M114 128h36 M114 148h32" fill="none" stroke="#A07E68" stroke-width="5" stroke-linecap="round"/>
+    <path d="M64 96 q16 6 32 0" fill="none" stroke="#D9AE8E" stroke-width="4" stroke-linecap="round"/>
+    <rect x="68" y="178" width="80" height="22" rx="8" style="fill:var(--sleeve,#C9BBAE)"/>
+  </symbol>
+
+  <symbol id="card-stick" viewBox="0 0 200 200">
+    <rect x="88" y="20" width="26" height="160" rx="13" fill="#B9926F"/>
+    <rect x="95" y="32" width="6" height="136" rx="3" fill="#D6BA9E"/>
+  </symbol>
+  <symbol id="card-circle" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="64" fill="#DCE8F1" stroke="#7FA3C2" stroke-width="16"/>
+  </symbol>
+  <symbol id="card-hand" viewBox="0 0 200 200">
+    <use href="#shp-open" fill="#86B6A5" transform="translate(-4 2)"/>
+  </symbol>
+
+  <symbol id="ic-play" viewBox="0 0 100 100">
+    <path d="M38 27 L77 50 L38 73 Z" fill="#fff" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-again" viewBox="0 0 100 100">
+    <path d="M69.9 35.3 A26 26 0 1 0 74.4 60.9" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+    <path d="M77 43 L73 22 L57 37 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-next" viewBox="0 0 100 100">
+    <path d="M24 50 H72 M54 32 L74 50 L54 68" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-home" viewBox="0 0 100 100">
+    <path d="M22 52 L50 28 L78 52 M33 45 V74 H67 V45" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-say" viewBox="0 0 100 100">
+    <path d="M22 41 H35 L52 27 V73 L35 59 H22 Z" fill="#fff" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M62 38 Q70 50 62 62 M70 29 Q84 50 70 71" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<!-- Startbild -->
+<section id="start" class="screen" aria-label="Start">
+  <div class="start-hands">
+    <svg viewBox="0 0 200 200" aria-hidden="true" style="--sleeve:var(--blue-s)"><use href="#hand-thumb"/></svg>
+    <svg viewBox="0 0 200 200" aria-hidden="true" style="--sleeve:#C9BBAE"><use href="#hand-fist"/></svg>
+    <svg viewBox="0 0 200 200" aria-hidden="true" style="--sleeve:var(--green-s)"><use href="#hand-open"/></svg>
+  </div>
+  <button class="big-btn" id="startGo" aria-label="Spielen"><svg><use href="#ic-play"/></svg></button>
+  <p class="start-title">Hände-Spiel</p>
+</section>
+
+<!-- Regel-Bild vor jedem Level -->
+<section id="rule" class="screen" aria-label="Regel">
+  <div class="rule-wrap">
+    <div class="scene" id="ruleScene"></div>
+    <div class="maps" id="ruleMaps"></div>
+  </div>
+  <button class="big-btn" id="ruleGo" aria-label="Los"><svg><use href="#ic-play"/></svg></button>
+</section>
+
+<!-- Spiel -->
+<section id="game" class="screen" aria-label="Spiel">
+  <div class="topbar"><div class="progress" id="dots"></div></div>
+  <div class="timer" id="timer"><div class="timer-fill" id="timerFill"></div></div>
+  <div class="hands" id="hands">
+    <div class="hand-box"><div class="stage" id="stageL">
+      <svg class="hand mirror" viewBox="0 0 200 200" style="--sleeve:var(--blue-s)" aria-hidden="true"><use id="useL" href="#hand-thumb"/></svg>
+    </div></div>
+    <div class="center-col">
+      <svg class="mirror-badge" id="mirrorBadge" viewBox="0 0 100 100" aria-hidden="true"></svg>
+      <button class="say-btn" id="sayBtn" aria-label="Nochmal vorsprechen"><svg><use href="#ic-say"/></svg></button>
+    </div>
+    <div class="hand-box"><div class="stage green" id="stageR">
+      <svg class="hand" viewBox="0 0 200 200" style="--sleeve:var(--green-s)" aria-hidden="true"><use id="useR" href="#hand-thumb"/></svg>
+    </div></div>
+  </div>
+  <div class="rows">
+    <div class="row" id="rowL" data-row="L"></div>
+    <div class="row green" id="rowR" data-row="R"></div>
+  </div>
+</section>
+
+<!-- Abschluss -->
+<section id="end" class="screen" aria-label="Fertig">
+  <div class="end-scene" id="endScene"></div>
+  <div class="btn-row">
+    <button class="big-btn" id="endAgain" aria-label="Nochmal"><svg><use href="#ic-again"/></svg></button>
+    <button class="big-btn alt" id="endNext" aria-label="Nächstes Level"><svg><use href="#ic-next"/></svg></button>
+    <button class="big-btn calm" id="endHome" aria-label="Zum Start"><svg><use href="#ic-home"/></svg></button>
+  </div>
+</section>
+
+<!-- Elternbereich: Blatt 2 Sekunden gedrückt halten -->
+<button id="parentBtn" aria-label="Elternbereich (2 Sekunden gedrückt halten)">
+  <svg viewBox="0 0 60 60" aria-hidden="true">
+    <circle cx="30" cy="30" r="26" fill="none" stroke="#E3DCD0" stroke-width="4"/>
+    <circle class="ring" cx="30" cy="30" r="26" fill="none" stroke="#9FBF95" stroke-width="4" stroke-linecap="round" transform="rotate(-90 30 30)"/>
+    <path d="M29 45 C17 39 17 22 35 15 C43 26 41 40 29 45 Z" fill="#B3CDA8"/>
+    <path d="M29 45 Q30 31 34 20" fill="none" stroke="#8FAE85" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<div id="panel" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="pTitle">
+  <div class="dialog">
+    <h2 id="pTitle">Elternbereich</h2>
+    <p class="muted">Hier stellen Erwachsene das Spiel ein. Das Spiel sendet keine Daten. Nur diese Einstellungen werden auf diesem Gerät gemerkt.</p>
+
+    <h3>Level</h3>
+    <div class="levels" id="pLevels">
+      <button class="lvl" data-level="1"><b>1</b>Beide Hände gleich, ohne Zeit</button>
+      <button class="lvl" data-level="2"><b>2</b>Hände verschieden</button>
+      <button class="lvl" data-level="3"><b>3</b>Gespiegelt: links ↔ rechts</button>
+      <button class="lvl" data-level="4"><b>4</b>Neue Regel (Faust → Hand, offene Hand → Kreis)</button>
+    </div>
+
+    <h3>Einstellungen</h3>
+    <div class="toggle-row"><span>Zeitbalken<small>Ab Level 2. Wird pro Level etwas schneller. Läuft die Zeit ab, leuchtet die Lösung sanft auf.</small></span>
+      <button class="switch" data-key="timer" aria-pressed="false" aria-label="Zeitbalken"></button></div>
+    <div class="toggle-row"><span>Sprache<small>Der Browser sagt die Gesten an (z. B. „Links Faust. Rechts offene Hand.“)</small></span>
+      <button class="switch" data-key="speech" aria-pressed="false" aria-label="Sprache"></button></div>
+    <div class="toggle-row"><span>Leise Klänge<small>Sanfter Ton bei richtiger Karte</small></span>
+      <button class="switch" data-key="sound" aria-pressed="false" aria-label="Klänge"></button></div>
+    <p class="note" id="pSpeechNote" hidden>Dieser Browser bietet keine Sprachausgabe an.</p>
+
+    <div class="actions">
+      <button id="pRestart">Runde neu starten</button>
+      <button id="pHome">Zum Startbild</button>
+      <button id="pFull">Vollbild</button>
+      <button id="pClose" class="primary">Schließen</button>
+    </div>
+
+    <details>
+      <summary>So funktioniert das Spiel</summary>
+      <p>Oben zeigen zwei Hände je eine Geste. Unten tippt das Kind pro Seite die passende Karte:
+      Daumen hoch → Stäbchen, Faust → Kreis, offene Hand → Hand. Die Farben von Ärmel und Kartenfeld zeigen,
+      welche Hand zu welcher Reihe gehört. In Level 3 sind sie vertauscht.</p>
+      <p>Bei einem Fehler leuchtet die richtige Karte kurz gelb auf, danach probiert das Kind noch einmal.
+      Es gibt keine Punkte, keinen Abzug und kein Ranking. Eine Runde hat 10 Aufgaben.</p>
+      <p>Den Elternbereich öffnen Sie, indem Sie das Blatt oben rechts 2 Sekunden gedrückt halten.</p>
+    </details>
+  </div>
+</div>
+
+<noscript><p style="padding:24px">Bitte JavaScript aktivieren, damit das Spiel läuft.</p></noscript>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---------- Regeln & Level ----------
+  var GESTURES = ['thumb', 'fist', 'open'];
+  var CARDS = ['stick', 'circle', 'hand'];
+  var NAME_G = { thumb: 'Daumen hoch', fist: 'Faust', open: 'offene Hand' };
+  var NAME_C = { stick: 'Stäbchen', circle: 'Kreis', hand: 'Hand' };
+  var RULE_NORMAL = { thumb: 'stick', fist: 'circle', open: 'hand' };
+  var RULE_SWAP = { thumb: 'stick', fist: 'hand', open: 'circle' };
+  var LEVELS = {
+    1: { same: true,  mirror: false, rule: RULE_NORMAL, time: 0 },
+    2: { same: false, mirror: false, rule: RULE_NORMAL, time: 15000 },
+    3: { same: false, mirror: true,  rule: RULE_NORMAL, time: 13000 },
+    4: { same: false, mirror: false, rule: RULE_SWAP,   time: 11000 }
+  };
+  var TASKS = 10, HINT_MS = 1700, NEXT_MS = 1000;
+  var COL = { blue: '#8FADC4', green: '#9CBF8E', blueT: '#E9F0F5', greenT: '#ECF3E7', ink: '#8C7B70' };
+
+  // ---------- Einstellungen ----------
+  var KEY = 'haendeSpiel.v1';
+  var settings = { level: 1, timer: false, speech: false, sound: false };
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    ['timer', 'speech', 'sound'].forEach(function (k) { if (typeof saved[k] === 'boolean') settings[k] = saved[k]; });
+    if (saved.level >= 1 && saved.level <= 4) settings.level = saved.level | 0;
+  } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch (e) {} }
+
+  var state = {
+    screen: 'start', level: settings.level, idx: 0, task: null, prevKey: '',
+    done: { L: false, R: false }, locked: { L: false, R: false },
+    busy: false, panelOpen: false, timeLeft: 0, timers: []
+  };
+
+  function $(s) { return document.querySelector(s); }
+  function later(fn, ms) { var t = setTimeout(fn, ms); state.timers.push(t); return t; }
+  function clearLater() { state.timers.forEach(clearTimeout); state.timers = []; }
+  function pick() { return GESTURES[Math.floor(Math.random() * 3)]; }
+
+  function showScreen(id) {
+    clearLater();
+    state.screen = id;
+    document.querySelectorAll('.screen').forEach(function (s) { s.classList.toggle('active', s.id === id); });
+  }
+
+  // ---------- Sprache & Klang (standardmäßig aus) ----------
+  var hasSpeech = 'speechSynthesis' in window;
+  function deVoice() {
+    try {
+      var vs = speechSynthesis.getVoices();
+      return vs.filter(function (v) { return /^de([-_]|$)/i.test(v.lang); })[0] || null;
+    } catch (e) { return null; }
+  }
+  function speak(text) {
+    if (!settings.speech || !hasSpeech) return;
+    try {
+      speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = 'de-DE'; var v = deVoice(); if (v) u.voice = v;
+      u.rate = 0.9; u.pitch = 1.05; u.volume = 0.9;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+
+  var actx = null;
+  function tone(f, when, dur, vol) {
+    var o = actx.createOscillator(), g = actx.createGain();
+    o.type = 'sine'; o.frequency.value = f;
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.exponentialRampToValueAtTime(vol, when + 0.05);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + dur);
+    o.connect(g); g.connect(actx.destination);
+    o.start(when); o.stop(when + dur + 0.05);
+  }
+  function chime(kind) {
+    if (!settings.sound) return;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+      var t = actx.currentTime + 0.02;
+      if (kind === 'side') tone(523.25, t, 0.45, 0.04);
+      else if (kind === 'task') { tone(659.25, t, 0.5, 0.035); tone(783.99, t + 0.14, 0.6, 0.03); }
+      else if (kind === 'end') [523.25, 659.25, 783.99].forEach(function (f, i) { tone(f, t + i * 0.25, 1, 0.03); });
+    } catch (e) {}
+  }
+
+  // ---------- SVG-Helfer ----------
+  function arrow(x1, y1, x2, y2, color, w) {
+    var a = Math.atan2(y2 - y1, x2 - x1), h = 14;
+    var p1 = (x2 - h * Math.cos(a - 0.55)).toFixed(1) + ' ' + (y2 - h * Math.sin(a - 0.55)).toFixed(1);
+    var p2 = (x2 - h * Math.cos(a + 0.55)).toFixed(1) + ' ' + (y2 - h * Math.sin(a + 0.55)).toFixed(1);
+    return '<path d="M' + x1 + ' ' + y1 + ' L' + x2 + ' ' + y2 + ' M' + p1 + ' L' + x2 + ' ' + y2 + ' L' + p2 +
+      '" fill="none" stroke="' + (color || COL.ink) + '" stroke-width="' + (w || 6) + '" stroke-linecap="round" stroke-linejoin="round"/>';
+  }
+
+  // Bild-Erklärung: zwei Hände, Pfeile, zwei Kartenreihen
+  function sceneSVG(level) {
+    var L = LEVELS[level];
+    var gl = 'thumb', gr = L.same ? 'thumb' : 'fist';
+    var m = L.mirror;
+    var s = '<svg viewBox="0 0 400 300" aria-hidden="true">';
+    s += '<circle cx="105" cy="58" r="56" fill="' + COL.blueT + '"/><circle cx="295" cy="58" r="56" fill="' + COL.greenT + '"/>';
+    s += '<g transform="translate(210 0) scale(-1 1)"><use href="#hand-' + gl + '" x="55" y="8" width="100" height="100" style="--sleeve:' + COL.blue + '"/></g>';
+    s += '<use href="#hand-' + gr + '" x="245" y="8" width="100" height="100" style="--sleeve:' + COL.green + '"/>';
+    function panel(x, green) {
+      var p = '<rect x="' + x + '" y="182" width="170" height="96" rx="20" fill="' + (green ? COL.greenT : COL.blueT) +
+        '" stroke="' + (green ? '#B3CDA8' : '#A8C1D3') + '" stroke-width="4"/>';
+      CARDS.forEach(function (c, i) {
+        var cx = x + 11 + i * 53;
+        p += '<rect x="' + cx + '" y="200" width="46" height="60" rx="10" fill="#fff"/>';
+        p += '<use href="#card-' + c + '" x="' + (cx + 3) + '" y="210" width="40" height="40"/>';
+      });
+      return p;
+    }
+    s += panel(20, m) + panel(210, !m);
+    if (m) s += arrow(120, 126, 280, 172, COL.blue, 7) + arrow(280, 126, 120, 172, COL.green, 7);
+    else s += arrow(105, 126, 105, 172, COL.blue, 7) + arrow(295, 126, 295, 172, COL.green, 7);
+    return s + '</svg>';
+  }
+
+  function renderRule(level) {
+    $('#ruleScene').innerHTML = sceneSVG(level);
+    var rule = LEVELS[level].rule, h = '';
+    GESTURES.forEach(function (g) {
+      var changed = level === 4 && RULE_SWAP[g] !== RULE_NORMAL[g];
+      h += '<div class="map-row' + (changed ? ' changed' : '') + '">' +
+        '<svg class="map-hand" viewBox="0 0 200 200" aria-hidden="true"><use href="#hand-' + g + '"/></svg>' +
+        '<svg class="map-arrow" viewBox="0 0 100 40" aria-hidden="true">' + arrow(8, 20, 90, 20) + '</svg>' +
+        '<div class="map-card"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#card-' + rule[g] + '"/></svg></div></div>';
+    });
+    $('#ruleMaps').innerHTML = h;
+  }
+
+  var RULE_TEXT = {
+    1: 'Beide Hände zeigen das Gleiche. Daumen hoch: Stäbchen. Faust: Kreis. Offene Hand: Hand.',
+    2: 'Jetzt zeigen die Hände verschiedene Gesten. Tippe auf jeder Seite die passende Karte.',
+    3: 'Achtung, gespiegelt! Die linke Hand gehört zu den Karten rechts. Die rechte Hand gehört zu den Karten links.',
+    4: 'Neue Regel! Faust: Hand. Offene Hand: Kreis. Daumen hoch bleibt Stäbchen.'
+  };
+
+  function startLevel(level) {
+    state.level = settings.level = level; save();
+    renderRule(level);
+    showScreen('rule');
+    later(function () { speak(RULE_TEXT[level]); }, 350);
+  }
+
+  // ---------- Spielfeld aufbauen ----------
+  ['L', 'R'].forEach(function (row) {
+    var el = $('#row' + row);
+    CARDS.forEach(function (c) {
+      var b = document.createElement('button');
+      b.className = 'card'; b.dataset.row = row; b.dataset.card = c;
+      b.setAttribute('aria-label', NAME_C[c]);
+      b.innerHTML = '<svg viewBox="0 0 200 200" aria-hidden="true"><use href="#card-' + c + '"/></svg>';
+      b.addEventListener('click', onCard);
+      el.appendChild(b);
+    });
+  });
+  var dotsEl = $('#dots');
+  for (var i = 0; i < TASKS; i++) { var d = document.createElement('span'); d.className = 'dot'; dotsEl.appendChild(d); }
+  $('#mirrorBadge').innerHTML = arrow(22, 22, 78, 78, COL.blue, 8) + arrow(78, 22, 22, 78, COL.green, 8);
+
+  function cardEl(row, c) { return document.querySelector('#row' + row + ' .card[data-card="' + c + '"]'); }
+  function expected(row) {
+    var L = LEVELS[state.level];
+    var hand = L.mirror ? (row === 'L' ? 'R' : 'L') : row;
+    return L.rule[state.task[hand]];
+  }
+  function updateDots() {
+    dotsEl.querySelectorAll('.dot').forEach(function (d, i) { d.classList.toggle('on', i < state.idx); });
+  }
+  function updateChrome() {
+    var m = LEVELS[state.level].mirror;
+    $('#rowL').classList.toggle('green', m);
+    $('#rowR').classList.toggle('green', !m);
+    $('#mirrorBadge').classList.toggle('on', m);
+    $('#sayBtn').classList.toggle('on', settings.speech && hasSpeech);
+  }
+
+  function startRound() {
+    state.idx = 0; state.prevKey = ''; state.busy = false;
+    updateDots(); updateChrome();
+    showScreen('game');
+    newTask(true);
+  }
+
+  function makeTask() {
+    var L = LEVELS[state.level], t, key, guard = 0;
+    do {
+      if (L.same) { var g = pick(); t = { L: g, R: g }; }
+      else { var a = pick(), b; do { b = pick(); } while (b === a); t = { L: a, R: b }; }
+      key = t.L + t.R;
+    } while (key === state.prevKey && ++guard < 20);
+    state.prevKey = key;
+    return t;
+  }
+
+  function taskText() {
+    var t = state.task;
+    return t.L === t.R ? 'Beide Hände: ' + NAME_G[t.L] + '.' : 'Links ' + NAME_G[t.L] + '. Rechts ' + NAME_G[t.R] + '.';
+  }
+
+  function newTask(first) {
+    state.task = makeTask();
+    state.done = { L: false, R: false };
+    state.locked = { L: false, R: false };
+    state.timeLeft = LEVELS[state.level].time;
+    document.querySelectorAll('.card').forEach(function (c) { c.classList.remove('ok', 'hint'); });
+    $('#rowL').classList.remove('done'); $('#rowR').classList.remove('done');
+    var hands = $('#hands');
+    function apply() {
+      $('#useL').setAttribute('href', '#hand-' + state.task.L);
+      $('#useR').setAttribute('href', '#hand-' + state.task.R);
+      hands.classList.remove('swap');
+      state.busy = false;
+      speak(taskText());
+    }
+    if (first) apply();
+    else { state.busy = true; hands.classList.add('swap'); later(apply, 260); }
+  }
+
+  function onCard(e) {
+    var b = e.currentTarget, row = b.dataset.row;
+    if (state.screen !== 'game' || state.busy || state.panelOpen || state.done[row] || state.locked[row]) return;
+    if (b.dataset.card === expected(row)) {
+      b.classList.add('ok');
+      $('#row' + row).classList.add('done');
+      state.done[row] = true;
+      if (state.done.L && state.done.R) {
+        state.busy = true; chime('task');
+        later(advance, NEXT_MS);
+      } else chime('side');
+    } else {
+      showHint([row]);
+    }
+  }
+
+  // Neutraler Hinweis: richtige Karte leuchtet sanft, dann neuer Versuch
+  function showHint(rows) {
+    rows.forEach(function (row) {
+      state.locked[row] = true;
+      var c = cardEl(row, expected(row));
+      c.classList.add('hint');
+      later(function () { c.classList.remove('hint'); state.locked[row] = false; }, HINT_MS);
+    });
+    speak(rows.length > 1 ? 'Schau mal, hier.' : 'Schau mal, das hier.');
+  }
+
+  function advance() {
+    state.idx++;
+    updateDots();
+    if (state.idx >= TASKS) later(finishRound, 500);
+    else newTask(false);
+  }
+
+  function finishRound() {
+    renderEnd();
+    $('#endNext').style.display = state.level < 4 ? '' : 'none';
+    showScreen('end');
+    chime('end');
+    later(function () { speak('Fertig. Schön gemacht.'); }, 400);
+  }
+
+  function renderEnd() {
+    var cols = ['#E8B4B8', '#F2D27A', '#A8C1D3', '#C9B6E4', '#F4C7A1'];
+    var s = '<svg viewBox="0 0 400 250" aria-hidden="true">';
+    s += '<circle cx="330" cy="62" r="48" fill="#F6DC94" opacity=".35"/><circle cx="330" cy="62" r="32" fill="#F6DC94"/>';
+    s += '<path d="M0 192 Q100 150 200 182 T400 172 V250 H0Z" fill="#CFE1C6"/>';
+    for (var i = 0; i < TASKS; i++) {
+      var x = 38 + i * 36, y = 160 + (i % 2 ? 10 : 0) + Math.round(Math.sin(i) * 4);
+      s += '<g class="flower" style="animation-delay:' + (0.3 + i * 0.25).toFixed(2) + 's">' +
+        '<path d="M' + x + ' ' + y + ' v34" stroke="#8FB287" stroke-width="5" stroke-linecap="round"/>' +
+        '<path d="M' + x + ' ' + (y + 22) + ' q9 -2 12 -10" fill="none" stroke="#8FB287" stroke-width="4" stroke-linecap="round"/>' +
+        '<circle cx="' + x + '" cy="' + y + '" r="12" fill="' + cols[i % cols.length] + '"/>' +
+        '<circle cx="' + x + '" cy="' + y + '" r="5" fill="#FFF3D1"/></g>';
+    }
+    s += '<path d="M0 220 Q120 196 240 214 T400 208 V250 H0Z" fill="#B9D3AE"/>';
+    $('#endScene').innerHTML = s + '</svg>';
+  }
+
+  // ---------- Zeitbalken (optional, nie in Level 1) ----------
+  var timerEl = $('#timer'), fillEl = $('#timerFill'), last = performance.now();
+  function timerOn() { return settings.timer && LEVELS[state.level].time > 0; }
+  function tick(now) {
+    var dt = Math.min(100, now - last); last = now;
+    var on = timerOn();
+    timerEl.classList.toggle('on', on && state.screen === 'game');
+    if (on && state.screen === 'game' && !state.busy && !state.panelOpen && !state.locked.L && !state.locked.R &&
+        document.visibilityState === 'visible') {
+      state.timeLeft -= dt;
+      if (state.timeLeft <= 0) {
+        var rows = ['L', 'R'].filter(function (r) { return !state.done[r]; });
+        state.timeLeft = LEVELS[state.level].time;
+        if (rows.length) showHint(rows);
+      }
+    }
+    var pct = on ? Math.max(0, state.timeLeft / LEVELS[state.level].time) : 1;
+    fillEl.style.transform = 'scaleX(' + pct.toFixed(4) + ')';
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  // ---------- Buttons ----------
+  $('#startGo').addEventListener('click', function () { startLevel(settings.level); });
+  $('#ruleGo').addEventListener('click', startRound);
+  $('#sayBtn').addEventListener('click', function () { if (state.task) speak(taskText()); });
+  $('#endAgain').addEventListener('click', function () { startLevel(state.level); });
+  $('#endNext').addEventListener('click', function () { startLevel(Math.min(4, state.level + 1)); });
+  $('#endHome').addEventListener('click', function () { showScreen('start'); });
+
+  document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState !== 'visible' && hasSpeech) try { speechSynthesis.cancel(); } catch (e) {}
+  });
+
+  // ---------- Elternbereich: 2 Sekunden gedrückt halten ----------
+  var pb = $('#parentBtn'), lp = null;
+  function cancelLP() { clearTimeout(lp); lp = null; pb.classList.remove('pressing'); }
+  pb.addEventListener('pointerdown', function (e) {
+    e.preventDefault();
+    if (state.panelOpen) return;
+    pb.classList.add('pressing');
+    lp = setTimeout(function () { cancelLP(); openPanel(); }, 2000);
+  });
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) { pb.addEventListener(ev, cancelLP); });
+  pb.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.shiftKey) openPanel(); });
+
+  var panel = $('#panel'), levelAtOpen = 1;
+  function syncPanel() {
+    document.querySelectorAll('.lvl').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(+b.dataset.level === settings.level));
+    });
+    document.querySelectorAll('.switch').forEach(function (s) {
+      s.setAttribute('aria-pressed', String(!!settings[s.dataset.key]));
+    });
+    $('#pSpeechNote').hidden = hasSpeech;
+  }
+  function openPanel() {
+    state.panelOpen = true; levelAtOpen = settings.level;
+    if (hasSpeech) try { speechSynthesis.cancel(); } catch (e) {}
+    syncPanel(); panel.hidden = false;
+    $('#pClose').focus();
+  }
+  function closePanel(action) {
+    panel.hidden = true; state.panelOpen = false;
+    updateChrome();
+    if (action === 'restart') startLevel(settings.level);
+    else if (action === 'home') showScreen('start');
+    else if (settings.level !== levelAtOpen && state.screen !== 'start') startLevel(settings.level);
+  }
+  document.querySelectorAll('.lvl').forEach(function (b) {
+    b.addEventListener('click', function () { settings.level = +b.dataset.level; save(); syncPanel(); });
+  });
+  document.querySelectorAll('.switch').forEach(function (s) {
+    s.addEventListener('click', function () {
+      var k = s.dataset.key; settings[k] = !settings[k]; save(); syncPanel();
+      if (k === 'speech' && settings.speech) speak('Sprache ist an.');
+      if (k === 'sound' && settings.sound) chime('side');
+    });
+  });
+  $('#pClose').addEventListener('click', function () { closePanel(); });
+  $('#pRestart').addEventListener('click', function () { closePanel('restart'); });
+  $('#pHome').addEventListener('click', function () { closePanel('home'); });
+  $('#pFull').addEventListener('click', function () {
+    var de = document.documentElement;
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (de.requestFullscreen) de.requestFullscreen();
+      else if (de.webkitRequestFullscreen) de.webkitRequestFullscreen();
+    } catch (e) {}
+  });
+  panel.addEventListener('click', function (e) { if (e.target === panel) closePanel(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && state.panelOpen) closePanel(); });
+
+  showScreen('start');
+
+  // Offline-Fähigkeit (nur wenn über http/https geladen, nicht bei file://)
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+  }
+})();
+</script>
+</body>
+</html>
