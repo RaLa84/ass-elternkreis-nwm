@@ -1,6 +1,6 @@
 // Service Worker: macht die Spiele nach dem ersten Aufruf offline spielbar.
 // Strategie: sofort aus dem Cache liefern, im Hintergrund still aktualisieren.
-const CACHE = 'spiele-v4';
+const CACHE = 'spiele-v5';
 const FILES = [
   './haende-spiel.html',
   './atem-ballon.html',

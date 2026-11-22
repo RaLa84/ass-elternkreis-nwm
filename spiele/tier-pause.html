@@ -91,10 +91,15 @@ svg{display:block}
 .meter{width:clamp(84px,14vh,120px);height:clamp(84px,14vh,120px);position:relative}
 .meter svg{width:100%;height:100%;transform:rotate(-90deg)}
 .meter .num{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(28px,5.5vh,46px);font-weight:700;color:var(--ink)}
+.home-btn{position:absolute;top:8px;left:max(8px,env(safe-area-inset-left));width:52px;height:52px;border:none;border-radius:50%;
+  background:transparent;display:grid;place-items:center;z-index:4;padding:0}
+.home-btn:hover,.home-btn:focus-visible{background:rgba(78,64,56,.07)}
+.home-btn svg{width:30px;height:30px}
 .stop-btn{width:72px;height:72px;border-radius:50%;border:none;background:#E3DCD0;display:grid;place-items:center}
 .stop-btn svg{width:40%;height:40%}
 [data-phase="pause"] .bigview{opacity:.55}
 [data-phase="pause"] .meter-fill{stroke:#D9C27A}
+[data-phase="prep"] .meter-fill{stroke:#A9C3D6}
 
 /* Ende */
 .end-scene{width:min(88vw,620px)}
@@ -249,6 +254,9 @@ summary{cursor:pointer;color:var(--ink)}
     <path d="M69.9 35.3 A26 26 0 1 0 74.4 60.9" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
     <path d="M77 43 L73 22 L57 37 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="ic-home-dark" viewBox="0 0 100 100">
+    <path d="M18 52 L50 24 L82 52 M30 44 V78 H70 V44" fill="none" stroke="#8C7B70" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
   <symbol id="ic-home" viewBox="0 0 100 100">
     <path d="M22 52 L50 28 L78 52 M33 45 V74 H67 V45" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
@@ -288,6 +296,7 @@ summary{cursor:pointer;color:var(--ink)}
 </section>
 
 <section id="game" class="screen" aria-label="Bewegungspause">
+  <button class="home-btn" id="homeBtn" type="button" aria-label="Zur Startansicht"><svg><use href="#ic-home-dark"/></svg></button>
   <div class="strip" id="strip"></div>
   <div class="stage" id="stage" data-mode="ready">
     <div class="s-ready">
@@ -336,6 +345,10 @@ summary{cursor:pointer;color:var(--ink)}
 
     <h3>Länge der Übungen</h3>
     <div class="seg" id="pLen"><button data-v="short">Kurz</button><button data-v="normal">Normal</button><button data-v="long">Lang</button></div>
+
+    <h3>Tempo</h3>
+    <div class="seg" id="pPace"><button data-v="calm">Gemütlich</button><button data-v="normal">Normal</button><button data-v="brisk">Flott</button></div>
+    <p class="muted" style="margin-top:6px">Wirkt auf den Bewegungstakt, die Zeit zum Aufstellen und die Pausen. Für Jüngere oder bei neuen Übungen: Gemütlich.</p>
 
     <h3>Einstellungen</h3>
     <div class="toggle-row"><span>Leise Variante<small>Ohne Springen und Stampfen, z. B. abends oder in der Wohnung.</small></span>
@@ -390,25 +403,27 @@ summary{cursor:pointer;color:var(--ink)}
 
   // ---------- Übungen ----------
   // type 'count': Wiederholungen im Takt (beat ms); 'time': Sekunden halten/laufen.
+  // setup: ms, um in die Ausgangsposition zu kommen. prep: Ansage dazu.
   // calls: abwechselnde Ansagen statt Zahlen. loud: springen/stampfen (fällt in der leisen Variante weg).
+  // half: Seitenwechsel; jede Seite bekommt die volle Zeit, dazwischen Wechselzeit (SWITCH_MS).
   var EX = {
-    frog:     { name: 'Frosch',    sym: 'a-frog',     type: 'count', beat: 1700, loud: true,
+    frog:     { name: 'Frosch',    sym: 'a-frog',     type: 'count', beat: 2800, setup: 4000, prep: 'Geh in die Hocke.', loud: true,
                 text: 'In die Hocke, und hoch springen wie ein Frosch!' },
-    elephant: { name: 'Elefant',   sym: 'a-elephant', type: 'count', beat: 1100, loud: true,
+    elephant: { name: 'Elefant',   sym: 'a-elephant', type: 'count', beat: 1500, setup: 3000, prep: 'Stell dich hin, die Füße etwas auseinander.', loud: true,
                 text: 'Stampf ganz kräftig mit den Füßen, wie ein Elefant.' },
-    bunny:    { name: 'Hase',      sym: 'a-bunny',    type: 'count', beat: 1000, loud: true,
+    bunny:    { name: 'Hase',      sym: 'a-bunny',    type: 'count', beat: 1500, setup: 3000, prep: 'Stell dich hin, die Füße zusammen.', loud: true,
                 text: 'Kleine Hüpfer mit beiden Beinen, wie ein Hase.' },
-    bear:     { name: 'Bär',       sym: 'a-bear',     type: 'time',
+    bear:     { name: 'Bär',       sym: 'a-bear',     type: 'time', setup: 5000, prep: 'Hände und Füße auf den Boden.',
                 text: 'Lauf auf Händen und Füßen wie ein Bär.' },
-    flamingo: { name: 'Flamingo',  sym: 'a-flamingo', type: 'time', half: 'Jetzt das andere Bein.',
+    flamingo: { name: 'Flamingo',  sym: 'a-flamingo', type: 'time', setup: 4000, prep: 'Such dir etwas zum Festhalten, wenn du magst.', half: 'Fuß absetzen. Jetzt das andere Bein.',
                 text: 'Steh auf einem Bein wie ein Flamingo. Festhalten ist erlaubt.' },
-    cat:      { name: 'Katze',     sym: 'a-cat',      type: 'count', beat: 3200, calls: ['Rund machen', 'Lang machen'],
+    cat:      { name: 'Katze',     sym: 'a-cat',      type: 'count', beat: 5000, setup: 5000, prep: 'Hände und Knie auf den Boden.', calls: ['Rund machen', 'Lang machen'],
                 text: 'Auf Händen und Knien: Rücken rund wie eine Katze, dann lang.' },
-    star:     { name: 'Seestern',  sym: 'a-star',     type: 'count', beat: 3000, calls: ['Ganz groß', 'Ganz klein'],
+    star:     { name: 'Seestern',  sym: 'a-star',     type: 'count', beat: 4000, setup: 3000, prep: 'Stell dich hin.', calls: ['Ganz groß', 'Ganz klein'],
                 text: 'Mach dich ganz groß wie ein Seestern, dann ganz klein.' },
-    gorilla:  { name: 'Gorilla',   sym: 'a-gorilla',  type: 'time',
+    gorilla:  { name: 'Gorilla',   sym: 'a-gorilla',  type: 'time', setup: 5000, prep: 'Geh zu einer Wand und leg die Hände an die Wand.',
                 text: 'Hände an die Wand und ganz fest drücken, stark wie ein Gorilla.' },
-    turtle:   { name: 'Schildkröte', sym: 'a-turtle', type: 'time', calm: true,
+    turtle:   { name: 'Schildkröte', sym: 'a-turtle', type: 'time', calm: true, setup: 6000, prep: 'Knie dich hin und mach dich ganz klein.',
                 text: 'Roll dich ein wie eine Schildkröte. Ganz ruhig atmen.' }
   };
   var POOL = ['frog', 'elephant', 'bunny', 'bear', 'flamingo', 'cat', 'star', 'gorilla'];
@@ -418,15 +433,19 @@ summary{cursor:pointer;color:var(--ink)}
     long:   { reps: 12, secs: 20, calm: 30 }
   };
   var NUM = ['null', 'eins', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'elf', 'zwölf'];
-  var PAUSE_MS = 4000;
+  var PAUSE_MS = 7000, SWITCH_MS = 4000;
+  // Tempo: Faktor auf Takt, Vorbereitungs-, Wechsel- und Pausenzeit
+  var PACE = { calm: 1.35, normal: 1, brisk: 0.8 };
+  function pace() { return PACE[settings.pace] || 1; }
 
   // ---------- Einstellungen ----------
   var KEY = 'tierPause.v1';
-  var settings = { count: 4, len: 'normal', quiet: false, countAloud: true, speech: true, tick: false };
+  var settings = { count: 4, len: 'normal', pace: 'normal', quiet: false, countAloud: true, speech: true, tick: false };
   try {
     var s = JSON.parse(localStorage.getItem(KEY) || '{}');
     if ([3, 4, 6].indexOf(s.count) >= 0) settings.count = s.count;
     if (LEN[s.len]) settings.len = s.len;
+    if (PACE[s.pace]) settings.pace = s.pace;
     ['quiet', 'countAloud', 'speech', 'tick'].forEach(function (k) { if (typeof s[k] === 'boolean') settings[k] = s[k]; });
   } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch (e) {} }
@@ -547,37 +566,78 @@ summary{cursor:pointer;color:var(--ink)}
     numEl.textContent = ''; setMeter(0);
     speak(e.name + '! ' + e.text);
     var introMs = Math.max(3500, e.text.length * 75);   // Zeit zum Zuhören
-    later(function () {
+    later(function () { doPrep(e, function () {
       stageEl.setAttribute('data-phase', 'go');
+      $('#pre').textContent = '';
+      $('#exText').textContent = e.text;
       if (e.type === 'count') doCount(e, L.reps, function () { afterExercise(i); });
-      else doTime(e, e.calm ? L.calm : L.secs, function () { afterExercise(i); });
-    }, introMs);
+      else (e.half ? doSides : doTime)(e, e.calm ? L.calm : L.secs, function () { afterExercise(i); });
+    }); }, introMs);
+  }
+
+  // Zeit, um in die Ausgangsposition zu kommen. Ring läuft voll, dann "Und los!".
+  function doPrep(e, done) {
+    var total = Math.round((e.setup || 3000) * pace()), t0 = performance.now(), lastSec = -1;
+    stageEl.setAttribute('data-phase', 'prep');
+    $('#pre').textContent = 'Bereit machen';
+    $('#exText').textContent = e.prep || e.text;
+    numEl.textContent = ''; setMeter(0);
+    speak(e.prep || 'Mach dich bereit.');
+    function frame(now) {
+      var el = now - t0, left = Math.max(0, total - el);
+      setMeter(el / total);
+      var sec = Math.ceil(left / 1000);
+      if (sec !== lastSec) { numEl.textContent = sec || ''; lastSec = sec; }
+      if (left <= 0) {
+        numEl.textContent = ''; setMeter(0);
+        speak('Und los!');
+        later(done, 1200);
+        return;
+      }
+      state.raf = requestAnimationFrame(frame);
+    }
+    state.raf = requestAnimationFrame(frame);
   }
 
   function doCount(e, reps, done) {
-    var n = 0;
+    var n = 0, beatMs = Math.round(e.beat * pace());
     (function beat() {
       n++;
       numEl.textContent = n; setMeter(n / reps); tick();
       if (e.calls) speak(e.calls[(n - 1) % e.calls.length]);
       else if (settings.countAloud) speak(NUM[n] || String(n), 1.1);
-      if (n >= reps) { later(done, e.beat); return; }
-      later(beat, e.beat);
+      if (n >= reps) { later(done, beatMs); return; }
+      later(beat, beatMs);
     })();
   }
 
   function doTime(e, secs, done) {
-    var total = secs * 1000, t0 = performance.now(), halfDone = false, lastSec = -1;
+    var total = secs * 1000, t0 = performance.now(), lastSec = -1;
     function frame(now) {
       var el = now - t0, left = Math.max(0, total - el);
       setMeter(el / total);
       var sec = Math.ceil(left / 1000);
       if (sec !== lastSec) { numEl.textContent = sec; lastSec = sec; if (sec <= 3 && sec > 0 && !e.calm) tick(440); }
-      if (e.half && !halfDone && el >= total / 2) { halfDone = true; speak(e.half); }
       if (left <= 0) { done(); return; }
       state.raf = requestAnimationFrame(frame);
     }
     state.raf = requestAnimationFrame(frame);
+  }
+
+  // Seitenwechsel (Flamingo): erste Seite, Wechselzeit ohne Uhr, zweite Seite
+  function doSides(e, secs, done) {
+    doTime(e, secs, function () {
+      stageEl.setAttribute('data-phase', 'prep');
+      $('#pre').textContent = 'Seite wechseln';
+      $('#exText').textContent = e.half;
+      numEl.textContent = ''; setMeter(0);
+      speak(e.half);
+      later(function () {
+        stageEl.setAttribute('data-phase', 'go');
+        $('#pre').textContent = ''; $('#exText').textContent = e.text;
+        doTime(e, secs, done);
+      }, Math.round(SWITCH_MS * pace()));
+    });
   }
 
   function afterExercise(i) {
@@ -589,12 +649,12 @@ summary{cursor:pointer;color:var(--ink)}
     show(k, 'Gleich:');
     $('#exText').textContent = 'Kurz durchatmen.';
     speak('Gut. Kurz durchatmen. Gleich: ' + EX[k].name + '.');
-    var t0 = performance.now();
+    var t0 = performance.now(), pauseMs = Math.round(PAUSE_MS * pace());
     function frame(now) {
       var el = now - t0;
-      setMeter(1 - el / PAUSE_MS);
-      numEl.textContent = Math.max(1, Math.ceil((PAUSE_MS - el) / 1000));
-      if (el >= PAUSE_MS) { runExercise(next); return; }
+      setMeter(1 - el / pauseMs);
+      numEl.textContent = Math.max(1, Math.ceil((pauseMs - el) / 1000));
+      if (el >= pauseMs) { runExercise(next); return; }
       state.raf = requestAnimationFrame(frame);
     }
     state.raf = requestAnimationFrame(frame);
@@ -629,6 +689,7 @@ summary{cursor:pointer;color:var(--ink)}
   $('#startGo').addEventListener('click', startGame);
   $('#playBtn').addEventListener('click', play);
   $('#stopBtn').addEventListener('click', stopRun);
+  $('#homeBtn').addEventListener('click', function () { stopRun(); showScreen('start'); });
   $('#endAgain').addEventListener('click', startGame);
   $('#endHome').addEventListener('click', function () { showScreen('start'); });
   $('#app').addEventListener('contextmenu', function (e) { e.preventDefault(); });
@@ -648,7 +709,7 @@ summary{cursor:pointer;color:var(--ink)}
     document.querySelectorAll(id + ' button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === String(val))); });
   }
   function syncPanel() {
-    segSync('#pCount', settings.count); segSync('#pLen', settings.len);
+    segSync('#pCount', settings.count); segSync('#pLen', settings.len); segSync('#pPace', settings.pace);
     document.querySelectorAll('.switch').forEach(function (sw) { sw.setAttribute('aria-pressed', String(!!settings[sw.dataset.key])); });
     $('#pSpeechNote').hidden = hasSpeech;
   }
@@ -668,6 +729,9 @@ summary{cursor:pointer;color:var(--ink)}
   });
   document.querySelectorAll('#pLen button').forEach(function (b) {
     b.addEventListener('click', function () { settings.len = b.dataset.v; save(); syncPanel(); });
+  });
+  document.querySelectorAll('#pPace button').forEach(function (b) {
+    b.addEventListener('click', function () { settings.pace = b.dataset.v; save(); syncPanel(); });
   });
   document.querySelectorAll('.switch').forEach(function (sw) {
     sw.addEventListener('click', function () {

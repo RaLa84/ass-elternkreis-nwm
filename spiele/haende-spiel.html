@@ -90,7 +90,42 @@ svg{display:block}
 .stage{flex:1 1 auto;min-height:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
 .stage > *{display:none}
 .stage[data-mode="ready"] .s-ready,.stage[data-mode="count"] .s-count,.stage[data-mode="run"] .s-run{display:flex}
-.s-ready{flex-direction:column;align-items:center;gap:12px}
+.s-ready{flex-direction:column;align-items:center;gap:clamp(8px,1.8vh,16px)}
+
+/* Schnell-Bedienung neben dem Play-Knopf (nur sichtbar, solange das Spiel wartet) */
+.quick{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(10px,2.5vw,28px)}
+.qbox{display:flex;flex-direction:column;align-items:center;gap:4px}
+.qlbl{font-size:12px;color:#B5A89C;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.qrow{display:flex;align-items:center;gap:8px}
+.qbtn{width:52px;height:52px;border-radius:50%;border:2px solid #E3DCD0;background:#fff;font-size:28px;font-weight:700;color:var(--soft);
+  display:grid;place-items:center;line-height:1;padding:0}
+.qbtn:disabled{opacity:.35;cursor:default}
+.qval{min-width:84px;text-align:center;line-height:1.1}
+.qval b{font-size:22px}
+.qval small{display:block;font-size:13px;color:var(--soft)}
+.tempo{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.tempo button{border:2px solid #E3DCD0;background:#fff;border-radius:999px;padding:8px 14px;min-height:48px;font-size:14px;font-weight:600;color:var(--soft)}
+.tempo button[aria-pressed="true"]{border-color:var(--ok);background:var(--ok-t);color:var(--ink)}
+.home-btn{position:absolute;top:8px;left:max(8px,env(safe-area-inset-left));width:52px;height:52px;border:none;border-radius:50%;
+  background:transparent;display:grid;place-items:center;z-index:4;padding:0}
+.home-btn:hover,.home-btn:focus-visible{background:rgba(78,64,56,.07)}
+.home-btn svg{width:30px;height:30px}
+@media (max-height:520px){
+  .s-ready{flex-direction:row;gap:24px}
+  .s-ready .big-btn{width:96px;height:96px}
+  .quick{flex-direction:column;gap:6px;align-items:flex-start}
+  .scard{width:clamp(70px,10vw,110px)}
+}
+@media (max-height:440px){
+  #game{gap:6px;padding-top:6px}
+  .topbar{min-height:34px}
+  .stairs{height:26px}
+  .scard{width:62px;padding:3px 2px 2px;border-radius:14px}
+  .scard .w{font-size:11px}
+  .s-ready .big-btn{width:84px;height:84px}
+  .qbtn,.tempo button{min-height:44px}
+  .qbtn{width:44px;height:44px}
+}
 .s-count{width:clamp(140px,30vmin,240px);aspect-ratio:1;border-radius:50%;background:#fff;box-shadow:var(--shadow);
   align-items:center;justify-content:center;font-size:clamp(70px,16vmin,130px);font-weight:700;color:#8FADC4}
 .s-count span{animation:fade .35s ease-out}
@@ -198,6 +233,9 @@ summary{cursor:pointer;color:var(--ink)}
     <path d="M69.9 35.3 A26 26 0 1 0 74.4 60.9" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
     <path d="M77 43 L73 22 L57 37 Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="ic-home-dark" viewBox="0 0 100 100">
+    <path d="M18 52 L50 24 L82 52 M30 44 V78 H70 V44" fill="none" stroke="#8C7B70" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
   <symbol id="ic-home" viewBox="0 0 100 100">
     <path d="M22 52 L50 28 L78 52 M33 45 V74 H67 V45" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
@@ -239,6 +277,7 @@ summary{cursor:pointer;color:var(--ink)}
 
 <!-- Spiel -->
 <section id="game" class="screen" aria-label="Spiel">
+  <button class="home-btn" id="homeBtn" type="button" aria-label="Zur Startansicht"><svg><use href="#ic-home-dark"/></svg></button>
   <div class="topbar">
     <div class="stairs" id="stairs" aria-hidden="true"></div>
     <div class="seqdots" id="seqdots" aria-hidden="true"></div>
@@ -247,6 +286,22 @@ summary{cursor:pointer;color:var(--ink)}
   <div class="stage" id="stage" data-mode="ready">
     <div class="s-ready">
       <button class="big-btn" id="playBtn" aria-label="Los"><svg><use href="#ic-play"/></svg></button>
+      <div class="quick">
+        <div class="qbox">
+          <span class="qlbl">Level</span>
+          <div class="qrow">
+            <button class="qbtn" id="lvlDown" type="button" aria-label="Eine Geste weniger">−</button>
+            <div class="qval" aria-live="polite"><b id="lvlVal">1</b><small id="lvlSub">2 Gesten</small></div>
+            <button class="qbtn" id="lvlUp" type="button" aria-label="Eine Geste mehr">+</button>
+          </div>
+        </div>
+        <div class="qbox">
+          <span class="qlbl">Tempo</span>
+          <div class="tempo" id="qTempo" role="group" aria-label="Tempo">
+            <button type="button" data-v="slow">Langsam</button><button type="button" data-v="mid">Mittel</button><button type="button" data-v="fast">Schnell</button><button type="button" data-v="turbo">Sehr schnell</button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="s-count" id="count" aria-live="polite"></div>
     <div class="s-run">
@@ -442,6 +497,26 @@ summary{cursor:pointer;color:var(--ink)}
     var d = '';
     for (var j = 0; j < settings.per; j++) d += '<span class="dot' + (j < state.doneInLevel ? ' on' : '') + '"></span>';
     $('#seqdots').innerHTML = settings.auto ? d : '';
+    syncQuick();
+  }
+
+  // Level und Tempo direkt im Spiel
+  function syncQuick() {
+    $('#lvlVal').textContent = state.level;
+    $('#lvlSub').textContent = len(state.level) + ' Gesten';
+    $('#lvlDown').disabled = state.level <= 1;
+    $('#lvlUp').disabled = state.level >= MAX_LEVEL;
+    document.querySelectorAll('#qTempo button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.v === settings.tempo));
+    });
+  }
+  function changeLevel(d) {
+    var L = Math.max(1, Math.min(MAX_LEVEL, state.level + d));
+    if (L === state.level || state.mode !== 'ready') return;
+    state.level = settings.level = L; save();
+    state.doneInLevel = 0;
+    clearLater();
+    newSequence();
   }
 
   function renderStrip() {
@@ -556,6 +631,12 @@ summary{cursor:pointer;color:var(--ink)}
   // ---------- Buttons ----------
   $('#startGo').addEventListener('click', function () { startGame(settings.level); });
   $('#playBtn').addEventListener('click', play);
+  $('#homeBtn').addEventListener('click', function () { stopRun(); showScreen('start'); });
+  $('#lvlDown').addEventListener('click', function () { changeLevel(-1); });
+  $('#lvlUp').addEventListener('click', function () { changeLevel(1); });
+  document.querySelectorAll('#qTempo button').forEach(function (b) {
+    b.addEventListener('click', function () { settings.tempo = b.dataset.v; save(); syncQuick(); });
+  });
   $('#stopBtn').addEventListener('click', stopRun);
   $('#endAgain').addEventListener('click', function () { startGame(1); });
   $('#endHome').addEventListener('click', function () { showScreen('start'); });
